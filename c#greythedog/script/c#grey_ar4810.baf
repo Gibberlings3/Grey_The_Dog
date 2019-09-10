@@ -1,0 +1,9 @@
+IF
+Global("C#Grey_Brage","GLOBAL",0)
+THEN
+RESPONSE #100
+CreateCreature("c#gramni",[265.330],0)
+SetGlobal("C#Grey_Brage","GLOBAL",1)
+Continue()
+END
+

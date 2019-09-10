@@ -1,0 +1,13 @@
+/* remove journal entry: BD1000 find statues */
+
+IF
+	Global("C#Grey_SoD_statues","GLOBAL",2)
+	OR(3)
+		GlobalGT("BD_PET_MAIN","MYAREA",3)
+		!Global("bd_125_bought_golem","global",0)
+		GlobalGT("BD_PET_SAVED","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SoD_statues","GLOBAL",3)
+		EraseJournalEntry(@100019)
+END

@@ -1,0 +1,9 @@
+/* Grey comes into teh room after The Incident */
+IF
+	InMyArea("C#Grey")
+	Global("C#GreyJoined","GLOBAL",2)
+THEN
+	RESPONSE #100
+		CutSceneId("bdcutid")  // No such index
+		ActionOverride("C#Grey",MoveToPoint([1120.978]))
+END

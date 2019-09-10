@@ -1,0 +1,148 @@
+/*
+IF
+See([PC])
+NumTimesTalkedTo(0)
+THEN
+RESPONSE #100
+Dialogue(Player1)
+END
+*/
+
+////alpha call code
+IF
+OR(3)
+AreaType(FOREST)
+AreaType(OUTDOOR)
+AreaType(CITY)
+LevelGT("c#grey",9)
+LevelLT("c#grey",13)
+Global("c#greysu","GLOBAL",1)
+THEN 
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog1",0)
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog1",0)
+CreateCreatureOffScreen("c#ardog1",6)
+RESPONSE #40
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog1",0)
+CreateCreatureOffScreen("c#ardog1",6)
+CreateCreatureOffScreen("c#ardog1",10)
+END
+
+
+IF
+OR(3)
+AreaType(FOREST)
+AreaType(OUTDOOR)
+AreaType(CITY)
+LevelGT("c#grey",12)
+LevelLT("c#grey",17)
+Global("c#greysu","GLOBAL",1)
+THEN 
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog2",0)
+
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog2",0)
+CreateCreatureOffScreen("c#ardog2",6)
+
+RESPONSE #40
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog2",0)
+CreateCreatureOffScreen("c#ardog2",6)
+CreateCreatureOffScreen("c#ardog2",10)
+
+END
+
+IF
+OR(3)
+AreaType(FOREST)
+AreaType(OUTDOOR)
+AreaType(CITY)
+LevelGT("c#grey",16)
+LevelLT("c#grey",21)
+Global("c#greysu","GLOBAL",1)
+THEN 
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog3",0)
+
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog3",0)
+CreateCreatureOffScreen("c#ardog3",6)
+
+RESPONSE #40
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog3",0)
+CreateCreatureOffScreen("c#ardog3",6)
+CreateCreatureOffScreen("c#ardog3",10)
+
+END
+
+IF
+OR(3)
+AreaType(FOREST)
+AreaType(OUTDOOR)
+AreaType(CITY)
+LevelGT("c#grey",20)
+Global("c#greysu","GLOBAL",1)
+THEN 
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog4",0)
+
+RESPONSE #20
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog4",0)
+CreateCreatureOffScreen("c#ardog4",6)
+
+RESPONSE #40
+SetGlobalTimer("c#greysutimer","GLOBAL",3600) ///set a timer so can only call dogs twice per game day
+SetGlobal("c#greysu","GLOBAL",2)
+CreateCreatureOffScreen("c#ardog4",0)
+CreateCreatureOffScreen("c#ardog4",6)
+CreateCreatureOffScreen("c#ardog4",10)
+
+END
+
+IF
+GlobalTimerExpired("c#greysutimer","GLOBAL")
+THEN 
+RESPONSE #100
+SetGlobal("c#greysu","GLOBAL",0)
+
+END
+
+////end alpha call code///

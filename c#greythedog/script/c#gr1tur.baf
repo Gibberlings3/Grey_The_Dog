@@ -1,0 +1,11 @@
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	Global("C#Grey_Doppleganger","LOCALS",0)
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,DOPPLEGANGER_CHANGE_DEFAULT_LESSER)
+		SetGlobal("C#Grey_Doppleganger","LOCALS",1)
+		SetGlobal("C#Grey_BG1Quest","GLOBAL",2)
+		AddJournalEntry(@100015,QUEST)
+		Enemy()
+END

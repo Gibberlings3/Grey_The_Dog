@@ -1,0 +1,275 @@
+/* c#grey Grey's main script */
+
+
+/* in case Grey follows as 7th party member and Player1 was rested via script and not via  RestParty() */
+
+/* spell and priciple taken from Zed Nocear's BG1 Trigger Simulations! */
+
+IF
+	Global("C#GreyRestCounter","GLOBAL",1)
+	RealGlobalTimerExpired("C#7thPartyMemberRestAfterTimer","GLOBAL")
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#GreyRestCounter","GLOBAL",0)
+END
+
+IF
+	Global("C#GreyRestCounter","GLOBAL",0)
+	!RealGlobalTimerExpired("C#7thPartyMemberRestAfterTimer","GLOBAL")
+	Global("C#GreyJoined","GLOBAL",2)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("C#GreyRestCounter","GLOBAL",1)
+		Rest()
+		ReallyForceSpellRES("C#GRREST",Myself)		
+END
+
+/* follows as familiar: reset variable for refreshing of min HP spell after fight */
+
+IF
+	Global("C#Grey_Has1HPEffect","GLOBAL",2)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)
+END
+
+/* refresh min HP spell before a fight */
+IF
+	Global("C#Grey_Has1HPEffect","GLOBAL",1)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",2)
+		ReallyForceSpellRES("C#MIN5HP","C#Grey") 
+END
+
+
+
+/* follows as familiar: fight is over - Grey had passed out at 1 HP. Regains consciousness and gets healing boost to be ready to be taken into the group and not die upon joining the group */
+
+IF
+	Global("C#Grey_IsUnconscious","GLOBAL",1)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("C#GRREST","C#Grey")     	
+		SetGlobal("C#Grey_IsUnconscious","GLOBAL",0)		
+		DisplayStringHead(Myself,@50004)
+		ChangeEnemyAlly(Myself, FAMILIAR)
+		AddFamiliar()	
+		SetDialog("C#GreyJ")	
+		DisplayStringHead(Myself,@50007)
+END
+
+/* follows as familiar: fight ends - resetting health warn variable */
+IF
+	Global("C#Grey_HPAlarmDone","LOCALS",1)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_HPAlarmDone","LOCALS",0)
+END
+
+/* follows as familiar: Grey warns about HP too low: auto pause. This can be switsched on and off via PID */
+
+IF
+	Global("C#Grey_HPAlarm","GLOBAL",1)  //PC told Grey to warn
+	Global("C#Grey_HPAlarmDone","LOCALS",0)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	HPPercentLT(Myself,45)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@50008) 		
+		SetGlobal("C#Grey_HPAlarmDone","LOCALS",1)
+		PauseGame()
+END
+
+/* follows as familiar: Grey warns about HP too low: no auto pause. This can be switsched on and off via PID */
+
+IF
+	Global("C#Grey_HPAlarm","GLOBAL",0)  //PC told Grey not to warn
+	Global("C#Grey_HPAlarmDone","LOCALS",0)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	HPPercentLT(Myself,45)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@50008) 		
+		SetGlobal("C#Grey_HPAlarmDone","LOCALS",1)
+END
+
+
+
+/* follows as familiar: Grey passes out if at 1 HP and following as a 7th party member (otherwise he would be a killing machine) */
+
+IF
+	Global("C#Grey_IsUnconscious","GLOBAL",0)
+	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	Range(NearestEnemyOf(Myself),10)
+	HPLT(Myself,6)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@50006) 
+		ClearActions(Myself)
+		RemoveFamiliar()
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("C#Grey_IsUnconscious","GLOBAL",1)
+END
+
+/* follows as familiar: Grey is at 1 HP and passes out */
+IF
+	Global("C#Grey_IsUnconscious","GLOBAL",1)
+	!CombatCounter(0)
+THEN
+	RESPONSE #100
+		PlayDead(100)
+END
+
+
+/* following as familiar/7th party member. Give 1 HP effect */
+
+IF
+	!InParty(Myself)
+	Global("C#GreyJoined","GLOBAL",2)
+	Global("C#Grey_Has1HPEffect","GLOBAL",0)
+THEN
+  RESPONSE #100
+		ReallyForceSpellRES("C#GRREST","C#Grey") //make sure there is no negative effect
+		ReallyForceSpellRES("C#MIN5HP","C#Grey") //give him min 5 HP and immunities
+		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)	
+END
+
+
+/* Grey joined the party as full member. remove 1 HP effect */
+
+IF
+	InParty(Myself)
+	Global("C#Grey_Has1HPEffect","GLOBAL",1)
+THEN
+  RESPONSE #100
+	ReallyForceSpellRES("C#MIN0HP","C#Grey")
+	SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)	
+END
+
+/* talk to PC if kicked out unhappy */
+IF
+	!InParty(Myself)
+	Global("C#GreyJoined","GLOBAL",1)
+	!HappinessGT(Myself,-299)
+THEN
+	RESPONSE #100
+		Dialogue(Player1)
+END
+
+
+
+/* level up - item replacement: paws (shield slot)  */
+
+
+/* level 25 */
+IF
+	GlobalLT("C#GreyLevelUpPaw","LOCALS",25)
+//	XPGT(Myself,4249999)
+	LevelGT(Myself,24)
+	!See([ENEMY])
+	CombatCounter(0)
+	HasItem("c#grpa15",Myself)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	TakeItemReplace("c#grpa25","c#grpa15",Myself)
+	SetGlobal("C#GreyLevelUpPaw","LOCALS",25)
+	SetInterrupt(TRUE)		
+END
+
+/* level 15 */
+IF
+	GlobalLT("C#GreyLevelUpPaw","LOCALS",15)
+//	XPGT(Myself,1749999)
+	LevelGT(Myself,14)
+	!See([ENEMY])
+	CombatCounter(0)
+	HasItem("c#grpa12",Myself)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	TakeItemReplace("c#grpa15","c#grpa12",Myself)
+	SetGlobal("C#GreyLevelUpPaw","LOCALS",15)
+	SetInterrupt(TRUE)		
+END
+
+/* level 12 */
+IF
+	GlobalLT("C#GreyLevelUpPaw","LOCALS",12)
+//	XPGT(Myself,999999)
+	LevelGT(Myself,11)
+	!See([ENEMY])
+	CombatCounter(0)
+	HasItem("c#grpaw9",Myself)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	TakeItemReplace("c#grpa12","c#grpaw9",Myself)
+	SetGlobal("C#GreyLevelUpPaw","LOCALS",12)
+	SetInterrupt(TRUE)		
+END
+
+/* level 9 */
+IF
+	GlobalLT("C#GreyLevelUpPaw","LOCALS",9)
+//	XPGT(Myself,249999)
+	LevelGT(Myself,10)
+	!See([ENEMY])
+	CombatCounter(0)
+	HasItem("c#grpaw6",Myself)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	TakeItemReplace("c#grpaw9","c#grpaw6",Myself)
+	SetGlobal("C#GreyLevelUpPaw","LOCALS",9)
+	SetInterrupt(TRUE)		
+END
+
+/* level 6 */
+IF
+	GlobalLT("C#GreyLevelUpPaw","LOCALS",6)
+//	XPGT(Myself,31999)
+	LevelGT(Myself,5)
+	!See([ENEMY])
+	CombatCounter(0)
+	HasItem("c#grpaw3",Myself)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	TakeItemReplace("c#grpaw6","c#grpaw3",Myself)
+	SetGlobal("C#GreyLevelUpPaw","LOCALS",6)
+	SetInterrupt(TRUE)		
+END
+
+
+/* level 3 */
+IF
+	GlobalLT("C#GreyLevelUpPaw","LOCALS",3)
+//	XPGT(Myself,3999)
+	LevelGT(Myself,2)
+	!See([ENEMY])
+	CombatCounter(0)
+	HasItem("c#grpaw1",Myself)
+THEN
+  RESPONSE #100
+	SetInterrupt(FALSE)
+	TakeItemReplace("c#grpaw3","c#grpaw1",Myself)
+	SetGlobal("C#GreyLevelUpPaw","LOCALS",3)
+	SetInterrupt(TRUE)	
+END

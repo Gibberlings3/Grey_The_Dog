@@ -1,0 +1,27 @@
+// c#lgrcut1.baf - Grey sniffs his way to the entrance of the cave
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+        	FadeToColor([20.0],0)
+		Wait(2)
+		JumpToPoint([2373.2351])
+		Face(4)
+		ActionOverride(Player2,JumpToPoint([2433.2381]))
+		ActionOverride(Player3,JumpToPoint([2440.2426]))
+		ActionOverride(Player4,JumpToPoint([2499.2374]))
+		ActionOverride(Player5,JumpToPoint([2498.2426]))
+		ActionOverride(Player6,JumpToPoint([2450.2374]))
+		ActionOverride("C#Grey",JumpToPoint([2381.2407]))
+		ActionOverride(Player2,Face(4))
+		ActionOverride(Player3,Face(4))
+		ActionOverride(Player4,Face(4))
+		ActionOverride(Player5,Face(4))
+		ActionOverride(Player6,Face(4))
+        	MoveViewPoint([2373.2351],INSTANT)
+		Wait(4)
+        	FadeFromColor([20.0],0)
+		EndcutSceneMode()
+        	ActionOverride("C#Grey",StartDialogNoSet(Player1))
+END

@@ -1,0 +1,10 @@
+/* Tax collector spawns in Councellor's Building */
+
+
+IF 
+	Global("C#Grey_TaxSpawn","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_TaxSpawn","MYAREA",1)
+		CreateCreature("C#GRTAX2",[813.1048],12)
+END

@@ -1,0 +1,35 @@
+
+/* Global("C#Grey_Exists","GLOBAL",0) true for tob, bg2ee, tob game in bgt and eet */
+IF
+	Global("C#Grey_SummonedVariable","GLOBAL",1)
+	Global("C#Grey_Exists","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SummonedVariable","GLOBAL",2)
+		CreateVisualEffect("SPPORTAL",[1999.1218])
+		Wait(2)
+		CreateCreature("c#grey02",[1999.1218],0)
+		%Grey_MakeGlobalOverride%
+		ActionOverride("C#Grey",SetDialog("C#Grey25"))
+		ActionOverride("C#Grey",ChangeAIScript("C#Grey25",OVERRIDE))
+		ActionOverride("C#Grey",StartDialogNoSet(Player1))
+END
+
+
+/* GlobalGT("C#GreySpawn","GLOBAL",9): continuous game for eet & bgt */
+
+IF
+	GlobalGT("C#Grey_Exists","GLOBAL",9)
+	Global("C#Grey_SummonedVariable","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SummonedVariable","GLOBAL",2)
+		CreateVisualEffect("SPPORTAL",[1999.1218])
+		Wait(2)
+		ActionOverride("C#Grey",SetDialog("C#Grey25"))
+		ActionOverride("C#Grey",ChangeAIScript("C#Grey25",OVERRIDE))
+		MoveGlobal("AR4500","C#Grey",[1999.1218])
+		ActionOverride("C#Grey",FaceObject(Player1))
+		ActionOverride("C#Grey",SetGlobal("C#GreyJoined","GLOBAL",0))
+		ActionOverride("C#Grey",StartDialogNoSet(Player1))
+END

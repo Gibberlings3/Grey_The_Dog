@@ -1,0 +1,9 @@
+IF
+Global("C#Grey_Exists","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("C#Grey_Exists","GLOBAL",1)
+CreateCreature("c#grey02",[4140.1298],4)
+%Grey_MakeGlobalOverride%
+Continue()
+END

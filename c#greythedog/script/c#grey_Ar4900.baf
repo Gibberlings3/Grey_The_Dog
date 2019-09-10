@@ -1,0 +1,12 @@
+IF
+
+	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
+	Global("C#Grey_MerchantSpawn","MYAREA",0)
+THEN
+RESPONSE #100
+CreateCreature("c#gr1mt1",[3412.2453],14)
+SetGlobal("C#Grey_MerchantSpawn","MYAREA",1)
+AddMapNote([3412.2453],~Wardog Armory and Weaponry~)
+Continue()
+END
+

@@ -1,0 +1,21 @@
+IF
+Global("C#Grey_Exists","GLOBAL",0)
+!Dead("C#Grey")
+THEN
+RESPONSE #100
+SetGlobal("C#Grey_Exists","GLOBAL",2)
+CreateCreature("c#grey02",[3152.3699],0)
+%Grey_MakeGlobalOverride%
+Continue()
+END
+
+IF
+Global("C#Grey_Exists","GLOBAL",1)
+!Dead("C#Grey")
+THEN
+RESPONSE #100
+SetGlobal("C#Grey_Exists","GLOBAL",2)
+MoveGlobal("%LionsWay%","C#Grey",[3152.3699])
+Continue()
+END
+

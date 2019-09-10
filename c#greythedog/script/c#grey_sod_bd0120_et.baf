@@ -1,0 +1,15 @@
+/* This is a comment in bd0120.are (Korlasz's crypt) after defeating the first enemies. */
+
+IF
+	Global("bd_plot","global",10)
+	GlobalGT("bd_mdd000te_ot","bd0120",0)
+	Global("C#Grey_bd_mdd000te_ot","bd0120",0) 
+	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)   
+THEN
+	RESPONSE #200
+		Continue()
+	RESPONSE #100
+		SetGlobal("C#Grey_bd_mdd000te_ot","bd0120",1)
+		DisplayStringHead("C#Grey",@50005)
+		Wait(5)
+END

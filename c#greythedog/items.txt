@@ -1,0 +1,121 @@
+/// BG1 ///
+
+Items - placement in the game
+
+
+c#grhelm.ITM (normal helm) 
+
+c#grarm1.ITM (Armor Class: 6) 
+
+c#grarm2.ITM (Armor Class: 4) 
+
+c#grarm3.ITM (Armor Class: 2) 
+
+c#grarm4.ITM (Armor Class: 0) 
+
+c#grarm5.ITM (War dog Ankheg armor) -> Taerom via dialogue
+
+
+
+c#grbel1.ITM (Armor Class Bonus:  1) 
+
+c#grbel2.ITM (Electricity Resistance:  +10% bonus)
+
+c#grbel3.ITM (Poison Resistance:  +5% bonus; Acid Resistance:  +5% bonus)
+
+
+
+c#grcl01.ITM (Armor Class:  +1 bonus; Saving Throw:  +1 bonus)
+
+c#grcl02.ITM (Magic Resistance: 5%) 
+
+c#grcl03.ITM (Fire Resistance:  +5% bonus; Cold Resistance:  +5% bonus)
+
+
+
+c#grrin1.ITM (Strength Bonus: +1)
+
+c#grrin2.ITM (THACO:  +1 bonus; Damage:  +2 bonus)
+
+c#grrin3.ITM (~War Dog's Bracelets of Free Action)
+
+c#grrin4.ITM (Fire Resistance:  +40%) 
+
+
+tooth enforcer
+
+tooth enforcer +1 
+
+tooth enforcer +2 
+
+poison tooth enforcer -> Taerom via dialogue [Giant Spider's Fang]
+
+
+luck toy -> equipped upon joining
+
+chew toy (+9 HP bonus) -> reward from Alfie
+
+
+
+
+BGII (list not finished yet)
+
+c#grbrac.ITM ~War Dog's Gauntlets of Speed~
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
+Placement in game - BG1
+
+Always:
+
+Taerom's shop
+-c#grhelm.ITM (normal helm)
+-c#grarm3.ITM (Armor Class: 2)
+-c#grarm4.ITM (Armor Class: 0)
+
+Taerom, via dialogue
++c#grarm5.ITM (War dog Ankheg armor)
++poison tooth enforcer
+
+Nashkel Carnival & BG city, Carnival
+Merchants for wardog armor and weaponry:
+-c#grhelm.ITM (normal helm)
+-c#grarm2.ITM (Armor Class: 4)
+-c#grarm3.ITM (Armor Class: 2)
+-c#grarm4.ITM (Armor Class: 0)
+-c#grcl03.ITM (Fire Resistance:  +5% bonus; Cold Resistance:  +5% bonus)
+-c#grcl02.ITM ((Magic Resistance: 5%)
+-c#grrin4.ITM (Fire Resistance:  +40%)
+-c#grrin2.ITM (THACO:  +1 bonus; Damage:  +2 bonus)
+
+
+Chapter 3:
+Bandit Camp, AR1900
+war dog:
+-c#grhelm.ITM (normal helm)
+-c#grarm2.ITM (Armor Class: 2)
+
+chest in camp:
+-tooth enforcer +1
+
+Chapter 4:
+Cloakwood Mines AR1800 outside: an attacking war dog
+-c#grhelm.ITM (normal helm)
+-c#grarm4.ITM (Armor Class: 0)
+-c#grcl01.ITM (Armor Class:  +1 bonus; Saving Throw:  +1 bonus)
+-c#grbel2.ITM (Electricity Resistance:  +10% bonus)
+
+barracks AR1805 in a chest
+-c#grarm2.ITM (Armor Class: 4)
+-c#grrin3.ITM (~War Dog's Bracelets of Free Action)
+
+Chapter 6:
+Candlekeep [Ch.6]: AR2626, chest outside the barracks
+-tooth enforcer +2 
+-c#grbel3.ITM (Poison Resistance:  +5% bonus; Acid Resistance:  +5% bonus)
+-c#grrin1.ITM (Strength Bonus: +1)
+

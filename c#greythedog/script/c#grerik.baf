@@ -1,0 +1,12 @@
+IF
+	GlobalLT("C#Grey_GreyJondalar","GLOBAL",2)
+	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
+	!Range(Player1,15)
+THEN
+  RESPONSE #100
+	MoveToObject(Player1)
+END
+
+
+
+

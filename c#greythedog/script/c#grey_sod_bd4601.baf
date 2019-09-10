@@ -1,0 +1,15 @@
+/* in the elevator in hell */
+
+IF
+	Global("C#Grey_hellevator","bd4601",0)
+	InMyArea("C#Grey")
+	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck("C#Grey",CD_STATE_NOTVALID)  
+	!GlobalTimerNotExpired("bd_hellevator_timer","bd4601")
+	!ActuallyInCombat()
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_hellevator","bd4601",1)
+		SetGlobalTimer("bd_hellevator_timer","bd4601",7)
+		DisplayStringHead("C#Grey",@50009)  
+END

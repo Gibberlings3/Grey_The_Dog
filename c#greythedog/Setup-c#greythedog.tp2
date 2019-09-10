@@ -1,0 +1,2309 @@
+/* 
+
+
+////////////
+known issues: see readme
+
+/////////////////
+
+*/
+
+
+BACKUP ~c#greythedog/Backup~
+//Idea and first kit draft by Rabain
+
+AUTHOR ~jastey@web.de~
+
+
+//MODDER
+
+VERSION ~Beta_1~
+
+README ~c#greythedog/readme.%LANGUAGE%.txt~ ~c#greythedog/readme.english.txt~
+
+AUTO_TRA ~c#greythedog/tra/%s~
+
+
+ALWAYS
+
+
+/* check for a ready SoD */
+
+ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN
+  FAIL @90000
+END
+
+
+
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SET bg2_chapter = 12
+  END ELSE BEGIN
+    OUTER_SET bg2_chapter = 0
+  END
+  OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+    OUTER_SET bg2_chapter = bg2_chapter + 1
+    OUTER_SPRINT name_source ~bg2_chapter_%i%~
+    OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+  END
+
+  ACTION_DEFINE_ARRAY c#noconvert BEGIN setup END
+  ACTION_DEFINE_ARRAY c#reload BEGIN game END
+      LAF HANDLE_CHARSETS
+        INT_VAR
+          infer_charsets = 1
+        STR_VAR
+          tra_path = EVAL ~c#greythedog/tra~
+          noconvert_array = c#noconvert
+          reload_array = c#reload
+      END
+
+
+
+
+  /* DavidW's code for unifying the area script patching. With many thanks! */
+  DEFINE_ACTION_FUNCTION extend_area_script 
+    STR_VAR area=""
+            top=""
+            bottom=""
+  BEGIN
+    // find the area script from the area file
+    COPY_EXISTING "%area%.are" override
+           READ_ASCII 0x94 script
+    BUT_ONLY
+    // if it doesn't exist, give it a default name
+    ACTION_IF "%script%" STRING_EQUAL "" BEGIN
+          OUTER_INNER_PATCH_SAVE script "%area%" BEGIN
+                REPLACE_TEXTUALLY "FW" "_AR" // TUTU naming conventions
+          END
+		// added: assign area script if needed
+          	COPY_EXISTING "%area%.are" override
+                WRITE_ASCIIE 0x94 ~%script%~ #8
+    END
+    // extend the script
+    ACTION_IF "%top%" STRING_COMPARE "" BEGIN
+        EXTEND_TOP "%script%.bcs" "%top%" EVALUATE_BUFFER
+    END
+    ACTION_IF "%bottom%" STRING_COMPARE "" BEGIN
+       EXTEND_BOTTOM "%script%.bcs" "%bottom%" EVALUATE_BUFFER
+    END
+  END 
+
+  ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
+    PRINT ~This mod is not compatible with Tutu.~
+
+  END 
+
+INCLUDE ~c#greythedog/lib/create_effect.tpa~
+
+
+
+  /* some stuff for the BG2-part to make it compatible with the BGT-notation */
+
+
+  ACTION_IF GAME_IS ~tob~ THEN BEGIN
+    OUTER_SPRINT ~BGT_VAR~ ~False()~
+    OUTER_SPRINT ~IT_IS_BG2~ ~~
+    OUTER_SPRINT ~IT_IS_SOD~ ~False()~
+    OUTER_SPRINT ~tutu_var~ ~~
+
+    /* BGT Chapters - this doesn't have any significance, it is only needed so the d-files compile */
+    OUTER_SPRINT "tutu_prologue" "0"
+    OUTER_SPRINT "tutu_prologue_reset" "0"
+    OUTER_SPRINT "tutu_chapter_1" "1"
+    OUTER_SPRINT "tutu_chapter_2" "2"
+    OUTER_SPRINT "tutu_chapter_3" "3"
+    OUTER_SPRINT "tutu_chapter_4" "4"
+    OUTER_SPRINT "tutu_chapter_5" "5"
+    OUTER_SPRINT "tutu_chapter_6" "6"
+    OUTER_SPRINT "tutu_chapter_7" "7"
+
+    OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobal())~
+  END
+
+
+  ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+    PRINT @90001 /* ~Baldur's Gate Trilogy detected~ */
+    INCLUDE ~c#greythedog/lib/g3_bgt_cpmvars.tpa~ 
+    OUTER_SPRINT ~IT_IS_BG2~ ~Global("endofbg1","GLOBAL",2)~
+
+/* externalising these is not really necessary because there is no custom transition to SoD but it's already scripted, so. */
+    OUTER_SPRINT ~BG1_TRANSITION~ ~"AR0602","C#Grey",[4245.1985]~
+    OUTER_SPRINT ~BG1_transition_value~ ~10~
+    OUTER_SPRINT ~BG1_transition_dlg~ ~C#Grey2~
+  END
+
+  ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+    /* Tell the player it is using bgee */
+    PRINT @90002 /* ~BG:EE detected...~ */
+    INCLUDE ~c#greythedog/lib/g3_bgee_cpmvars.tpa~
+    OUTER_SPRINT ~IT_IS_BG2~ ~False()~
+    OUTER_SPRINT ~IT_IS_SOD~ ~GlobalGT("BD_PLOT","GLOBAL",0)~
+    OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobalOverride())~
+  END
+
+  /* SoD */
+  ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+    OUTER_SPRINT ~BG1_TRANSITION~ ~"AR0602","C#Grey",[4245.1985]~
+    OUTER_SPRINT ~BG1_transition_value~ ~10~
+    OUTER_SPRINT ~BG1_transition_dlg~ ~C#Grey2~
+    OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobalOverride())~
+  END
+
+  ACTION_IF GAME_IS ~bg2ee~ THEN BEGIN
+    OUTER_SPRINT ~BGT_VAR~ ~False()~
+    OUTER_SPRINT ~IT_IS_BG2~ ~~
+    OUTER_SPRINT ~IT_IS_SOD~ ~False()~
+    OUTER_SPRINT ~tutu_var~ ~~
+
+    /* BGT Chapters - this doesn't have any significance, it is only needed so the d-files compile */
+    OUTER_SPRINT "tutu_prologue" "0"
+    OUTER_SPRINT "tutu_prologue_reset" "0"
+    OUTER_SPRINT "tutu_chapter_1" "1"
+    OUTER_SPRINT "tutu_chapter_2" "2"
+    OUTER_SPRINT "tutu_chapter_3" "3"
+    OUTER_SPRINT "tutu_chapter_4" "4"
+    OUTER_SPRINT "tutu_chapter_5" "5"
+    OUTER_SPRINT "tutu_chapter_6" "6"
+    OUTER_SPRINT "tutu_chapter_7" "7"
+
+    OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobalOverride())~
+  END
+
+
+  ACTION_IF GAME_IS ~eet~ THEN BEGIN
+
+    /* Tell the player it is using eet */
+    PRINT @90003 /* ~EET detected...~ */
+    INCLUDE ~EET/other/cpmvars/eet_cpmvars.tpa~
+    OUTER_SPRINT ~IT_IS_BG2~ ~Global("endofbg1","GLOBAL",2)~
+    OUTER_SPRINT ~IT_IS_SOD~ ~Global("ENDOFBG1","GLOBAL",1)~
+
+    OUTER_SET BG1AREA = IDS_OF_SYMBOL (~areatype~ ~BG1AREA~)
+  END
+
+
+
+
+
+/*
+//////////////////////////////////////////////////////////////////////
+/* all following actions are only processed ONCE for the whole mod, independent of un- and reinstalling of single components */
+
+/* BG:EE - formatted texts etc. */
+
+  ACTION_IF !FILE_EXISTS ~c#greythedog/Install/c#greyinstall.mrk~ BEGIN
+
+######
+
+   COPY ~c#greythedog/install/component.xx~ ~c#greythedog/Install/c#greyinstall.mrk~
+ 
+
+//reloading of tras:
+
+ END
+
+
+*/
+
+
+
+END //ALWAYS
+
+
+
+
+/*
+
+LANGUAGE ~Deutsch~
+         ~deutsch~   
+         ~c#greythedog/tra/deutsch/setup.tra~
+         ~c#greythedog/tra/deutsch/game.tra~
+         ~c#greythedog/tra/deutsch/baf.tra~
+	 ~c#greythedog/tra/deutsch/journal.tra~
+
+*/
+
+
+
+LANGUAGE ~English~
+         ~english~   
+         ~c#greythedog/tra/english/setup.tra~
+         ~c#greythedog/tra/english/game.tra~
+         ~c#greythedog/tra/english/baf.tra~
+	 ~c#greythedog/tra/english/journal.tra~
+
+
+
+BEGIN  @90004 /* ~Grey The Dog NPC~ */
+REQUIRE_PREDICATE (ENGINE_IS ~tob bgee bg2ee~) @90005 /* ~You either need TOB installed or the Enhanced Editions to play this mod.~ */
+REQUIRE_PREDICATE (GAME_IS ~tob bgee bg2ee bgt eet~) @90006 /* ~This mod is not compatible with your game.~ */
+
+//CamDawgs CD_STATE_NOTVALID zum Checken der Dialogfähigkeit eines Char
+//Thank you very much, CamDawg!
+APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
+ ~0x80101FEF CD_STATE_NOTVALID~
+ UNLESS ~CD_STATE_NOTVALID~
+
+/* BGT, BGII: fixed Moondog Avatar (from BG2Fixpack) */
+
+
+
+ACTION_IF (GAME_IS ~bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ "0") //makes sure the fixpack isn't already installed
+
+    THEN BEGIN
+  COPY   ~c#greythedog/fix/mdog_mo.bmp~  ~override~ // fixed moon dog avatar
+END
+
+
+
+
+
+
+/* Journal BG:EE */
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+  /* #31323: Farmer Brun's Missing Son */
+  ADD_JOURNAL TITLE (#31323) @100002 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+END
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+  /* #31323: Farmer Brun's Missing Son */
+  ADD_JOURNAL TITLE (#231323) @100002 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+END
+
+ADD_JOURNAL TITLE (@100016) @100003 @100004 @100005 @100006 @100007 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+ADD_JOURNAL TITLE (@100017) @100008 @100009 @100010 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+ADD_JOURNAL TITLE (@100018) @100011 @100012 @100013 @100014 @100015 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+ADD_JOURNAL TITLE (@100020) @100021 @100022 @100023 @100024 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+ADD_JOURNAL @100025 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+
+
+/* Wolfhound kit 
+
+this is the crappiest hack ever - but it seems to work */
+
+/* copy the wolf paprdoll for MDOG animation */
+COPY ~c#greythedog/bams/MDOGINV.BAM~ ~override/MDOGINV.BAM~
+
+INCLUDE ~c#greythedog\lib/fl#add_kit_ee.tpa~
+
+
+ADD_KIT ~C#WARDOG~ ///Grey's Dog kit
+  // appended to CLASWEAP.2da
+  ~C#WARDOG                0           0           1           0           0           1           0           0~
+
+  // appended column-wise to WEAPPROF.2da
+  ~C#WARDOG  0 5 0 0 5 5 0 0 0 0 0 0 0 0 0 5 5 0 0 0 0 0 0 0 0 0 0 0 0 0 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+     
+  // appended to ABCLASRQ.2da
+  ~C#WARDOG                 0       0       0       0       9       0~
+
+  // appended to ABCLSMOD.2da
+  ~C#WARDOG                 0       0       0       0       0       0~
+
+  // appended to ABDCDSRQ.2da
+  ~C#WARDOG                 0       0       0       0       0       0~
+
+  // appended to ABDCSCRQ.2da
+  ~C#WARDOG                 0       0       0       0       15       0~
+
+  // appended to ALIGNMNT.2da
+  ~C#WARDOG                 1       1       0       1       1       0       1       1       0~
+
+  // appended to DUALCLAS.2da
+  ~C#WARDOG                 0       0       0       0       0       0~
+
+  // path to your CLAB-style 2da file 
+  ~c#greythedog/2da/C#WARDOG.2da~
+
+  // PC races and classes allowed to use this kit, from KITTABLE.2da
+  ~~
+
+  // usability flags, added to the end of the KITLIST.2da entry
+ // ~0x00004000    2~       ///vanilla fighter
+~0x00020006    2~       ///wizard-slayer / kensai / beast master
+
+  // HLA table to use; see LUABBR.2da
+  ~c#w~
+
+  // list of starting equipment for PCs starting in ToB. Appended column-wise to 25STWEAP.2da
+  ~* * * * * * * * * * * * * * * * * * * *~
+
+  // Lower, mixed, and help kit names and descriptions, added to KITLIST.2da 
+  SAY @10000 /* ~Wolfhound~ */
+  SAY @10000 /* ~Wolfhound~ */
+  SAY @10001 /* ~Wolfhound: this breed of dog is one of the largest non-magical dogs seen in nature. Some specimens have been measured at over a metre at the shoulder and can stand some 7 ft in height on their hind legs. The wolfhound was originally bred as a coursing hound. Sleek yet large these dogs made excellent hunting animals no matter the prey. Being less common than the typical wardog, Wolfhounds are rarely seen in Realms these days and are highly sought after as breeding stock by nobles and commoners alike.
+
+  Wolfhounds being more intelligent than the average street dog make excellent companions and, once you earn their trust, steadfast defenders.
+  
+  Advantages:
+  -Attack speed factor -1 every 10 levels from level 1.
+  -Movement modifier -1 at levels 1,5 and every 10 levels thereafter.
+  -Fist damage bonus of 1 at levels 9, 12, 15, 25.
+  -Fist THACO bonus of 1 every level from level 2 to 20. 
+  -Gains Tracking Ability at level 7 plus 1 extra use every 5 levels thereafter.
+  -At level 5 gains immunity to blindness: Grey detects his enemies with his sense of smell.
+  -From level 6 onwards gains Bark: will instill Fear and panic in enemies and bolster own resistance to fear. At later levels this resistance expands to include the party as well as all effects increasing in duration. Extra use every 6 levels.
+  -From level 8 onwards gains True Sight: Grey will sniff through any invisibility. Extra use every 8 levels.
+  -From level 10 gains Alpha Call: can call on any dogs in the local area to come to his aid.  The dogs called improve as Grey gets more powerful. Gains extra use every 10 levels. This ability does not work indoors.
+  
+  Disadvantages:
+  -Cannot use conventional weapons or armor.
+  -Smells bad when wet.
+  -Leaves hair everywhere.
+  ~ */
+
+LAF fl#add_kit_ee STR_VAR kit_name = C#WARDOG END
+
+
+
+///bams///
+COPY ~c#greythedog/bams~ ~override~
+  
+  ///spells////
+
+
+/* 1 HP effect spell for protection if following as 7th party member!! (gives 5 HP and a lot of protections against things that would kill + Regeneration of 1 HP / 6s */
+
+ADD_SECTYPE C#1HPEffect @10002 /* ~(yawn)~ */ /* Maybe I'll come up with a better line but I need something that works for a dog and man alike */
+
+/* 5 HP effect spell and a lot of other protections against deaths + Regeneration */
+COPY ~c#greythedog/spells/c#min5hp.spl~ ~override~
+WRITE_BYTE 0x27 C#1HPEffect
+WRITE_BYTE 0xa2 C#1HPEffect
+
+/* remove 5 HP effect and all other protections */
+COPY ~c#greythedog/spells/c#min0hp.spl~ ~override~
+WRITE_BYTE 0xa2 C#1HPEffect
+
+/* Work-around: Grey gets restored after a fight */
+// Cures effects and restores health - taken from Argent77's Djinni Companion with many thanks
+COPY ~c#greythedog/spells/c#grrest.spl~ ~override/c#grrest.spl~
+SAY NAME1 @10002 /* ~(yawn)~ */
+SAY NAME2 @10002 /* ~(yawn)~ */
+
+
+COPY ~c#greythedog/spells/c#greysu.spl~ ~override/c#greysu.spl~
+SAY NAME1 @10003 /* ~Alpha Call~ */
+SAY NAME2 @10003 /* ~Alpha Call~ */
+SAY DESC  @10004 /* ~Due to his large physical presence and his tone of leadership, local dogs may come to Grey's aid when he calls. 
+This spell does not work indoors.~ */
+
+COPY ~c#greythedog/spells/c#greyba.spl~ ~override/c#greyba.spl~
+SAY NAME1 @10005 /* ~Bark~ */
+SAY NAME2 @10005 /* ~Bark~ */
+SAY DESC  @10006 /* ~In battle Grey's bark may become a powerful force both for the party and against enemies.  Grey's bark will instill fear and panic in enemies and bolster Grey's own resistance to fear.
+At later levels this resistance expands to include the party as well as all effects increasing in duration.~ */
+
+COPY ~c#greythedog/spells/c#greybi.spl~ ~override/c#greybi.spl~
+SAY NAME1 @10007 /* ~Great Bite~ */
+SAY NAME2 @10007 /* ~Great Bite~ */
+SAY DESC  @10008 /* ~With experience gained through the survival of many battles the knowledge to inflict grievous wounds upon enemies with a single attack would be of great aid.  This attack will inflict 15hp piercing damage and the wound will bleed out 20% of the targets HP's.~ */
+
+COPY ~c#greythedog/spells/c#greybs.spl~ ~override/c#greybs.spl~
+SAY NAME1 @10009 /* ~Savage Bite~ */
+SAY NAME2 @10009 /* ~Savage Bite~ */
+SAY DESC  @10010 /* ~Improving upon the already vicious Great Bite, Savage Bite will inflict 20hp of piercing damage and the wound will bleed out a total of 40% of the targets HP's.~ */
+
+COPY ~c#greythedog/spells/c#greybh.spl~ ~override/c#greybh.spl~
+SAY NAME1 @10011 /* ~Hound~ */
+SAY NAME2 @10011 /* ~Hound~ */
+SAY DESC  @10012 /* ~Able to move at great speed during combat allows certain protection from attack.  All slashing, piercing, crushing and missile damage resistance is set to 40. Dexterity is raised by 2 for 1 Turn.~ */
+
+COPY ~c#greythedog/spells/c#seize.spl~ ~override/c#seize.spl~
+SAY NAME1 @10013 /* ~Seize Enemy~ */
+SAY NAME2 @10013 /* ~Seize Enemy~ */
+SAY DESC  @10014 /* ~This command will cause Grey to seize hold of the target.  The target will suffer 15hp bleeding damage while being held immobile.  Grey will continue to hold for 3 rounds, during which he can be given no other commands.~ */
+
+COPY ~c#greythedog/spells/c#grend.spl~ ~override/c#grend.spl~
+SAY NAME1 @10015 /* ~Rend~ */
+SAY NAME2 @10015 /* ~Rend~ */
+SAY DESC  @10016 /* ~Slashing at his opponent Grey will open up a long wound with his paw.  This will do 2d12 +5 slashing damage to the target with a possibility of infecting the wound unless the target saves vs Death/Poison.  If the save is unsuccesful the wound will be Diseased for 6 rounds causing slowness in all the victims actions.~ */
+
+
+/* silent Abilities  */
+
+COPY ~c#greythedog/spells/c#grirma.spl~ ~override/c#grirma.spl~ //(disable weapon type "17": mace, disable item type "4": boots, disable button "talk", add effect "clear fog of war")
+COPY ~c#greythedog/spells/c#gre001.spl~ ~override/c#gre001.spl~ //fist damage bonus +1
+COPY ~c#greythedog/spells/c#gre002.spl~ ~override/c#gre002.spl~ //fist thaco bonus +1
+COPY ~c#greythedog/spells/c#gre003.spl~ ~override/c#gre003.spl~ //immunity to blindness
+
+
+
+///items///
+
+
+//Grey's collar
+
+COPY ~c#greythedog/items/c#grcol1.ITM~ ~override/c#grcol1.ITM~
+SAY NAME1 @10017 /* ~Grey's Collar~ */
+SAY NAME2 @10017 /* ~Grey's Collar~ */
+SAY IDENTIFIED_DESC @10018 /* ~This is Grey's collar, enchanted to give him extra armor class bonus.
+
+STATISTICS:
+
+Armor Class Bonus:  1
+~ */
+
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ BEGIN
+
+COPY ~c#greythedog/items/c#grcol2.ITM~ ~override/c#grcol2.ITM~
+SAY NAME1 @10019 /* ~War dog's Collar~ */
+SAY NAME2 @10019 /* ~War dog's Collar~ */
+SAY IDENTIFIED_DESC @10020 /* ~This is a war dog's collar, sturdy but without any special abilities.~ */
+
+COPY ~c#greythedog/items/c#grcol3.ITM~ ~override/c#grcol3.ITM~
+SAY NAME1 @10021 /* ~War dog's Collar +1~ */
+SAY NAME2 @10021 /* ~War dog's Collar +1~ */
+SAY IDENTIFIED_DESC @10022 /* ~This is a war dog's collar, enchanted to give extra armor class bonus.
+
+STATISTICS:
+
+Armor Class Bonus:  1
+~ */
+
+COPY ~c#greythedog/items/c#grcol4.ITM~ ~override/c#grcol4.ITM~
+SAY NAME1 @10023 /* ~War dog's Collar +2~ */
+SAY NAME2 @10023 /* ~War dog's Collar +2~ */
+SAY IDENTIFIED_DESC @10024 /* ~This is a war dog's collar, enchanted to give extra armor class bonus.
+
+STATISTICS:
+
+Armor Class Bonus:  2
+~ */
+
+END //~bg2ee tob bgt eet~
+
+
+
+// head gear (helmet)
+
+COPY ~c#greythedog/items/c#grhelm.ITM~ ~override/c#grhelm.ITM~
+SAY NAME1 @10025 /* ~War Dog's Head Gear~ */
+SAY NAME2 @10025 /* ~War Dog's Head Gear~ */
+SAY UNIDENTIFIED_DESC @10026 /* ~This is a war dog's head gear.~ */
+SAY IDENTIFIED_DESC @10027 /* ~This class of war dog's head gear, made of reinforced leather or metal, covers most of the dog's head. These helmets commonly provide protection for the ears.  
+
+STATISTICS:
+
+Armor Class Bonus:  None
+Special:  Protects Against Critical Hits
+Weight: 2
+~ */
+
+
+//armor
+
+COPY ~c#greythedog/items/c#grarm1.ITM~ ~override/c#grarm1.ITM~
+SAY NAME1 @10028 /* ~War Dog's Studded Leather Armor +1~ */
+SAY NAME2 @10028 /* ~War Dog's Studded Leather Armor +1~ */
+SAY UNIDENTIFIED_DESC @10029 /* ~This is a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10030 /* ~This is a war dog's studded leather armor. Instead of a hardened shell, studded leather offers hundreds of metal rivets affixed to a supple backing. The numerous studs form a flexible coat of metal that helps to turn aside slashing and cutting attacks, while the leather is little more than a means of securing the rivets in place.   
+
+STATISTICS:
+
+Armor Class: 6
+Weight: 5
+Requires: 6 Strength
+~ */
+
+COPY ~c#greythedog/items/c#grarm2.ITM~ ~override/c#grarm2.ITM~
+SAY NAME1 @10031 /* ~War Dog's Splint Mail Armor~ */
+SAY NAME2 @10031 /* ~War Dog's Splint Mail Armor~ */
+SAY UNIDENTIFIED_DESC @10029 /* ~This is a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10032 /* ~This is a war dog's splint mail, a variant of banded mail in which the metal strips are applied vertically to the backing of chain, leather, or cloth rather than horizontally as in banded mail. 
+
+STATISTICS:
+
+Armor Class: 4
+Weight: 20
+Requires: 8 Strength
+~ */
+
+COPY ~c#greythedog/items/c#grarm3.ITM~ ~override/c#grarm3.ITM~
+SAY NAME1 @10033 /* ~War Dog's Plate Mail Armor +1~ */
+SAY NAME2 @10033 /* ~War Dog's Plate Mail Armor +1~ */
+SAY UNIDENTIFIED_DESC @10029 /* ~This is a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10034 /* ~This is a war dog's plate mail, a combination of chain armor with metal plates covering the vital areas such as the chest, abdomen and groin. In addition, this suit of plate mail is enchanted and gives additional bonuses to the dog's armor class.
+
+STATISTICS:
+
+Armor Class: 2
+Weight: 15
+Requires: 12 Strength
+~ */
+
+COPY ~c#greythedog/items/c#grarm4.ITM~ ~override/c#grarm4.ITM~
+SAY NAME1 @10035 /* ~War Dog's Full Plate Mail~ */
+SAY NAME2 @10035 /* ~War Dog's Full Plate Mail~ */
+SAY UNIDENTIFIED_DESC @10029 /* ~This is a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10036 /* ~This is a war dog's full plate armor. The perfectly fitted interlocking plates are specially angled to deflect arrows and blows. With its magical enchantments, this covering of full plate is ideal for war dogs.
+
+STATISTICS:
+
+Armor Class: 0
+Weight: 17
+Requires: 15 Strength
+~ */
+
+COPY ~c#greythedog/items/c#grarm5.ITM~ ~override/c#grarm5.ITM~
+SAY NAME1 @10037 /* ~Grey's Ankheg Plate Mail~ */
+SAY NAME2 @10037 /* ~Grey's Ankheg Plate Mail~ */
+SAY UNIDENTIFIED_DESC @10029 /* ~This is a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10038 /* ~This is Grey's ankheg plate mail. This one has been expertly crafted from the ankheg scales, providing a greater degree of protection than traditional plate mail without being succeptible to rust. It is also of far less weight than the normal war dog's plate mail.
+
+STATISTICS:
+
+Armor Class: 1
+Weight: 10
+Requires: 6 Strength
+~ */
+
+
+
+
+
+
+
+//"belt"
+
+/* placed in Balduran's ship on werewolf island */
+
+COPY ~c#greythedog/items/c#grbel1.ITM~ ~override/c#grbel1.ITM~
+SAY NAME1 @10039 /* ~War Dog's Rump Rune~ */
+SAY NAME2 @10040 /* ~War Dog's Rump Shield Rune~ */
+SAY UNIDENTIFIED_DESC @10041 /* ~This is a rump rune for war dog's armor.~ */
+SAY IDENTIFIED_DESC @10042 /* ~This is a rump rune for war dog's armor, enchanted to give extra armor class bonus. It can be attached to the war dog's back either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Armor Class Bonus:  1
+Weight:  0
+~ */
+
+
+//Rune of Electric Resistance
+COPY ~c#greythedog/items/c#grbel2.ITM~ ~override/c#grbel2.ITM~ //c#grcl04.ITM~
+SAY NAME1 @10039 /* ~War Dog's Rump Rune~ */
+SAY NAME2 @10043 /* ~War Dog's Rump Rune of Electric Resistance~ */
+SAY UNIDENTIFIED_DESC @10041 /* ~This is a rump rune for war dog's armor.~ */
+SAY IDENTIFIED_DESC @10044 /* ~This is a rump rune of protection for a war dog's armor, enchanted to grant resistance against electricity. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Electricity Resistance:  +10% bonus
+Weight:  0
+~ */
+
+//Rune of Acid and Poison Resistance
+COPY ~c#greythedog/items/c#grbel3.ITM~ ~override/c#grbel3.ITM~ //c#grcl05.ITM~
+SAY NAME1 @10039 /* ~War Dog's Rump Rune~ */
+SAY NAME2 @10045 /* ~War Dog's Rump Rune of Acid and Poison Resistance~ */
+SAY UNIDENTIFIED_DESC @10041 /* ~This is a rump rune for war dog's armor.~ */
+SAY IDENTIFIED_DESC @10046 /* ~This is a rump rune of protection for a war dog's armor, enchanted to grant resistance against acid and poison. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Poison Resistance:  +5% bonus
+Acid Resistance:  +5% bonus
+Weight:  0
+~ */
+
+
+
+//runes (slot: cloak)
+
+//Rune of protection
+COPY ~c#greythedog/items/c#grcl01.ITM~ ~override/c#grcl01.ITM~
+SAY NAME1 @10047 /* ~War Dog's Nape Rune~ */
+SAY NAME2 @10048 /* ~War Dog's Nape Rune of Protection~ */
+SAY UNIDENTIFIED_DESC @10049 /* ~This is a nape rune for a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10050 /* ~This is a nape rune of protection for a war dog's armor. It is enchanted to increase the war dog's protection in battle. It does so by affecting both saving throws and armor class. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Armor Class:  +1 bonus
+Saving Throw:  +1 bonus
+Weight:  0
+~ */
+
+//Rune of Magic Resistance
+COPY ~c#greythedog/items/c#grcl02.ITM~ ~override/c#grcl02.ITM~
+SAY NAME1 @10047 /* ~War Dog's Nape Rune~ */
+SAY NAME2 @10051 /* ~War Dog's Nape Rune of Magic Resistance~ */
+SAY UNIDENTIFIED_DESC @10049 /* ~This is a nape rune for a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10052 /* ~This is a nape rune of magic resistance for a war dog's armor. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness. It is enchanted to increase the protection against magic.
+
+STATISTICS:
+
+Magic Resistance: 5%
+Weight:  0
+~ */
+
+//Rune of Fire and Cold Resistance
+COPY ~c#greythedog/items/c#grcl03.ITM~ ~override/c#grcl03.ITM~
+SAY NAME1 @10047 /* ~War Dog's Nape Rune~ */
+SAY NAME2 @10053 /* ~War Dog's Nape Rune of Fire and Cold Resistance~ */
+SAY UNIDENTIFIED_DESC @10049 /* ~This is a nape rune for a war dog's armor.~ */
+SAY IDENTIFIED_DESC @10054 /* ~This is a nape rune of protection for a war dog's armor, enchanted to grant resistance against fire and cold. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Fire Resistance:  +5% bonus
+Cold Resistance:  +5% bonus
+Weight:  0
+~ */
+
+
+
+
+
+
+//rings
+
+COPY ~c#greythedog/items/c#grrin1.ITM~ ~override/c#grrin1.ITM~
+SAY NAME1 @10055 /* ~War Dog's Bracelets~ */
+SAY NAME2 @10056 /* ~War Dog's Bracelets of Strength~ */
+SAY UNIDENTIFIED_DESC @10057 /* ~These are war dog's bracelets.~ */
+SAY IDENTIFIED_DESC @10058 /* ~These war dog's bracelets are enchanted so they give a strength bonus.
+
+STATISTICS:
+
+Strength Bonus: +1
+~ */
+
+COPY ~c#greythedog/items/c#grrin2.ITM~ ~override/c#grrin2.ITM~
+SAY NAME1 @10055 /* ~War Dog's Bracelets~ */
+SAY NAME2 @10059 /* ~War Dog's Bracelets of Weapon Expertise~ */
+SAY UNIDENTIFIED_DESC @10057 /* ~These are war dog's bracelets.~ */
+SAY IDENTIFIED_DESC @10060 /* ~War Dog's Bracelets of Weapon Expertise.  
+
+STATISTICS:
+
+THACO:  +1 bonus
+Damage:  +2 bonus
+~ */
+
+
+COPY ~c#greythedog/items/c#grrin3.ITM~ ~override/c#grrin3.ITM~
+SAY NAME1 @10055 /* ~War Dog's Bracelets~ */
+SAY NAME2 @10061 /* ~War Dog's Bracelets of Free Action~ */
+SAY UNIDENTIFIED_DESC @10057 /* ~These are war dog's bracelets.~ */
+SAY IDENTIFIED_DESC @10062 /* ~War Dog's Bracelets of Free Action
+
+STATISTICS:
+
+Special:  The wearer is immune to everything, magical and otherwise, that affects mobility in any way. This includes haste and slow spells.
+~ */
+
+
+COPY ~c#greythedog/items/c#grrin4.ITM~ ~override/c#grrin4.ITM~
+SAY NAME1 @10055 /* ~War Dog's Bracelets~ */
+SAY NAME2 @10063 /* ~War Dog's Bracelets of Fire Resistance~ */
+SAY UNIDENTIFIED_DESC @10057 /* ~These are war dog's bracelets.~ */
+SAY IDENTIFIED_DESC @10064 /* ~War Dog's Bracelets of Fire Resistance
+
+STATISTICS:
+
+Fire Resistance:  +40%
+~ */
+
+
+
+
+
+
+//quick slot items
+
+
+/* For EE, the quick slot items are "potions", as "Miscelaneous" can no longer be placed into the quick slot */
+
+
+//luck toy 
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+
+COPY ~c#greythedog/items/c#grtoy1_ee.ITM~ ~override/c#grtoy1.ITM~
+SAY NAME1 @10065 /* ~Dog's Toy~ */
+SAY NAME2 @10066 /* ~Dog's Toy of Luck~ */
+SAY UNIDENTIFIED_DESC @10067 /* ~This is a dog's toy.~ */
+SAY IDENTIFIED_DESC @10068 /* ~This is a dog's toy. Playing with it raises the dog's mood, and undertakings seem to succeed with a higher chance.
+
+STATISTICS: 
+
+Charge abilities: +1 Luck bonus three times per day
+  Duration: 1 hour
+
+Weight: 1
+~ */
+
+END
+
+ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+
+/* BGT-version */
+//luck toy
+COPY ~c#greythedog/items/c#grtoy1.ITM~ ~override/c#grtoy1.ITM~
+SAY NAME1 @10065 /* ~Dog's Toy~ */
+SAY NAME2 @10066 /* ~Dog's Toy of Luck~ */
+SAY UNIDENTIFIED_DESC @10067 /* ~This is a dog's toy.~ */
+SAY IDENTIFIED_DESC @10068 /* ~This is a dog's toy. Playing with it raises the dog's mood, and undertakings seem to succeed with a higher chance.
+
+STATISTICS: 
+
+Charge abilities: +1 Luck bonus three times per day
+  Duration: 1 hour
+
+Weight: 1
+~ */
+
+END
+
+//chew toy 
+
+//BG:EE version
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+
+COPY ~c#greythedog/items/c#grtoy3_ee.ITM~ ~override/c#grtoy3.ITM~
+SAY NAME1 @10069 /* ~Chew Toy~ */
+SAY NAME2 @10070 /* ~Chew Toy of Health~ */
+SAY UNIDENTIFIED_DESC @10067 /* ~This is a dog's toy.~ */
+SAY IDENTIFIED_DESC @10071 /* ~This is the dog's chew toy you received from Albert. It looks less like a ragged piece of animal but more like a dog's favorite bone. Chewing on it will restore some of Grey's health.
+
+STATISTICS: 
+
+Charge abilities: restores 9 hit points two times per day
+
+Weight: 1
+~ */
+
+END
+
+ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+
+//BGT version 
+COPY ~c#greythedog/items/c#grtoy3.ITM~ ~override/c#grtoy3.ITM~
+SAY NAME1 @10069 /* ~Chew Toy~ */
+SAY NAME2 @10070 /* ~Chew Toy of Health~ */
+SAY UNIDENTIFIED_DESC @10067 /* ~This is a dog's toy.~ */
+SAY IDENTIFIED_DESC @10071 /* ~This is the dog's chew toy you received from Albert. It looks less like a ragged piece of animal but more like a dog's favorite bone. Chewing on it will restore some of Grey's health.
+
+STATISTICS: 
+
+Charge abilities: restores 9 hit points two times per day
+
+Weight: 1
+~ */
+
+END
+
+
+//Grey's paws
+
+COPY ~c#greythedog/items/c#grpaw1.itm~ ~override/c#grpaw1.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10073 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D6
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+COPY ~c#greythedog/items/c#grpaw3.itm~ ~override/c#grpaw3.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10074 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D8
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+COPY ~c#greythedog/items/c#grpaw6.itm~ ~override/c#grpaw6.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10075 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D10
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+COPY ~c#greythedog/items/c#grpaw9.itm~ ~override/c#grpaw9.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10076 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D12 + 1
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+COPY ~c#greythedog/items/c#grpa12.itm~ ~override/c#grpa12.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10077 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D12 + 2
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+COPY ~c#greythedog/items/c#grpa15.itm~ ~override/c#grpa15.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10078 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D20+3
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+COPY ~c#greythedog/items/c#grpa25.itm~ ~override/c#grpa25.itm~
+SAY NAME1 @10072 /* ~Grey's Paw~ */
+SAY NAME2 @10072 /* ~Grey's Paw~ */
+SAY DESC  @10079 /* ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D20+4
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~ */
+
+
+//Grey's weapon items
+
+//teeth enforcements
+
+COPY ~c#greythedog/items/c#grto#1.itm~ ~override/c#grto#1.itm~
+SAY NAME1 @10080 /* ~Giant Spider's Fang~ */
+SAY NAME2 @10080 /* ~Giant Spider's Fang~ */
+SAY DESC  @10081 /* ~This is a remarkable big giant spider's poison fang. If treated right, this could be used as enforcement for some kind of weapon.~ */
+
+/* poison tooth enforcer */
+
+COPY ~c#greythedog/items/c#grtoo1.itm~ ~override/c#grtoo1.itm~
+SAY NAME1 @10082 /* ~Grey's Poison Canine Booster~ */
+SAY NAME2 @10082 /* ~Grey's Poison Canine Booster~ */
+SAY DESC  @10083 /* ~This is Grey's canine enforcing weapon, made out of the poison fang of a spider.
+
+STATISTICS:
+
+Special Abilities: 50% chance of Poison Damage: 2 hit points of damage per second, Poison Duration: 10 seconds
+
+THAC0: +1
+Damage:  1D8 + 1 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~ */
+
+
+/* tooth enforcer */
+
+COPY ~c#greythedog/items/c#grtoo0.itm~ ~override/c#grtoo0.itm~
+SAY NAME1 @10084 /* ~War Dog's Canine Booster~ */
+SAY NAME2 @10084 /* ~War Dog's Canine Booster~ */
+SAY DESC  @10085 /* ~This is a war dog's canine enforcing weapon.
+
+STATISTICS:
+
+Damage: 1d8 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~ */
+
+
+
+/* tooth enforcer +1 */
+
+COPY ~c#greythedog/items/c#grtoo2.itm~ ~override/c#grtoo2.itm~
+SAY NAME1 @10086 /* ~War Dog's Canine Booster +1~ */
+SAY NAME2 @10086 /* ~War Dog's Canine Booster +1~ */
+SAY DESC  @10087 /* ~This is a war dog's canine enforcing weapon.
+
+STATISTICS:
+
+THAC0: +1
+Damage: 1d8+1 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~ */
+
+
+/* tooth enforcer +2 */
+
+COPY ~c#greythedog/items/c#grtoo3.itm~ ~override/c#grtoo3.itm~
+SAY NAME1 @10088 /* ~War Dog's Canine Booster +2~ */
+SAY NAME2 @10088 /* ~War Dog's Canine Booster +2~ */
+SAY DESC  @10089 /* ~This is a war dog's canine enforcing weapon.
+
+STATISTICS:
+
+THAC0: +2
+Damage: 1d8+2 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~ */
+
+
+
+/* BGII items - will only be installed for BGII part of the game */
+
+ACTION_IF GAME_IS ~bg2ee bgt tob eet~ THEN BEGIN
+
+
+  /* Grey's gauntlets of speed */
+
+  COPY ~c#greythedog/items/c#grbrac.ITM~ ~override/c#grbrac.ITM~
+  SAY NAME1 @10090 /* ~War Dog's Gauntlets~ */
+  SAY NAME2 @10091 /* ~War Dog's Gauntlets of Speed~ */
+  SAY UNIDENTIFIED_DESC @10092 /* ~These are Gauntlets of Speed for a war dog's armor.~ */
+  SAY IDENTIFIED_DESC @10093 /* ~War Dog's Gauntlets of Speed
+
+STATISTICS
+
+Equipped Ability : increases movement rate
+~ */
+
+
+
+/* weapons: Canine enforcer */
+
+
+/* Fire tooth enforcer - could be in Ribald's shop */
+
+COPY ~c#greythedog/items/c#grtoo4.itm~ ~override/c#grtoo4.itm~
+SAY NAME1 @10094 /* ~War Dog's Fiery Canine Booster~ */
+SAY NAME2 @10094 /* ~War Dog's Fiery Canine Booster~ */
+SAY DESC  @10095 /* ~This is a war dog's canine booster, enchanted to give fire damage. 
+
+STATISTICS:
+
+Special Abilities: + 1 hit points Fire Damage
+THAC0: +1
+Damage:  1D8 + 1 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~ */
+
+
+/* tooth enforcer +3 */
+
+
+COPY ~c#greythedog/items/c#grtoo5.itm~ ~override/c#grtoo5.itm~
+SAY NAME1 ~War Dog's Canine Booster +3~
+SAY NAME2 ~War Dog's Canine Booster +3~
+SAY DESC  ~This is a war dog's canine enforcing weapon.
+
+STATISTICS:
+
+THAC0: +3
+Damage:  1D8 + 3 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+
+
+/* vampire claw: Body's lair */
+
+COPY ~c#greythedog/items/c#grto#6.itm~ ~override/c#grto#6.itm~
+SAY NAME1 ~Vampire Claw~
+SAY NAME2 ~Vampire Claw~
+SAY DESC  ~This is a vampire claw. If treated right, this could be used as enforcement for some kind of weapon.~
+
+/* Grey's Vampire Canine Booster (Cromwell) */
+
+COPY ~c#greythedog/items/c#grtoo6.itm~ ~override/c#grtoo6.itm~
+SAY NAME1 ~Grey's Vampire Canine Booster~
+SAY NAME2 ~Grey's Vampire Canine Booster~
+SAY DESC  ~This is Grey's canine enforcing weapon, made out of a vampire claw.
+
+STATISTICS:
+
+Special Abilities: 40% chance to Level Drain (two levels)
+
+THAC0: +2
+Damage: 1d8+2 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+
+/* Vampire Booster enforced by Cespenar */
+
+COPY ~c#greythedog/items/c#grto62.itm~ ~override/c#grto62.itm~
+SAY NAME1 ~Grey's Vampire Canine Booster~
+SAY NAME2 ~Grey's Vampire Canine Booster~
+SAY DESC  ~This is Grey's canine enforcing weapon out of a vampire tooth, enforced by Cespenar.
+
+STATISTICS:
+
+Special Abilities: 60% chance to Level Drain (two levels)
+
+THAC0: +2
+Damage: 1d8+4 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+
+
+/* Full Plate Mail +2 */
+
+COPY ~c#greythedog/items/c#grarm6.ITM~ ~override/c#grarm6.ITM~
+SAY NAME1 ~War Dog's Full Plate Mail +2~
+SAY NAME2 ~War Dog's Full Plate Mail +2~
+SAY UNIDENTIFIED_DESC ~This is a war dog's armor.~
+SAY IDENTIFIED_DESC ~This is a war dog's full plate armor. The perfectly fitted interlocking plates are specially angled to deflect arrows and blows. With its magical enchantments, this covering of full plate is ideal for war dogs.
+
+STATISTICS:
+
+Armor Class: -1 (-5 vs. slashing, -4 vs. piercing and missile)
+Requires:
+ 15 Strength
+
+Weight: 25~
+
+/* BGII quest items */
+
+/* tax note */
+COPY_EXISTING ~MISC5P.itm~ ~override/c#grtax0.itm~
+SAY NAME1 ~Fee Note~
+SAY NAME2 ~Fee Note~
+SAY IDENTIFIED_DESC ~This is a note stating that you are supposed to pay 50 gold coins to the city authorities within three days after receivement. It also proclaims that the fee will increase by 50 gold coins every time Grey is encountered without a collar inside the city boundaries.~
+
+
+END //BGII only
+
+
+
+/* place Wardog items into the game */
+
+/* BG1 */
+
+ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
+
+/* War Dog's Rump Shield Rune (Armor class bonus) - Balduran's ship on werewolf island */
+
+<<<<<<<< ...inlined/c#grey_ar1502.baf
+/* War Dog's Rump Shield Rune (Armor class bonus) - place it into Balduran's ship on werewolf island AR1502 */
+
+IF
+	!Global("C#GreyJoined","GLOBAL",0)
+	Global("C#Grey_PLaceAR1502","AR1502",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container3",CreateItem("c#grbel1",0,0,0)) 
+		SetGlobal("C#Grey_PLaceAR1502","AR1502",1)
+		Continue()
+END
+>>>>>>>>
+
+LAF extend_area_script STR_VAR area="%IsleofBalduranNShip_D2%" top="...inlined/c#grey_ar1502.baf" END
+
+
+/* War Dog's tooth enforcer +1 - place it into chest in Bandit Camp AR1900 */
+
+<<<<<<<< ...inlined/c#grey_ar1900_in.baf
+IF
+	!Global("C#GreyJoined","GLOBAL",0)
+	Global("C#Grey_PLaceAR1900","AR1900",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container26",CreateItem("c#grtoo2",0,0,0)) 
+		SetGlobal("C#Grey_PLaceAR1900","AR1900",1)
+		Continue()
+END
+>>>>>>>>
+LAF extend_area_script STR_VAR area="%BanditCamp%" top="...inlined/c#grey_ar1900_in.baf" END
+
+
+/* War Dog's Bracelets of Free Action + c#grarm2.ITM (Armor Class: 4) - place it into chest in Cloakwood barracks AR1805 */
+
+<<<<<<<< ...inlined/c#grey_ar1805_in.baf
+IF
+	!Global("C#GreyJoined","GLOBAL",0)
+	Global("C#Grey_PLaceAR1805","AR1805",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container2",CreateItem("c#grarm2",0,0,0)) 
+		ActionOverride("Container2",CreateItem("c#grrin3",0,0,0)) 
+		SetGlobal("C#Grey_PLaceAR1805","AR1805",1)
+		Continue()
+END
+>>>>>>>>
+LAF extend_area_script STR_VAR area="%CloakwoodMines_Barracks_L1%" top="...inlined/c#grey_ar1805_in.baf" END
+
+/* War Dog's tooth enforcer +2; c#grbel3.ITM (Poison Resistance:  +5% bonus; Acid Resistance:  +5% bonus); c#grrin1.ITM (Strength Bonus: +1) - place it into chest outside barracks in Candlekeep Ch. 6 AR2626 */
+
+<<<<<<<< ...inlined/c#grey_ar2626_in.baf
+IF
+	!Global("C#GreyJoined","GLOBAL",0)
+	Global("C#Grey_PLaceAR2626","AR2626",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Container3",CreateItem("c#grtoo3",0,0,0)) 
+		ActionOverride("Container3",CreateItem("c#grbel3",0,0,0)) 
+		ActionOverride("Container3",CreateItem("c#grrin1",0,0,0)) 
+		SetGlobal("C#Grey_PLaceAR2626","AR2626",1)
+		Continue()
+END
+>>>>>>>>
+LAF extend_area_script STR_VAR area="%Candlekeep_Ch6%" top="...inlined/c#grey_ar2626_in.baf" END
+
+
+
+/* war dog in bandit camp AR1900 */
+
+
+
+<<<<<<<< ...inlined/c#grwdo1.baf
+IF
+	!Allegiance(Myself,ENEMY)
+	Allegiance("Taurgousz",ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~...inlined/c#grwdo1.baf~
+
+
+COPY ~c#greythedog/cre/c#grwdog.cre~ ~override/c#grwdo1.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~c#grwdo1~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#grwdo1~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#grwdo1~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x250 ~BANDIT~ #8   // Class script
+    WRITE_EVALUATED_ASCII 0x268 ~WTASIGHT~ #8   // Default script
+
+
+COPY_EXISTING ~c#grwdo1.cre~    ~override/c#grwdo1.cre~
+ADD_CRE_ITEM ~c#grarm2~ #0 #0 #0 ~IDENTIFIED~ ~INV~ 
+ADD_CRE_ITEM ~c#grhelm~ #0 #0 #0 ~IDENTIFIED~ ~INV~ 
+ADD_CRE_ITEM ~c#grrin2~ #3 #0 #0 ~IDENTIFIED~ ~INV~
+
+
+<<<<<<<< ...inlined/c#grey_ar1900_in_2.baf
+IF
+	!Global("C#GreyJoined","GLOBAL",0)
+	Global("C#Grey_PLaceWDAR1900","AR1900",0)
+THEN
+	RESPONSE #100
+		CreateCreature("c#grwdo1",[3226.1219],12) 
+		SetGlobal("C#Grey_PLaceWDAR1900","AR1900",1)
+		Continue()
+END
+>>>>>>>>
+
+LAF extend_area_script STR_VAR area="%BanditCamp%" top="...inlined/c#grey_ar1900_in_2.baf" END
+
+
+/* war dog in Cloakwood Mines AR1800 */
+
+<<<<<<<< ...inlined/c#grwdo2.baf
+IF
+	!Allegiance(Myself,ENEMY)
+	Allegiance("DRASUS",ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~...inlined/c#grwdo2.baf~
+
+
+
+COPY ~c#greythedog/cre/c#grwdog.cre~ ~override/c#grwdo2.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~c#grwdo2~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#grwdo2~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#grwdo2~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x268 ~WTASIGHT~ #8   // Default script
+
+
+COPY_EXISTING ~c#grwdo2.cre~    ~override/c#grwdo2.cre~
+ADD_CRE_ITEM ~c#grarm4~ #0 #0 #0 ~IDENTIFIED~ ~INV~ 
+ADD_CRE_ITEM ~c#grhelm~ #0 #0 #0 ~IDENTIFIED~ ~INV~ 
+ADD_CRE_ITEM ~c#grcl01~ #3 #0 #0 ~IDENTIFIED~ ~INV~
+ADD_CRE_ITEM ~c#grbel2~ #3 #0 #0 ~IDENTIFIED~ ~INV~
+
+<<<<<<<< ...inlined/c#grey_ar1800_in.baf
+IF
+	!Global("C#GreyJoined","GLOBAL",0)
+	Global("C#Grey_PLaceWDAR1800","AR1800",0)
+THEN
+	RESPONSE #100
+		CreateCreature("c#grwdo2",[1580.1778],12) 
+		SetGlobal("C#Grey_PLaceWDAR1800","AR1800",1)
+		Continue()
+END
+>>>>>>>>
+
+LAF extend_area_script STR_VAR area="%CloakwoodMines%" top="...inlined/c#grey_ar1800_in.baf" END
+
+/* stores */
+COPY ~c#greythedog/stores/c#gr1mt1.sto~ ~Override~
+~c#greythedog/stores/c#gr1mt1.sto~ ~Override/c#gr1mt2.sto~
+SAY STORE_NAME @10096 /* ~Wardog Armory and Weaponry~ */
+
+
+/* Nashkel Carnival, Merchant between tents */
+
+LAF extend_area_script STR_VAR area="%NashkelCarnival%" top="c#greythedog/script/c#grey_Ar4900.baf" END
+
+COPY_EXISTING ~c#gr1mt1.sto~ ~override~
+ADD_STORE_ITEM ~c#grtoo0~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo2~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo3~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grhelm~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm2~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm3~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm4~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcl03~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcl02~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grrin4~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grrin2~ #0 #0 #0 ~IDENTIFIED~ #1
+
+/* Merchant at Carnival in BG city */
+
+LAF extend_area_script STR_VAR area="%CentralBaldursGate%" top="c#greythedog/script/c#grey_Ar0700.baf" END
+
+COPY_EXISTING ~c#gr1mt2.sto~ ~override~
+ADD_STORE_ITEM ~c#grtoo0~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo2~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo3~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grhelm~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm2~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm3~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm4~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcl03~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcl02~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grrin4~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grrin2~ #0 #0 #0 ~IDENTIFIED~ #1
+
+
+/* Taerom shop */
+COPY_EXISTING ~taerum.sto~ ~override~
+ADD_STORE_ITEM ~c#grtoo2~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo3~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grhelm~ AFTER  ~HELM01~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm3~ AFTER  ~PLAT01~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm4~ AFTER  ~PLAT04~ #0 #0 #0 ~IDENTIFIED~ #1
+
+
+
+END //~bgt bgee eet~
+
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ BEGIN
+
+/* Ribald, Athkatla Promenade */
+COPY_EXISTING ~ribald.sto~ ~override~
+ADD_STORE_ITEM ~c#grcol2~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcol3~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcol4~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo2~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo3~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grtoo4~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm2~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm3~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm4~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm6~ AFTER  ~CLCK12~ #0 #0 #0 ~IDENTIFIED~ #1
+
+END //~bg2ee bgt tob eet~
+
+
+
+/* BG1 Quest items */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+COPY ~c#greythedog/items/c#grkey1.itm~ ~override/c#grkey1.itm~
+SAY NAME1 @10097 /* ~Madelaine's Key~ */
+SAY NAME2 @10097 /* ~Madelaine's Key~ */
+SAY DESC  @10098 /* ~This is the key Madelaine gave you. It will open the door to her employer's house in East Baldur's Gate, the "one with the grey roof".~ */
+
+
+/* Grey sniffs traces */
+
+COPY ~c#greythedog/items/c#grbrbr.ITM~ ~override/c#grbrbr.ITM~
+SAY NAME1 @10099 /* ~Brage's Gauntlets of Weapon Skill~ */
+SAY NAME2 @10099 /* ~Brage's Gauntlets of Weapon Skill~ */
+SAY IDENTIFIED_DESC @10100 /* ~This is Brage's spare pair of gauntlets.
+
+STATISTICS:  
+
+THAC0:  +1 bonus
+Weight:  2
+~ */
+
+END //~bgee bgt~
+
+
+
+/* areas */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+COPY ~c#greythedog/area/BG~ ~Override~
+	PATCH_IF (GAME_IS ~eet~) BEGIN
+		WRITE_SHORT 0x48 THIS | IDS_OF_SYMBOL(~AREATYPE~ ~BG1AREA~)
+	END
+END //~bgee bgt eet~
+
+
+/* area modifications - BG1 */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+/* place the giant spider's fang into Centeol's lair */
+
+COPY_EXISTING ~%CloakwoodNestSpiderNest%.are~ ~override~
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_con_itm_idx    = SHORT_AT 0x74 - 1 
+    fj_flags          = 1 // identified
+    STR_VAR
+    fj_name           = c#grto#1
+    fj_structure_type = itm
+  END
+BUT_ONLY
+
+/* add entrance to house in E Baldur's Gate for Grey's BG1 quest */
+
+COPY_EXISTING ~%EBaldursGate%.are~ ~override~
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 746  //kleinstes x
+    fj_box_top      = 3147  //kleinstes y
+    fj_box_right    = 919  //größtes x
+    fj_box_bottom   = 3284   //größtes y
+    fj_cursor_idx   = 30   //door
+    fj_vertex_0     = 746 + (3147 << 16)   //kleinstes x +  kleinstes y
+    fj_vertex_1     = 919 + (3147 << 16)   //größtes x + kleinstes y
+    fj_vertex_2     = 919 + (3284 << 16)   //größtes x + größtes y
+    fj_vertex_3     = 746 + (3284 << 16)   //kleinstes x + größtes y
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = c#gr11Tr
+    fj_destination_area = c#gr11
+    fj_destination_name = c#0800Ex
+  END
+
+
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_loc_x       = 958    //x
+    fj_loc_y       = 3055   //y
+    fj_orientation = 12   //W
+    STR_VAR
+    fj_structure_type = entrance
+    fj_name           = c#gr11Ex
+  END
+
+//trigger point with script: entrance is unpassable without key
+  LPF ~fj_are_structure~
+    INT_VAR
+    fj_type         = 1    //trigger
+    fj_box_left     = 746  //kleinstes x
+    fj_box_top      = 3147  //kleinstes y
+    fj_box_right    = 919  //größtes x
+    fj_box_bottom   = 3284   //größtes y
+    fj_cursor_idx   = 30   //door
+    fj_vertex_0     = 746 + (3147 << 16)   //kleinstes x +  kleinstes y
+    fj_vertex_1     = 919 + (3147 << 16)   //größtes x + kleinstes y
+    fj_vertex_2     = 919 + (3284 << 16)   //größtes x + größtes y
+    fj_vertex_3     = 746 + (3284 << 16)   //kleinstes x + größtes y
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = C#GR11KE
+    fj_reg_script   = C#GR11KE
+   END
+BUT_ONLY
+
+END //~bgee bgt eet~
+
+/* BG1 Quest Area: */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+COPY_EXISTING ~c#greythedog/area/BG/c#gr11.are~ ~override~
+  LAUNCH_PATCH_FUNCTION  ~fj_are_structure~
+    INT_VAR
+    fj_type         = 2    //travel
+    fj_box_left     = 414  //kleinstes x
+    fj_box_top      = 336  //kleinstes y
+    fj_box_right    = 535  //größtes x
+    fj_box_bottom   = 450   //größtes y
+    fj_cursor_idx   = 30   //door
+    fj_vertex_0     = 414 + (336 << 16)   //kleinstes x +  kleinstes y
+    fj_vertex_1     = 535 + (336 << 16)   //größtes x + kleinstes y
+    fj_vertex_2     = 535 + (450 << 16)   //größtes x + größtes y
+    fj_vertex_3     = 414 + (450 << 16)   //kleinstes x + größtes y
+    STR_VAR
+    fj_structure_type   = region
+    fj_name             = c#gr11Ex
+    fj_destination_area = EVAL %EBaldursGate%
+    fj_destination_name = c#gr11Ex
+  END
+
+BUT_ONLY
+END //~bgee bgt eet~
+
+/* adaption of tis-name (in the wed-file) - no changes needed for bgee */
+ACTION_IF GAME_IS ~bgt eet~ THEN BEGIN
+
+ COPY_EXISTING ~c#gr11.wed~ ~override~
+        SPRINT tis_name "%Beregost_House13_L1%"
+        READ_LONG 16 overlay_off
+        WRITE_ASCIIE overlay_off + 0 + 4 ~%tis_name%~ (8)
+
+ COPY_EXISTING ~c#gr12.wed~ ~override~
+        SPRINT tis_name "%Beregost_House13_L2%"
+        READ_LONG 16 overlay_off
+        WRITE_ASCIIE overlay_off + 0 + 4 ~%tis_name%~ (8)
+
+END  //~bgt eet~
+
+
+
+
+
+/* cre patching */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+COPY_EXISTING ~%tutu_var%SHISTA.CRE~ ~override/%tutu_var%SHISTA.CRE~
+WRITE_EVALUATED_ASCII 0x280 ~Shistal~ #32 // script name / DV
+
+END // ~bgee bgt eet~
+
+
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+/* other cres */
+/*jondalar outside Candlekeep */
+COPY_EXISTING ~%tutu_var%JONDAL.cre~ ~override/C#GrJond.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~C#GrJond~ #32 // set DV
+    WRITE_ASCII 0x2cc ~C#GrJond~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~C#GrJond~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x250 ~~ #8   // Class script
+
+/* Erik outside Candlekeep */
+COPY_EXISTING ~%tutu_var%ERIK.cre~ ~override/C#GrErik.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~C#GrErik~ #32 // set DV
+    WRITE_ASCII 0x2cc ~C#GrErik~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~C#GrErik~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x250 ~~ #8   // Class script
+
+/* merchant at Nashkel Carnival */
+COPY_EXISTING ~%tutu_var%AOLN.cre~ ~override/c#gr1mt1.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10101 /* ~Wardog Armory Merchant~ */
+  SAY NAME2 @10101 /* ~Wardog Armory Merchant~ */
+    WRITE_ASCII 0x280 ~c#gr1mt1~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#gr1mt1~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#gr1mt1~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x250 ~%tutu_var%SHOUT~ #8   // Class script
+
+/* merchant at BG city Carnival */
+COPY_EXISTING ~%tutu_var%AOLN.cre~ ~override/c#gr1mt2.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10101 /* ~Wardog Armory Merchant~ */
+  SAY NAME2 @10101 /* ~Wardog Armory Merchant~ */
+    WRITE_ASCII 0x280 ~c#gr1mt2~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#gr1mt1~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#gr1mt2~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x250 ~%tutu_var%SHOUT~ #8   // Class script
+
+/* BG1 Quest */
+/* Madelaine */
+COPY ~c#greythedog/cre/c#gr1mad.cre~ ~override/c#gr1mad.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10102 /* ~Madelaine~ */
+  SAY NAME2 @10102 /* ~Madelaine~ */
+    WRITE_ASCII 0x280 ~c#gr1mad~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#gr1mad~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x250 ~c#gr1mad~ #8   // Class script
+
+/* Mr. Turquoise */
+COPY ~c#greythedog/cre/c#gr1tur.cre~ ~override/c#gr1tur.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10103 /* ~Mr. Turquoise~ */
+  SAY NAME2 @10103 /* ~Mr. Turquoise~ */
+    WRITE_ASCII 0x280 ~c#gr1tur~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#gr1tur~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#gr1tur~ #8   // Override script
+
+/* Bennet */
+COPY ~c#greythedog/cre/c#gr1q21.cre~ ~override/c#gr1q21.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10104 /* ~Bennet~ */
+  SAY NAME2 @10104 /* ~Bennet~ */
+
+/* Mira */
+COPY ~c#greythedog/cre/c#gr1q22.cre~ ~override/c#gr1q22.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10105 /* ~Mira~ */
+  SAY NAME2 @10105 /* ~Mira~ */
+
+
+/* Grey sniffs traces */
+/* Amnish Soldier ("Find Brage")  */
+
+COPY_EXISTING ~%tutu_var%amnis.cre~ ~override/C#Gramni.cre~ EVALUATE_BUFFER 
+  SAY NAME1 @10106 /* ~Severin~ */
+  SAY NAME2 @10106 /* ~Severin~ */
+    WRITE_ASCII 0x280 ~C#Gramni~ #32 // set DV
+    WRITE_ASCII 0x2cc ~C#Gramni~ #8 // set dialogue file
+
+
+END //~bgee bgt eet~
+
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ THEN BEGIN
+
+/* BGII: tax collector */
+COPY ~c#greythedog/cre/c#grtax1.cre~ ~override/c#grtax1.cre~  
+  SAY NAME1 ~Tax Collector~
+  SAY NAME2 ~Tax Collector~
+    WRITE_ASCII 0x280 ~c#grtax1~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#grtax1~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#grtax1~ #8   // Override script
+
+COPY ~c#greythedog/cre/c#grtax2.cre~ ~override/c#grtax2.cre~  
+  SAY NAME1 ~Hector~
+  SAY NAME2 ~Hector~
+    WRITE_ASCII 0x280 ~c#grtax2~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#grtax2~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#grtax2~ #8   // Override script
+
+END // ~bg2ee bgt eet~
+
+
+
+
+/* war dogs for Grey's "Call" */
+
+/* war dog lv 4 */
+COPY ~c#greythedog/cre/c#ardog1.cre~ ~override/c#ardog1.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~c#ardog1~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#ardog1~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x250 ~c#ardog1~ #8   // Class script
+
+/* war dog lv 6 */
+COPY ~c#greythedog/cre/c#ardog2.cre~ ~override/c#ardog2.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~c#ardog2~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#ardog2~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x250 ~c#ardog2~ #8   // Class script
+
+/* war dog lv 8 */
+COPY ~c#greythedog/cre/c#ardog3.cre~ ~override/c#ardog3.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~c#ardog3~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#ardog3~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x250 ~c#ardog3~ #8   // Class script
+
+/* war dog lv 12 */
+COPY ~c#greythedog/cre/c#ardog4.cre~ ~override/c#ardog4.cre~ EVALUATE_BUFFER 
+    WRITE_ASCII 0x280 ~c#ardog4~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#ardog4~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x250 ~c#ardog4~ #8   // Class script
+
+
+
+
+
+////
+
+///scripts
+
+/* in case Player1 gets rested via cutscene and not by RestParty() while 
+Grey is not in the group */
+/* spell and idea taken from Zed Nocear's BG1 trigger simulations! */
+
+//only works with AI turned on, but I don't want to cladder the baldur.bcs
+ACTION_IF !(FILE_CONTAINS_EVALUATED (~dplayer3.BCS~ ~"C#FATIG1"~))
+    THEN BEGIN
+        EXTEND_TOP ~dplayer3.bcs~   ~c#greythedog/script/c#brando_dplayer3_add.baf~
+        COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
+    END
+
+/* scripts for all games */
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grey.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#greyx.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#ardog.baf~
+
+/* BG1 */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_bg1.baf~ EVALUATE_BUFFER
+
+LAF extend_area_script STR_VAR area="%Candlekeep%" top="c#greythedog/script/c#grey_AR2600.baf" END
+
+/* joining */
+LAF extend_area_script STR_VAR area="%LionsWay%" top="c#greythedog/script/c#grey_AR2700.baf" END
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grjond.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grerik.baf~
+
+/* BG1 Quests */
+LAF extend_area_script STR_VAR area="%EBaldursGate%" top="c#greythedog/script/c#grey_AR0800.baf" END
+LAF extend_area_script STR_VAR area="%SWBaldursGate_FlamingFistHQ_L1%" top="c#greythedog/script/c#grey_Ar0607.baf" END
+LAF extend_area_script STR_VAR area="%EBaldursGate_Inn_L1%" top="c#greythedog/script/c#grey_AR0807.baf" END
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#gr1tur.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#gr1mad.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#gr11.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#gr11ke.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#gr1q22.baf~
+
+
+
+/* Grey sniffs traces */
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grcut1.baf~
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grcut2.baf~
+
+LAF extend_area_script STR_VAR area="%Nashkel_Garrison%" top="c#greythedog/script/c#grey_ar4810.baf" END
+
+
+END // ~bgee bgt eet~
+
+/* transition from BG1 */
+
+/* BGT: transition to AR0602.are */
+
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  EXTEND_TOP ~ARAM00.bcs~   ~c#greythedog/script/c#grey_bg1_transition.baf~    EVALUATE_BUFFER
+END //~bgt~
+
+
+/* SoD */
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+
+/* scripts */
+
+/* Grey sniffs for missing refugies */
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grcus1.baf~
+
+/* additions to scripts for SoD */
+
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_sod.baf~ EVALUATE_BUFFER
+
+
+/* Extend existing Scripts for SoD */
+/* SoD, EET: transition to BD0103.are - done as party member or familiar - no action */
+
+/* new sod game: spawn him in BD0120.are */
+
+EXTEND_BOTTOM ~bd0120.bcs~ ~c#greythedog/script/c#grey_sod_bd0120.baf~
+  EVALUATE_BUFFER
+
+/* after first enemy group in Korlasz' crypt is defeated: comment */
+
+EXTEND_TOP ~bd0120.bcs~ ~c#greythedog/script/c#grey_sod_bd0120_et.baf~
+  EVALUATE_BUFFER
+
+/* starting szene in Ducal Palace - Grey will wake, too! */
+
+COPY_EXISTING ~bd0103.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~\(ActionOverride(Player6,SetSequence(SEQ_SLEEP))\)~
+~\1 ActionOverride("C#Grey",SetSequence(SEQ_AWAKE)) 
+		SmallWait(4)
+		ActionOverride("C#Grey",SetSequence(SEQ_READY))
+		ActionOverride("C#Grey",Face(NE))~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+
+/* bd1000 remove journal entry - search for statues */
+EXTEND_BOTTOM ~bd1000.bcs~ ~c#greythedog/script/c#grey_sod_bd1000.baf~
+  EVALUATE_BUFFER
+
+/* Grey sleeps in the night of The Incident (bdcut60x)- couldn't get this to work */
+/* Grey wakes up (bdcut60a) */
+
+
+/* Grey will move into the room if following as 7th party member */
+EXTEND_TOP ~bdcut60b.bcs~ ~c#greythedog/script/c#grey_sod_bdcut60b.baf~
+  EVALUATE_BUFFER
+
+/* Grey comments on murder accusation */
+EXTEND_TOP ~bd4100.bcs~ ~c#greythedog/script/c#grey_sod_bd4100.baf~
+  EVALUATE_BUFFER
+
+/* scene in bd0102.are with Dukes. Grey will follow PC ## doesn't work */
+
+COPY_EXISTING ~bd0102.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~\(ActionOverride(Player1,MoveToPoint(\[719\.491\]))\)~
+~\1 ActionOverride("C#Grey",MoveToPoint([648.434]))~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+/* arrest, move to SoD end area and end -> Grey stays in group as party member or familiar: no action needed (bdcut61.bcs, bdcut65.bcs, bd6100.bcs, bd6200.bcs) */
+
+/* Hell elevator - Grey comments */
+EXTEND_BOTTOM ~bd4601.bcs~ ~c#greythedog/script/c#grey_sod_bd4601.baf~
+  EVALUATE_BUFFER
+
+
+/* Fugue portal - reaction to enemies */
+EXTEND_BOTTOM ~bd5300.bcs~ ~c#greythedog/script/c#grey_sod_bd5300.baf~
+  EVALUATE_BUFFER
+
+/* end of SoD: make room for canon party or join up if there is still room for Grey */
+EXTEND_TOP ~bdcut64x.bcs~ ~c#greythedog/script/c#grey_sod_bdcut64x.baf~
+  EVALUATE_BUFFER
+
+
+END //SoD
+
+/* EET: Move from SoD to BGII for EET */
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+EXTEND_TOP ~K#TELBGT.bcs~ ~c#greythedog/script/c#grey_eet_transition.baf~
+  EVALUATE_BUFFER
+END
+
+
+/* BGII */
+
+/* additions to script for BGII part */
+
+ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_bg2.baf~ EVALUATE_BUFFER
+
+
+/* was not in party upon transition or new game: spawn him in AR0602.are */
+  EXTEND_TOP ~AR0602.bcs~ ~c#greythedog/script/c#grey_bg2_ar0602.baf~
+EVALUATE_BUFFER
+
+
+/* player skipped Irenicus Dungeon - spawn him in Waukeen's Promenade */
+
+  EXTEND_BOTTOM ~AR0700.bcs~ ~c#greythedog/script/c#grey_bg2_ar0700.baf~
+EVALUATE_BUFFER
+
+END //BGII
+
+
+/* transition to ToB */
+
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ THEN BEGIN
+
+  EXTEND_BOTTOM ~AR4000.bcs~ ~c#greythedog/script/c#grey_bg2_ar4000.baf~ EVALUATE_BUFFER
+
+
+  EXTEND_BOTTOM ~AR4500.bcs~ ~c#greythedog/script/c#grey_bg2_ar4500.baf~ EVALUATE_BUFFER
+
+END
+
+
+/* additions to script for BGII-engine */
+
+ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_lvl.baf~
+END
+
+/* additions to script for EE-engine */
+
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_lvl_ee.baf~
+END
+
+
+/* general BGII scripts */
+
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ THEN BEGIN
+
+/* BG2 quests */
+/* tax collector */
+COMPILE EVALUATE_BUFFER ~c#greythedog/script/c#grtax1.baf~
+/* spawn in AR0700.are */
+  EXTEND_BOTTOM ~AR0700.bcs~ ~c#greythedog/script/c#grey_bg2_ar0700_tax.baf~
+EVALUATE_BUFFER
+  EXTEND_BOTTOM ~AR1002.bcs~ ~c#greythedog/script/c#grey_bg2_ar1002_tax.baf~
+EVALUATE_BUFFER
+
+END
+
+
+////dialog/////
+
+<<<<<<<< ...inlined/C#GREY_define.D
+BEGIN C#GREY
+BEGIN c#greyJ
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~...inlined/C#GREY_define.D~
+
+
+
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#greyP.d~
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey.d~
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/grey_npc_bg1.d~
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_interjections_BG1.d~
+
+
+/* BG1 Quest */
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/Grey_quest_BG1.d~
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/Grey_second_quest_BG1.d~
+
+END //ACTION_IF GAME_IS ~bgee bgt eet~
+
+/* SoD */
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_sod.d~
+END
+
+
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ THEN BEGIN
+
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey2.d~
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_tob.d~
+
+/* BG2 quests */
+/* tax collector */
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/bg2_taxcollect.d~
+
+END // ~tob bgt bg2ee eet~
+
+
+/* PID */
+
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/GreyPC_clicktalk.D~
+
+COPY ~c#greythedog/Portrait~ ~override~
+ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+COPY ~c#greythedog/Portrait/c#greypl.bmp~ ~override/c#greypm.bmp~
+COPY ~c#greythedog/Portrait/c#greypl.bmp~ ~override/c#greyps.bmp~
+END
+
+
+/* Dialoguesets */
+
+ACTION_IF GAME_IS ~bgee~ THEN BEGIN
+
+/* BG:EE */
+APPEND ~pdialog.2da~
+~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
+UNLESS ~C#Grey~
+
+
+APPEND ~interdia.2da~
+~C#Grey 	C#GreyB~
+UNLESS ~C#Grey~
+
+END
+
+/* SoD */
+
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+APPEND ~bddialog.2da~
+~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
+UNLESS ~C#Grey~
+
+/* ##
+APPEND ~bdbanter.2da~
+~C#Grey 	C#GreyB~
+UNLESS ~C#Grey~
+*/
+
+END
+
+/* BG1:EET */
+
+ACTION_IF GAME_IS ~eet~ THEN BEGIN
+APPEND ~bgdialog.2da~
+~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
+UNLESS ~C#Grey~
+
+APPEND ~bgbanter.2da~
+~C#Grey 	C#GreyB~
+UNLESS ~C#Grey~
+
+END
+
+/* BGT, BGII, BGII:EE */
+
+ACTION_IF GAME_IS ~tob bg2ee bgt eet~ THEN BEGIN
+
+APPEND ~pdialog.2da~
+~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD 	C#GreyP 	C#GreyJ 		C#GreyD 	C#Grey25~
+UNLESS ~C#Grey~
+
+
+APPEND ~interdia.2da~
+~C#Grey 	C#GreyB      C#GreyB~
+UNLESS ~C#Grey~
+
+END
+
+
+
+/* Ensures that Grey won't leave the party because of reputation: BGII, BGII:EE, BGT */
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+COPY_EXISTING ~dplayer2.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~BreakingPoint()~
+      ~BreakingPoint()
+       !Name("C#Grey",Myself)~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+
+/* Now we need a scriptblock so Grey initiates dialogue if kicked out if "!HPGT(Myself,0)", too: */
+<<<<<<<< ...inlined/C#GREY_bg2_unhappyleave.baf
+
+IF
+	!InParty(Myself)
+	!HPGT(Myself,0)
+	Name("C#Grey",Myself)
+THEN
+	RESPONSE #100
+		SetLeavePartyDialogFile()
+		ChangeAIScript("",DEFAULT)
+		Dialog(Player1)
+END
+
+>>>>>>>>
+EXTEND_TOP ~dplayer2.bcs~ ~...inlined/C#GREY_bg2_unhappyleave.baf~ EVALUATE_BUFFER
+
+END //BGII
+
+
+/* Ensures that Grey won't leave the party because of reputation: BG:EE, SoD, (BG1 part) */
+
+ACTION_IF (GAME_IS ~bgee~) THEN BEGIN
+COPY_EXISTING ~dplayer2.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~BreakingPoint()~
+      ~BreakingPoint()
+       !Name("C#Grey",Myself)~
+
+    REPLACE_TEXTUALLY ~!Name("baeloth",Myself)~
+      ~!Name("baeloth",Myself) 
+       !Name("C#Grey",Myself)~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+<<<<<<<< ...inlined/C#GREY_bgee_unhappyleave.baf
+IF
+	!InParty(Myself)
+	!HappinessGT(Myself,-299)
+	Name("C#Grey",Myself)
+THEN
+	RESPONSE #100
+		ChangeAIScript("",DEFAULT)
+		Dialogue(Player1)
+END
+>>>>>>>>
+EXTEND_TOP ~dplayer2.bcs~ ~...inlined/C#GREY_bgee_unhappyleave.baf~ EVALUATE_BUFFER
+
+END
+
+/* SoD: prevent bdparty.bcs from being set as default script. Grey doesn't need this script. Instead, his kickout dialogue will be triggered here. */
+
+ACTION_IF (GAME_IS ~bgee~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+<<<<<<<< ...inlined/C#GREY_sod_unhappyleave.baf
+
+IF
+	!InPartyAllowDead(Myself)
+	GlobalGT("bd_plot","global",0)
+	Name("C#Grey",Myself)
+THEN
+	RESPONSE #100
+		SetLeavePartyDialogFile()
+		ChangeAIScript("",DEFAULT)
+		Dialog(Player1)
+END
+
+>>>>>>>>
+EXTEND_TOP ~dplayer2.bcs~ ~...inlined/C#GREY_sod_unhappyleave.baf~ EVALUATE_BUFFER
+
+END
+
+
+/* Ensures that Grey won't leave the party because of reputation: EET */
+
+ACTION_IF (GAME_IS ~eet~) THEN BEGIN
+
+/* (BG1 and BGII) */
+
+COPY_EXISTING ~dplayer2.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~BreakingPoint()~
+      ~BreakingPoint()
+       !Name("C#Grey",Myself)~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+/* (BG1) */
+
+COPY_EXISTING ~dplayer2.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~!Name("baeloth",Myself)~
+      ~!Name("baeloth",Myself) 
+       !Name("C#Grey",Myself)~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+<<<<<<<< ...inlined/C#GREY_eet_unhappyleave.baf
+
+/* BG1 */
+IF
+	GlobalLT("ENDOFBG1","GLOBAL",2)
+	!InParty(Myself)
+	!HappinessGT(Myself,-299)
+	Name("C#Grey",Myself)
+THEN
+	RESPONSE #100
+		ChangeAIScript("",DEFAULT)
+		Dialogue(Player1)
+END
+
+/* SoD */
+
+IF
+	GlobalLT("ENDOFBG1","GLOBAL",2)
+	!InPartyAllowDead(Myself)
+	GlobalGT("bd_plot","global",0)
+	Name("C#Grey",Myself)
+THEN
+	RESPONSE #100
+		SetLeavePartyDialogFile()
+		ChangeAIScript("",DEFAULT)
+		Dialog(Player1)
+END
+
+/* BGII */
+
+IF
+	Global("ENDOFBG1","GLOBAL",2)
+	!InParty(Myself)
+	!HPGT(Myself,0)
+	Name("C#Grey",Myself)
+THEN
+	RESPONSE #100
+		SetLeavePartyDialogFile()
+		ChangeAIScript("",DEFAULT)
+		Dialog(Player1)
+END
+
+
+>>>>>>>>
+EXTEND_TOP ~dplayer2.bcs~ ~...inlined/C#GREY_eet_unhappyleave.baf~ EVALUATE_BUFFER
+
+END
+
+
+
+/* SoD */
+/* patch bdresurr.spl so it doesn't turn Grey into human fighter animation */
+
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+
+COPY_EXISTING bdresurr.spl override
+  LPF ADD_SPELL_EFFECT INT_VAR opcode=177 parameter1=105 parameter2=4 target=2 timing=1 STR_VAR resource=doganim END
+
+// the CREATE_EFFECT function taken from IR https://github.com/Gibberlings3/ItemRevisions/blob/master/item_rev/lib/macros.tpa#L69
+LAF CREATE_EFFECT INT_VAR opcode=53 parameter1=0x7400 parameter2=2 target=2 timing=1 STR_VAR effect=doganim END
+
+END //SoD
+
+
+
+
+
+
+
+
+/////assign cre/kit
+
+
+/*
+
+  SAY BATTLE_CRY1 ~~ [c#GREY06]
+  SAY BATTLE_CRY2 ~~ [c#GREY12]
+  SAY BATTLE_CRY3 ~~ [WIDOG06]
+  SAY BATTLE_CRY4 ~~ [c#GREY13]
+  SAY BATTLE_CRY5 ~~ [WIDOG09]
+*/
+
+COPY //~c#greythedog/cre/c#grey01.cre~    ~override/c#grey01.cre~
+~c#greythedog/cre/c#grey02.cre~    ~override/c#grey02.cre~
+  WRITE_SHORT   0x244 0
+  WRITE_SHORT 0x246 0x4000 + ~%C#WARDOG%~
+  SAY NAME1 @10107 /* ~Grey~ */
+  SAY NAME2 @10107 /* ~Grey~ */
+  SAY INITIAL_MEETING ~Woof!~ [WIDOG04]
+  SAY MORALE ~~ [WOLFF01]
+  SAY HAPPY ~~ [WIDOG01]
+  SAY UNHAPPY_ANNOYED ~~ [c#GREY04]
+  SAY UNHAPPY_SERIOUS ~~ [c#GREY02]
+  SAY UNHAPPY_BREAKING ~~[c#GREY02]
+  SAY LEADER ~~ [WIDOG01]
+  SAY TIRED ~~ [c#GREY09]
+  SAY BORED ~~ [c#GREY04]
+  SAY BATTLE_CRY1 ~~ [c#GREY06]
+  SAY BATTLE_CRY2 ~~ 
+  SAY BATTLE_CRY3 ~~ 
+  SAY BATTLE_CRY4 ~~ 
+  SAY BATTLE_CRY5 ~~ 
+  SAY DAMAGE ~~ [c#GREY07]
+  SAY DYING ~~ [c#GREY08]
+  SAY HURT ~~ [c#GREY08]
+  SAY AREA_FOREST ~~ [c#GREY10]
+  SAY AREA_CITY ~~ [c#GREY10]
+  SAY AREA_DUNGEON ~~ [c#GREY11]
+  SAY AREA_DAY ~~ [c#GREY10]
+  SAY AREA_NIGHT ~~ [c#GREY09]
+  SAY SELECT_COMMON1 ~~ [WIDOG01]
+  SAY SELECT_COMMON2 ~~ [c#GREY01]
+  SAY SELECT_COMMON3 ~~ [WIDOG02]
+  SAY SELECT_COMMON4 ~~ [c#GREY01]
+  SAY SELECT_COMMON5 ~~ [WIDOG03]
+  SAY SELECT_COMMON6 ~~ [WIDOG04]
+  SAY SELECT_ACTION1 ~~ [WIDOG05]
+  SAY SELECT_ACTION2 ~~ [WIDOG06]
+  SAY SELECT_ACTION3 ~~ [WIDOG07]
+  SAY SELECT_ACTION4 ~~ [WIDOG08]
+  SAY SELECT_ACTION5 ~~ [WIDOG09]
+  SAY SELECT_ACTION6 ~~ [WIDOG02]
+  SAY SELECT_ACTION7 ~~ [WIDOG03]
+//  SAY SELECT_RARE1 ~~ [c#GREY11]
+//  SAY SELECT_RARE2 ~~ [c#GREY12]
+  SAY CRITICAL_HIT ~~ [c#grey05]
+  SAY CRITICAL_MISS ~~ [c#grey14]
+  SAY TARGET_IMMUNE ~~ [c#GREY09]
+  SAY INVENTORY_FULL ~~ [c#GREY09]
+  SAY PICKED_POCKET ~~
+  SAY HIDDEN_IN_SHADOWS ~~
+  SAY SPELL_DISRUPTED ~~ [c#GREY09]
+  SAY SET_A_TRAP ~~
+  SAY BIO @10108 /* ~Grey is a trained war dog from your times in Candlekeep. The times you spent with him there sufficed to make Grey follow you as your loyal dog companion. 
+When looking at him, GREY tilts his head to the side and stares at you. He picks up a stick nearby on the ground... Seems like you are going to have to play fetch... again.
+~ */
+    WRITE_ASCII 0x280 ~c#grey~ #32 // set DV
+    WRITE_ASCII 0x2cc ~c#grey~ #8 // set dialogue file
+    WRITE_EVALUATED_ASCII 0x248 ~c#grey~ #8   // Override script
+    WRITE_EVALUATED_ASCII 0x258 ~c#greyx~ #8   // Race script
+
+ACTION_IF (GAME_IS ~tob bgt bgee~ AND NOT FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+COPY_EXISTING ~c#grey02.cre~    ~override/c#grey02.cre~
+WRITE_LONG   0x28 ~29698~ //DOG_MOON
+END
+
+
+/* new SoD game */
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+COPY_EXISTING ~c#grey02.cre~    ~override/c#grey03.cre~
+  ADD_CRE_ITEM ~c#grarm2~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~ 
+  ADD_CRE_ITEM ~c#grtoo2~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ EQUIP
+  ADD_CRE_ITEM ~c#grcol1~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~ 
+  ADD_CRE_ITEM ~c#grtoy1~ #3 #0 #0 ~IDENTIFIED~ ~QITEM1~ 
+BUT_ONLY_IF_IT_CHANGES
+END
+
+/* BG1 start items */
+COPY_EXISTING ~c#grey02.cre~    ~override~
+  ADD_CRE_ITEM ~c#grarm1~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~ 
+  ADD_CRE_ITEM ~c#grtoo0~ #0 #0 #0 ~IDENTIFIED~ ~WEAPON1~ EQUIP
+  ADD_CRE_ITEM ~c#grcol1~ #0 #0 #0 ~IDENTIFIED~ ~AMULET~ 
+  ADD_CRE_ITEM ~c#grtoy1~ #3 #0 #0 ~IDENTIFIED~ ~QITEM1~ 
+BUT_ONLY_IF_IT_CHANGES
+
+
+////audio - sound
+
+COPY ~c#greythedog\sound~ ~override~
+
+
+
+/* crossmod content */
+
+/* BG1 */
+
+ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+
+  /* bg1re */
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~C#Q11005.itm~ THEN BEGIN 
+
+    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/crossmod_bg1re.d~
+    EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/crossmod/bg1re.baf~
+      EVALUATE_BUFFER
+  END ///* bg1re */
+
+
+/* Brandock the Mage */
+
+ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~ THEN BEGIN 
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/brando_crossmod_grey_BG1.d~
+EXTEND_BOTTOM ~c#brandd.bcs~   ~c#greythedog/crossmod/brando_crossmod_grey_BG1.baf~
+EVALUATE_BUFFER
+
+END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
+
+
+  /* Jarl's Adventure Pack */
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~JA#DOPP0.CRE~ THEN BEGIN 
+    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/JAP.d~
+    EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/crossmod/JAP.baf~
+      EVALUATE_BUFFER
+  END ///* Jarl's Adventure Pack */
+
+END //ACTION_IF GAME_IS ~bgee bgt~ 
+
+
+/* BGII */
+
+ACTION_IF GAME_IS ~tob bg2ee bgt eet~ THEN BEGIN
+
+  /* Ajantis BGII */
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~C#AjanB.dlg~ THEN BEGIN
+    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/ajantis.d~
+  END /* Ajantis BGII */
+
+/* Brandock */
+
+ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~ THEN BEGIN 
+
+COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/brando_crossmod_grey_BGII.d~
+EVALUATE_BUFFER
+
+END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
+
+END //BGII
+
+

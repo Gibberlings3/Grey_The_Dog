@@ -1,0 +1,29 @@
+/* new game: Global("C#Grey_Exists","GLOBAL",0) */
+
+
+IF 
+	Global("C#Grey_Exists","GLOBAL",0)
+	NumInPartyLT(6)	
+THEN
+	RESPONSE #100
+            	SetGlobal("C#Grey_Exists","GLOBAL",6)
+	    	CreateCreature("C#Grey03",[780.1578],S)
+		ActionOverride("C#Grey",MakeGlobalOverride()) 
+		ActionOverride("C#Grey",JoinParty())
+		SetGlobal("C#GreyJoined","GLOBAL",1)
+END
+
+IF 
+	Global("C#Grey_Exists","GLOBAL",0)
+	NumInParty(6)	
+THEN
+	RESPONSE #100
+            	SetGlobal("C#Grey_Exists","GLOBAL",6)
+	    	CreateCreature("C#Grey03",[780.1578],S)
+		ActionOverride("C#Grey",MakeGlobalOverride())
+		SetGlobal("C#GreyJoined","GLOBAL",2)
+		ActionOverride("C#Grey",MakeGlobal())
+		ActionOverride("C#Grey",ChangeEnemyAlly(Myself, FAMILIAR))
+		ActionOverride("C#Grey",SetDialog("c#greyj"))
+		ActionOverride("C#Grey",AddFamiliar())
+END

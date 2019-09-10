@@ -1,0 +1,11 @@
+@50000  = ~The door is locked magically. You'll need a key to open it.~
+@50001  = ~To examine this doorway, move closer.~
+@50002  = ~Sniff!~
+@50003  = ~Sniff! Sniff!~
+@50004  = ~Woof!~
+@50005  = ~Woof!~ [C#Grey01]
+@50006  = ~Whine!~ [C#Grey07]
+@50007  = ~Woof, woof!~
+@50008  = ~Whine! (Grey's health seems to be low.)~
+@50009  = ~Grrrr! (Grey snaps his teeth at the surroundings with untainted determination.)~
+@50010  = ~Grrrrr! Woof!~

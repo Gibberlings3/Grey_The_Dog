@@ -1,0 +1,63 @@
+IF
+	InPartyAllowDead("C#Grey")
+	Global("C#Grey_EETBGIITransition","MYAREA",0)
+	
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#Grey_EETBGIITransition","MYAREA",1)
+		DisableAI("C#Grey",FALSE)
+		ActionOverride("C#Grey",MakeUnselectable(1))
+		ApplySpellRES("bdresurr","C#Grey")
+		smallWait(10)
+		ApplySpellRES("K#UNREST","C#Grey")
+		smallWait(10)
+		ApplySpellRES("bdrejuve","C#Grey")
+		smallWait(10)
+		ActionOverride("C#Grey",DestroyItem("c#grpaw1"))
+		ActionOverride("C#Grey",DestroyItem("c#grpaw3"))
+		ActionOverride("C#Grey",DestroyItem("c#grpaw6"))
+		ActionOverride("C#Grey",DestroyItem("c#grpaw9"))
+		ActionOverride("C#Grey",DestroyItem("c#grpa12"))
+		ActionOverride("C#Grey",DestroyItem("c#grpa25"))
+		ActionOverride("C#Grey",DestroyItem("c#grcol1"))
+		ActionOverride("K#ImportContainer",TakeCreatureItems("C#Grey",ALL))
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
+		SetGlobal("C#GreyJoined","GLOBAL",0)
+		SetInterrupt(TRUE)		
+		Continue()
+END
+
+
+IF
+	!Dead("C#Grey")
+	Global("C#GreyJoined","GLOBAL",2)
+	Global("C#Grey_EETBGIITransition","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#Grey_EETBGIITransition","MYAREA",1)
+		ApplySpellRES("K#UNREST","C#Grey")
+		smallWait(10)
+		ApplySpellRES("bdrejuve","C#Grey")
+		smallWait(10)
+		ReallyForceSpellRES("C#MIN0HP","C#Grey")
+		smallWait(10)
+		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)
+		ActionOverride("C#Grey",DestroyItem("c#grpaw1"))
+		ActionOverride("C#Grey",DestroyItem("c#grpaw3"))
+		ActionOverride("C#Grey",DestroyItem("c#grpaw6"))
+		ActionOverride("C#Grey",DestroyItem("c#grpaw9"))
+		ActionOverride("C#Grey",DestroyItem("c#grpa12"))
+		ActionOverride("C#Grey",DestroyItem("c#grpa25"))
+		ActionOverride("C#Grey",DestroyItem("c#grcol1"))
+		ActionOverride("K#ImportContainer",TakeCreatureItems("C#Grey",ALL))
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
+		ActionOverride("C#Grey",RemoveFamiliar())
+		ActionOverride("C#Grey",ChangeEnemyAlly("C#Grey",NEUTRAL))
+		SetGlobal("C#Grey_IsUnconscious","GLOBAL",0)
+		SetGlobal("C#GreyJoined","GLOBAL",0)
+		ActionOverride("C#Grey",DestroySelf())
+		SetInterrupt(TRUE)		
+		Continue()
+END

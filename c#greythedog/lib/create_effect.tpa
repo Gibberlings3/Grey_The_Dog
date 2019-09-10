@@ -1,0 +1,60 @@
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// 
+// the CREATE_EFFECT function taken from IR
+// https://github.com/Gibberlings3/ItemRevisions/blob/master/item_rev/lib/macros.tpa#L69
+
+DEFINE_ACTION_FUNCTION ~CREATE_EFFECT~
+  INT_VAR
+    opcode=0
+    target=0
+    power=0
+    parameter1=0
+    parameter2=0
+    timing=0
+    duration=0
+    probability1=100
+    probability2=0
+    dicenumber=0
+    dicesize=0
+    savingthrow=0
+    savebonus=0
+    resist_dispel=0
+    parameter3=0
+    parameter4=0
+  STR_VAR
+    effect=~ag#dummy~
+    resource=~~
+    vvcresource=~~
+    resource2=~~
+    effvar=~~
+BEGIN
+<<<<<<<<...inlined/ag#dummy.eff
+>>>>>>>>
+COPY ~...inlined/ag#dummy.eff~ ~override/%effect%.eff~
+  INSERT_BYTES 0 0x110
+  WRITE_ASCII 0 ~EFF V2.0~
+  WRITE_ASCII 8 ~EFF V2.0~
+
+  WRITE_LONG 0x10 opcode
+  WRITE_LONG 0x14 target
+  WRITE_LONG 0x18 power
+  WRITE_LONG 0x1c parameter1
+  WRITE_LONG 0x20 parameter2
+  WRITE_SHORT 0x24 timing
+  WRITE_LONG 0x28 duration
+  WRITE_SHORT 0x2c probability1
+  WRITE_SHORT 0x2e probability2
+  WRITE_ASCIIE 0x30 ~%resource%~ (8)
+  WRITE_LONG 0x38 dicenumber
+  WRITE_LONG 0x3c dicesize
+  WRITE_LONG 0x40 savingthrow
+  WRITE_LONG 0x44 savebonus
+  WRITE_LONG 0x5c resist_dispel
+  WRITE_LONG 0x60 parameter3
+  WRITE_LONG 0x64 parameter4
+  WRITE_ASCIIE 0x70 ~%vvcresource%~ (8)
+  WRITE_ASCIIE 0x78 ~%resource2%~ (8)
+  WRITE_ASCIIE 0xa8 ~%effvar%~ (32)
+END

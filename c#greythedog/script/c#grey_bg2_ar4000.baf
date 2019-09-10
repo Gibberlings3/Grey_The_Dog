@@ -1,0 +1,25 @@
+/* Grey was in party upon transition: he is no longer available for summoning */
+
+IF
+	InPartyAllowDead("C#Grey")
+	Global("C#Grey_SummonedVariable","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ActionOverride("C#Grey",ChangeAIScript("C#Grey25",OVERRIDE))
+		SetGlobal("C#Grey_SummonedVariable","GLOBAL",3)
+		Continue()
+END
+
+
+/* Brandock was never in Party - he won't be available for summoning
+conti game only */
+IF
+  GlobalGT("C#Grey_Exists","GLOBAL",9) //only for conti game
+  Global("C#Grey_SummonedVariable","GLOBAL",0)
+  GlobalLT("C#Grey_Exists","GLOBAL",11)
+THEN
+  RESPONSE #100
+    SetGlobal("C#Grey_SummonedVariable","GLOBAL",4)
+    Continue()
+END
+

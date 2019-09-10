@@ -1,0 +1,631 @@
+/* Grey levels up to the PC's level if taken into the group */
+
+
+
+/*     AddXPObject(Myself,500000) */
+
+
+/* 
+Level	XP
+1	0
+2 	2,000 	
+3 	4,000 	
+4 	8,000 	
+5 	16,000 	
+6 	32,000 	
+7 	64,000 	
+8	125,000
+9	250,000
+10	500,000
+
+
+1 	0 	1
+2 	2.000 	2
+3 	4.000 	3
+4 	8.000 	4
+5 	16.000 	5
+6 	32.000 	6
+7 	64.000 	7
+8 	125.000 	8
+9 	250.000 	9
+10 	500.000 	9+3
+11 	750.000 	9+6
+12 	1.000.000 	9+9
+13 	1.250.000 	9+12
+14 	1.500.000 	9+15
+15 	1.750.000 	9+18
+16 	2.000.000 	9+21
+17 	2.250.000 	9+24
+18 	2.500.000 	9+27
+19 	2.750.000 	9+30
+20 	3.000.000 	9+33
+
+ToB up to 8.000.000
+
+
+*/
+
+/* Player1 XP 11000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",36)
+	XPGT(Player1,10999999)
+	XPLT(Myself,11000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",36)	
+		ChangeStat(Myself,XP,11000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 10500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",35)
+	XPGT(Player1,10499999)
+	XPLT(Myself,10500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",35)	
+		ChangeStat(Myself,XP,10500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 10000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",34)
+	XPGT(Player1,9999999)
+	XPLT(Myself,10000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",34)	
+		ChangeStat(Myself,XP,10000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 9500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",33)
+	XPGT(Player1,9499999)
+	XPLT(Myself,9500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",33)	
+		ChangeStat(Myself,XP,9500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 9000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",32)
+	XPGT(Player1,8999999)
+	XPLT(Myself,9000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",32)	
+		ChangeStat(Myself,XP,9000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 8500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",31)
+	XPGT(Player1,8499999)
+	XPLT(Myself,8500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",31)	
+		ChangeStat(Myself,XP,8500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 8000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",30)
+	XPGT(Player1,7999999)
+	XPLT(Myself,8000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",30)	
+		ChangeStat(Myself,XP,8000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 7500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",29)
+	XPGT(Player1,7499999)
+	XPLT(Myself,7500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",29)	
+		ChangeStat(Myself,XP,7500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 7000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",28)
+	XPGT(Player1,6999999)
+	XPLT(Myself,7000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",28)	
+		ChangeStat(Myself,XP,7000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 6500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",27)
+	XPGT(Player1,6499999)
+	XPLT(Myself,6500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",27)	
+		ChangeStat(Myself,XP,6500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 6000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",26)
+	XPGT(Player1,5999999)
+	XPLT(Myself,6000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",26)	
+		ChangeStat(Myself,XP,6000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 5500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",25)
+	XPGT(Player1,5499999)
+	XPLT(Myself,5500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",25)	
+		ChangeStat(Myself,XP,5500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 5000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",24)
+	XPGT(Player1,4999999)
+	XPLT(Myself,5000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",24)	
+		ChangeStat(Myself,XP,5000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 4500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",23)
+	XPGT(Player1,4499999)
+	XPLT(Myself,4500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",23)	
+		ChangeStat(Myself,XP,4500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 4000000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",22)
+	XPGT(Player1,3999999)
+	XPLT(Myself,4000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",22)	
+		ChangeStat(Myself,XP,4000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Player1 XP 3500000 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",21)
+	XPGT(Player1,2499999)
+	XPLT(Myself,3500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",21)	
+		ChangeStat(Myself,XP,3500000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+/* Level 20 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",20)
+	XPGT(Player1,2999999)
+	XPLT(Myself,3000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",20)	
+		ChangeStat(Myself,XP,3000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 19 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",19)
+	XPGT(Player1,2749999)
+	XPLT(Myself,2750000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",19)	
+		ChangeStat(Myself,XP,2750000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 18 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",18)
+	XPGT(Player1,2499999)
+	XPLT(Myself,2500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",18)	
+		ChangeStat(Myself,XP,2500000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+/* Level 17 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",17)
+	XPGT(Player1,2249999)
+	XPLT(Myself,2250000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",17)	
+		ChangeStat(Myself,XP,2250000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+/* Level 16 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",16)
+	XPGT(Player1,1999999)
+	XPLT(Myself,2000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",16)	
+		ChangeStat(Myself,XP,2000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 15 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",15)
+	XPGT(Player1,1749999)
+	XPLT(Myself,1750000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",15)	
+		ChangeStat(Myself,XP,1750000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+/* Level 14 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",14)
+	XPGT(Player1,1499999)
+	XPLT(Myself,1500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",14)	
+		ChangeStat(Myself,XP,1500000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 13 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",13)
+	XPGT(Player1,1249999)
+	XPLT(Myself,1250000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",13)	
+		ChangeStat(Myself,XP,1250000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 12 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",12)
+	XPGT(Player1,999999)
+	XPLT(Myself,1000000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",12)	
+		ChangeStat(Myself,XP,1000000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 11 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",11)
+	XPGT(Player1,749999)
+	XPLT(Myself,750000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",11)	
+		ChangeStat(Myself,XP,750000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 10 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",10)
+	XPGT(Player1,499999)
+	XPLT(Myself,500000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",10)	
+		ChangeStat(Myself,XP,500000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+
+/* Level 9 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",9)
+	XPGT(Player1,249999)
+	XPLT(Myself,250000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",9)	
+		ChangeStat(Myself,XP,250000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 8 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",8)
+	XPGT(Player1,124999)
+	XPLT(Myself,125000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",8)	
+		ChangeStat(Myself,XP,125000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 7 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",7)
+	XPGT(Player1,63999)
+	XPLT(Myself,64000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",7)	
+		ChangeStat(Myself,XP,64000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 6 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",6)
+	XPGT(Player1,31999)
+	XPLT(Myself,32000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",6)	
+		ChangeStat(Myself,XP,32000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 5 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",5)
+	XPGT(Player1,15999)
+	XPLT(Myself,16000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",5)	
+		ChangeStat(Myself,XP,16000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+/* Level 4 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",4)
+	XPGT(Player1,7999)
+	XPLT(Myself,8000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",4)	
+		ChangeStat(Myself,XP,8000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+/* Level 3 */
+
+IF
+	InParty("C#Grey")
+	GlobalLT("C#GreyLevelUp","LOCALS",3)
+	XPGT(Player1,3999)
+	XPLT(Myself,4000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",3)	
+		ChangeStat(Myself,XP,4000,SET)
+		SetInterrupt(TRUE)
+END
+
+/* Level 2 */
+
+IF
+	InParty("C#Grey")
+	Global("C#GreyLevelUp","LOCALS",0)
+	XPGT(Player1,1999)
+	XPLT(Myself,2000)
+	CheckStat(Player1, 0, LEVELDRAIN)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#GreyLevelUp","LOCALS",2)	
+		ChangeStat(Myself,XP,2000,SET)
+		SetInterrupt(TRUE)
+END
+
+
+
+
+/* SoD: Remove story mode extras if Grey is not in party */
+
+IF
+	!InParty(Myself)
+	!Global("C#GreyJoined","GLOBAL",2)
+	CheckSpellState(Myself,STORY_MODE)
+THEN
+	RESPONSE #100
+		ReallyForceSpellDeadRES("OHSMODE3",Myself) 
+		Continue()
+END
+
+

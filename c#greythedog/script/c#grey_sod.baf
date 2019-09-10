@@ -1,0 +1,35 @@
+/* Skript SoD */
+
+
+/* SoD gameplay */
+
+/* Grey will be in front of bed after Skie wakes up PC in Ducal Palace */
+IF
+	Global("bd_plot","global",55)
+	Global("C#Grey_bd_55","bd0103",0)
+	AreaCheck("bd0103")
+	InParty("C#Grey")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		ActionOverride("C#Grey",JumpToPoint([153.477])) 
+		ActionOverride("C#Grey",Face(S))
+		SetGlobal("C#Grey_bd_55","bd0103",1)
+END
+
+
+
+/* move from forest to abduction scene if not in party */
+IF
+	!InParty(Myself)
+	Global("C#GreyJoined","GLOBAL",2)
+	AreaCheck("bd6100")
+	Global("C#Grey_Movebd6100","bd6100",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C#Grey_HPAlarmDone","LOCALS",2)
+	SetGlobal("C#Grey_Movebd6100","bd6100",1)
+	JumpToPoint([886.617])
+	SmallWait(10)
+	MoveToObject(Player1)
+END

@@ -1,0 +1,92 @@
+/* Grey spawn.
+
+
+-he was part of the group in BG1
+-he was either alive or part of the group (or both) at the transition to BGII
+
+
+
+GlobalGT("C#Grey_Exists","GLOBAL",0)
+GlobalLT("C#Grey_Exists","GLOBAL",10)
+!Dead("C#Grey")
+!Global("C#Grey_GreyJondalar","GLOBAL",3)
+
+*/
+
+
+/* he wasn't in the party upon transition, but he is in the game: move him here */
+
+IF
+	!Dead("C#Grey")  // Grey
+	!Allegiance("C#Grey",ENEMY)  // Grey
+	GlobalGT("C#Grey_Exists","GLOBAL",0)
+	GlobalLT("C#Grey_Exists","GLOBAL",10)
+	!Global("C#Grey_GreyJondalar","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#Grey_Exists","GLOBAL",10)
+		ActionOverride("C#Grey",SetDialogue("C#Grey2"))
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
+		ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
+		MoveGlobal("AR0602","C#Grey",[4245.1985])  // Grey
+//		MoveGlobal("AR0602","C#Grey",[3939.2929])  // ##
+		ReallyForceSpellRES("SPWM168","C#Grey")  // Heal
+		SetGlobal("C#GreyJoined","GLOBAL",0)
+	        ActionOverride("C#Grey",DestroyAllEquipment())
+		SetInterrupt(TRUE)
+		Continue()		
+END
+
+
+/* new game: Global("C#Grey_Exists","GLOBAL",0) */
+
+/* new game: we pretend Grey was in the party in BG1 */
+
+
+IF
+	Global("C#Grey_Exists","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#Grey_Exists","GLOBAL",10)
+		CreateCreature("C#Grey02",[4245.1985],8)  // Grey
+	        ActionOverride("C#Grey",DestroyAllEquipment())
+		ActionOverride("C#Grey",SetDialogue("C#Grey2"))
+		ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
+		SetGlobal("C#GreyJoined","GLOBAL",0)
+		%Grey_MakeGlobalOverride%
+		SetInterrupt(TRUE)	
+		Continue()		
+END
+
+
+/* item management: Grey only has his paw */
+
+IF 
+      Global("C#Grey_Exists","GLOBAL",10)	
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+        	SetGlobal("C#Grey_Exists","GLOBAL",11)
+		ActionOverride("C#Grey",SetGlobal("C#GreyLevelUpPaw","LOCALS",6))
+		ActionOverride("C#Grey",GiveItemCreate("c#grpaw6","C#Grey",0,0,0))
+		SmallWait(10)
+		ActionOverride("C#Grey",FillSlot(SLOT_SHIELD))
+		SetInterrupt(TRUE)	
+		Continue()		
+END
+
+/* place some war dog armor */
+
+IF
+      GlobalGT("C#Grey_Exists","GLOBAL",9)
+      Global("C#Grey_weapons","MYAREA",0)	
+THEN
+	RESPONSE #100
+		ActionOverride("JailkeepTable",CreateItem("c#grtoo3",1,0,0))
+		ActionOverride("JailkeepTable",CreateItem("c#grarm3",1,0,0))
+END
+	
+
+

@@ -1,0 +1,32 @@
+IF
+Global("C#Grey_SecondBG1Quest","GLOBAL",0)
+THEN
+RESPONSE #100
+CreateCreature("C#GR1Q22",[3037.1525],12)
+SetGlobal("C#Grey_SecondBG1Quest","GLOBAL",1)
+Continue()
+END
+
+
+IF
+	!PartyHasItem("c#grkey1") // Schlüssel
+	Global("C#Grey_QBG1Key","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_QBG1Key","GLOBAL",1)
+		TriggerActivation("c#gr11Tr",FALSE)
+		TriggerActivation("C#GR11KE",TRUE)
+		Continue()
+END
+
+IF
+	PartyHasItem("c#grkey1") // Schlüssel
+	!Global("C#Grey_QBG1Key","GLOBAL",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("c#gr11Tr",TRUE)
+		TriggerActivation("C#GR11KE",FALSE)
+		SetGlobal("C#Grey_QBG1Key","GLOBAL",0)
+		Continue()
+END
+

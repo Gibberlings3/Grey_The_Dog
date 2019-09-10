@@ -1,0 +1,9 @@
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@100022)
+		AddJournalEntry(@100023,QUEST)
+		SetGlobal("C#Grey_SecondBG1Quest","GLOBAL",4)
+		ApplySpell(Myself,DOPPLEGANGER_CHANGE_DEFAULT_LESSER)  // SPWI987.SPL (No such index)
+END

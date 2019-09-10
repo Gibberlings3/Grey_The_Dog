@@ -1,0 +1,17 @@
+
+
+
+
+
+/* SoD: Remove story mode extras if Grey is not in party */
+
+IF
+	!InParty(Myself)
+	!Global("C#GreyJoined","GLOBAL",2)
+	CheckSpellState(Myself,STORY_MODE)
+THEN
+	RESPONSE #100
+		ReallyForceSpellDeadRES("OHSMODE3",Myself) 
+		Continue()
+END
+

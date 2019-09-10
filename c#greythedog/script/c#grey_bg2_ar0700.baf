@@ -1,0 +1,21 @@
+/* Grey spawns in Waukeen's Promenade if PC skipped Irenicus Dungeon.
+
+Global("C#Grey_Exists","GLOBAL",10) -> PC didn't talk to Grey
+!Dead("C#Grey")
+*/
+
+
+IF 
+	!InMyArea("C#Grey")
+	!Dead("C#Grey")
+	Global("C#Grey_Exists","GLOBAL",11)
+	!Global("C#Grey_GreyJondalar","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_Exists","GLOBAL",12)
+	   	ActionOverride("C#Grey",SetDialog("C#Grey2")
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
+	    	ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
+		MoveGlobalObject("C#Grey",Player1) 
+		ReallyForceSpellRES("SPWM168","C#Grey") //Heal 
+END

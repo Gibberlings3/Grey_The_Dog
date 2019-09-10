@@ -1,0 +1,15 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@50000)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,15)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@50001) // 
+END

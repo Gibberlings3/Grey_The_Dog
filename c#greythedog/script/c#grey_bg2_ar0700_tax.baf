@@ -1,0 +1,16 @@
+/* Tax collector spawns in Waukeen's Promenade */
+
+
+IF 
+	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
+	InMyArea(Player1)
+	InMyArea("C#Grey")
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!See([ENEMY])
+	CombatCounter(0)	
+	Global("C#Grey_TaxFee","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_TaxFee","GLOBAL",1)
+		CreateCreature("C#GRTAX1",[2413.1608],12)
+END

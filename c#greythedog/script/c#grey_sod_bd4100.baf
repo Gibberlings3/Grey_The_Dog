@@ -1,0 +1,15 @@
+/* CHARNAME is accused of murder. Grey comments */
+
+IF
+	Global("bd_plot","global",591)
+	!GlobalTimerNotExpired("bd_mdd1352_ot_timer","bd4100")
+	Global("C#Grey_SoDMurderAccusations","bd4100",0)
+	InMyArea("C#Grey")
+	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck("C#Grey",CD_STATE_NOTVALID) 
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SoDMurderAccusations","bd4100",1)
+		SetGlobalTimer("bd_mdd1352_ot_timer","bd4100",4)
+		DisplayStringHead("C#Grey",@50006)  
+END

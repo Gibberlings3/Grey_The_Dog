@@ -1,0 +1,53 @@
+IF
+InMyArea("c#grey")
+THEN
+RESPONSE #100
+MoveToObject("c#grey")
+Continue()
+END
+
+IF
+Allegiance(Myself,ALLY)
+See(NearestEnemyOf("c#grey"))
+THEN
+RESPONSE #100
+Attack(NearestEnemyOf("c#grey"))
+Continue()
+END
+
+//IF
+//OR(2)
+//HasBounceEffects(LastAttackerOf(Myself))
+//HasImmunityEffects(LastAttackerOf(Myself))              /////not sure about this
+//THEN
+//RESPONSE #100
+//OR(2)
+//!HasBounceEffects(NearestEnemyOf(Myself))
+//!HasImmunityEffects(NearestEnemyOf(Myself))
+//END
+////////////////////
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		Attack(LastAttackerOf(Myself))
+END
+
+
+
