@@ -106,6 +106,7 @@ Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha test
 TOOLS USED
 
 IESDP					https://gibberlings3.github.io/iesdp/index.htm
+
 Near Infinity				https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1
 WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
  					(formerly: http://www.weidu.org)
@@ -133,8 +134,10 @@ https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-ba
 
 LEGAL INFORMATION
 
-=================================================================================
+===============================================================================
+
 Grey the Dog NPC Mod is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
 This mod is also not developed, supported, or endorsed by BioWare, Black Isle Studios, Interplay Entertainment Corp., Overhaul Games or Beamdog. All other trademarks and copyrights are property of their respective owners.
-=================================================================================
+
+===============================================================================
 
