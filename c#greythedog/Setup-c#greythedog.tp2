@@ -17,7 +17,7 @@ AUTHOR ~jastey@web.de~
 
 //MODDER
 
-VERSION ~Beta_1~
+VERSION ~Beta_2~
 
 README ~c#greythedog/readme.%LANGUAGE%.txt~ ~c#greythedog/readme.english.txt~
 
@@ -2277,7 +2277,7 @@ END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
   /* Jarl's Adventure Pack */
 
   ACTION_IF FILE_EXISTS_IN_GAME ~JA#DOPP0.CRE~ THEN BEGIN 
-    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/JAP.d~
+    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/crossmod_jap.d~
     EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/crossmod/JAP.baf~
       EVALUATE_BUFFER
   END ///* Jarl's Adventure Pack */
