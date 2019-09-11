@@ -84,9 +84,7 @@ Grey has no clear fog of war effect, so when following as 7th party member, he m
 
 INSTALLATION
 
-Unzip the folder "c#greythedog" and the "setup-c#greythedog.exe" into your game folder (BG:EE/SOD/BG2/BGT/BGII:EE/EET) directory. Double click the "setup-c#greythedog.exe" and follow the instructions onscreen. Make sure the game is not running while installing the mod. Do not run more than one mod setup at a time. Close the command window after installation by pressing "Enter" (not clicking on the red cross.)
-
-Currently, only the Windows version of the mod exists. Using the correct install method, it should be working on MAC OS X and Linux installs, too.
+Windows: Unzip the folder "c#greythedog" and the "setup-c#greythedog.exe" into your game folder (BG:EE/SOD/BG2/BGT/BGII:EE/EET) directory. Double click the "setup-c#greythedog.exe" and follow the instructions onscreen. Make sure the game is not running while installing the mod. Do not run more than one mod setup at a time. Close the command window after installation by pressing "Enter" (not clicking on the red cross.)
 
 For BGT, install ToBEx to restrict Grey from using some maces and boots.
 
@@ -140,6 +138,13 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version Beta_3:
+-really fixed install problem for BGT with JAP
+-bg1 crossmod content traified
+
+Version Beta_2:
+-fixed install problem for BGT with JAP
 
 Version Beta_1:
 -first public release

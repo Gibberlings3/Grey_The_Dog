@@ -17,7 +17,7 @@ AUTHOR ~jastey@web.de~
 
 //MODDER
 
-VERSION ~Beta_2~
+VERSION ~Beta_3~
 
 README ~c#greythedog/readme.%LANGUAGE%.txt~ ~c#greythedog/readme.english.txt~
 
@@ -2292,7 +2292,7 @@ ACTION_IF GAME_IS ~tob bg2ee bgt eet~ THEN BEGIN
   /* Ajantis BGII */
 
   ACTION_IF FILE_EXISTS_IN_GAME ~C#AjanB.dlg~ THEN BEGIN
-    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/ajantis.d~
+    COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/ajantis_bg2.d~
   END /* Ajantis BGII */
 
 /* Brandock */
