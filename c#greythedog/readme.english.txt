@@ -139,6 +139,11 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version Beta_4: 
+-c#grto62.itm is not being installed (has a faulty header or something)
+-option for Taerom's Ankheg wardog armor should now be available (BG:EE, EET)
+-Severin hands over Brage's bracelets if Grey is 7th party member
+
 Version Beta_3:
 -really fixed install problem for BGT with JAP
 -bg1 crossmod content traified

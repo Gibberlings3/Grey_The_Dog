@@ -347,8 +347,8 @@ SAY @67
 !StateCheck("C#Grey",CD_STATE_NOTVALID)~ + @68 + amnis_04
 + ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
 !StateCheck("C#Grey",CD_STATE_NOTVALID)~ + @69 EXIT
-IF ~OR(2)
-!InParty("C#Grey")
+IF ~!Global("C#GreyJoined","GLOBAL",2)
+OR(2) !InParty("C#Grey")
 StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN EXIT
 END
 

@@ -1,6 +1,5 @@
 /* 
 
-
 ////////////
 known issues: see readme
 
@@ -17,7 +16,7 @@ AUTHOR ~jastey@web.de~
 
 //MODDER
 
-VERSION ~Beta_3~
+VERSION ~Beta_4~ 
 
 README ~c#greythedog/readme.%LANGUAGE%.txt~ ~c#greythedog/readme.english.txt~
 
@@ -1041,6 +1040,7 @@ Damage: 1d8+2 (piercing)
 Speed Factor: 2
 Proficiency Type: Dagger~
 
+/* item is faulty ##
 /* Vampire Booster enforced by Cespenar */
 
 COPY ~c#greythedog/items/c#grto62.itm~ ~override/c#grto62.itm~
@@ -1056,6 +1056,8 @@ THAC0: +2
 Damage: 1d8+4 (piercing)
 Speed Factor: 2
 Proficiency Type: Dagger~
+
+*/
 
 
 /* Full Plate Mail +2 */
@@ -1866,8 +1868,44 @@ ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
 
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey.d~
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/grey_npc_bg1.d~
-COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_interjections_BG1.d~
 
+ACTION_IF GAME_IS ~bgt~ THEN BEGIN
+  COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_interjections_BG1.d~
+END
+
+/* add more reply options to Taerom for BG:EE */
+ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
+
+<<<<<<<< ...inlined/C#GREY_bgee_add.D
+EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
++ ~Global("MakeArmor","GLOBAL",2) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~setGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
+END
+
+APPEND ~%tutu_var%TAEROM~
+
+IF ~~ THEN wardog_armor_02_b
+SAY @56
+COPY_TRANS ~%tutu_var%TAEROM~ 0
+END
+
+IF ~~ THEN wardog_armor_03_c
+SAY @57
+IF ~~ THEN + wardog_armor_02
+END
+
+IF ~~ THEN wardog_armor_03_d
+SAY @58
+IF ~~ THEN + wardog_armor_02
+END
+END
+>>>>>>>>
+COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_interjections_BG1.d~
+		 ~...inlined/C#GREY_bgee_add.D~ USING ~c#greythedog\tra\%LANGUAGE%\c#grey_interjections_BG1.tra~
+END
 
 /* BG1 Quest */
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/Grey_quest_BG1.d~
