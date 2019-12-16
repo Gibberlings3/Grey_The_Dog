@@ -65,7 +65,11 @@ THEN
 		DisplayStringHead(Myself,@50004)
 		ChangeEnemyAlly(Myself, FAMILIAR)
 		AddFamiliar()	
-		SetDialog("C#GreyJ")	
+		SetDialog("C#GreyJ")
+		ChangeAIScript("DEFAULT",CLASS)
+		ChangeAIScript("",RACE)
+		ChangeAIScript("",GENERAL)
+		ChangeAIScript("",DEFAULT)	
 		DisplayStringHead(Myself,@50007)
 END
 
@@ -124,6 +128,10 @@ THEN
 		ClearActions(Myself)
 		RemoveFamiliar()
 		ChangeEnemyAlly(Myself,NEUTRAL)
+		ChangeAIScript("",CLASS)
+		ChangeAIScript("",RACE)
+		ChangeAIScript("",GENERAL)
+		ChangeAIScript("",DEFAULT)	
 		SetGlobal("C#Grey_IsUnconscious","GLOBAL",1)
 END
 

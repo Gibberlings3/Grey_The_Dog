@@ -26,4 +26,8 @@ THEN
 		ActionOverride("C#Grey",ChangeEnemyAlly(Myself, FAMILIAR))
 		ActionOverride("C#Grey",SetDialog("c#greyj"))
 		ActionOverride("C#Grey",AddFamiliar())
+		ActionOverride("C#Grey",ChangeAIScript("DEFAULT",CLASS))
+		ActionOverride("C#Grey",ChangeAIScript("",RACE))
+		ActionOverride("C#Grey",ChangeAIScript("",GENERAL))
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))	
 END

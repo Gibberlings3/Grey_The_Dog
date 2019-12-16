@@ -1,5 +1,4 @@
 /* 
-
 ////////////
 known issues: see readme
 
@@ -11,14 +10,14 @@ known issues: see readme
 BACKUP ~c#greythedog/Backup~
 //Idea and first kit draft by Rabain
 
-AUTHOR ~jastey@web.de~
+AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 
 //MODDER
 
-VERSION ~Beta_4~ 
+VERSION ~Beta_8~ 
 
-README ~c#greythedog/readme.%LANGUAGE%.txt~ ~c#greythedog/readme.english.txt~
+README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
 AUTO_TRA ~c#greythedog/tra/%s~
 
@@ -137,7 +136,7 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
     INCLUDE ~c#greythedog/lib/g3_bgee_cpmvars.tpa~
     OUTER_SPRINT ~IT_IS_BG2~ ~False()~
     OUTER_SPRINT ~IT_IS_SOD~ ~GlobalGT("BD_PLOT","GLOBAL",0)~
-    OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobalOverride())~
+    OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobal())~
   END
 
   /* SoD */
@@ -243,9 +242,9 @@ APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
  ~0x80101FEF CD_STATE_NOTVALID~
  UNLESS ~CD_STATE_NOTVALID~
 
+
+
 /* BGT, BGII: fixed Moondog Avatar (from BG2Fixpack) */
-
-
 
 ACTION_IF (GAME_IS ~bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ "0") //makes sure the fixpack isn't already installed
 
@@ -421,11 +420,13 @@ SAY DESC  @10016 /* ~Slashing at his opponent Grey will open up a long wound wit
 
 /* silent Abilities  */
 
-COPY ~c#greythedog/spells/c#grirma.spl~ ~override/c#grirma.spl~ //(disable weapon type "17": mace, disable item type "4": boots, disable button "talk", add effect "clear fog of war")
-COPY ~c#greythedog/spells/c#gre001.spl~ ~override/c#gre001.spl~ //fist damage bonus +1
-COPY ~c#greythedog/spells/c#gre002.spl~ ~override/c#gre002.spl~ //fist thaco bonus +1
+COPY ~c#greythedog/spells/c#grirma.spl~ ~override/c#grirma.spl~ //(disable weapon type "17": mace, disable item type "4": boots, disable button "talk")
+
+COPY ~c#greythedog/spells/c#gre002.spl~ ~override/c#gre002.spl~ //damage + THAC0 bonus against bears, wolves, humans
 COPY ~c#greythedog/spells/c#gre003.spl~ ~override/c#gre003.spl~ //immunity to blindness
 
+//Effects
+COPY ~c#greythedog/eff/.~ ~override~
 
 
 ///items///
@@ -443,12 +444,12 @@ STATISTICS:
 Armor Class Bonus:  1
 ~ */
 
-ACTION_IF GAME_IS ~bg2ee tob bgt eet~ BEGIN
-
 COPY ~c#greythedog/items/c#grcol2.ITM~ ~override/c#grcol2.ITM~
 SAY NAME1 @10019 /* ~War dog's Collar~ */
 SAY NAME2 @10019 /* ~War dog's Collar~ */
 SAY IDENTIFIED_DESC @10020 /* ~This is a war dog's collar, sturdy but without any special abilities.~ */
+
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ BEGIN
 
 COPY ~c#greythedog/items/c#grcol3.ITM~ ~override/c#grcol3.ITM~
 SAY NAME1 @10021 /* ~War dog's Collar +1~ */
@@ -460,6 +461,9 @@ STATISTICS:
 Armor Class Bonus:  1
 ~ */
 
+END //~bg2ee tob bgt eet~
+
+
 COPY ~c#greythedog/items/c#grcol4.ITM~ ~override/c#grcol4.ITM~
 SAY NAME1 @10023 /* ~War dog's Collar +2~ */
 SAY NAME2 @10023 /* ~War dog's Collar +2~ */
@@ -470,7 +474,6 @@ STATISTICS:
 Armor Class Bonus:  2
 ~ */
 
-END //~bg2ee tob bgt eet~
 
 
 
@@ -559,7 +562,25 @@ Requires: 6 Strength
 
 
 
+/* (BGII) Full Plate Mail +2 */
 
+ACTION_IF GAME_IS ~bg2ee tob bgt eet~ BEGIN
+
+COPY ~c#greythedog/items/c#grarm6.ITM~ ~override/c#grarm6.ITM~
+SAY NAME1 ~War Dog's Full Plate Mail +2~
+SAY NAME2 ~War Dog's Full Plate Mail +2~
+SAY UNIDENTIFIED_DESC ~This is a war dog's armor.~
+SAY IDENTIFIED_DESC ~This is a war dog's full plate armor. The perfectly fitted interlocking plates are specially angled to deflect arrows and blows. With its magical enchantments, this covering of full plate is ideal for war dogs.
+
+STATISTICS:
+
+Armor Class: -1 (-5 vs. slashing, -4 vs. piercing and missile)
+Requires:
+ 15 Strength
+
+Weight: 25~
+
+END //~bg2ee tob bgt eet~
 
 
 
@@ -1060,22 +1081,6 @@ Proficiency Type: Dagger~
 */
 
 
-/* Full Plate Mail +2 */
-
-COPY ~c#greythedog/items/c#grarm6.ITM~ ~override/c#grarm6.ITM~
-SAY NAME1 ~War Dog's Full Plate Mail +2~
-SAY NAME2 ~War Dog's Full Plate Mail +2~
-SAY UNIDENTIFIED_DESC ~This is a war dog's armor.~
-SAY IDENTIFIED_DESC ~This is a war dog's full plate armor. The perfectly fitted interlocking plates are specially angled to deflect arrows and blows. With its magical enchantments, this covering of full plate is ideal for war dogs.
-
-STATISTICS:
-
-Armor Class: -1 (-5 vs. slashing, -4 vs. piercing and missile)
-Requires:
- 15 Strength
-
-Weight: 25~
-
 /* BGII quest items */
 
 /* tax note */
@@ -1102,11 +1107,11 @@ ACTION_IF GAME_IS ~bgt bgee eet~ THEN BEGIN
 
 IF
 	!Global("C#GreyJoined","GLOBAL",0)
-	Global("C#Grey_PLaceAR1502","AR1502",0)
+	Global("C#Grey_PLaceAR1502","MYAREA",0)
 THEN
 	RESPONSE #100
 		ActionOverride("Container3",CreateItem("c#grbel1",0,0,0)) 
-		SetGlobal("C#Grey_PLaceAR1502","AR1502",1)
+		SetGlobal("C#Grey_PLaceAR1502","MYAREA",1)
 		Continue()
 END
 >>>>>>>>
@@ -1119,11 +1124,11 @@ LAF extend_area_script STR_VAR area="%IsleofBalduranNShip_D2%" top="...inlined/c
 <<<<<<<< ...inlined/c#grey_ar1900_in.baf
 IF
 	!Global("C#GreyJoined","GLOBAL",0)
-	Global("C#Grey_PLaceAR1900","AR1900",0)
+	Global("C#Grey_PLaceAR1900","MYAREA",0)
 THEN
 	RESPONSE #100
 		ActionOverride("Container26",CreateItem("c#grtoo2",0,0,0)) 
-		SetGlobal("C#Grey_PLaceAR1900","AR1900",1)
+		SetGlobal("C#Grey_PLaceAR1900","MYAREA",1)
 		Continue()
 END
 >>>>>>>>
@@ -1135,12 +1140,12 @@ LAF extend_area_script STR_VAR area="%BanditCamp%" top="...inlined/c#grey_ar1900
 <<<<<<<< ...inlined/c#grey_ar1805_in.baf
 IF
 	!Global("C#GreyJoined","GLOBAL",0)
-	Global("C#Grey_PLaceAR1805","AR1805",0)
+	Global("C#Grey_PLaceAR1805","MYAREA",0)
 THEN
 	RESPONSE #100
 		ActionOverride("Container2",CreateItem("c#grarm2",0,0,0)) 
 		ActionOverride("Container2",CreateItem("c#grrin3",0,0,0)) 
-		SetGlobal("C#Grey_PLaceAR1805","AR1805",1)
+		SetGlobal("C#Grey_PLaceAR1805","MYAREA",1)
 		Continue()
 END
 >>>>>>>>
@@ -1151,13 +1156,13 @@ LAF extend_area_script STR_VAR area="%CloakwoodMines_Barracks_L1%" top="...inlin
 <<<<<<<< ...inlined/c#grey_ar2626_in.baf
 IF
 	!Global("C#GreyJoined","GLOBAL",0)
-	Global("C#Grey_PLaceAR2626","AR2626",0)
+	Global("C#Grey_PLaceAR2626","MYAREA",0)
 THEN
 	RESPONSE #100
 		ActionOverride("Container3",CreateItem("c#grtoo3",0,0,0)) 
 		ActionOverride("Container3",CreateItem("c#grbel3",0,0,0)) 
 		ActionOverride("Container3",CreateItem("c#grrin1",0,0,0)) 
-		SetGlobal("C#Grey_PLaceAR2626","AR2626",1)
+		SetGlobal("C#Grey_PLaceAR2626","MYAREA",1)
 		Continue()
 END
 >>>>>>>>
@@ -1207,11 +1212,11 @@ ADD_CRE_ITEM ~c#grrin2~ #3 #0 #0 ~IDENTIFIED~ ~INV~
 <<<<<<<< ...inlined/c#grey_ar1900_in_2.baf
 IF
 	!Global("C#GreyJoined","GLOBAL",0)
-	Global("C#Grey_PLaceWDAR1900","AR1900",0)
+	Global("C#Grey_PLaceWDAR1900","MYAREA",0)
 THEN
 	RESPONSE #100
 		CreateCreature("c#grwdo1",[3226.1219],12) 
-		SetGlobal("C#Grey_PLaceWDAR1900","AR1900",1)
+		SetGlobal("C#Grey_PLaceWDAR1900","MYAREA",1)
 		Continue()
 END
 >>>>>>>>
@@ -1259,11 +1264,11 @@ ADD_CRE_ITEM ~c#grbel2~ #3 #0 #0 ~IDENTIFIED~ ~INV~
 <<<<<<<< ...inlined/c#grey_ar1800_in.baf
 IF
 	!Global("C#GreyJoined","GLOBAL",0)
-	Global("C#Grey_PLaceWDAR1800","AR1800",0)
+	Global("C#Grey_PLaceWDAR1800","MYAREA",0)
 THEN
 	RESPONSE #100
 		CreateCreature("c#grwdo2",[1580.1778],12) 
-		SetGlobal("C#Grey_PLaceWDAR1800","AR1800",1)
+		SetGlobal("C#Grey_PLaceWDAR1800","MYAREA",1)
 		Continue()
 END
 >>>>>>>>
@@ -1281,15 +1286,15 @@ SAY STORE_NAME @10096 /* ~Wardog Armory and Weaponry~ */
 LAF extend_area_script STR_VAR area="%NashkelCarnival%" top="c#greythedog/script/c#grey_Ar4900.baf" END
 
 COPY_EXISTING ~c#gr1mt1.sto~ ~override~
+ADD_STORE_ITEM ~c#grcol2~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grtoo0~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grtoo2~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grtoo3~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grhelm~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grarm1~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grarm2~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grarm3~ #0 #0 #0 ~IDENTIFIED~ #1
-ADD_STORE_ITEM ~c#grarm4~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grcl03~ #0 #0 #0 ~IDENTIFIED~ #1
-ADD_STORE_ITEM ~c#grcl02~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grrin4~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grrin2~ #0 #0 #0 ~IDENTIFIED~ #1
 
@@ -1298,7 +1303,7 @@ ADD_STORE_ITEM ~c#grrin2~ #0 #0 #0 ~IDENTIFIED~ #1
 LAF extend_area_script STR_VAR area="%CentralBaldursGate%" top="c#greythedog/script/c#grey_Ar0700.baf" END
 
 COPY_EXISTING ~c#gr1mt2.sto~ ~override~
-ADD_STORE_ITEM ~c#grtoo0~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcol4~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grtoo2~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grtoo3~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grhelm~ #0 #0 #0 ~IDENTIFIED~ #1
@@ -1307,8 +1312,11 @@ ADD_STORE_ITEM ~c#grarm3~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grarm4~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grcl03~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grcl02~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grcl01~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grrin4~ #0 #0 #0 ~IDENTIFIED~ #1
 ADD_STORE_ITEM ~c#grrin2~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grrin3~ #0 #0 #0 ~IDENTIFIED~ #1
+ADD_STORE_ITEM ~c#grrin1~ #0 #0 #0 ~IDENTIFIED~ #1
 
 
 /* Taerom shop */
@@ -1470,7 +1478,7 @@ COPY_EXISTING ~c#greythedog/area/BG/c#gr11.are~ ~override~
     STR_VAR
     fj_structure_type   = region
     fj_name             = c#gr11Ex
-    fj_destination_area = EVAL %EBaldursGate%
+    fj_destination_area = EVAL ~%EBaldursGate%~
     fj_destination_name = c#gr11Ex
   END
 
@@ -1798,7 +1806,7 @@ ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
 
 
 /* was not in party upon transition or new game: spawn him in AR0602.are */
-  EXTEND_TOP ~AR0602.bcs~ ~c#greythedog/script/c#grey_bg2_ar0602.baf~
+  EXTEND_BOTTOM ~AR0602.bcs~ ~c#greythedog/script/c#grey_bg2_ar0602.baf~
 EVALUATE_BUFFER
 
 
@@ -1824,13 +1832,13 @@ END
 
 /* additions to script for BGII-engine */
 
-ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+ACTION_IF (GAME_IS ~bgt tob~ OR (GAME_IS ~bgee~ AND NOT FILE_EXISTS_IN_GAME ~bd0103.are~)) THEN BEGIN
   EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_lvl.baf~
 END
 
 /* additions to script for EE-engine */
 
-ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
+ACTION_IF (GAME_IS ~bg2ee~ OR (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~)) THEN BEGIN
   EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_lvl_ee.baf~
 END
 
@@ -1869,43 +1877,10 @@ ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey.d~
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/grey_npc_bg1.d~
 
-ACTION_IF GAME_IS ~bgt~ THEN BEGIN
-  COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_interjections_BG1.d~
-END
-
-/* add more reply options to Taerom for BG:EE */
-ACTION_IF GAME_IS ~bgee eet~ THEN BEGIN
-
-<<<<<<<< ...inlined/C#GREY_bgee_add.D
-EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
-+ ~Global("MakeArmor","GLOBAL",2) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~setGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
-END
-
-APPEND ~%tutu_var%TAEROM~
-
-IF ~~ THEN wardog_armor_02_b
-SAY @56
-COPY_TRANS ~%tutu_var%TAEROM~ 0
-END
-
-IF ~~ THEN wardog_armor_03_c
-SAY @57
-IF ~~ THEN + wardog_armor_02
-END
-
-IF ~~ THEN wardog_armor_03_d
-SAY @58
-IF ~~ THEN + wardog_armor_02
-END
-END
->>>>>>>>
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#grey_interjections_BG1.d~
-		 ~...inlined/C#GREY_bgee_add.D~ USING ~c#greythedog\tra\%LANGUAGE%\c#grey_interjections_BG1.tra~
-END
+
+
+
 
 /* BG1 Quest */
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/Grey_quest_BG1.d~

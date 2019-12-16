@@ -42,7 +42,11 @@ IF ~~ THEN DO ~SetGlobal("C#GreyJoined","GLOBAL",2)
 %Grey_MakeGlobalOverride%
 ChangeEnemyAlly(Myself, FAMILIAR)
 AddFamiliar()
-SetDialog("C#GreyJ")~ EXIT
+SetDialog("C#GreyJ")
+ChangeAIScript("DEFAULT",CLASS)
+ChangeAIScript("",RACE)
+ChangeAIScript("",GENERAL)
+ChangeAIScript("",DEFAULT)~ EXIT
 END
 
 

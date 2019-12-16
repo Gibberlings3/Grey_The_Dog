@@ -1,10 +1,23 @@
 /// BG1 ///
 
-Items - placement in the game
+War Dog's items and placement in the game
+
+Collars:
+---------
+c#grcol1.ITM (Grey's Collar, AC bonus +1)
+
+c#grcol2.ITM (normal collar)
+
+c#grcol4.ITM (War dog's Collar, AC bonus +2)
 
 
-c#grhelm.ITM (normal helm) 
+Helms:
+---------
+c#grhelm.ITM (normal helm)
+ 
 
+Armor:
+---------
 c#grarm1.ITM (Armor Class: 6) 
 
 c#grarm2.ITM (Armor Class: 4) 
@@ -16,7 +29,8 @@ c#grarm4.ITM (Armor Class: 0)
 c#grarm5.ITM (War dog Ankheg armor) -> Taerom via dialogue
 
 
-
+Rump Shield Runes:
+---------
 c#grbel1.ITM (Armor Class Bonus:  1) 
 
 c#grbel2.ITM (Electricity Resistance:  +10% bonus)
@@ -24,7 +38,8 @@ c#grbel2.ITM (Electricity Resistance:  +10% bonus)
 c#grbel3.ITM (Poison Resistance:  +5% bonus; Acid Resistance:  +5% bonus)
 
 
-
+Nape Rune:
+---------
 c#grcl01.ITM (Armor Class:  +1 bonus; Saving Throw:  +1 bonus)
 
 c#grcl02.ITM (Magic Resistance: 5%) 
@@ -32,7 +47,8 @@ c#grcl02.ITM (Magic Resistance: 5%)
 c#grcl03.ITM (Fire Resistance:  +5% bonus; Cold Resistance:  +5% bonus)
 
 
-
+Bracelets:
+---------
 c#grrin1.ITM (Strength Bonus: +1)
 
 c#grrin2.ITM (THACO:  +1 bonus; Damage:  +2 bonus)
@@ -42,24 +58,30 @@ c#grrin3.ITM (~War Dog's Bracelets of Free Action)
 c#grrin4.ITM (Fire Resistance:  +40%) 
 
 
-tooth enforcer
+Canine Enforcer:
+---------
+c#grtoo0.itm tooth enforcer
 
-tooth enforcer +1 
+c#grtoo2.itm tooth enforcer +1 
 
-tooth enforcer +2 
+c#grtoo3.itm tooth enforcer +2 
 
-poison tooth enforcer -> Taerom via dialogue [Giant Spider's Fang]
+c#grtoo1.itm poison tooth enforcer -> Taerom via dialogue [Giant Spider's Fang]
 
 
-luck toy -> equipped upon joining
+Dog Toys:
+---------
+c#grtoy1.ITM luck toy -> equipped upon joining
 
-chew toy (+9 HP bonus) -> reward from Alfie
+c#grtoy3.ITM chew toy (+9 HP bonus tow times a day) -> reward from Albert
 
 
 
 
 BGII (list not finished yet)
 
+Gauntlets:
+---------
 c#grbrac.ITM ~War Dog's Gauntlets of Speed~
 
 
@@ -71,26 +93,58 @@ c#grbrac.ITM ~War Dog's Gauntlets of Speed~
 Placement in game - BG1
 
 Always:
+Grey comes equipped with:
+BG1:
+-c#grcol1.itm (Grey's collar, AC bonus +1)
+-c#grtoo0.itm (War Dog's Canine Booster: 1d8 (piercing))
+-c#grarm1.ITM (War Dog's Studded Leather Armor +1, Armor Class: 6)
+-c#grpaw#.ITM (Grey's paw, damage type crushing, unequippable)
+-c#grtoy1.ITM (luck toy +1 Luck bonus three times per day)
+
 
 Taerom's shop
--c#grhelm.ITM (normal helm)
+-c#grhelm.ITM (normal helm) (can be found in Bandit Camp & Cloakwood Mines)
 -c#grarm3.ITM (Armor Class: 2)
--c#grarm4.ITM (Armor Class: 0)
+-c#grarm4.ITM (Armor Class: 0) (can be found in Cloakwood Mines)
 
 Taerom, via dialogue
-+c#grarm5.ITM (War dog Ankheg armor)
-+poison tooth enforcer
+-c#grarm5.ITM (War dog Ankheg armor)
+-c#grtoo1.itm (poison tooth enforcer)
 
-Nashkel Carnival & BG city, Carnival
+Nashkel Carnival War Dog Armorer
 Merchants for wardog armor and weaponry:
--c#grhelm.ITM (normal helm)
--c#grarm2.ITM (Armor Class: 4)
--c#grarm3.ITM (Armor Class: 2)
--c#grarm4.ITM (Armor Class: 0)
--c#grcl03.ITM (Fire Resistance:  +5% bonus; Cold Resistance:  +5% bonus)
--c#grcl02.ITM ((Magic Resistance: 5%)
--c#grrin4.ITM (Fire Resistance:  +40%)
--c#grrin2.ITM (THACO:  +1 bonus; Damage:  +2 bonus)
+-c#grcol2.itm (normal collar)
+-c#grtoo0.itm (War Dog's Canine Booster: 1d8 (piercing))
+-c#grtoo2.itm (War Dog's Canine Booster: 1d8+1 (piercing)) (can be found in Bandit Camp)
+-c#grtoo3.itm (War Dog's Canine Booster: 1d8+2 (piercing))
+-c#grhelm.ITM (normal helm) (can be found in Bandit Camp & Cloakwood Mines)
+-c#grarm1.ITM (War Dog's Studded Leather Armor +1, Armor Class: 6)
+-c#grarm2.ITM (War Dog's Splint Mail Armor, Armor Class: 4) (can be found in Bandit Camp & Cloakwood Mines)
+-c#grarm3.ITM (War Dog's Plate Mail Armor +1, Armor Class: 2)
+-c#grcl03.ITM (War Dog's Nape Rune, Fire and Cold Resistance: +5% bonus)
+-c#grrin4.ITM (War Dog's Bracelets, Fire Resistance: +40%)
+-c#grrin2.ITM (War Dog's Bracelets, THACO:  +1 bonus; Damage: +2 bonus)
+
+BG city, Carnival War Dog Armorer
+Merchants for wardog armor and weaponry:
+-c#grcol4.itm (War dog's Collar +2)
+-c#grtoo2.itm (War Dog's Canine Booster: 1d8+1 (piercing)) (can be found in Bandit Camp)
+-c#grtoo3.itm (War Dog's Canine Booster: 1d8+2 (piercing)) (can be found in Candlekeep Ch 6)
+-c#grhelm.ITM (normal helm) (can be found in Bandit Camp & Cloakwood Mines)
+-c#grarm2.ITM (War Dog's Splint Mail Armor, Armor Class: 4) (can be found in Bandit Camp & Cloakwood Mines)
+-c#grarm3.ITM (War Dog's Plate Mail Armor +1, Armor Class: 2)
+-c#grarm4.ITM (War Dog's Full Plate Mail, Armor Class: 0)
+-c#grcl03.ITM (Fire Resistance:  +5% bonus; Cold Resistance: +5% bonus)
+-c#grcl02.ITM (War Dog's Nape Rune, Magic Resistance: 5%)
+-c#grcl01.ITM (War Dog's Nape Rune of Protection, AC and Saving Throw: +1 bonus) (can be found in Cloakwood Mines)
+-c#grrin4.ITM (War Dog's Bracelets, Fire Resistance: +40%) (can be found in Cloakwood Mines)
+-c#grrin3.ITM (War Dog's Bracelets of Free Action) (can be found in Cloakwood Mines)
+-c#grrin2.ITM (War Dog's Bracelets, THACO:  +1 bonus; Damage: +2 bonus)
+-c#grrin1.ITM (War Dog's Bracelets of Strength +1) (can be found in Candlekeep Ch 6)
+
+
+From Albert if Rufie is brought to him:
+-c#grtoy3.ITM chew toy (+9 HP bonus tow times a day) (*special: cannot be bought*)
 
 
 Chapter 3:
@@ -107,7 +161,7 @@ Cloakwood Mines AR1800 outside: an attacking war dog
 -c#grhelm.ITM (normal helm)
 -c#grarm4.ITM (Armor Class: 0)
 -c#grcl01.ITM (Armor Class:  +1 bonus; Saving Throw:  +1 bonus)
--c#grbel2.ITM (Electricity Resistance:  +10% bonus)
+-*c#grbel2.ITM (Electricity Resistance:  +10% bonus) (*special: cannot be bought*)
 
 barracks AR1805 in a chest
 -c#grarm2.ITM (Armor Class: 4)
@@ -116,6 +170,6 @@ barracks AR1805 in a chest
 Chapter 6:
 Candlekeep [Ch.6]: AR2626, chest outside the barracks
 -tooth enforcer +2 
--c#grbel3.ITM (Poison Resistance:  +5% bonus; Acid Resistance:  +5% bonus)
+-*c#grbel3.ITM (Poison Resistance:  +5% bonus; Acid Resistance:  +5% bonus) (*special: cannot be bought*)
 -c#grrin1.ITM (Strength Bonus: +1)
 

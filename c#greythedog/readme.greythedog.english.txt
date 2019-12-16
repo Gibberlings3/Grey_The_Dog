@@ -7,9 +7,9 @@ Everything else: jastey
 
 GENERAL
 
-Please note: Beta_1 officially contains only BG1 content. Grey should already be fully functional in SoD (but only in English), but BGII content is not done yet. 
+Please note: So far, the mod officially contains BG1 content only. Grey should already be fully functional in SoD (but only in English), but BGII content is not done yet. 
 
-Grey is a full-fledged joinable NPC, but still a real dog. The only magic on him is his enchanted collar that gives 1 AC bonus.
+Grey is a full-fledged joinable NPC, but still a real dog. The only magic on him is his magically enchanted items.
 He has sensible interjections (Woof!), NPC banters (mostly NPC dialogues about him with the PC), a click dialogue (PID) if the PC feels like playing fetch or just needs someone to talk to. There are dialogue options that reflect the game story and I'll promise: Grey will always listen to your PC's woes. Grey initiates no dialogues so there is no friendship track and - I am really sorry, but no romance. Not even for Shapeshifters.
 In BG1 there are two small quests, both available in BG city. The quests are also available and solvable without Grey in party.
 Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees. This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
@@ -73,9 +73,9 @@ KNOWN ISSUES
 
 Without ToBEx, Grey will be able to use some maces and boots in BGT. Install ToBEx to restrict these items for Grey.
 
-Especially for BGT but also for the EE games, Grey will be able to use (or at least equip) some items/weapons. Just play around those (or use them if it doesn't disturb you).
+Especially for BGT but also for the EE games, Grey will be able to use (or at least equip) some items/weapons. Just ignore those (or use them if it doesn't disturb you).
 
-In some game cutscenes, Grey might be visible at places where he shouldn't be. I'm not sure how to solve this.
+In some game cutscenes, Grey might be visible at places where he shouldn't be as 7th party member. I'm not sure how to solve this.
 
 Paper doll: currently, the wolf paper doll is added to the MDOG animation (renamed to MDOGINV.BAM). In case this leads to any compatibility problems, let me know.
 
@@ -138,6 +138,28 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version Beta_8:
+-Fist damage bonus also removed from kit.
+
+Version Beta_7:
+-Fixes dialog-Bug in EE (introduced in Beta_6)
+
+Version Beta_6:
+-BGII starting cutscene should start
+
+Version Beta_5:
+-Exit of Mod area (C#GR11) no longer crashes game
+-Grey's toys should be equipable in BGT
+-Grey's joining dialogue will not trigger before Imoen's
+-if following in 7th party member mode, Grey will no longer become hostile if hit by friendly fire.
+-Taerom's offer for Grey's Ankheg armor should also work if "Taerom always buys Ankheg shells" tweak is installed (BGT)
+- Madeleines Key is now "key" (so it fits into the key ring)
+-fist thaco bonus +1 removed from kit to fix THAC0 mismatch
+-kit now grants THAC0 bonus +1 and damage bonus +1 for humans, wolves, bears (Lv 1,5,15,25,35)
+-poison tooth enforcer should give poison damage
+-Gate Keeper dialogue changed slightly
+-changed readme name to unique one
 
 Version Beta_4: 
 -c#grto62.itm is not being installed (has a faulty header or something)
