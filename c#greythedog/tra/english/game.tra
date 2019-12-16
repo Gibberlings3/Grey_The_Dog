@@ -2,17 +2,18 @@
 @10001  = ~Wolfhound: this breed of dog is one of the largest non-magical dogs seen in nature. Some specimens have been measured at over a metre at the shoulder and can stand some 7 ft in height on their hind legs. The wolfhound was originally bred as a coursing hound. Sleek yet large these dogs made excellent hunting animals no matter the prey. Being less common than the typical wardog, Wolfhounds are rarely seen in Realms these days and are highly sought after as breeding stock by nobles and commoners alike.
 
   Wolfhounds being more intelligent than the average street dog make excellent companions and, once you earn their trust, steadfast defenders.
-  
+
+ 
   Advantages:
   -Attack speed factor -1 every 10 levels from level 1.
   -Movement modifier -1 at levels 1,5 and every 10 levels thereafter.
-  -Fist damage bonus of 1 at levels 9, 12, 15, 25.
-  -Fist THACO bonus of 1 every level from level 2 to 20. 
   -Gains Tracking Ability at level 7 plus 1 extra use every 5 levels thereafter.
   -At level 5 gains immunity to blindness: Grey detects his enemies with his sense of smell.
   -From level 6 onwards gains Bark: will instill Fear and panic in enemies and bolster own resistance to fear. At later levels this resistance expands to include the party as well as all effects increasing in duration. Extra use every 6 levels.
   -From level 8 onwards gains True Sight: Grey will sniff through any invisibility. Extra use every 8 levels.
   -From level 10 gains Alpha Call: can call on any dogs in the local area to come to his aid.  The dogs called improve as Grey gets more powerful. Gains extra use every 10 levels. This ability does not work indoors.
+
+  -Due to his special training, Grey has THAC0 and damage bonus +1 against humans, wolves, and bears (level 1,5, and every 10th level after).
   
   Disadvantages:
   -Cannot use conventional weapons or armor.
@@ -172,15 +173,17 @@ Weight:  0
 ~
 @10055  = ~War Dog's Bracelets~
 @10056  = ~War Dog's Bracelets of Strength~
-@10057  = ~These are war dog's bracelets.~
-@10058  = ~These war dog's bracelets are enchanted so they give a strength bonus.
+@10057  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.~
+@10058  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they give a strength bonus.
 
 STATISTICS:
 
 Strength Bonus: +1
 ~
 @10059  = ~War Dog's Bracelets of Weapon Expertise~
-@10060  = ~War Dog's Bracelets of Weapon Expertise.  
+@10060  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they give a bonus of weapon expertise.  
 
 STATISTICS:
 
@@ -188,14 +191,16 @@ THACO:  +1 bonus
 Damage:  +2 bonus
 ~
 @10061  = ~War Dog's Bracelets of Free Action~
-@10062  = ~War Dog's Bracelets of Free Action
+@10062  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they grant Free Action.
 
 STATISTICS:
 
 Special:  The wearer is immune to everything, magical and otherwise, that affects mobility in any way. This includes haste and slow spells.
 ~
 @10063  = ~War Dog's Bracelets of Fire Resistance~
-@10064  = ~War Dog's Bracelets of Fire Resistance
+@10064  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they give a bonus to Fire Resistance.
 
 STATISTICS:
 

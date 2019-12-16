@@ -6,6 +6,7 @@
 
 IF
 	Global("C#Grey_Exists","GLOBAL",2)
+	InParty("%IMOEN_DV%")
 	Detect(Player1)
 	Range(Player1,22)
 	!StateCheck(Myself,CD_STATE_NOTVALID)
@@ -46,8 +47,8 @@ END
 THEN
 	RESPONSE #100
 		SetGlobal("C#Grey_GreyJondalar","GLOBAL",1)
-		CreateCreatureObjectOffSet("C#GrJond",Myself,[-20.0]) 
-		CreateCreatureObjectOffSet("C#GrErik",Myself,[0.-20]) 
+		CreateCreatureObjectOffSet("C#GrJond",Myself,[-5.0]) 
+		CreateCreatureObjectOffSet("C#GrErik",Myself,[0.-5]) 
 END
 
 

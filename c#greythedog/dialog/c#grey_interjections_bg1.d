@@ -11,19 +11,13 @@ also in Duchal Palace: all greater doppelgangers.
 
 /* shortly after joining: Jondalar and Erik come to look for Grey */
 
-EXTEND_BOTTOM ~%tutu_var%KEEPER~ 1
-+ ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
-Global("C#Grey_GreyJondalar","GLOBAL",0)~ + @0 + greyatgate_01
+/* Candlekeep: Gatekeeper */
+
+I_C_T ~%tutu_var%KEEPER~ 2 C#Grey_KEEPER_2
+== ~%tutu_var%KEEPER~ IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @1 /* ~At least Grey is with you, just as Jondalar suspected. In case they haven't found you yet, Jondalar and Erik are searching for the dog, but they didn't sound too frantic about it. I'll let them know the dog is with you when they'll return from their hunting trip.~ */
 END
 
-APPEND ~%tutu_var%KEEPER~
-
-IF ~~ THEN greyatgate_01
-SAY @1
-COPY_TRANS ~%tutu_var%KEEPER~ 1
-END
-
-END //APPEND
 
 BEGIN C#GrJond
 BEGIN C#GrErik
@@ -156,6 +150,13 @@ END //APPEND
 /* BG1 */
 
 /* Beregost: Thunderhammer Smithy. Armor for Grey! */
+EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
++ ~Global("MakeArmor","GLOBAL",2) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~setGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
+END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 14
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
@@ -185,6 +186,21 @@ SAY @44
 + ~PartyGoldLT(3000)~ + @46 + weapon_offer_04
 ++ @47 + weapon_offer_05
 ++ @48 + weapon_offer_04
+END
+
+IF ~~ THEN wardog_armor_02_b
+SAY @56
+COPY_TRANS ~%tutu_var%TAEROM~ 0
+END
+
+IF ~~ THEN wardog_armor_03_c
+SAY @57
+IF ~~ THEN + wardog_armor_02
+END
+
+IF ~~ THEN wardog_armor_03_d
+SAY @58
+IF ~~ THEN + wardog_armor_02
 END
 
 
@@ -892,3 +908,4 @@ SAY @146
 ++ @147 DO ~StartStore("c#gr1mt2",LastTalkedToBy(Myself))~ EXIT
 ++ @148 EXIT
 END
+

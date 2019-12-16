@@ -30,12 +30,12 @@ THEN
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
 		MoveGlobal("AR0602","C#Grey",[4245.1985])  // Grey
-//		MoveGlobal("AR0602","C#Grey",[3939.2929])  // ##
+//		MoveGlobal("AR0602","C#Grey",[3939.2929])  // ##for testing
 		ReallyForceSpellRES("SPWM168","C#Grey")  // Heal
 		SetGlobal("C#GreyJoined","GLOBAL",0)
 	        ActionOverride("C#Grey",DestroyAllEquipment())
 		SetInterrupt(TRUE)
-		Continue()		
+//		Continue()		
 END
 
 
@@ -57,7 +57,7 @@ THEN
 		SetGlobal("C#GreyJoined","GLOBAL",0)
 		%Grey_MakeGlobalOverride%
 		SetInterrupt(TRUE)	
-		Continue()		
+//		Continue()		
 END
 
 
@@ -74,7 +74,7 @@ THEN
 		SmallWait(10)
 		ActionOverride("C#Grey",FillSlot(SLOT_SHIELD))
 		SetInterrupt(TRUE)	
-		Continue()		
+//		Continue()		
 END
 
 /* place some war dog armor */
@@ -85,7 +85,8 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("JailkeepTable",CreateItem("c#grtoo3",1,0,0))
-		ActionOverride("JailkeepTable",CreateItem("c#grarm3",1,0,0))
+		ActionOverride("JailkeepTable",CreateItem("c#grarm3",1,0,0))	
+//		Continue()	
 END
 	
 
