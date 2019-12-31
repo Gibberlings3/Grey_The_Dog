@@ -139,6 +139,9 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 1:
+-Items in ID should not spawn in infinite amounts.
+
 Version Beta_8:
 -Fist damage bonus also removed from kit.
 

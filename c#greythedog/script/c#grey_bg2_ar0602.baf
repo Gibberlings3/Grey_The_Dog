@@ -85,7 +85,8 @@ IF
 THEN
 	RESPONSE #100
 		ActionOverride("JailkeepTable",CreateItem("c#grtoo3",1,0,0))
-		ActionOverride("JailkeepTable",CreateItem("c#grarm3",1,0,0))	
+		ActionOverride("JailkeepTable",CreateItem("c#grarm3",1,0,0))
+      		SetGlobal("C#Grey_weapons","MYAREA",1)	
 //		Continue()	
 END
 	
