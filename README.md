@@ -1,4 +1,5 @@
-#   Grey the Dog NPC for BGT, BG:EE(SoD), BGII:EE, and EET  
+#   Grey the Dog 
+NPC for BGT, BG:EE(SoD), BGII:EE, and EET  
                   
 by jastey and Rabain
 
