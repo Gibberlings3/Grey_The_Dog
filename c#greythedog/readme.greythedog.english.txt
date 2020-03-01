@@ -139,6 +139,14 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 2:
+-fixed install of other mods caused by this mod's item because of "read out of bounds" (offset ca (dice size/minimum level) at opcode #12 to "0", was at "-1" for some of Grey's tooth enforcer) 
+-changed item category from "potion" to "food" for Grey's chew toys
+-unified Grey only items to exclude all normal NPC races, only (no classes are excluded. Verr'Sha should not be able to use War Dog's studded leather armor.)
+-changed Grey to "Other" (sex/gender in cre file) so he will not be picked for SharTeel's fight if he is the strongest "male" in the group.
+-added c#greythedog.ini with mod info
+-added folder libiconv-1.9.2-1-src.7z with iconv licence info
+
 Version 1:
 -Items in ID should not spawn in infinite amounts.
 
