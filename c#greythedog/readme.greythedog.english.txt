@@ -141,7 +141,7 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 HISTORY
 
 Version 3:
--Angel's fix for c#grtoo4.itm, Laurel's fix for c#grtoo6.itm -> items should no longer gives install errors for Tweaks Anthology etc.
+-Angel's fix for c#grtoo4.itm, Lauriel's fix for c#grtoo6.itm -> items should no longer gives install errors for Tweaks Anthology etc.
 -changed enchanted level from c#grtoo4.itm to "1"
 -proofreadings by Brokenkatana integrated
 
