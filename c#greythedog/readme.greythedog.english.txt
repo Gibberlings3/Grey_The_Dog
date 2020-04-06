@@ -77,7 +77,7 @@ Especially for BGT but also for the EE games, Grey will be able to use (or at le
 
 In some game cutscenes, Grey might be visible at places where he shouldn't be as 7th party member. I'm not sure how to solve this.
 
-Paper doll: currently, the wolf paper doll is added to the MDOG animation (renamed to MDOGINV.BAM). In case this leads to any compatibility problems, let me know.
+Paper doll: currently, the wolf paper doll is added to the MDOG animation (renamed to MDOGINV.BAM). In case this leads to any compatibility problems, let me know. Nevertheless, in BGT no paperdoll is being shown. I couldn't solve this.
 
 Grey has no clear fog of war effect, so when following as 7th party member, he might "vanish" behind the line of sight. Rearranging the whole group's position should bring him back at the PC's side. (The reason is that the engines cannot handle more than 8 creatures with CFoW - and that includes the 6 party members and cutscene spies.) 
 
@@ -99,6 +99,7 @@ If you have installation problems or encounter any bugs, please post your bug re
 CREDITS
 
 Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha testing
+Brokenkatana: Proof reading (English)
 
 
 TOOLS USED
@@ -138,6 +139,11 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version 3:
+-Angel's fix for c#grtoo4.itm, Laurel's fix for c#grtoo6.itm -> items should no longer gives install errors for Tweaks Anthology etc.
+-changed enchanted level from c#grtoo4.itm to "1"
+-proofreadings by Brokenkatana integrated
 
 Version 2:
 -fixed install of other mods caused by this mod's item because of "read out of bounds" (offset ca (dice size/minimum level) at opcode #12 to "0", was at "-1" for some of Grey's tooth enforcer) 
