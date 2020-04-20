@@ -21,15 +21,15 @@
 @20   = ~Know what... Grey already chose you as his master. And the way he ran away... No well-trained war dog should do this.~
 @21   = ~Know what... Grey already chose you as his mistress. And the way he ran away... No well-trained war dog should do this.~
 @22   = ~Well, you let him wander free on the premises...~
-@23   = ~I let him wander free on the premises, but that doesn't count. Grey should know this doesn't include following someone else astray. No, his value is deminished tremendously... I am not sure I would keep him as a trained dog, not after this.~
+@23   = ~I let him wander free on the premises, but that doesn't count. Grey should know this doesn't include following someone else astray. No, his value is deminished tremendously... I'm not sure I would keep him as a trained dog, not after this.~
 @24   = ~What? Jondalar, are you serious? Grey did such good... Ah, OK, gotcha, gotcha, sorry!~
 @25   = ~Yes, what a shame, but Jondalar is probably right. Grey should stay with you, kiddo. (winks)~
 @26   = ~Grey will stay with you, <CHARNAME>. Don't turn the offer down. A well-trained dog is a great help in any situation, especially in times like these.~
 @27   = ~Thank you very much, Jondalar. I appreciate it.~
-@28   = ~I'll take him with me, but you don't have to bad-talk him if you don't mean it.~
+@28   = ~I'll take him with me, but you don't have to bad-mouth him if you don't mean it.~
 @29   = ~No way. Sorry, but a dog is the last thing I'll need.~
 @30   = ~Ha! I knew I wouldn't succeed in messing about with you.~
-@31   = ~I tried to talk him small so it wouldn't be as awkward that I'd just leave him with you. But what I said is true, he seems to have accepted you now. They are intelligent, these wolfhounds. He's probably sensing that you need protection.~
+@31   = ~I only tried to bad-mouth him, so it wouldn't be as awkward when I left him with you. But what I said is true, he seems to have accepted you now. They are intelligent, these wolfhounds. He's probably sensing that you need protection.~
 @32   = ~Sorry to hear that, <CHARNAME>. If that is the case, I'll take him back with me.~
 @33   = ~Yes, take him with you. Good day.~
 @34   = ~On second thought... A trained war dog might come in handy.~
@@ -39,7 +39,7 @@
 @38   = ~Ha, good boy.~
 @39   = ~Farewell, and safe travels. I wished I could do more for you.~
 @40   = ~I want you to forge the poison weapon for my war dog now.~
-@41   = ~Is there any chance you could make an ankheg armor for a war dog, if I bring you another shell?~
+@41   = ~Is there any chance you could make an ankheg armor for a war dog, if I brought you another shell?~
 @42   = ~I have all you need to forge a war dog's ankheg armor. Please start righ away!~
 @43   = ~A war wolfhound! It's been a while since I saw one. I tell you what: I have a war dog's canine enforcer strap ready, but I didn't equip it with a weapon due to the iron shortage. You find me a good material I can use as weapon for the enforcing, and I'll forge it into a weapon for your dog.~
 @44   = ~What do I see? A spider's poison fang! Hm, with a little tweaking I could use this to equip the war dog's canine enforcer. It needs special treatment, so this would take a while - five days at least. I could do this for 3000 gold.~
@@ -78,7 +78,7 @@
 @77   = ~We have that cursed sword. Maybe my dog could sniff out the culprit who handed it to your captain?~
 @78   = ~I would like to investigate the incidents around Captain Brage a bit more. Could you give me some details?~
 @79   = ~Good day.~
-@80   = ~Is that so? We are grateful for any help we can get. Here, take his spare pair of gauntlets. It should have his scent enough for your dog to catch. Best you start right here, in the Garrison. Brage shortly returned here after... after being home. He went off right away, though. If only we would have been awake enough to realize. As it seems we can be thankful his rage didn't make him take advantage of us sleeping but let him flee instead...~
+@80   = ~Is that so? We are grateful for any help we can get. Here, take his spare pair of gauntlets. It should have enough of his scent for your dog to catch. Best you start right here, in the Garrison. Brage shortly returned here after... after being home. He went off right away, though. If only we would have been awake enough to realize. As it seems we can be thankful his rage didn't make him take advantage of us sleeping but let him flee instead...~
 @81   = ~(sigh) There is also the matter with the unit we sent after him. Five men! Five men and they didn't return. If you see anything of them, let us know. Time is passing and we start to assume the worst.~
 @82   = ~Well, Brage surely didn't spend any time to clean it, that's for sure. But I doubt your dog would smell anything beside the blood on its blade, plus, where would you start looking?~
 @83   = ~The cursed sword. It's another jigsaw falling into place.~
@@ -110,7 +110,7 @@
 @109  = ~Sniff! Grrrrr!~ [c#GREY06]
 @110  = ~The dog wantss the cat, too, hm?~
 @111  = ~Ssssss...~
-@112  = ~This is doppelgangers! Did I see it right that Grey smells them out? That is really extraordinary. I wasn't aware a dog can do this. Would think that it won't work on a Greater Doppelganger, though. Never heard of Durlag Trollkiller ordering a bunch of war dogs to get rid of his doppelganger poblem!~
+@112  = ~This is doppelgangers! Did I see it right that Grey smells them out? That is really extraordinary. I wasn't aware a dog can do this. Would think that it won't work on a Greater Doppelganger, though. Never heard of Durlag Trollkiller ordering a bunch of war dogs to get rid of his doppelganger problem!~
 @113  = ~We have to stop these foul creatures. How come the catacombs are overrun by doppelgangers?!~
 @114  = ~No! No chance. Grey senses your foulness!~
 @115  = ~By all that is good, <CHARNAME>, what have they done to your mind to haunt it so?~
