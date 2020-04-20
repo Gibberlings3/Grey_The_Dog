@@ -149,19 +149,31 @@ END //APPEND
 
 /* BG1 */
 
+ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 0 END BEGIN END ~IncrementGlobal("C#Grey_TaeromArmorCheck","GLOBAL",1)~
+
+ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 12 END BEGIN END ~IncrementGlobal("C#Grey_TaeromArmorCheck","GLOBAL",1)~
+
 /* Beregost: Thunderhammer Smithy. Armor for Grey! */
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
-+ ~Global("MakeArmor","GLOBAL",2) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~setGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
 + ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
+END
+
+EXTEND_BOTTOM ~%tutu_var%TAEROM~ 12
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
++ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 14
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
-+ ~Global("MakeArmor","GLOBAL",2) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~setGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
 + ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
 END
