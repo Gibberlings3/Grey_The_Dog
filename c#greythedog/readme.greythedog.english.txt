@@ -140,6 +140,12 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 4:
+-Angel's item file structure fixes: Verified all the item files with DLTCEP and fixed the ones with inconsistencies, also made sure all magical weapons had an enchantment value set.
+-Grey will get class script "FIGHTER2" assigned if in 7th party member mode.
+-Compatibility with Tweaks Anthology "Allow Taerom to Make Additional Ankheg Armors": Option to forge Grey's Ankheg armor should be available if tweak is installed, too.
+-more typo corrections
+
 Version 3:
 -Angel's fix for c#grtoo4.itm, Lauriel's fix for c#grtoo6.itm -> items should no longer gives install errors for Tweaks Anthology etc.
 -changed enchanted level from c#grtoo4.itm to "1"
