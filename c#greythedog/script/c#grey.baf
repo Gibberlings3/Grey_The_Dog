@@ -1,6 +1,5 @@
 /* c#grey Grey's main script */
 
-
 /* in case Grey follows as 7th party member and Player1 was rested via script and not via  RestParty() */
 
 /* spell and priciple taken from Zed Nocear's BG1 Trigger Simulations! */
@@ -156,7 +155,8 @@ THEN
   RESPONSE #100
 		ReallyForceSpellRES("C#GRREST","C#Grey") //make sure there is no negative effect
 		ReallyForceSpellRES("C#MIN5HP","C#Grey") //give him min 5 HP and immunities
-		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)	
+		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)
+		IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",1) 	
 END
 
 
@@ -168,7 +168,8 @@ IF
 THEN
   RESPONSE #100
 	ReallyForceSpellRES("C#MIN0HP","C#Grey")
-	SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)	
+	SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)
+	IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",-1)	
 END
 
 /* talk to PC if kicked out unhappy */
