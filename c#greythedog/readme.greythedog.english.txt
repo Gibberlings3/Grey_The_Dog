@@ -146,6 +146,7 @@ Version 4:
 -Compatibility with Tweaks Anthology "Allow Taerom to Make Additional Ankheg Armors": Option to forge Grey's Ankheg armor should be available if tweak is installed, too.
 -more typo corrections
 -7th party member mode: detecion of "party rested via scripted Rest()" should work now
+-7th party member mode: C#5MINHP.spl should not be applied to party.
 
 Version 3:
 -Angel's fix for c#grtoo4.itm, Lauriel's fix for c#grtoo6.itm -> items should no longer gives install errors for Tweaks Anthology etc.
