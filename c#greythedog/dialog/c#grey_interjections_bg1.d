@@ -91,7 +91,7 @@ END
 
 IF ~~ THEN jondalar_08
 SAY @31
-IF ~~ THEN DO ~EraseJournalEntry(@10008)~ SOLVED_JOURNAL @100009 + jondalar_11
+IF ~~ THEN DO ~EraseJournalEntry(@100008)~ SOLVED_JOURNAL @100009 + jondalar_11
 END
 
 IF ~~ THEN jondalar_09
@@ -243,7 +243,7 @@ GlobalTimerExpired("C#Grey_TaeromTimer","GLOBAL")~ THEN weapon_offer_03
 SAY @50
  IF ~~ THEN DO ~GiveItemCreate("C#GrToo1",LastTalkedToBy,0,0,0)
 SetGlobal("C#Grey_TaeromTeeth","GLOBAL",4)
-EraseJournalEntry(@10004)~ SOLVED_JOURNAL @100005 EXIT
+EraseJournalEntry(@100004)~ SOLVED_JOURNAL @100005 EXIT
 END
 
 IF ~~ THEN weapon_offer_04
