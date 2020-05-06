@@ -6,11 +6,13 @@ IF
 	NumInPartyLT(6)	
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
             	SetGlobal("C#Grey_Exists","GLOBAL",6)
 	    	CreateCreature("C#Grey03",[780.1578],S)
 		ActionOverride("C#Grey",MakeGlobalOverride()) 
 		ActionOverride("C#Grey",JoinParty())
 		SetGlobal("C#GreyJoined","GLOBAL",1)
+		SetInterrupt(TRUE)
 END
 
 IF 
@@ -18,6 +20,7 @@ IF
 	NumInParty(6)	
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
             	SetGlobal("C#Grey_Exists","GLOBAL",6)
 	    	CreateCreature("C#Grey03",[780.1578],S)
 		ActionOverride("C#Grey",MakeGlobalOverride())
@@ -27,7 +30,9 @@ THEN
 		ActionOverride("C#Grey",SetDialog("c#greyj"))
 		ActionOverride("C#Grey",AddFamiliar())
 		ActionOverride("C#Grey",ChangeAIScript("DEFAULT",CLASS))
+//		ActionOverride("C#Grey",ChangeAIScript("FIGHTER2",CLASS))
 		ActionOverride("C#Grey",ChangeAIScript("",RACE))
 		ActionOverride("C#Grey",ChangeAIScript("",GENERAL))
-		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))	
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
+		SetInterrupt(TRUE)	
 END

@@ -140,6 +140,16 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 4:
+-Angel's item file structure fixes: Verified all the item files with DLTCEP and fixed the ones with inconsistencies, also made sure all magical weapons had an enchantment value set.
+-Compatibility with Tweaks Anthology "Allow Taerom to Make Additional Ankheg Armors": Option to forge Grey's Ankheg armor should be available if tweak is installed, too.
+-more typo corrections
+-7th party member mode: detecion of "party rested via scripted Rest()" should work now
+-(EE) journal entries belonging to "The Tale of Captain Brage" should be correctly added to journal.
+-7th party member mode: effects of C#5MINHP.spl should not be applied to party.
+-all journal entries should be erased from journal as intended
+-Scripts when changing into 7th party member mode and back should not be interrupted.
+
 Version 3:
 -Angel's fix for c#grtoo4.itm, Lauriel's fix for c#grtoo6.itm -> items should no longer gives install errors for Tweaks Anthology etc.
 -changed enchanted level from c#grtoo4.itm to "1"

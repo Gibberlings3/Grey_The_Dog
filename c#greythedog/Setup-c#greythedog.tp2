@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~3~ 
+VERSION ~4~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -261,11 +261,15 @@ END
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN
   /* #31323: Farmer Brun's Missing Son */
   ADD_JOURNAL TITLE (#31323) @100002 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+  /* #31418: The Tale of Captain Brage */
+  ADD_JOURNAL TITLE (#31418) @100000 @100001 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
 END
 
 ACTION_IF GAME_IS ~eet~ THEN BEGIN
   /* #31323: Farmer Brun's Missing Son */
   ADD_JOURNAL TITLE (#231323) @100002 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+  /* #31418: The Tale of Captain Brage */
+  ADD_JOURNAL TITLE (#231418) @100000 @100001 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
 END
 
 ADD_JOURNAL TITLE (@100016) @100003 @100004 @100005 @100006 @100007 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~

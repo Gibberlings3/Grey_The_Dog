@@ -1,6 +1,5 @@
 /* c#grey Grey's main script */
 
-
 /* in case Grey follows as 7th party member and Player1 was rested via script and not via  RestParty() */
 
 /* spell and priciple taken from Zed Nocear's BG1 Trigger Simulations! */
@@ -22,9 +21,11 @@ IF
 	InMyArea(Player1)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("C#GreyRestCounter","GLOBAL",1)
 		Rest()
-		ReallyForceSpellRES("C#GRREST",Myself)		
+		ReallyForceSpellRES("C#GRREST",Myself)	
+		SetInterrupt(TRUE)	
 END
 
 /* follows as familiar: reset variable for refreshing of min HP spell after fight */
@@ -46,8 +47,10 @@ IF
 	See([ENEMY])
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",2)
 		ReallyForceSpellRES("C#MIN5HP","C#Grey") 
+		SetInterrupt(TRUE)
 END
 
 
@@ -60,6 +63,7 @@ IF
 	CombatCounter(0)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		ReallyForceSpellRES("C#GRREST","C#Grey")     	
 		SetGlobal("C#Grey_IsUnconscious","GLOBAL",0)		
 		DisplayStringHead(Myself,@50004)
@@ -67,10 +71,12 @@ THEN
 		AddFamiliar()	
 		SetDialog("C#GreyJ")
 		ChangeAIScript("DEFAULT",CLASS)
+		//ChangeAIScript("FIGHTER2",CLASS)
 		ChangeAIScript("",RACE)
 		ChangeAIScript("",GENERAL)
 		ChangeAIScript("",DEFAULT)	
 		DisplayStringHead(Myself,@50007)
+		SetInterrupt(TRUE)
 END
 
 /* follows as familiar: fight ends - resetting health warn variable */
@@ -124,6 +130,7 @@ IF
 	HPLT(Myself,6)
 THEN
 	RESPONSE #100
+		SetInterrupt(FALSE)
 		DisplayStringHead(Myself,@50006) 
 		ClearActions(Myself)
 		RemoveFamiliar()
@@ -133,6 +140,7 @@ THEN
 		ChangeAIScript("",GENERAL)
 		ChangeAIScript("",DEFAULT)	
 		SetGlobal("C#Grey_IsUnconscious","GLOBAL",1)
+		SetInterrupt(TRUE)
 END
 
 /* follows as familiar: Grey is at 1 HP and passes out */
@@ -153,9 +161,12 @@ IF
 	Global("C#Grey_Has1HPEffect","GLOBAL",0)
 THEN
   RESPONSE #100
+		SetInterrupt(FALSE)
 		ReallyForceSpellRES("C#GRREST","C#Grey") //make sure there is no negative effect
 		ReallyForceSpellRES("C#MIN5HP","C#Grey") //give him min 5 HP and immunities
-		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)	
+		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)
+		IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",1) 
+		SetInterrupt(TRUE)	
 END
 
 
@@ -166,8 +177,11 @@ IF
 	Global("C#Grey_Has1HPEffect","GLOBAL",1)
 THEN
   RESPONSE #100
+	SetInterrupt(FALSE)
 	ReallyForceSpellRES("C#MIN0HP","C#Grey")
-	SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)	
+	SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)
+	IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",-1)
+	SetInterrupt(TRUE)	
 END
 
 /* talk to PC if kicked out unhappy */
