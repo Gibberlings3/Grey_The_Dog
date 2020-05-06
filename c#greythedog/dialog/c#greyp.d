@@ -22,7 +22,8 @@ END
 
 IF ~~ leave
 SAY @4 /* ~Woof! (whines)~ */
-IF ~~ THEN DO ~SetGlobal("C#Grey_GreyJondalar","GLOBAL",3)
+IF ~~ THEN DO ~SetInterrupt(FALSE)
+SetGlobal("C#Grey_GreyJondalar","GLOBAL",3)
 SetGlobal("C#GreyJoined","GLOBAL",0)
 DestroyItem("c#grcol1")
 DestroyItem("c#grcol2")
@@ -33,21 +34,25 @@ DestroyItem("c#grpaw9")
 DestroyItem("c#grpa12")
 DestroyItem("c#grpa15")
 DestroyItem("c#grpa25")
-GivePartyAllEquipment() EscapeArea()~ EXIT
+GivePartyAllEquipment() 
+SetInterrupt(TRUE)
+EscapeArea()~ EXIT
 END
 
 IF ~~ follow_charname
 SAY @0 /* ~Woof!~ */
-IF ~~ THEN DO ~SetGlobal("C#GreyJoined","GLOBAL",2)
+IF ~~ THEN DO ~SetInterrupt(FALSE)
+SetGlobal("C#GreyJoined","GLOBAL",2)
 %Grey_MakeGlobalOverride%
 ChangeEnemyAlly(Myself, FAMILIAR)
 AddFamiliar()
 SetDialog("C#GreyJ")
-//ChangeAIScript("DEFAULT",CLASS)
-ChangeAIScript("FIGHTER2",CLASS)
+ChangeAIScript("DEFAULT",CLASS)
+//ChangeAIScript("FIGHTER2",CLASS)
 ChangeAIScript("",RACE)
 ChangeAIScript("",GENERAL)
-ChangeAIScript("",DEFAULT)~ EXIT
+ChangeAIScript("",DEFAULT)
+SetInterrupt(TRUE)~ EXIT
 END
 
 
