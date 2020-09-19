@@ -829,7 +829,11 @@ END
 
 END //APPEND
 
-
+/* Prism - he said "Grey"! Well, almost. */
+I_C_T ~%tutu_var%prism~ 0 C#Grey_PRISM_0
+== c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @149
+END
 
 
 

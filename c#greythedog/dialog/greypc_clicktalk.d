@@ -37,7 +37,12 @@ AreaType(OUTDOOR)~ + @1 /* ~(You take a stick from the ground.) Want to play?~ *
 /* inventory management - if Grey is not in party but following as companion 
 This is what usually is dealt with by the kicked out "P" dialogue for re-joining */
 
-+ ~!InParty(Myself)~ + @4 /* ~Come here, I need access to your inventory.~ */ DO ~SetGlobal("C#GreyJoined","GLOBAL",1) JoinParty()~ EXIT
++ ~!InParty(Myself) Global("C#GreyJoined","GLOBAL",2) NumInPartyLT(6)~ + @4 /* ~Come here, I need access to your inventory.~ */ DO ~RemoveFamiliar() SetGlobal("C#GreyJoined","GLOBAL",1) JoinParty()~ EXIT
+
++ ~!InParty(Myself) Global("C#GreyJoined","GLOBAL",2) NumInParty(6)~ + @4 /* ~Come here, I need access to your inventory.~ */ DO ~RemoveFamiliar() 
+ChangeAIScript("",DEFAULT)
+ChangeEnemyAlly(Myself,NEUTRAL)
+SetGlobal("C#GreyJoined","GLOBAL",1) JoinParty()~ EXIT
 
 /* warn about low HP (if following as a familiar) - will pause the game */
 
@@ -117,9 +122,9 @@ Global("Arrested","GLOBAL",1) Global("C#Grey_Capter6PID2","LOCALS",0)~ + @30 /* 
 /* SoD */
 
 /* Korlasz's Crypt: OR(2) AreaCheck("bd0120") AreaCheck("bd0130") */
-+ ~%IT_IS_SOD% OR(2) AreaCheck("bd0120") AreaCheck("bd0130") Global("C#Grey_KorlaszCryptPID","LOCALS",0)~ + ~Here we are, Grey - still searching for followers of Sarevok. This takes way longer than I'd wish...~ DO ~SetGlobal("C#Grey_KorlaszCryptPID","LOCALS",1)~ + talkto_whine
-+ ~%IT_IS_SOD% OR(2) AreaCheck("bd0120") AreaCheck("bd0130") Global("C#Grey_KorlaszCryptPID","LOCALS",0)~ + ~So, Grey - Sarevok's last follower, eh? We are nearly done!~ DO ~SetGlobal("C#Grey_KorlaszCryptPID","LOCALS",1)~ + talkto_bark
-+ ~%IT_IS_SOD% OR(2) AreaCheck("bd0120") AreaCheck("bd0130") Global("C#Grey_KorlaszCryptPID","LOCALS",0)~ + ~Here we come, Grey - Sarevok's last minion. They better brace themselves - or not, they won't have a chance against us anyway!~ DO ~SetGlobal("C#Grey_KorlaszCryptPID","LOCALS",1)~ + talkto_growl
++ ~OR(2) AreaCheck("bd0120") AreaCheck("bd0130") Global("C#Grey_KorlaszCryptPID","LOCALS",0)~ + ~Here we are, Grey - still searching for followers of Sarevok. This takes way longer than I'd wish...~ DO ~SetGlobal("C#Grey_KorlaszCryptPID","LOCALS",1)~ + talkto_whine
++ ~OR(2) AreaCheck("bd0120") AreaCheck("bd0130") Global("C#Grey_KorlaszCryptPID","LOCALS",0)~ + ~So, Grey - Sarevok's last follower, eh? We are nearly done!~ DO ~SetGlobal("C#Grey_KorlaszCryptPID","LOCALS",1)~ + talkto_bark
++ ~OR(2) AreaCheck("bd0120") AreaCheck("bd0130") Global("C#Grey_KorlaszCryptPID","LOCALS",0)~ + ~Here we come, Grey - Sarevok's last minion. They better brace themselves - or not, they won't have a chance against us anyway!~ DO ~SetGlobal("C#Grey_KorlaszCryptPID","LOCALS",1)~ + talkto_growl
 
 /* BG city full of refugees: GlobalGT("BD_PLOT","GLOBAL",50) GlobalLT("BD_PLOT","GLOBAL",55) */
 + ~%IT_IS_SOD% Global("Chapter","GLOBAL",7) GlobalGT("BD_PLOT","GLOBAL",50) 

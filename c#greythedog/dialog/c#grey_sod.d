@@ -101,13 +101,35 @@ END
 
 /* Thrix's game */
 
+ADD_TRANS_TRIGGER BDTHRIX 13 ~OR(3) Global("C#GreyJoined","GLOBAL",0) !InMyArea("C#Grey") StateCheck("C#Grey",CD_STATE_NOTVALID)~ DO 2 IF ~!Is?f?ValidForPartyDialogue("Rasaad")~
+
+/*
 EXTEND_BOTTOM BDTHRIX 21 22 23 24 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 
+*/
+
+EXTEND_BOTTOM BDTHRIX 21 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90
 IF ~Global("C#Grey_SoDThrix","bd4500",0) InMyArea("C#Grey")
 	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
-	!StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN + grey
+	!StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN DO ~SetGlobal("C#Grey_SoDThrix","bd4500",1)~ + grey
 END
 
+EXTEND_TOP BDTHRIX 22 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 #1
+IF ~Global("C#Grey_SoDThrix","bd4500",0) InMyArea("C#Grey")
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN DO ~SetGlobal("C#Grey_SoDThrix","bd4500",1)~ + grey
+END
 
+EXTEND_TOP BDTHRIX 23 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 #10
+IF ~Global("C#Grey_SoDThrix","bd4500",0) InMyArea("C#Grey")
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN DO ~SetGlobal("C#Grey_SoDThrix","bd4500",1)~ + grey
+END
+
+EXTEND_TOP BDTHRIX 24 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 #5
+IF ~Global("C#Grey_SoDThrix","bd4500",0) InMyArea("C#Grey")
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN DO ~SetGlobal("C#Grey_SoDThrix","bd4500",1)~ + grey
+END
 
 
 APPEND BDTHRIX
@@ -115,10 +137,10 @@ APPEND BDTHRIX
 IF ~~ THEN BEGIN grey
   SAY ~How about I take your loyal war dog. Is there a better amusement than to turn a loyal animal into a blood beast?~
 = ~Hm, actually, there is. I will not settle for a dog's soul. No, one of your other companions it will be.~
-  IF ~RandomNum(4,1)~ THEN EXTERN ~BDTHRIX~ 70
-  IF ~RandomNum(4,2)~ THEN EXTERN ~BDTHRIX~ 71
-  IF ~RandomNum(4,3)~ THEN EXTERN ~BDTHRIX~ 72
-  IF ~RandomNum(4,4)~ THEN EXTERN ~BDTHRIX~ 73
+  IF ~RandomNum(4,1)~ THEN DO ~IncrementGlobal("BD_NumInParty","bd4500",1)~ EXTERN ~BDTHRIX~ 70
+  IF ~RandomNum(4,2)~ THEN DO ~IncrementGlobal("BD_NumInParty","bd4500",1)~ EXTERN ~BDTHRIX~ 71
+  IF ~RandomNum(4,3)~ THEN DO ~IncrementGlobal("BD_NumInParty","bd4500",1)~ EXTERN ~BDTHRIX~ 72
+  IF ~RandomNum(4,4)~ THEN DO ~IncrementGlobal("BD_NumInParty","bd4500",1)~ EXTERN ~BDTHRIX~ 73
   IF ~!Global("BD_NumInParty","bd4500",1)
 !Global("BD_NumInParty","bd4500",2)
 !Global("BD_NumInParty","bd4500",3)

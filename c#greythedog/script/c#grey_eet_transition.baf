@@ -7,7 +7,6 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_EETBGIITransition","MYAREA",1)
 		DisableAI("C#Grey",FALSE)
-		ActionOverride("C#Grey",MakeUnselectable(1))
 		ApplySpellRES("bdresurr","C#Grey")
 		smallWait(10)
 		ApplySpellRES("K#UNREST","C#Grey")
@@ -31,7 +30,9 @@ END
 
 IF
 	!Dead("C#Grey")
-	Global("C#GreyJoined","GLOBAL",2)
+	OR(2)
+		Global("C#GreyJoined","GLOBAL",2)
+		InMyArea("C#Grey")
 	Global("C#Grey_EETBGIITransition","MYAREA",0)
 THEN
 	RESPONSE #100

@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~4~ 
+VERSION ~5 pre~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -210,19 +210,6 @@ END //ALWAYS
 
 
 
-/*
-
-LANGUAGE ~Deutsch~
-         ~deutsch~   
-         ~c#greythedog/tra/deutsch/setup.tra~
-         ~c#greythedog/tra/deutsch/game.tra~
-         ~c#greythedog/tra/deutsch/baf.tra~
-	 ~c#greythedog/tra/deutsch/journal.tra~
-
-*/
-
-
-
 LANGUAGE ~English~
          ~english~   
          ~c#greythedog/tra/english/setup.tra~
@@ -230,6 +217,12 @@ LANGUAGE ~English~
          ~c#greythedog/tra/english/baf.tra~
 	 ~c#greythedog/tra/english/journal.tra~
 
+LANGUAGE ~Deutsch~
+         ~deutsch~   
+         ~c#greythedog/tra/deutsch/setup.tra~
+         ~c#greythedog/tra/deutsch/game.tra~
+         ~c#greythedog/tra/deutsch/baf.tra~
+	 ~c#greythedog/tra/deutsch/journal.tra~
 
 
 BEGIN  @90004 /* ~Grey The Dog NPC~ */
@@ -1711,7 +1704,6 @@ ACTION_IF GAME_IS ~bgt~ THEN BEGIN
   EXTEND_TOP ~ARAM00.bcs~   ~c#greythedog/script/c#grey_bg1_transition.baf~    EVALUATE_BUFFER
 END //~bgt~
 
-
 /* SoD */
 ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
 
@@ -1776,7 +1768,37 @@ COPY_EXISTING ~bd0102.bcs~ ~override~
   COMPILE_BAF_TO_BCS
 BUT_ONLY_IF_IT_CHANGES
 
-/* arrest, move to SoD end area and end -> Grey stays in group as party member or familiar: no action needed (bdcut61.bcs, bdcut65.bcs, bd6100.bcs, bd6200.bcs) */
+/* arrest, move to SoD end area and end -> Grey stays in group as party member or familiar: no action needed (bdcut61.bcs, bd6100.bcs, bd6200.bcs) */
+
+/* bdcut65.bcs: make Grey move with the party */
+COPY_EXISTING ~bdcut65.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+
+		SPRINT textToReplace ~\(SetAreaScript("",OVERRIDE)\)[%newline%]*\(END\)~
+		COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+		PATCH_IF (num_matches > 0) BEGIN
+			REPLACE_TEXTUALLY ~%textToReplace%~ ~\1 
+\2 
+
+IF
+	Global("C#Grey_SoDEndMove","bd6100",0) 
+	InMyArea("C#Grey")
+	!Dead("C#Grey")  
+	!InParty("C#Grey")  
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C#Grey_SoDEndMove","bd6100",1) 
+		ActionOverride("C#Grey",MoveToPoint([930.795]))
+END
+~
+			PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+		END ELSE BEGIN
+			PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+		END
+	END
+BUT_ONLY_IF_IT_CHANGES
+
 
 /* Hell elevator - Grey comments */
 EXTEND_BOTTOM ~bd4601.bcs~ ~c#greythedog/script/c#grey_sod_bd4601.baf~
@@ -1870,8 +1892,6 @@ BEGIN C#GREY
 BEGIN c#greyJ
 >>>>>>>>
 COMPILE EVALUATE_BUFFER ~...inlined/C#GREY_define.D~
-
-
 
 
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/c#greyP.d~
@@ -2290,6 +2310,13 @@ EVALUATE_BUFFER
 
 END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
 
+/* Brage NPC */
+
+ACTION_IF FILE_EXISTS_IN_GAME ~c#bragej.dlg~ THEN BEGIN 
+  COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/crossmod_grey_brage_BG1.d~
+END //ACTION_IF FILE_EXISTS_IN_GAME ~c#bragej.dlg~
+
+
 
   /* Jarl's Adventure Pack */
 
@@ -2300,6 +2327,28 @@ END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
   END ///* Jarl's Adventure Pack */
 
 END //ACTION_IF GAME_IS ~bgee bgt~ 
+
+/* Transitions */
+ACTION_IF FILE_EXISTS_IN_GAME ~#L_Cut09.bcs~ THEN BEGIN
+  PRINT @90007 /* ~Transitions Mod detected~ */
+  COPY_EXISTING ~#L_Cut09.bcs~ ~override~
+     DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~SetGlobal("#L_CanonGroupMoved","GLOBAL",1)~ ~
+		SetGlobal("#L_CanonGroupMoved","GLOBAL",1)
+
+		MoveGlobal("BD6100","C#Grey",[650.450])
+		ApplySpellRES("bdresurr","C#Grey")
+		smallWait(10)
+		ReallyForceSpellDeadRES("bdrejuve","C#Grey")
+		SetGlobal("C#GreyJoined","GLOBAL",0)
+		ActionOverride("C#Grey",ChangeAIScript("",CLASS))
+		ActionOverride("C#Grey",ChangeAIScript("",RACE))
+		ActionOverride("C#Grey",ChangeAIScript("",GENERAL))
+		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))~
+        REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~MoveToPoint([800.800])~ ~MoveToPoint([800.800]) ActionOverride("C#Grey",MoveToPoint([930.795])~
+     END
+  BUT_ONLY_IF_IT_CHANGES 
+END
 
 
 /* BGII */

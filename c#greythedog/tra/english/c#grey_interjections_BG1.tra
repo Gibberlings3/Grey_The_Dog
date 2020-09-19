@@ -1,13 +1,13 @@
 //@0    = 
 @1    = ~At least Grey is with you, just as Jondalar suspected. In case they haven't found you yet, Jondalar and Erik are searching for the dog, but they didn't sound too frantic about it. I'll let them know the dog is with you next I see them.~
 @2    = ~Grey! There you are. With <CHARNAME>!~
-@3    = ~And... Imoen. I have the slight suspicion... But it doesn't matter.~
+@3    = ~And... Imoen. I have a slight suspicion... But it doesn't matter.~
 @4    = ~We... we saw the site, <CHARNAME>!~
 @5    = ~We saw Gorion. <CHARNAME>, what happened? What in the nine hells happened there?~
-@6    = ~We got into an ambush!~
+@6    = ~We were ambushed!~
 @7    = ~Someone is after me! They killed Gorion!~
 @8    = ~Well, what does it look like? Seems we weren't fast enough, whoever it was Gorion tried to run away from.~
-@9    = ~It must be a powerful foe, if he was able to kill Gorion. I am speechless!~
+@9    = ~It must be a powerful foe, if he was able to kill Gorion. I can't believe it!~
 @10   = ~After... after you?~
 @11   = ~No wonder he was so... so anxious. This was no arbitrary bandit attack.~
 @12   = ~So, <CHARNAME>... What now? Do you have any place to go?~
@@ -40,7 +40,7 @@
 @39   = ~Farewell, and safe travels. I wished I could do more for you.~
 @40   = ~I want you to forge the poison weapon for my war dog now.~
 @41   = ~Is there any chance you could make an ankheg armor for a war dog, if I brought you another shell?~
-@42   = ~I have all you need to forge a war dog's ankheg armor. Please start righ away!~
+@42   = ~I have all you need to forge a war dog's ankheg armor. Please start right away!~
 @43   = ~A war wolfhound! It's been a while since I saw one. I tell you what: I have a war dog's canine enforcer strap ready, but I didn't equip it with a weapon due to the iron shortage. You find me a good material I can use as weapon for the enforcing, and I'll forge it into a weapon for your dog.~
 @44   = ~What do I see? A spider's poison fang! Hm, with a little tweaking I could use this to equip the war dog's canine enforcer. It needs special treatment, so this would take a while - five days at least. I could do this for 3000 gold.~
 @45   = ~Sounds excellent. Please do it.~
@@ -119,11 +119,11 @@
 @118  = ~Ha! Stupid dog...~
 @119  = ~Ratbastardssss...~
 @120  = ~Interesting surprises, indeed. Why is my dog growling at you?~
-@121  = ~Grey, stop growling at the lady.~
+@121  = ~Grey, stop growling at the man.~
 @122  = ~Your dog is a badly behaving animal! Keep him away from me. So, ready for a great feast?~
 @123  = ~Who are you?~
 @124  = ~Grey, stop growling at the man.~
-@125  = ~Why, as Aldeath's business companion I am pleased to see he has such charming friends, and... what a nice dog!?~
+@125  = ~Why, as Aldeth's business companion I am pleased to see he has such charming friends, and... what a nice dog!?~
 @126  = ~Sniff? Sniff. Sniff. Sniff!~
 @127  = ~Aah, this... dog smells Mendas comes from far away place, yes? Smells I am part of my people. Smart animal.~
 @128  = ~Hm. Last time he sniffed that much at a person it turned out to be a doppelganger.~
@@ -147,3 +147,6 @@
 @146  = ~Hello! Interested in wardog armor and weapons?~
 @147  = ~Yes, please show me your wares.~
 @148  = ~Not at the moment.~
+
+/* new for v5 */
+@149  = ~Woof! (Reacting to his name, Grey wags his tail.)~
