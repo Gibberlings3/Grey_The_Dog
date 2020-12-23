@@ -1,20 +1,20 @@
 @10000  = ~Wolfhound~
-@10001  = ~Wolfhound: this breed of dog is one of the largest non-magical dogs seen in nature. Some specimens have been measured at over a metre at the shoulder and can stand some 7 ft in height on their hind legs. The wolfhound was originally bred as a coursing hound. Sleek yet large these dogs made excellent hunting animals no matter the prey. Being less common than the typical wardog, Wolfhounds are rarely seen in Realms these days and are highly sought after as breeding stock by nobles and commoners alike.
+@10001  = ~Wolfhound: This breed of dog is one of the largest non-magical dogs seen in nature. Some specimens have measured over 3 ft at the shoulder and can stand some 7 ft in height on their hind legs. The wolfhound was originally bred as a coursing hound. Sleek yet large these dogs made excellent hunting animals no matter the prey. Being less common than the typical war dog, wolfhounds are rarely seen in Realms these days and are highly sought after as breeding stock by nobles and commoners alike.
 
-  Wolfhounds being more intelligent than the average street dog make excellent companions and, once you earn their trust, steadfast defenders.
+  Wolfhounds are more intelligent than the average street dog.  They make excellent companions and, once you earn their trust, steadfast defenders.
 
- 
+
   Advantages:
   -Attack speed factor -1 every 10 levels from level 1.
   -Movement modifier -1 at levels 1,5 and every 10 levels thereafter.
   -Gains Tracking Ability at level 7 plus 1 extra use every 5 levels thereafter.
-  -At level 5 gains immunity to blindness: Grey detects his enemies with his sense of smell.
-  -From level 6 onwards gains Bark: will instill Fear and panic in enemies and bolster own resistance to fear. At later levels this resistance expands to include the party as well as all effects increasing in duration. Extra use every 6 levels.
-  -From level 8 onwards gains True Sight: Grey will sniff through any invisibility. Extra use every 8 levels.
-  -From level 10 gains Alpha Call: can call on any dogs in the local area to come to his aid.  The dogs called improve as Grey gets more powerful. Gains extra use every 10 levels. This ability does not work indoors.
+  -At level 5 gains immunity to blindness: the wolfhound detects his enemies with his sense of smell.
+  -At level 6 gains Bark: will instill fear and panic in enemies and bolster his own resistance to fear. At later levels this resistance expands to include the party as well as all effects increasing in duration. Gains an extra use every 6 levels.
+  -At level 8 gains True Sight: the wolfhound's nose is not fooled by invisibility or simple illusions. Gains an extra use every 8 levels.
+  -At level 10 gains Alpha Call: can call on any dogs in the local area to come to his aid.  The dogs called improve as the wolfhound becomes more powerful. Gains an extra use every 10 levels. This ability does not work indoors.
 
-  -Due to his special training, Grey has THAC0 and damage bonus +1 against humans, wolves, and bears (level 1,5, and every 10th level after).
-  
+  -Due to their special training, wolfhounds have a +1 THAC0 and damage bonus against humans, wolves, and bears and gain an additional +1 bonus at level 5 and every 10th level thereafter.
+ 
   Disadvantages:
   -Cannot use conventional weapons or armor.
   -Smells bad when wet.
@@ -22,21 +22,21 @@
   ~
 @10002  = ~(yawn)~
 @10003  = ~Alpha Call~
-@10004  = ~Due to his large physical presence and his tone of leadership, local dogs may come to Grey's aid when he calls. 
+@10004  = ~Due to his large physical presence and commanding demeanor, local dogs may come to the wolfhound's aid when he calls.
 This spell does not work indoors.~ 
 @10005  = ~Bark~
-@10006  = ~In battle Grey's bark may become a powerful force both for the party and against enemies.  Grey's bark will instill fear and panic in enemies and bolster Grey's own resistance to fear.
+@10006  = ~In battle the wolfhound's bark may bolster his morale and cause panic in his enemies.  
 At later levels this resistance expands to include the party as well as all effects increasing in duration.~
 @10007  = ~Great Bite~
-@10008  = ~With experience gained through the survival of many battles the knowledge to inflict grievous wounds upon enemies with a single attack would be of great aid.  This attack will inflict 15hp piercing damage and the wound will bleed out 20% of the targets HP's.~
+@10008  = ~The wolfhound's combat experience teaches him how to inflict grievous wounds upon enemies with a single attack.  This attack will inflict 15hp piercing damage and the wound will bleed out 20% of the targets HP's.~
 @10009  = ~Savage Bite~
 @10010  = ~Improving upon the already vicious Great Bite, Savage Bite will inflict 20hp of piercing damage and the wound will bleed out a total of 40% of the targets HP's.~
 @10011  = ~Hound~
-@10012  = ~Able to move at great speed during combat allows certain protection from attack.  All slashing, piercing, crushing and missile damage resistance is set to 40. Dexterity is raised by 2 for 1 Turn.~
+@10012  = ~The wolfhound learns to confuse and harry their enemies in combat, preventing their foes from being able to land a clean hit in battle.  While this ability is active the wolfhound's slashing, piercing, crushing and missile damage resistances are set to 40 and his Dexterity is increased by 2 for 1 Turn.~
 @10013  = ~Seize Enemy~
-@10014  = ~This command will cause Grey to seize hold of the target.  The target will suffer 15hp bleeding damage while being held immobile.  Grey will continue to hold for 3 rounds, during which he can be given no other commands.~
+@10014  = ~This command will cause the wolfhound to seize the target with his jaws and pin them.  The target will suffer 15hp bleeding damage while being held immobile.  The wolfhound will maintain his hold for 3 rounds, during which he can be given no other commands.~
 @10015  = ~Rend~ 
-@10016  = ~Slashing at his opponent Grey will open up a long wound with his paw.  This will do 2d12 +5 slashing damage to the target with a possibility of infecting the wound unless the target saves vs Death/Poison.  If the save is unsuccesful the wound will be Diseased for 6 rounds causing slowness in all the victims actions.~
+@10016  = ~The wolfhound slashes at his target with his canines, opening up a long wound.  This attack will do 2d12 +5 slashing damage to the target with a possibility of infecting the wound unless the target saves vs Death/Poison.  If the save is unsuccessful the wound will be Diseased for 6 rounds causing slowness in all the victims actions.~
 @10017  = ~Grey's Collar~
 @10018  = ~This is Grey's collar, enchanted to give him extra armor class bonus.
 
@@ -294,9 +294,9 @@ Weight: 0
 Speed Factor: 3
 Proficiency Type: Hammer~
 @10080  = ~Giant Spider's Fang~
-@10081  = ~This is a remarkable big giant spider's poison fang. If treated right, this could be used as enforcement for some kind of weapon.~
-@10082  = ~Grey's Poison Canine Booster~
-@10083  = ~This is Grey's canine enforcing weapon, made out of the poison fang of a spider.
+@10081  = ~This is an intact giant spider's fang, dripping with poison. If treated right, this could be used as part of an augment for a bite attack.~
+@10082  = ~Grey's Reinforced Poison Canines~
+@10083  = ~These are a set of reinforcing caps for Grey's canines made out of a pair of giant spider fangs. These reinforced canines have a minor enchantment that imbues Grey's bite with poison and protects Grey from poisoning himself.
 
 STATISTICS:
 
@@ -306,16 +306,16 @@ THAC0: +1
 Damage:  1D8 + 1 (piercing)
 Speed Factor: 2
 Proficiency Type: Dagger~
-@10084  = ~War Dog's Canine Booster~
-@10085  = ~This is a war dog's canine enforcing weapon.
+@10084  = ~War Dog's Reinforced Canines~
+@10085  = ~These are a set of reinforcing caps for the war dog's canines. They are often alchemically treated and have minor enchantments to strengthen the teeth of the war dog and prevent them from breaking in combat.
 
 STATISTICS:
 
 Damage: 1d8 (piercing)
 Speed Factor: 2
 Proficiency Type: Dagger~
-@10086  = ~War Dog's Canine Booster +1~
-@10087  = ~This is a war dog's canine enforcing weapon.
+@10086  = ~War Dog's Reinforced Canines +1~
+@10087  = ~These are a set of reinforcing caps for the war dog's canines. They are often alchemically treated and have minor enchantments to strengthen the teeth of the war dog and prevent them from breaking in combat. This set is magical, improving accuracy and damage.
 
 STATISTICS:
 
@@ -323,8 +323,8 @@ THAC0: +1
 Damage: 1d8+1 (piercing)
 Speed Factor: 2
 Proficiency Type: Dagger~
-@10088  = ~War Dog's Canine Booster +2~
-@10089  = ~This is a war dog's canine enforcing weapon.
+@10088  = ~War Dog's Reinforced Canines +2~
+@10089  = ~These war dog reinforced canine caps have been crafted by hands both magical and highly skilled. Neither nick nor stain mar the flawless caps. When used in battle, the caps radiate magic and gift the bearer with increased skill.
 
 STATISTICS:
 
@@ -341,8 +341,8 @@ STATISTICS
 
 Equipped Ability : increases movement rate
 ~
-@10094  = ~War Dog's Fiery Canine Booster~
-@10095  = ~This is a war dog's canine booster, enchanted to give fire damage. 
+@10094  = ~War Dog's Reinforced Fiery Canines~
+@10095  = ~These are a set of reinforcing caps for the war dog's canines. They are often alchemically treated and have minor enchantments to strengthen the teeth of the war dog and prevent them from breaking in combat. This set is magical, improving the accuracy and damage of the bearer's bite and inflict fire damage. The magic of the canine caps protects the bearer from burning themselves.
 
 STATISTICS:
 
@@ -354,7 +354,6 @@ Proficiency Type: Dagger~
 @10096  = ~Wardog Armory and Weaponry~
 @10097  = ~Madelaine's Key~
 @10098  = ~This is the key Madelaine gave you. It will open the door to her employer's house in East Baldur's Gate, the "one with the grey roof".~
-
 @10099  = ~Brage's Gauntlets of Weapon Skill~
 @10100  = ~This is Brage's spare pair of gauntlets.
 
@@ -369,7 +368,6 @@ Weight:  2
 @10104  = ~Bennet~
 @10105  = ~Mira~
 @10106  = ~Severin~
-/* name, do not translate? */
 @10107  = ~Grey~
 @10108  = ~Grey is a trained war dog from your times in Candlekeep. The times you spent with him there sufficed to make Grey follow you as your loyal dog companion. 
 When looking at him, GREY tilts his head to the side and stares at you. He picks up a stick nearby on the ground... Seems like you are going to have to play fetch... again.
