@@ -140,6 +140,20 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 5:
+-German version by Gerri, revised by jastey
+-English version partly proofread by Caedwyr
+-one crossmod banter added with Brage's Redemption.
+-Taerom will not talk about forging a weapon for Grey if the PC meets him for the very first time
+-Taerom's comment about the material for the canine enforcement makes it clear it's not to be found anywhere near.
+-HLA icons fixed 
+-HLA descriptions fixed
+-Grey will receive HLAs
+-SoD: Added more randomness to how Grey is chosen in Thrix's game.
+-7th party member mode: will be removed correctly in case Grey rejoins via PID and kicked out completely directly after.
+-Compatibility with Transitions Mod added.
+-Added Dynamic Install Order categories to support Project Infinity.
+
 Version 4:
 -Angel's item file structure fixes: Verified all the item files with DLTCEP and fixed the ones with inconsistencies, also made sure all magical weapons had an enchantment value set.
 -Compatibility with Tweaks Anthology "Allow Taerom to Make Additional Ankheg Armors": Option to forge Grey's Ankheg armor should be available if tweak is installed, too.

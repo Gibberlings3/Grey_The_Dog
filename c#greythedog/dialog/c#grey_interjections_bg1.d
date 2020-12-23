@@ -191,10 +191,11 @@ END
 APPEND ~%tutu_var%TAEROM~
 
 IF WEIGHT #-1
-~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+~NumTimesTalkedToGT(0)
+OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
 See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID) 
 Global("C#Grey_TaeromTeeth","GLOBAL",0)~ THEN weapon_offer
-SAY @43
+SAY @43 /* ~A war wolfhound! It's been a while since I saw one. I tell you what: I have a set of war dog's reinforced canines ready, but I haven't added the metal caps due to the iron shortage. If you ever come across some good quality materials I can use - anything that's suited for a pointed weapon - I'll make it into a weapon for your dog.~ */
 IF ~~ THEN DO ~SetGlobal("C#Grey_TaeromTeeth","GLOBAL",1)~ UNSOLVED_JOURNAL @100003 EXIT
 END
 
@@ -829,7 +830,11 @@ END
 
 END //APPEND
 
-
+/* Prism - he said "Grey"! Well, almost. */
+I_C_T ~%tutu_var%prism~ 0 C#Grey_PRISM_0
+== c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @149
+END
 
 
 

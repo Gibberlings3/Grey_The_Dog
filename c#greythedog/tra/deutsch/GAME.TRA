@@ -1,0 +1,376 @@
+@10000  = ~Wolfshund~
+@10001  = ~Wolfshund: Diese Hunderasse ist eine der größten in der Natur vorkommende, nicht-magische Hunderasse. Einige Exemplare haben über einen Meter Schulterhöhe und können fast 2 Meter hoch auf ihren Hinterbeinen stehen. Der Wolfshund wurde ursprünglich als Hetzhund gezüchtet. Doch diese Hunde sind auch ausgezeichnete Jagdtiere, ganz gleich, was die Beute ist. Als typischer Kriegshund sind Wolfshunde in den Reichen weniger bekannt. Sie sind für Zuchtzwecke von Edelmännern und Bürgerlichen gleichermaßen begehrt.
+
+Wolfshunde sind wesentlich intelligenter als gewöhnliche Straßenhunde und sind ausgezeichnete Gefährten. Hat man ihr Vertrauen einmal gewonnen, sind sie auch mutige Verteidiger.
+
+
+Vorteile:
+	-Angriffsgeschwindigkeit +1 jede 10. Stufe von Stufe 1 an.
+	-Bewegungsmodifikator +1 bei den Stufen 1,5 und jede weitere 10 Stufen.
+	-Erhält die Fähigkeit Witterung ab Stufe 7 plus 1 extra Anwendung nach je 5 Stufen.
+	-Bei Stufe 5 bekommt er Immunität gegen Erblinden: Grey endeckt seine Gegner mit seinem Geruchssinn.
+	-Ab Stufe 6 aufwärts erhält er furchterregendes Gebell: verursacht Angst und Panik bei den Feinden und erhöht die eigene Resistenz gegen Angst. Bei höheren Stufen erweitert sich diese Resistenz auch auf die Gruppe. Alle 6 weiteren Stufen gibts 1 extra Anwendung.
+	-Ab Stufe 8 erhält er Wahre Sicht: Grey erschnüffelt alles Unsichtbare. Extra Anwendung alle 8 Stufen.
+	-Ab Stufe 10 erhält er Alpharuf: Er kann andere Hunde im Gebiet zu Hilfe rufen. Die Anzahl der Hunde erhöht sich, wenn er mächtiger wird. 1 extra Anwendung nach je 10. Stufen. Diese Fähigkeit funktioniert nicht in geschlossenen Räumen.
+
+-Wegen seiner speziellen Ausbildung, hat Grey einen ETW0 und Schadensbonus von +1 gegen Menschen, Wölfe und Bären (Stufe 1,5, und jede 10. Stufe danach).
+  
+ Nachteile:
+  -Kann keine normalen Waffen und Rüstungen benutzen.
+  -Riecht ziemlich übel wenn er nass ist.
+  -Hinterlässt überall seine Haare.
+  ~
+@10002  = ~(gähn)~
+@10003  = ~Alpharuf~
+@10004  = ~Wegen seiner großen physischen Präsenz und seines Rufs des Alphatieres kommen andere Hunde die in der Nähe sind Grey zu Hilfe. 
+Dieser Zauber wirkt nicht in Gebäuden.~ 
+@10005  = ~Furchterregendes Gebell~
+@10006  = ~Im Kampf kann Greys furchterregendes Gebell ein mächtiges Werkzeug für die Gruppe und eine Bedrohung für die Gegner sein. Greys Gebell verursacht Angst und Panik bei den Gegnern und steigert Greys eigene Resistenz gegen Angst. 
+Bei höheren Stufen erweitert sich diese Resistenz auch auf die Gruppe.~
+@10007  = ~Mächtiger Biss~
+@10008  = ~Mit wachsender Erfahrung kann er mit einem einzigen Biss viel Schaden verursachen. Dieser Angriff verursacht 15 TP Stichschaden und die verursachte Wunde blutet 20% der Lebenspunkte des Gegners aus.~
+@10009  = ~Gewaltiger Biss~
+@10010  = ~Eine Verbesserung des mächtigen Bisses stellt der gewaltige Biss dar und dieser verursacht 20TP Stichschaden und die verursachte Wunde blutet 40% der Lebenspunkte des Gegners aus.~
+@10011  = ~Hund~
+@10012  = ~Die Fähigkeit, sich mit großer Geschwindigkeit während eines Kampfes zu bewegen ermöglicht einen gewissen Schutz vor Angriffen. Jeglicher Hieb, Stich, Wucht und Fernkampfschaden wird bei der Schadensresistenz auf 40 gesetzt. Geschicklichkeit wird um 2 für 1 Runde erhöht.~
+@10013  = ~Gegner Festhalten~
+@10014  = ~Dieser Befehl veranlasst Grey sein Ziel festzuhalten. Das Ziel erleidet 15 Schadenspunkte durch bluten und wird unbeweglich. Grey hält sein Opfer 3 Runden fest, es können ihm währenddessen keine anderen Befehle gegeben werden.~
+@10015  = ~Zerreißen~ 
+@10016  = ~Beim Angriff des Gegners verursacht er eine lange Wunde mit seinen Pfoten. Dies verursacht 2W12 +5 Hiebschaden beim Ziel und es besteht die Möglichkeit, dass die Wunde eine Infektion bekommt, wenn ein Rettungswurf gegen Tod/Gift misslingt. Wenn der Rettungswurf missglückt, entsteht für 6 Runden eine Krankheit in der Wunde, welche das Opfer auch noch verlangsamt.~
+@10017  = ~Greys Halsband~
+@10018  = ~Dies ist Greys verzaubertes Halsband, welches ihm einen Bonus auf die Rüstungsklasse gibt.
+
+EIGENSCHAFTEN:
+
+Rüstungsklassenbonus: +1
+~
+@10019  = ~Kriegshundehalsband~
+@10020  = ~Dies ist ein Kriegshundehalsband, stabil, aber ohne spezielle Fähigkeiten.~
+@10021  = ~Kriegshundehalsband +1~
+@10022  = ~Dies ist ein verzaubertes Kriegshundehalsband, welches einen Bonus auf die Rüstugsklasse gibt.
+
+EIGENSCHAFTEN:
+
+Rüstungsklassenbonus: +1
+~
+@10023  = ~Kriegshundehalsband +2~
+@10024  = ~Dies ist ein verzaubertes Kriegshundehalsband, welches einen Bonus auf die Rüstungsklasse gibt.
+
+EIGENSCHAFTEN:
+
+Rüstungsklassenbonus: +2
+~
+@10025  = ~Kriegshundekappe~
+@10026  = ~Dies ist die Kappe eines Kriegshundes.~
+@10027  = ~Eine solche Kappe aus verstärktem Leder oder Metall, verdeckt das meiste des Hundekopfes. Diese Kopfbedeckungen schützen meist auch die Ohren.  
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: kein Bonus
+Speziell:  Schützt gegen kritische Treffer
+Gewicht: 2
+~
+@10028  = ~Beschlagener Lederwams für Kriegshunde +1~
+@10029  = ~Dies ist eine Rüstung für Kriegshunde.~
+@10030  = ~Dies ist ein beschlagener Lederwams für Kriegshunde. Das beschlagene Lederwams hat wenig mit einer normalen Lederrüstung gemeinsam. Während die normale Ausführung aus einem gehärteten Panzer besteht, ist das beschlagene Lederwams weich und geschmeidig und mit hunderten von Metallnieten versehen. Die Nieten sitzen so nahe beieinander, dass sie eine flexible Ummantelung aus Hartmetall ergeben, die vor Schnitten und Schwerthieben schützt. Das Grundmaterial aus weichem Leder dient lediglich dazu, die Nieten zusammenzuhalten.   
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 6
+Gewicht: 5
+Mindeststärke: 6
+~
+@10031  = ~Kriegshundeschienenpanzer~
+@10032  = ~Dies ist ein Schienenpanzer für Kriegshunde. Der Schienenpanzer ist dem Bänderpanzer ziemlich ähnlich, jedoch sind die Metallstreifen nicht waagerecht auf das Grundmaterial, entweder Kettenhemd, Leder oder Stoff, aufgebracht, sondern senkrecht. 
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 4
+Gewicht: 20
+Mindeststärke: 8
+~
+@10033  = ~Kriegshundeplattenpanzer +1~
+@10034  = ~Dies ist ein Plattenpanzer für Kriegshunde. Ein Plattenpanzer verbindet Kettengeflecht mit Metallplatten, die die am meisten gefährdeten Körperbereiche wie Brust-, Bauch- und Leistengegend schützen. Ähnlich in der Bauweise wie ein Bronzepanzer, besteht ein echter Plattenpanzer aus Kettengeflecht und Leder. Diese Rüstung ist verzaubert und bietet zusätzlichen Schutz.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 2
+Gweicht: 15
+Mindeststärke: 12
+~
+@10035  = ~Prunkharnisch für Kriegshunde~
+@10036  = ~Dies ist ein Prunkharnisch für Kriegshunde. Die perfekt angepaßten, verriegelten Platten sind speziell abgewinkelt, um Pfeile und Schläge abzulenken. Mit ihren magischen Verbesserungen ist diese Rüstung ideal für Kriegshunde.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 0
+Gewicht: 17
+Mindeststärke: 15
+~
+@10037  = ~Greys Ankhegplattenpanzer~
+@10038  = ~Dies ist Greys Ankhegplattenpanzer. Diese Rüstung wurde gekonnt aus einem Ankhegpanzer hergestellt, und gewährleistet einen höheren Grad an Schutz als ein gewöhnlicher Plattenpanzer, ohne für Rost anfällig zu sein. Er ist auch wesentlich leichter als ein normaler Plattenpanzer für Kriegshunde.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse: 1
+Gewicht: 10
+Mindeststärke: 6
+~
+@10039  = ~Rumpfrune für Kriegshunde~
+@10040  = ~Rumpfrune des Schildes~
+@10041  = ~Dies ist eine Rumpfrune für die Rüstung eines Kriegshundes.~
+@10042  = ~Dies ist eine Rumpfrune für die Rüstung eines Kriegshundes, welche verzaubert ist, um zusätzlichen Rüstungsklassenbonus zu geben. Sie kann mit dem Rücken des Kriegshundes verbunden werden, entweder mit einer Schnur, oder sie wird mit dem vorhandenen Geschirr verbunden.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse:  +1
+Gewicht:  0
+~
+@10043  = ~Rumpfrune der elektrischen Resistenz~
+@10044  = ~Dies ist eine Rumpfrune des Schutzes für die Rüstung eines Resistenz gegen Elektrizität zu gewähren. Sie kann mit dem Rücken des Kriegshundes verbunden werden, entweder mit einer Schnur, oder sie wird mit dem vorhandenen Geschirr verbunden.
+
+EIGENSCHAFTEN:
+
+Elektrische Resistenz:  +10% Bonus
+Gewicht:  0
+~
+@10045  = ~Rumpfrune der Säure und Giftresistenz~
+@10046  = ~Dies ist eine Rumpfrune des Schutzes für die Rüstung eines Kriegshundes, welche verzaubert ist, um zusätzliche Resistenz gegen Gift und Säure zu gewähren. Sie kann mit dem Rücken des Kriegshundes verbunden werden, entweder mit einer Schnur, oder sie wird mit dem vorhandenen Geschirr verbunden.
+
+EIGENSCHAFTEN:
+
+Giftresistenz:  +5% Bonus
+Säureresistenz:  +5% Bonus
+Gewicht:  0
+~
+@10047  = ~Nackenrune für Kriegshunde~
+@10048  = ~Nackenrune des Schutzes~
+@10049  = ~Dies ist eine Nackenrune des Schutzes für die Kriegshunderüstung.~
+@10050  = ~Dies ist eine Nackenrune des Schutzes für die Kriegshunderüstung. Sie ist verzaubert, um dem Schutz im Kampf zu erhöhen und verbessert Rettungswürfe und Rüstungsklasse. Sie kann mit dem Nacken des Kriegshundes verbunden werden, entweder mit einer Schnur, oder sie wird mit dem vorhandenen Geschirr verbunden.
+
+EIGENSCHAFTEN:
+
+Rüstungsklasse:  +1 Bonus
+Rettungswürfe:  +1 Bonus
+Gewicht:  0
+~
+@10051  = ~Nackenrune der Magieresistenz~
+@10052  = ~Dies ist eine Nackenrune der Magieresistenz für Kriegshunde. Sie kann mit dem Nacken des Kriegshundes verbunden werden, entweder mit einer Schnur, oder sie wird mit dem vorhandenen Geschirr verbunden.
+
+EIGENSCHAFTEN:
+
+Magieresistenz: 5%
+Gewicht:  0
+~
+@10053  = ~Nackenrune der Feuer und Kälteresistenz~
+@10054  = ~Dies ist eine Nackenrune der Feuer und Kälteresistenz für Kriegshunde. Sie ist verzaubert und bietet Schutz gegen Feuer und Kälte. Sie kann mit dem Nacken des Kriegshundes verbunden werden, entweder mit einer Schnur, oder sie wird mit dem vorhandenen Geschirr verbunden.
+
+EIGENSCHAFTEN:
+
+Feuerresistenz:  +5% bonus
+Kälteresistenz:  +5% bonus
+Gewicht:  0
+~
+@10055  = ~Beinbänder für Kriegshunde~
+@10056  = ~Beinbänder der Stärke~
+@10057  = ~Dies sind Beinbänder für Kriegshunde. Sie bestehen immer aus einem Paar, sind verzaubert und wirken nur wenn sie als Paar getragen werden.~
+@10058  = ~Dies sind Beinbänder für Kriegshunde. Sie bestehen immer aus einem Paar, sind verzaubert und wirken nur wenn sie als Paar getragen werden.
+Diese hier sind verzaubert und geben einen zusätzlichen Stärke Bonus.
+
+EIGENSCHAFTEN:
+
+Stärke Bonus: +1
+~
+@10059  = ~Beinbänder der Waffenfertigkeit~
+@10060  = ~Dies ist ein Paar Beinbänder für Kriegshunde. Sie bestehen immer aus einem Paar, sind verzaubert und wirken nur wenn sie als Paar getragen werden.
+Diese hier sind verzaubert und geben einen zusätzlichen Bonus auf die Waffenfertigkeit.  
+
+EIGENSCHAFTEN:
+
+ETW0:  +1 bonus
+Schaden:  +2 bonus
+~
+@10061  = ~Beinbänder der Handlungsfreiheit~
+@10062  = ~Dies ist ein Paar Beinbänder für Kriegshunde. Sie bestehen immer aus einem Paar, sind verzaubert und wirken nur wenn sie als Paar getragen werden.
+Diese hier sind verzaubert und gewähren Handlungsfreiheit.
+
+EIGENSCHAFTEN:
+
+Speziell:  Der Träger ist gegen alles immun, was die Beweglichkeit einschränkt. Sei es nun magisch oder anderweitig. Das beinhaltet auch Hast und verlangsamende Sprüche.
+~
+@10063  = ~Beinbänder der Feuerresistenz~
+@10064  = ~Dies ist ein Paar Beinbänder für Kriegshunde. Sie bestehen immer aus einem Paar, sind verzaubert und wirken nur wenn sie als Paar getragen werden.
+Diese hier sind verzaubert und gewähren einen Bonus auf die Feuerresistenz.
+
+EIGENSCHAFTEN:
+
+Feuerresistenz:  +40%
+~
+@10065  = ~Hundespielzeug~
+@10066  = ~Glücksspielzeug für Hunde~
+@10067  = ~Dies ist ein Hundespielzeug.~
+@10068  = ~Dies ist ein Hundespielzeug. Damit zu spielen verbessert sich die Laune des hundes, und seine Unternehmungen scheinen erfolgreicher zu sein.
+
+EIGENSCHAFTEN: 
+
+Speziell: +1 Glück Bonus drei mal am Tag
+Dauer: 1 Stunde
+
+Gewicht: 1
+~
+@10069  = ~Kauspielzeug~
+@10070  = ~Kauspielzeug der Gesundheit~
+@10071  = ~Dies ist Greys Kauspielzeug, welches Ihr von Albert bekommen habt. Er sieht weniger wie ein zottiges Stück Tier aus sondern eher wie der Liebkingsknochen eines Hundes. Kaut Grey daran, stellt es etwas von seiner Gesundheit wieder her.
+
+EIGENSCHAFTEN: 
+
+Spezielle Fähigkeiten: stellt 9 Trefferpunkte zwei mal am Tag wieder her
+
+Gewicht: 1
+~
+@10072  = ~Greys Pfote~
+@10073  = ~Das ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W6
+Schadenstyp:  Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+@10074  = ~Das ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W8
+Schadenstyp: Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+@10075  = ~Das ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W10
+Schadenstyp: Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+@10076  = ~Das ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W12 + 1
+Schadenstyp: Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+@10077  = ~Das ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W12 + 2
+Schadenstyp: Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+
+@10078  = ~Das ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W20+3
+Schadenstyp: Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+@10079  = ~Dies ist Greys Pfote.
+
+EIGENSCHAFTEN:
+
+Schaden:  1W20+4
+Schadenstyp:  Wucht
+Gewicht: 0
+Initiativefaktor: 3
+Fertigkeit: Hammer~
+@10080  = ~Fangzahn eine Riesenspinne~
+@10081  = ~Dies ist ein beeindruckender, großer Spinnengiftzahn. Richtig verwendet, könnte man ihn als Verbesserung für eine Waffe benutzen.~
+@10082  = ~Greys giftiger Beißverstärker~
+@10083  = ~Das ist Greys Beißverstärker, der aus einem Spinnengiftzahn gemacht ist. Der Beißverstärker hat eine schwache Verzauberung die verhindert, dass sich Grey damit selbst verletzt.
+
+EIGENSCHAFTEN:
+
+Spezielle Fähigkeiten: 50%ige Chance auf Giftschaden: 2 Trefferpunkte Schaden jede Sekunde, Dauer: 10 Sekunden
+
+ETW0: +1
+Schaden:  1W8 + 1 (stich)
+Inititivefaktor: 2
+Fertigkeit: Dolch~
+@10084  = ~Kriegshunde Beißverstärker~
+@10085  = ~Dies ist ein Kriegshunde Beißverstärker. Der Beißverstärker hat eine schwache Verzauberung die verhindert, dass sich Grey damit selbst verletzt.
+
+EIGENSCHAFTEN:
+
+Damage: 1W8 (stich)
+Initiativefaktor: 2
+Fertigkeit: Dolch~
+@10086  = ~Kriegshunde Beißverstärker +1~
+@10087  = ~Dies ist ein Kriegshunde Beißverstärker. Der Beißverstärker hat eine schwache Verzauberung die verhindert, dass sich Grey damit selbst verletzt.
+
+EIGENSCHAFTEN:
+
+ETW0: +1
+Schaden: 1W8+1 (stich)
+Initiativefaktor: 2
+Fertigkeit: Dolch~
+@10088  = ~Kriegshunde Beißverstärker +2~
+@10089  = ~Dies ist ein Kriegshunde Beißverstärker. Der Beißverstärker hat eine schwache Verzauberung die verhindert, dass sich Grey damit selbst verletzt.
+
+EIGENSCHAFTEN:
+
+ETW0: +2
+Schaden: 1W8+2 (stich)
+Initiativefaktor: 2
+Fertigkeit: Dolch~
+@10090  = ~Stulpen für Kriegshunde~
+@10091  = ~Geschwindigkeitsstulpen für Kriegshunde~
+@10092  = ~Dies sind Geschwindigkeitsstulpen für Kriegshunde.~
+@10093  = ~Geschwindigkeitsstulpen für Kriegshunde
+
+EIGENSCHAFTEN
+
+Spezielle Eigenschaft : erhöht die Bewegungsgeschwindigkeit
+~
+@10094  = ~Feuriger Beißverstärker für Kriegshunde~
+@10095  = ~Dies ist ein verzauberter Kriegshunde Beißverstärker, der Feuerschaden verursacht. Der Beißverstärker hat eine schwache Verzauberung die verhindert, dass sich Grey damit selbst verletzt. 
+
+EIGENSCHAFTEN:
+
+Spezielle Fähigkeiten: + 1 Schadenspunkt Feuerschaden
+ETW0: +1
+Schaden:  1W8 + 1 (stich)
+Initiativefaktor: 2
+Fertigkeit: Dolch~
+@10096  = ~Waffen und Rüstungen für Kriegshunde~
+@10097  = ~Madelaines Schlüssel~
+@10098  = ~Dies ist der Schlüssel den Madelaine Euch gab. Er öffnet die Tür zum Haus ihres Arbeitgebers im Osten von Baldurs Tor, "das mit dem grauen Dach".~
+@10099  = ~Brages Handschuhe der Waffenkunst~
+@10100  = ~Das ist das Ersatzpaar Handschuhe der Waffenkunst von Brage.
+
+EIGENSCHAFTEN:  
+
+ETW0:  +1 bonus
+Gewicht:  2
+~
+@10101  = ~Händler für Kriegshundeausrüstung~
+@10102  = ~Madelaine~
+@10103  = ~Herr Kallait~
+@10104  = ~Bennet~
+@10105  = ~Mira~
+@10106  = ~Severin~
+@10107  = ~Grey~
+@10108  = ~Grey ist ein dressierter Kriegshund aus Eurer Zeit in Kerzenburg. Die Zeit, die Ihr mit ihm dort verbrachtet, reichte aus, um Grey dazu zu bringen, Euch als Euer loyaler Hundebegleiter zu folgen. Wenn Ihr ihn anseht, neigt Grey seinen Kopf zur Seite und starrt Euch freudig an. Er holt einen Stock und legt ihn vor Euch ab ... wie es scheint, müsst Ihr wieder mit ihm Stöckchen holen spielen.~
+/*
+@10109  = 
+@10110  = 
+*/

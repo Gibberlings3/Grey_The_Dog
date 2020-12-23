@@ -25,25 +25,3 @@ THEN
 		Continue()
 END
 
-
-
-/* If there is still room after canon party joined, Grey will join as a real party member */
-IF
-	GlobalLT("C#Grey_SoDEndMove","bd6200",2) 
-	Global("bd_party_check","bd6200",5)
-	!Dead("C#Grey")  
-	!InParty("C#Grey") 
-	InMyArea("C#Grey") 
-	NumInPartyLT(6)
-THEN
-	RESPONSE #100
-		CutSceneId(Player1)
-		SetGlobal("C#Grey_SoDEndMove","bd6200",2)
-		ActionOverride("C#Grey",RemoveFamiliar())
-		ChangeEnemyAlly("C#Grey",NEUTRAL)
-		SmallWait(10)
-		ActionOverride("C#Grey",JoinParty())
-		SetGlobal("C#GreyJoined","GLOBAL",1)
-		SmallWait(10)
-		Continue()
-END

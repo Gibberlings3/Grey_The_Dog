@@ -1,7 +1,8 @@
 @90000   = ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger or Modmerge.~
-@90001   = ~Baldur's Gate Trilogy detected~
+@90001   = ~Baldur's Gate Trilogy detected...~
 @90002   = ~BG:EE detected...~
 @90003   = ~EET detected...~
 @90004   = ~Grey The Dog NPC~
 @90005   = ~You either need TOB installed or the Enhanced Editions to play this mod.~
 @90006   = ~This mod is not compatible with your game.~
+@90007   = ~Transitions Mod detected~
