@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~5 pre~ 
+VERSION ~5~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -281,6 +281,7 @@ COPY ~c#greythedog/bams/MDOGINV.BAM~ ~override/MDOGINV.BAM~
 
 INCLUDE ~c#greythedog\lib/fl#add_kit_ee.tpa~
 
+COPY ~c#greythedog/2da/luc#w.2da~ ~override~
 
 ADD_KIT ~C#WARDOG~ ///Grey's Dog kit
   // appended to CLASWEAP.2da
@@ -380,38 +381,47 @@ SAY NAME2 @10002 /* ~(yawn)~ */
 COPY ~c#greythedog/spells/c#greysu.spl~ ~override/c#greysu.spl~
 SAY NAME1 @10003 /* ~Alpha Call~ */
 SAY NAME2 @10003 /* ~Alpha Call~ */
+SAY UNIDENTIFIED_DESC  @10004 /* ~Due to his large physical presence and his tone of leadership, local dogs may come to Grey's aid when he calls. 
+This spell does not work indoors.~ */
 SAY DESC  @10004 /* ~Due to his large physical presence and his tone of leadership, local dogs may come to Grey's aid when he calls. 
 This spell does not work indoors.~ */
 
 COPY ~c#greythedog/spells/c#greyba.spl~ ~override/c#greyba.spl~
 SAY NAME1 @10005 /* ~Bark~ */
 SAY NAME2 @10005 /* ~Bark~ */
+SAY UNIDENTIFIED_DESC  @10006 /* ~In battle Grey's bark may become a powerful force both for the party and against enemies.  Grey's bark will instill fear and panic in enemies and bolster Grey's own resistance to fear.
+At later levels this resistance expands to include the party as well as all effects increasing in duration.~ */
 SAY DESC  @10006 /* ~In battle Grey's bark may become a powerful force both for the party and against enemies.  Grey's bark will instill fear and panic in enemies and bolster Grey's own resistance to fear.
 At later levels this resistance expands to include the party as well as all effects increasing in duration.~ */
 
 COPY ~c#greythedog/spells/c#greybi.spl~ ~override/c#greybi.spl~
 SAY NAME1 @10007 /* ~Great Bite~ */
 SAY NAME2 @10007 /* ~Great Bite~ */
+SAY UNIDENTIFIED_DESC  @10008 /* ~With experience gained through the survival of many battles the knowledge to inflict grievous wounds upon enemies with a single attack would be of great aid.  This attack will inflict 15hp piercing damage and the wound will bleed out 20% of the targets HP's.~ */
 SAY DESC  @10008 /* ~With experience gained through the survival of many battles the knowledge to inflict grievous wounds upon enemies with a single attack would be of great aid.  This attack will inflict 15hp piercing damage and the wound will bleed out 20% of the targets HP's.~ */
 
 COPY ~c#greythedog/spells/c#greybs.spl~ ~override/c#greybs.spl~
 SAY NAME1 @10009 /* ~Savage Bite~ */
 SAY NAME2 @10009 /* ~Savage Bite~ */
+SAY UNIDENTIFIED_DESC  @10010 /* ~Improving upon the already vicious Great Bite, Savage Bite will inflict 20hp of piercing damage and the wound will bleed out a total of 40% of the targets HP's.~ */
 SAY DESC  @10010 /* ~Improving upon the already vicious Great Bite, Savage Bite will inflict 20hp of piercing damage and the wound will bleed out a total of 40% of the targets HP's.~ */
 
 COPY ~c#greythedog/spells/c#greybh.spl~ ~override/c#greybh.spl~
 SAY NAME1 @10011 /* ~Hound~ */
 SAY NAME2 @10011 /* ~Hound~ */
+SAY UNIDENTIFIED_DESC  @10012 /* ~Able to move at great speed during combat allows certain protection from attack.  All slashing, piercing, crushing and missile damage resistance is set to 40. Dexterity is raised by 2 for 1 Turn.~ */
 SAY DESC  @10012 /* ~Able to move at great speed during combat allows certain protection from attack.  All slashing, piercing, crushing and missile damage resistance is set to 40. Dexterity is raised by 2 for 1 Turn.~ */
 
 COPY ~c#greythedog/spells/c#seize.spl~ ~override/c#seize.spl~
 SAY NAME1 @10013 /* ~Seize Enemy~ */
 SAY NAME2 @10013 /* ~Seize Enemy~ */
+SAY UNIDENTIFIED_DESC  @10014 /* ~This command will cause Grey to seize hold of the target.  The target will suffer 15hp bleeding damage while being held immobile.  Grey will continue to hold for 3 rounds, during which he can be given no other commands.~ */
 SAY DESC  @10014 /* ~This command will cause Grey to seize hold of the target.  The target will suffer 15hp bleeding damage while being held immobile.  Grey will continue to hold for 3 rounds, during which he can be given no other commands.~ */
 
 COPY ~c#greythedog/spells/c#grend.spl~ ~override/c#grend.spl~
 SAY NAME1 @10015 /* ~Rend~ */
 SAY NAME2 @10015 /* ~Rend~ */
+SAY UNIDENTIFIED_DESC  @10016 /* ~Slashing at his opponent Grey will open up a long wound with his paw.  This will do 2d12 +5 slashing damage to the target with a possibility of infecting the wound unless the target saves vs Death/Poison.  If the save is unsuccesful the wound will be Diseased for 6 rounds causing slowness in all the victims actions.~ */
 SAY DESC  @10016 /* ~Slashing at his opponent Grey will open up a long wound with his paw.  This will do 2d12 +5 slashing damage to the target with a possibility of infecting the wound unless the target saves vs Death/Poison.  If the save is unsuccesful the wound will be Diseased for 6 rounds causing slowness in all the victims actions.~ */
 
 
