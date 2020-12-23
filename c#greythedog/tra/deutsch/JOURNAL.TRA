@@ -1,18 +1,18 @@
 @100000  = ~Die Geschichte von Hauptmann Brage
 
-Grey war in der Lage, die Spur von Brage nördlich von Nashkel aufzunehmen. Jedoch ist sie zu schwach, um ihr weiter folgen zu können. Aber es ist ziemlich sicher, dass Brage von dort aus nach Osten gegangen war und nicht mehr zurückkehrte.~
+Grey war in der Lage, die Spur von Brage nördlich von Nashkell aufzunehmen. Jedoch ist sie zu schwach, um ihr weiter folgen zu können. Aber es ist ziemlich sicher, dass Brage von dort aus nach Osten gegangen war und nicht mehr zurückkehrte.~
 
 @100001  = ~Die Geschichte von Hauptmann Brage
 
-Ich habe jetzt für Grey einen persönlichen Gegenstand von Brage um ihn zu finden - wenn die Spuren nicht vom Wind  und dem Regen weggewaschen wurden. Aber es könnte einen Versuch wert sein. Severin von der amnischen Wache riet dazu, innerhalb der Garnison zu suchen. Dann ist alles was ich tun muss, Grey dort suchen zu lassen.~
+Ich habe jetzt für Grey einen persönlichen Gegenstand von Brage um ihn zu finden - wenn die Spuren nicht vom Wind  und dem Regen weggewaschen wurden. Aber es könnte einen Versuch wert sein. Severin von der Amnischen Wache riet dazu, die Suche innerhalb der Garnison zu starten. Alles was ich tun muss, ist Grey dort das Suchen zu befehlen.~
 
 @100002  = ~Bauer Bruns vermisster Sohn
 
-Grey folgte Nathans Spur zu einem grossen Loch im Boden, aber drinnen verliert sich die Spur. Nathan ist sicher dort hinabgestiegen, aber um zu wissen wo er nun ist, werde ich wohl hinab steigen müssen.~
+Grey folgte Nathans Spur zu einem großen Loch im Boden, aber drinnen verliert sich die Spur. Nathan ist sicher dort hinabgestiegen, aber um zu wissen wo er nun ist, werde ich wohl hinab steigen müssen.~
 
 @100003  = ~Waffen und Rüstung für Grey
 
-Taerom, der Schmied aus Beregost, bot mir an für Grey einen Beißverstärker anzufertigen, wenn ich ihm die passenden Materialien bringe.~
+Taerom, der Schmied aus Beregost, bot mir an für Grey einen Beißverstärker anzufertigen, wenn ich ihm ein passendes Material bringe. Sollte ich also während meiner Reisen einmal ein Material finden, das sich für eine spitze Waffe eignet, dann sollte ich diese für Taerom aufheben.~
 @100004  = ~Waffen und Rüstung für Grey
 
 Taerom, der Schmied aus Beregost, schmiedet einen Beißverstärker für Grey. In 5 Tagen wird er fertig sein.~
@@ -24,60 +24,53 @@ Taerom, der Schmied aus Beregost, hat den Beißverstärker für Grey fertiggestellt
 Taerom, der Schmied aus Beregost schmiedet eine Ankhegrüstung für Grey! Sie wird in 10 Tagen fertig sein.~
 @100007  = ~Waffen und Rüstung für Grey
 
-Taerom, der Schmied aus Beregost, hat die Ankhegrüstung für Grey fertig gestellt. Ein großartige Rüstung, so wie die meine. Das erinnert mich aber an das Gerücht, dass Hundebesitzer und Hund sich mit der Zeit ziemlich ähnlich aussehen...~
+Taerom, der Schmied aus Beregost, hat die Ankhegrüstung für Grey fertig gestellt. Eine großartige Rüstung, so wie die meine. Das erinnert mich aber an das Gerücht, dass Hundebesitzer und Hund sich mit der Zeit immer ähnlicher sehen...~
 @100008  = ~Grey der Hund
 
-Grey, der Wolfshund aus Kerzenburg, der Imoen hinterher gelaufen ist. Ich bin mir nicht sicher, ob ich ihn mitnehmen soll. Vielleicht sollten wir ihnen auf jeden Fall Bescheid sagen. Aber da Imoen mir hinterher geschlichen war, schätze ich, dass jemand nach uns sehen wird. Greys Anwesenheit macht das auch nicht schlimmer.~
-
+Grey, der Wolfshund aus Kerzenburg, ist Imoen hinterher gelaufen. Ich bin mir nicht sicher, ob ich ihn mitnehmen soll. Vielleicht sollten wir ihnen auf jeden Fall Bescheid sagen. Aber da Imoen mir hinterher geschlichen war, schätze ich, dass jemand nach uns sehen wird. Greys Anwesenheit macht die Situation auch nicht schlimmer.~
 @100009  = ~Grey der Hund
 
-Jondalar gab mir Grey.~
+Jondalar hat mir Grey überlassen.~
 @100010  = ~Grey der Hund
 
-Grey, der Wolfshund aus Kerzenburg, wurde von seinem rechtmäßigen Besitzer Jondalar zurück genommen.~
-
-@100011  = ~Mr. Turquoise und das Monster
+Grey, der Wolfshund aus Kerzenburg, wurde von seinem rechtmäßigen Besitzer Jondalar wieder mitgenommen.~
+@100011  = ~Herr Kallait und das Monster
 
 Da war eine sehr niedergeschlagene Dame im Gefängnis des Hauptquartiers der Flammenden Faust. Sie gab mir einen Schlüssel und bat mich nach einem Monster im Haus ihres Herrn zu suchen. Das Haus liegt im Osten von Baldurs Tor und hat ein graues Dach.~
+@100012  = ~Herr Kallait und das Monster
 
-@100012  = ~Mr. Turquoise und das Monster
+Ich ging in das Haus mit dem grauen Dach im Osten von Baldurs Tor, aber ich sah keine Monster. Herr Kallait scheint dies nicht besonders zu interessieren. Er ist sonderbar gelassen, wenn man bedenkt, dass seine Haushälterin ihn kürzlich angegriffen haben soll. Ich hab ja auch keinen Beweis. Selbst wenn er ein Doppelgänger sein sollte, muss ich einen Weg finden, das herauszufinden. Ich kann ihn doch nicht einfach angreifen, oder?~
+@100013  = ~Herr Kallait und das Monster
 
-Ich ging in das Haus mit dem grauen Dach im Osten von Baldurs Tor, aber ich sah keine Monster. Mr.Turquoise scheint dies nicht besonders zu interessieren. Er ist sonderbar gelassen, wenn man bedenkt, dass seine Haushälterin ihn kürzlich angegriffen haben soll. Ich hab ja auch keinen Beweis. Selbst wenn er ein Doppelgänger sein sollte, muss ich einen Weg finden, das herauszufinden. Ich kann ihn doch nicht einfach angreifen, oder?~
+Ich erzählte Madelaine von dem Doppelgänger. Ich fürchte, es gibt keine Möglichkeit herauszufinden, was mit dem echten Herrn Kallait passierte.~
+@100014  = ~Herr Kallait und das Monster
 
-@100013  = ~Mr. Turquoise und das Monster
+Dieser "Herr Kallait" in diesem Haus entpuppte sich als Doppelgänger! Ich sollte zum Hauptquartier der Flammenden Faust gehen und Madelaine wissen lassen, dass ihr Herr tot ist.~
+@100015  = ~Herr Kallait und das Monster
 
-Ich erzählte Madelaine von dem Doppelgänger. Ich fürchte, es gibt keine Möglichkeit herauszufinden, was mit dem echten Mr. Turquoise passierte.~
-
-@100014  = ~Mr. Turquoise und das Monster
-
-Dieser 'Mr. Turquoise' in diesem Haus entpuppte sich als Doppelgänger! Ich sollte zum Hauptquartier der flammenden Faust gehen und Madelaine wissen lassen, dass ihr Herr tot ist.~
-
-@100015  = ~Mr. Turquoise und das Monster
-
-Dieser 'Mr. Turquoise' in dem Haus entpuppte sich als Doppelgänger! Wer hätte gedacht, dass ich in meinem Leben jemals ein Problem lösen musste, indem ich jemand anscheinend unschuldigen angreifen musste. Ich könnte zurück zum Hauptquartier der flammenden Faust gehen und Madelaine wissen lassen, dass ihr Herr tot ist.~
-
+Dieser "Herr Kallait" in dem Haus entpuppte sich als Doppelgänger! Wer hätte gedacht, dass ich in meinem Leben jemals ein Problem lösen musste, indem ich jemand anscheinend unschuldigen angreifen musste. Ich könnte zurück zum Hauptquartier der Flammenden Faust gehen und Madelaine wissen lassen, dass ihr Herr tot ist.~
 @100016  = ~Waffen und Rüstung für Grey~
 @100017  = ~Grey der Hund~
-@100018  = ~Mr. Turquoise und das Monster~
+@100018  = ~Herr Kallait und das Monster~
 @100019  = ~Die Verschwundenen
 
 Grey führte uns direkt zu den Flüchtlingen... Etwas scheint sie in Stein verwandelt zu haben. Sind vielleicht Basilisken in diesem Gebiet? - Als ob die anderen Probleme nicht schon genug wären!~
 
-@100020  = ~Hochzeits Angelegenheiten~
+@100020  = ~Hochzeitsangelegenheiten~
 
-@100021  = ~Hochzeits Angelegenheiten
+@100021  = ~Hochzeitsangelegenheiten
 
-Vor einer kleinen Taverne in Baldurs Tor traf ich eine junge Frau, die mich bat - nein, *verlangte* von mir hinein zu gehen und und mit ihrem - ehemaligen? - Verlobten zu sprechen. Will sich der Mann seinem Hochzeitsversprechen entziehen? Ich sollte ihn in der kleinen, namenlosen Taverne rechts neben den Stadtoren finden.~
+Vor einer kleinen Taverne in Baldurs Tor traf ich eine junge Frau, die mich bat - nein, von mir *verlangte* hinein zu gehen und und mit ihrem - ehemaligen? - Verlobten zu sprechen. Will sich der Mann seinem Hochzeitsversprechen entziehen? Ich sollte ihn in der kleinen, namenlosen Taverne rechts neben den Stadtoren finden.~
 
-@100022  = ~Hochzeits Angelegenheiten
+@100022  = ~Hochzeitsangelegenheiten
 
-Was für eine Geschichte! Der angebliche "Verlobte" hat die Frau, welche im Osten Baldurs Tor stand, nie getroffen, weil er nicht anwesend war. Ein Doppelgänger hat das Heiratsversprechen gegeben. Ich schätze, ich muss mit der Frau sprechen, weil er anscheinend nicht mehr fähig zu sein scheint, ihr gegenüber zu treten.~
-@100023  = ~Hochzeits Angelegenheiten
+Was für eine Geschichte! Der angebliche "Verlobte" hat die Frau, welche im Osten Baldurs Tor stand, nie getroffen, weil er nicht anwesend war. Ein Doppelgänger hat das Heiratsversprechen gegeben. Ich schätze, ich muss mit der Frau sprechen, weil der Mann anscheinend nicht in der Lage zu sein scheint, ihr gegenüber zu treten.~
+@100023  = ~Hochzeitsangelegenheiten
 
-Also, die *Frau* war selbst eine Doppelgängerin - die nach dem männlichen Doppelgänger suchte, der ihr Heiratsversprechen machte. Was es nicht alles gibt...~
-@100024  = ~Hochzeits Angelegenheiten
+Also, die *Frau* war selbst ein Doppelgänger - die nach dem männlichen Doppelgänger suchte, der ihr das erwähnte Heiratsversprechen machte. Was es nicht alles gibt...~
+@100024  = ~Hochzeitsangelegenheiten
 
-Bennet war froh, dass das "Hochzeits Mißverständnis" aufgeklärt wurde. Er gab mir einige verzauberte Pfeile un Dinge die er gejagt hat als Belohnung.~
+Bennet war froh, dass das "Hochzeitsmissverständnis" aufgeklärt wurde. Er gab mir einige verzauberte Pfeile und Dinge die er gejagt hat als Belohnung.~
 
 @100025  = ~Grey der Hund
 
