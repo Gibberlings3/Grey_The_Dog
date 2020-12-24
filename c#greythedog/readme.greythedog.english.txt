@@ -140,6 +140,9 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 5.1:
+-added needed definition for variable "newline" so SoD end cutscene gets patched correctly: Grey should move with the group in SoD end cutscene.
+
 Version 5:
 -German version by Gerri, revised by jastey
 -English version partly proofread by Caedwyr
@@ -147,12 +150,10 @@ Version 5:
 -Taerom will not talk about forging a weapon for Grey if the PC meets him for the very first time
 -Taerom's comment about the material for the canine enforcement makes it clear it's not to be found anywhere near.
 -HLA icons fixed 
--HLA descriptions fixed
 -Grey will receive HLAs
 -SoD: Added more randomness to how Grey is chosen in Thrix's game.
 -7th party member mode: will be removed correctly in case Grey rejoins via PID and kicked out completely directly after.
 -Compatibility with Transitions Mod added.
--Added Dynamic Install Order categories to support Project Infinity.
 
 Version 4:
 -Angel's item file structure fixes: Verified all the item files with DLTCEP and fixed the ones with inconsistencies, also made sure all magical weapons had an enchantment value set.
