@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~5~ 
+VERSION ~5.1~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -31,7 +31,7 @@ ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN 
   FAIL @90000
 END
 
-
+OUTER_SPRINT newline ~%WNL%%LNL%%MNL%%TAB% ~
 
   ACTION_IF GAME_IS ~eet~ BEGIN
     OUTER_SET bg2_chapter = 12
