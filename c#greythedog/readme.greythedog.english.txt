@@ -142,6 +142,7 @@ HISTORY
 
 Version 5.1:
 -added needed definition for variable "newline" so SoD end cutscene gets patched correctly: Grey should move with the group in SoD end cutscene.
+-changed name in the .ini for better Package names when using ALIEN's Infinity Auto Packager.
 
 Version 5:
 -German version by Gerri, revised by jastey
