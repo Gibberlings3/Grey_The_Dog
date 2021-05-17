@@ -99,7 +99,28 @@ END
 IF ~~ THEN feecollector_03
 SAY ~Please hand me the note.~ 
 + ~GlobalLT("C#Grey_FeeSum","LOCALS",450)
+OR(5)
 PartyHasItem("c#grtax0")
+HasItem("c#grtax0","C#Grey")
+HasItem("c#grtax0","C#Husam1")
+HasItem("c#grtax0","C#Brandock")
+HasItem("c#grtax0","C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("c#grtax0","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("c#grtax0","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
 !HasItemEquiped("c#grcol2","C#Grey")
 !HasItemEquiped("c#grcol3","C#Grey")
 !HasItemEquiped("c#grcol4","C#Grey")
@@ -107,23 +128,79 @@ InMyArea("C#Grey")
 Global("C#Grey_FeeHintSaid3","LOCALS",0)~ + ~Here it is.~ DO ~IncrementGlobal("C#Grey_FeeSum","LOCALS",50) SetGlobal("C#Grey_FeeHintSaid3","LOCALS",1)~ + feecollector_04
 
 + ~GlobalLT("C#Grey_FeeSum","LOCALS",450)
+OR(5)
 PartyHasItem("c#grtax0")
+HasItem("c#grtax0","C#Grey")
+HasItem("c#grtax0","C#Husam1")
+HasItem("c#grtax0","C#Brandock")
+HasItem("c#grtax0","C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("c#grtax0","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("c#grtax0","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
 !HasItemEquiped("c#grcol2","C#Grey")
 !HasItemEquiped("c#grcol3","C#Grey")
 !HasItemEquiped("c#grcol4","C#Grey")
 InMyArea("C#Grey")
 Global("C#Grey_FeeHintSaid3","LOCALS",1)~ + ~Here it is.~ DO ~IncrementGlobal("C#Grey_FeeSum","LOCALS",50)~ + feecollector_04_again
-
 + ~GlobalLT("C#Grey_FeeSum","LOCALS",450)
+OR(5)
 PartyHasItem("c#grtax0")
+HasItem("c#grtax0","C#Grey")
+HasItem("c#grtax0","C#Husam1")
+HasItem("c#grtax0","C#Brandock")
+HasItem("c#grtax0","C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("c#grtax0","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("c#grtax0","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
 OR(4)
 	HasItemEquiped("c#grcol2","C#Grey")
 	HasItemEquiped("c#grcol3","C#Grey")
 	HasItemEquiped("c#grcol4","C#Grey")
 	!InMyArea("C#Grey")~ + ~Here it is.~ + feecollector_sum
 IF ~GlobalLT("C#Grey_FeeSum","LOCALS",450)
-!PartyHasItem("c#grtax0")~ THEN + feecollector_no_note
-
+	!PartyHasItem("c#grtax0") // runenstein
+	OR(3)
+		!HasItem("c#grtax0","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",0)
+		!InParty("C#Solaufein")
+	OR(3)
+		!HasItem("c#grtax0","C#Grey")
+		Global("C#GreyJoined","GLOBAL",0)
+		!InParty("C#Grey")
+	OR(3)
+		!HasItem("c#grtax0","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",0)
+		!InParty("C#Husam")
+	OR(3)
+		!HasItem("c#grtax0","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",0)
+		!InParty("C#Brandock")~ THEN + feecollector_no_note
 IF ~Global("C#Grey_FeeSum","LOCALS",450)~ THEN + feecollector_500
 END
 
@@ -229,7 +306,41 @@ END
 
 IF ~~ THEN feecollector_paid
 SAY ~Very well, this is settled, then. Do not let your dog be seen again without a collar, or a new note will be handed to you. Good day to you, citizen.~
-IF ~~ THEN DO ~TakePartyItem("c#grtax0") SetGlobal("C#Grey_FeeSum","LOCALS",1000)
+IF ~PartyHasItem("c#grtax0")~ THEN DO ~ActionOverride("C#GRTAX1",TakePartyItem("c#grtax0")) 
+ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
+SetGlobal("C#Grey_FeeSum","LOCALS",1000)
+EraseJournalEntry(%Grey's Collar
+
+Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
+IF ~HasItem("c#grtax0","C#Solaufein")
+OR(2) InParty("C#Solaufein") Global("C#SolauJoined","GLOBAL",0)
+InMyArea("C#Solaufein")~ THEN DO ~ActionOverride("C#Solaufein",GiveItem("c#grtax0","C#GRTAX1")) 
+ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
+SetGlobal("C#Grey_FeeSum","LOCALS",1000)
+EraseJournalEntry(%Grey's Collar
+
+Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
+IF ~HasItem("c#grtax0","C#Husam1")
+OR(2) InParty("C#Husam1") Global("C#HusamJoined","GLOBAL",0)
+InMyArea("C#Husam1")~ THEN DO ~ActionOverride("C#Husam1",GiveItem("c#grtax0","C#GRTAX1"))
+ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
+SetGlobal("C#Grey_FeeSum","LOCALS",1000)
+EraseJournalEntry(%Grey's Collar
+
+Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
+IF ~HasItem("c#grtax0","C#Brandock")
+OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",0)
+InMyArea("C#Brandock")~ THEN DO ~ActionOverride("C#Brandock",GiveItem("c#grtax0","C#GRTAX1"))
+ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
+SetGlobal("C#Grey_FeeSum","LOCALS",1000)
+EraseJournalEntry(%Grey's Collar
+
+Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
+IF ~HasItem("c#grtax0","C#Grey")
+OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",0)
+InMyArea("C#Grey")~ THEN DO ~ActionOverride("C#Grey",GiveItem("c#grtax0","C#GRTAX1"))
+ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
+SetGlobal("C#Grey_FeeSum","LOCALS",1000)
 EraseJournalEntry(%Grey's Collar
 
 Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT

@@ -15,11 +15,11 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~5.1~ 
+VERSION ~6~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
-AUTO_TRA ~c#greythedog/tra/%s~
+AUTO_TRA ~c#greythedog/tra/autotra/%s~
 
 
 ALWAYS
@@ -43,20 +43,6 @@ OUTER_SPRINT newline ~%WNL%%LNL%%MNL%%TAB% ~
     OUTER_SPRINT name_source ~bg2_chapter_%i%~
     OUTER_SET EVAL ~%name_source%~ = bg2_chapter
   END
-
-  ACTION_DEFINE_ARRAY c#noconvert BEGIN setup END
-  ACTION_DEFINE_ARRAY c#reload BEGIN game END
-      LAF HANDLE_CHARSETS
-        INT_VAR
-          infer_charsets = 1
-        STR_VAR
-          tra_path = EVAL ~c#greythedog/tra~
-          noconvert_array = c#noconvert
-          reload_array = c#reload
-      END
-
-
-
 
   /* DavidW's code for unifying the area script patching. With many thanks! */
   DEFINE_ACTION_FUNCTION extend_area_script 
@@ -125,9 +111,6 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
     OUTER_SPRINT ~IT_IS_BG2~ ~Global("endofbg1","GLOBAL",2)~
 
 /* externalising these is not really necessary because there is no custom transition to SoD but it's already scripted, so. */
-    OUTER_SPRINT ~BG1_TRANSITION~ ~"AR0602","C#Grey",[4245.1985]~
-    OUTER_SPRINT ~BG1_transition_value~ ~10~
-    OUTER_SPRINT ~BG1_transition_dlg~ ~C#Grey2~
   END
 
   ACTION_IF GAME_IS ~bgee~ THEN BEGIN
@@ -141,9 +124,6 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
 
   /* SoD */
   ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-    OUTER_SPRINT ~BG1_TRANSITION~ ~"AR0602","C#Grey",[4245.1985]~
-    OUTER_SPRINT ~BG1_transition_value~ ~10~
-    OUTER_SPRINT ~BG1_transition_dlg~ ~C#Grey2~
     OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobalOverride())~
   END
 
@@ -183,27 +163,59 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
 
 
 
-/*
 //////////////////////////////////////////////////////////////////////
 /* all following actions are only processed ONCE for the whole mod, independent of un- and reinstalling of single components */
+  ACTION_IF !FILE_EXISTS ~c#greythedog/Install/c#greyinstall.mrk~ BEGIN
+
+
+//CamDawgs CD_STATE_NOTVALID zum Checken der Dialogfähigkeit eines Char
+//Thank you very much, CamDawg!
+APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
+ ~0x80101FEF CD_STATE_NOTVALID~
+ UNLESS ~CD_STATE_NOTVALID~
+
+/* BGT, BGII: fixed Moondog Avatar (from BG2Fixpack) */
+
+ACTION_IF (GAME_IS ~bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ "0") //makes sure the fixpack isn't already installed
+    THEN BEGIN
+  COPY   ~c#greythedog/fix/mdog_mo.bmp~  ~override~ // fixed moon dog avatar
+END
+
 
 /* BG:EE - formatted texts etc. */
 
-  ACTION_IF !FILE_EXISTS ~c#greythedog/Install/c#greyinstall.mrk~ BEGIN
 
-######
+    /* Copies tra files into the autotra-folder (to leave the originals untouched) */
+    DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
+      COPY ~c#greythedog/tra/english~  ~c#greythedog/tra/autotra/%LANGUAGE%~
+      COPY ~c#greythedog/tra/%LANGUAGE%~  ~c#greythedog/tra/autotra/%LANGUAGE%~
+    END
+
+    LAF autotra_workaround END
+
+  ACTION_DEFINE_ARRAY c#noconvert BEGIN setup END
+  ACTION_DEFINE_ARRAY c#reload BEGIN game baf journal END
+      LAF HANDLE_CHARSETS
+        INT_VAR
+          infer_charsets = 1
+        STR_VAR
+          tra_path = EVAL ~c#greythedog/tra/autotra~
+          noconvert_array = c#noconvert
+          reload_array = c#reload
+      END
+
 
    COPY ~c#greythedog/install/component.xx~ ~c#greythedog/Install/c#greyinstall.mrk~
  
-
+ END
 //reloading of tras:
 
- END
-
-
-*/
-
-
+  LOAD_TRA ~c#greythedog/tra/autotra/english/game.tra~
+  LOAD_TRA ~c#greythedog/tra/autotra/%LANGUAGE%/game.tra~
+  LOAD_TRA ~c#greythedog/tra/autotra/english/baf.tra~
+  LOAD_TRA ~c#greythedog/tra/autotra/%LANGUAGE%/baf.tra~
+  LOAD_TRA ~c#greythedog/tra/autotra/english/journal.tra~
+  LOAD_TRA ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
 
 END //ALWAYS
 
@@ -228,48 +240,29 @@ LANGUAGE ~Deutsch~
 BEGIN  @90004 /* ~Grey The Dog NPC~ */
 REQUIRE_PREDICATE (ENGINE_IS ~tob bgee bg2ee~) @90005 /* ~You either need TOB installed or the Enhanced Editions to play this mod.~ */
 REQUIRE_PREDICATE (GAME_IS ~tob bgee bg2ee bgt eet~) @90006 /* ~This mod is not compatible with your game.~ */
-
-//CamDawgs CD_STATE_NOTVALID zum Checken der Dialogfähigkeit eines Char
-//Thank you very much, CamDawg!
-APPEND ~STATE.IDS~ // adds custom IsValidForPartyDialogue state
- ~0x80101FEF CD_STATE_NOTVALID~
- UNLESS ~CD_STATE_NOTVALID~
-
-
-
-/* BGT, BGII: fixed Moondog Avatar (from BG2Fixpack) */
-
-ACTION_IF (GAME_IS ~bgt tob~ AND NOT MOD_IS_INSTALLED ~setup-bg2fixpack.tp2~ "0") //makes sure the fixpack isn't already installed
-
-    THEN BEGIN
-  COPY   ~c#greythedog/fix/mdog_mo.bmp~  ~override~ // fixed moon dog avatar
-END
-
-
-
-
-
+FORBID_COMPONENT ~EET_end.tp2~ ~0~ @90008
+FORBID_COMPONENT ~EET_end.tp2~ ~1~ @90008
 
 /* Journal BG:EE */
 ACTION_IF GAME_IS ~bgee~ THEN BEGIN
   /* #31323: Farmer Brun's Missing Son */
-  ADD_JOURNAL TITLE (#31323) @100002 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+  ADD_JOURNAL TITLE (#31323) @100002 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
   /* #31418: The Tale of Captain Brage */
-  ADD_JOURNAL TITLE (#31418) @100000 @100001 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+  ADD_JOURNAL TITLE (#31418) @100000 @100001 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
 END
 
 ACTION_IF GAME_IS ~eet~ THEN BEGIN
   /* #31323: Farmer Brun's Missing Son */
-  ADD_JOURNAL TITLE (#231323) @100002 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+  ADD_JOURNAL TITLE (#231323) @100002 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
   /* #31418: The Tale of Captain Brage */
-  ADD_JOURNAL TITLE (#231418) @100000 @100001 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+  ADD_JOURNAL TITLE (#231418) @100000 @100001 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
 END
 
-ADD_JOURNAL TITLE (@100016) @100003 @100004 @100005 @100006 @100007 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
-ADD_JOURNAL TITLE (@100017) @100008 @100009 @100010 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
-ADD_JOURNAL TITLE (@100018) @100011 @100012 @100013 @100014 @100015 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
-ADD_JOURNAL TITLE (@100020) @100021 @100022 @100023 @100024 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
-ADD_JOURNAL @100025 USING ~c#greythedog\tra\%LANGUAGE%\journal.tra~
+ADD_JOURNAL TITLE (@100016) @100003 @100004 @100005 @100006 @100007 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
+ADD_JOURNAL TITLE (@100017) @100008 @100009 @100010 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
+ADD_JOURNAL TITLE (@100018) @100011 @100012 @100013 @100014 @100015 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
+ADD_JOURNAL TITLE (@100020) @100021 @100022 @100023 @100024 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
+ADD_JOURNAL @100025 USING ~c#greythedog/tra/autotra/%LANGUAGE%/journal.tra~
 
 
 /* Wolfhound kit 
@@ -1515,6 +1508,9 @@ END  //~bgt eet~
 
 ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
 
+COPY_EXISTING ~%tutu_var%TAEROM.CRE~ ~OVERRIDE~
+WRITE_ASCII 0x280 ~TAEROM~
+
 COPY_EXISTING ~%tutu_var%SHISTA.CRE~ ~override/%tutu_var%SHISTA.CRE~
 WRITE_EVALUATED_ASCII 0x280 ~Shistal~ #32 // script name / DV
 
@@ -1657,12 +1653,33 @@ COPY ~c#greythedog/cre/c#ardog4.cre~ ~override/c#ardog4.cre~ EVALUATE_BUFFER
 Grey is not in the group */
 /* spell and idea taken from Zed Nocear's BG1 trigger simulations! */
 
-//only works with AI turned on, but I don't want to cladder the baldur.bcs
-ACTION_IF !(FILE_CONTAINS_EVALUATED (~dplayer3.BCS~ ~"C#FATIG1"~))
+/* bgee, bgt, eet, tob, bg2:ee */
+ACTION_IF GAME_IS ~bgee bgt tob bg2ee eet~ THEN BEGIN
+  ACTION_IF !(FILE_CONTAINS_EVALUATED (~baldur.BCS~ ~"C#FATIG1"~))
     THEN BEGIN
-        EXTEND_TOP ~dplayer3.bcs~   ~c#greythedog/script/c#brando_dplayer3_add.baf~
+        EXTEND_TOP ~baldur.bcs~   ~c#greythedog/script/c#brando_baldur_add.baf~
         COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
-    END
+  END
+END
+
+/* SoD, eet */
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN   ACTION_IF !(FILE_CONTAINS_EVALUATED (~bdbaldur.BCS~ ~"C#FATIG1"~))
+    THEN BEGIN
+        EXTEND_TOP ~bdbaldur.bcs~   ~c#greythedog/script/c#brando_baldur_add.baf~
+        COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
+  END
+END
+
+/* bgt, eet, tob, bg2:ee */
+ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
+  ACTION_IF !(FILE_CONTAINS_EVALUATED (~baldur25.BCS~ ~"C#FATIG1"~))
+    THEN BEGIN
+        EXTEND_TOP ~baldur25.bcs~   ~c#greythedog/script/c#brando_baldur_add.baf~
+        COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
+  END
+END
+
+
 
 /* scripts for all games */
 
@@ -1963,7 +1980,6 @@ APPEND ~pdialog.2da~
 ~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
 UNLESS ~C#Grey~
 
-
 APPEND ~interdia.2da~
 ~C#Grey 	C#GreyB~
 UNLESS ~C#Grey~
@@ -1972,30 +1988,81 @@ END
 
 /* SoD */
 
-ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
-APPEND ~bddialog.2da~
-~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
-UNLESS ~C#Grey~
+ACTION_IF (GAME_IS ~bgee~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN
+  APPEND ~bddialog.2da~
+    ~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
+  UNLESS ~C#Grey~
 
-/* ##
-APPEND ~bdbanter.2da~
-~C#Grey 	C#GreyB~
-UNLESS ~C#Grey~
-*/
+  ACTION_IF (FILE_EXISTS_IN_GAME ~BDBANTER.2DA~) BEGIN
 
-END
+    APPEND ~bdbanter.2da~
+      ~C#Grey 	C#GreyB~
+    UNLESS ~C#Grey~
+        
+  END ELSE BEGIN 
 
-/* BG1:EET */
+<<<<<<<< .../BDBANTER.2DA
+2DA      V1.0
+NONE
+         FILE
+KIVAN    BDKIVANB
+ALORA    BDALORAB
+MINSC    BDMINSCB
+DYNAHEIR BDDYNAHB
+YESLICK  BDYESLIB
+CORAN    BDCORANB
+AJANTIS  BDAJANTB
+KHALID   BDKHALIB
+JAHEIRA  BDJAHEIB
+GARRICK  BDGARRIB
+SAFANA   BDSAFANB
+FALDORN  BDFALDOB
+BRANWEN  BDBRANWB
+QUAYLE   BDQUAYLB
+XAN      BDXANB
+SKIE     BDSKIEB
+ELDOTH   BDELDOTB
+XZAR     BDXZARB
+MONTARON BDMONTAB
+TIAX     BDTIAXB
+KAGAIN   BDKAGAIB
+SHARTEEL BDSHARTB
+EDWIN    BDEDWINB
+VICONIA  BDVICONB
+IMOEN    BDIMOENB
+NEERA    BDNEERAB
+DORN     BDDORNB
+RASAAD   BDRASAAB
+BAELOTH  BDBAELOB
+VOGHILN  BDVOGHIB
+MKHIIN   BDMKHIIB
+CORWIN   BDCORWIB
+GLINT    BDGLINTB
+C#Grey 	 C#GreyB
+>>>>>>>>
+
+    COPY ~.../BDBANTER.2DA~ ~override~ 
+  END
+END //SoD
+
+/* BG1: /SoD: EET */
 
 ACTION_IF GAME_IS ~eet~ THEN BEGIN
-APPEND ~bgdialog.2da~
-~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
-UNLESS ~C#Grey~
+  APPEND ~bgdialog.2da~
+    ~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
+  UNLESS ~C#Grey~
 
-APPEND ~bgbanter.2da~
-~C#Grey 	C#GreyB~
-UNLESS ~C#Grey~
+  APPEND ~bgbanter.2da~
+    ~C#Grey 	C#GreyB~
+  UNLESS ~C#Grey~
 
+  APPEND ~bddialog.2da~
+    ~C#Grey 	C#GreyP 	C#GreyJ 	C#GreyD~
+  UNLESS ~C#Grey~
+
+  APPEND ~bdbanter.2da~
+    ~C#Grey 	C#GreyB~
+  UNLESS ~C#Grey~
 END
 
 /* BGT, BGII, BGII:EE */
@@ -2314,9 +2381,13 @@ ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
 
 ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~ THEN BEGIN 
 
-COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/brando_crossmod_grey_BG1.d~
 EXTEND_BOTTOM ~c#brandd.bcs~   ~c#greythedog/crossmod/brando_crossmod_grey_BG1.baf~
 EVALUATE_BUFFER
+
+/* Also add to player1d.bcs so it also works for "familiar Brandock" */
+
+EXTEND_BOTTOM ~player1d.bcs~   ~c#greythedog/crossmod/brando_crossmod_grey_BG1_player1.baf~
+EVALUATE_BUFFER 
 
 END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
 

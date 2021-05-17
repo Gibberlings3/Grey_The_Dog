@@ -581,8 +581,11 @@ InParty(Myself)
 Global("C#Grey_CoranBanterBG1","GLOBAL",0)~ THEN ~%CORAN_BANTER%~ corangrey1
 @151 DO ~SetGlobal("C#Grey_CoranBanterBG1","GLOBAL",1)~
 = @152
-== ~%CORAN_BANTER%~ IF ~!PartyHasItem("%tutu_var%MISC52") !PartyHasItem("c#q04003")~ THEN @153
-== ~%CORAN_BANTER%~ IF ~Global("CoranReward","GLOBAL",0) PartyHasItem("c#q04003")~ THEN @154
+== ~%CORAN_BANTER%~ IF ~!PartyHasItem("%tutu_var%MISC52") !HasItem("%tutu_var%MISC52","C#Grey") !PartyHasItem("c#q04003") !HasItem("c#q04003","C#Grey")~ THEN @153
+== ~%CORAN_BANTER%~ IF ~Global("CoranReward","GLOBAL",0) 
+OR(2)
+PartyHasItem("c#q04003")
+HasItem("c#q04003","C#Grey")~ THEN @154
 == ~%CORAN_BANTER%~ @155
 == ~%CORAN_BANTER%~ IF ~Global("CoranReward","GLOBAL",0)~ THEN @156
 EXIT

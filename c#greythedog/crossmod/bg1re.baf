@@ -2,6 +2,7 @@
 IF 
 %BGT_VAR%
 PartyHasItem("C#Q11005")
+!HasItem("C#Q11005","C#Grey")
 Global("C#Grey_BertaBeef","GLOBAL",0)
 
     OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)

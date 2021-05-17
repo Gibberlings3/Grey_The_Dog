@@ -42,6 +42,7 @@ END
 IF ~~ follow_charname
 SAY @0 /* ~Woof!~ */
 IF ~~ THEN DO ~SetInterrupt(FALSE)
+//##RealSetGlobalTimer("C#GreyNPCBanterTimer","GLOBAL",400)
 SetGlobal("C#GreyJoined","GLOBAL",2)
 %Grey_MakeGlobalOverride%
 ChangeEnemyAlly(Myself, FAMILIAR)

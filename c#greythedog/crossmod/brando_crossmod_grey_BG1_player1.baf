@@ -1,15 +1,15 @@
 IF 
 	%BGT_VAR%
 	CombatCounter(0) !See([ENEMY]) 
-	InParty("C#Brandock") 
+	Global("C#BrandockJoined","GLOBAL",2)
 	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
-	See("C#Grey") See(Player1)
-	!StateCheck("C#Grey",CD_STATE_NOTVALID)
+	See("C#Grey") See("C#Brandock")
 	!StateCheck("C#Brandock",CD_STATE_NOTVALID)
+	!StateCheck("C#Grey",CD_STATE_NOTVALID)
 	Global("C#Brandock_GreyBG1","GLOBAL",3)
 	RealGlobalTimerExpired("C#BrandockNPCBanterTimer","GLOBAL")
 THEN
 RESPONSE #100
 	SetGlobal("C#Brandock_GreyBG1","GLOBAL",4)
-	StartDialogNoSet("C#Grey")
+	ActionOverride("C#Brandock",StartDialogNoSet("C#Grey"))
 END

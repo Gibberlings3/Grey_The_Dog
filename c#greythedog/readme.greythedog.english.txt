@@ -140,6 +140,19 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 6:
+-traified and translated all lines for PID
+-fixed text format error for EE (non-English versions)
+-"7th party members" for some item checks considered 
+-corrected entry for "Beregost_House08_L2" in cpmvars.tpas
+-resttalk crossmod with Brandock should also fire if Brandock is "7th party member"
+-more SoD "interjections" (woof!)
+-journal entry about Brage's gauntlets should be removed when Brage's quest is finished
+-improved transition to BGII
+-added check to forbit install of mod after EET_End
+-changed internal structure so temporary "autotra" foldr is used for text formatting
+-typo corrections
+
 Version 5.1:
 -added needed definition for variable "newline" so SoD end cutscene gets patched correctly: Grey should move with the group in SoD end cutscene.
 -changed name in the .ini for better Package names when using ALIEN's Infinity Auto Packager.

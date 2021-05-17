@@ -10,6 +10,8 @@ END
 
 IF
 	!PartyHasItem("c#grkey1") // Schlüssel
+	!HasItem("c#grkey1","C#Grey")
+	!HasItem("c#grkey1","C#Brandock")
 	Global("C#Grey_QBG1Key","GLOBAL",0)
 THEN
 	RESPONSE #100
@@ -20,7 +22,10 @@ THEN
 END
 
 IF
-	PartyHasItem("c#grkey1") // Schlüssel
+	OR(3)
+		PartyHasItem("c#grkey1") // Schlüssel
+		HasItem("c#grkey1","C#Grey")
+		HasItem("c#grkey1","C#Brandock")
 	!Global("C#Grey_QBG1Key","GLOBAL",0)
 THEN
 	RESPONSE #100

@@ -87,8 +87,9 @@ END //APPEND
 /* rest banter, triggered by c#brandD.bcs */
  
 CHAIN
-IF ~Global("C#Brandock_GreyBG1","GLOBAL",4)~ THEN C#BrandJ brandockgrey4
-@18 DO ~SetGlobal("C#Brandock_GreyBG1","GLOBAL",5)~
+IF WEIGHT #-1
+~Global("C#Brandock_GreyBG1","GLOBAL",4)~ THEN C#BrandJ brandockgrey4
+@18 
 = @19
 = @20
 == %IMOEN_BANTER% IF ~InParty("%IMOEN_DV%") See("%IMOEN_DV%") 
@@ -107,4 +108,5 @@ InParty("skie") See("skie")
 !StateCheck("ajantis",CD_STATE_NOTVALID)~ THEN @26
 = @27
 == C#BrandB @28
-EXIT
+END
+IF ~~ THEN DO ~SetGlobal("C#Brandock_GreyBG1","GLOBAL",5) RestParty()~

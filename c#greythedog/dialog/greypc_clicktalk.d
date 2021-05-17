@@ -7,7 +7,11 @@ SAY ~(Grey turns his head to you.) Woof!~
 
 /* Find Brage - start in Nashkel Garrison */
 
-+ ~AreaCheck("%Nashkel_Garrison%") PartyHasItem("C#Grbrbr") GlobalLT("C#Grey_Brage","GLOBAL",4) Global("MetBrage","GLOBAL",0)~ + @0 /* ~Grey, find Brage! Find, Grey!~ */ + find_brage
++ ~AreaCheck("%Nashkel_Garrison%") 
+OR(2)
+PartyHasItem("c#grbrbr") 
+HasItem("c#grbrbr","C#Grey")
+GlobalLT("C#Grey_Brage","GLOBAL",4) Global("MetBrage","GLOBAL",0)~ + @0 /* ~Grey, find Brage! Find, Grey!~ */ + find_brage
 
 /* SoD, BD1000 find missing refugies */
 
@@ -23,12 +27,6 @@ AreaType(FOREST)
 AreaType(CITY)
 AreaType(OUTDOOR)~ + @1 /* ~(You take a stick from the ground.) Want to play?~ */ + stick_play
 ++ @2 /* ~Come here boy, I want to pet you!~ */ + ruffle
-
-//+ ~AreaCheck("tavern"...)~ + ~Grey! Bathing time!~ + bathing
-
-/* Could this be turned into a "Grey sits down" sequence?
-+ ~InParty(Myself)~ + ~Heel, Grey!~ DO ~MoveToObject(Player1)~ EXIT //Leads to Grey walking *into* the PC but I guess that's an engine thing
-*/
 
 /* CHARNAME needs some loving, too! */
 
@@ -167,29 +165,29 @@ GlobalLT("BD_PLOT","GLOBAL",55) Global("C#Grey_SoDBGCityPID","LOCALS",0)~ + ~Out
 /* general (both BG1 and BG2)  */
 
 
-+ ~RandomNum(3,1)~ + ~It's all so complicated, Grey...~ + talkto_pcsad_01
-+ ~RandomNum(3,2)~ + ~It's all so complicated, Grey...~ + talkto_pcsad_02
-+ ~RandomNum(3,3)~ + ~It's all so complicated, Grey...~ + talkto_pcsad_03
++ ~RandomNum(3,1)~ + @78  /* ~It's all so complicated, Grey...~ */ + talkto_pcsad_01
++ ~RandomNum(3,2)~ + @78  /* ~It's all so complicated, Grey...~ */ + talkto_pcsad_02
++ ~RandomNum(3,3)~ + @78  /* ~It's all so complicated, Grey...~ */ + talkto_pcsad_03
 
-+ ~RandomNum(3,1)~ + ~Why me, Grey? Why me...~ + talkto_pcsad_01
-+ ~RandomNum(3,2)~ + ~Why me, Grey? Why me...~ + talkto_pcsad_02
-+ ~RandomNum(3,3)~ + ~Why me, Grey? Why me...~ + talkto_pcsad_03
++ ~RandomNum(3,1)~ + @79 /* ~Why me, Grey? Why me...~ */ + talkto_pcsad_01
++ ~RandomNum(3,2)~ + @79 /* ~Why me, Grey? Why me...~ */ + talkto_pcsad_02
++ ~RandomNum(3,3)~ + @79 /* ~Why me, Grey? Why me...~ */ + talkto_pcsad_03
 
-+ ~RandomNum(3,1)~ + ~It could be worse, Grey, eh, you hairy brute?~ + talkto_pcok_01
-+ ~RandomNum(3,2)~ + ~It could be worse, Grey, eh, you hairy brute?~ + talkto_pcok_02
-+ ~RandomNum(3,3)~ + ~It could be worse, Grey, eh, you hairy brute?~ + talkto_pcok_03
++ ~RandomNum(3,1)~ + @80 /* ~It could be worse, Grey, eh, you hairy brute?~ */ + talkto_pcok_01
++ ~RandomNum(3,2)~ + @80 /* ~It could be worse, Grey, eh, you hairy brute?~ */ + talkto_pcok_02
++ ~RandomNum(3,3)~ + @80 /* ~It could be worse, Grey, eh, you hairy brute?~ */ + talkto_pcok_03
 
-+ ~RandomNum(3,1)~ + ~I think we are doing quite well, what do you say?~ + talkto_pcok_01
-+ ~RandomNum(3,2)~ + ~I think we are doing quite well, what do you say?~ + talkto_pcok_02
-+ ~RandomNum(3,3)~ + ~I think we are doing quite well, what do you say?~ + talkto_pcok_03
++ ~RandomNum(3,1)~ + @81 /* ~I think we are doing quite well, what do you say?~ */ + talkto_pcok_01
++ ~RandomNum(3,2)~ + @81 /* ~I think we are doing quite well, what do you say?~ */ + talkto_pcok_02
++ ~RandomNum(3,3)~ + @81 /* ~I think we are doing quite well, what do you say?~ */ + talkto_pcok_03
 
-+ ~RandomNum(3,1)~ + ~We'll show them, Grey. We'll show them all!~ + talkto_pcenergetic_01
-+ ~RandomNum(3,2)~ + ~We'll show them, Grey. We'll show them all!~ + talkto_pcenergetic_02
-+ ~RandomNum(3,3)~ + ~We'll show them, Grey. We'll show them all!~ + talkto_pcenergetic_03
++ ~RandomNum(3,1)~ + @82 /* ~We'll show them, Grey. We'll show them all!~ */ + talkto_pcenergetic_01
++ ~RandomNum(3,2)~ + @82 /* ~We'll show them, Grey. We'll show them all!~ */ + talkto_pcenergetic_02
++ ~RandomNum(3,3)~ + @82 /* ~We'll show them, Grey. We'll show them all!~ */ + talkto_pcenergetic_03
 
-+ ~RandomNum(3,1)~ + ~Let's go and find those culprits! No one can stop us! No one!~ + talkto_pcenergetic_01
-+ ~RandomNum(3,2)~ + ~Let's go and find those culprits! No one can stop us! No one!~ + talkto_pcenergetic_02
-+ ~RandomNum(3,3)~ + ~Let's go and find those culprits! No one can stop us! No one!~ + talkto_pcenergetic_03
++ ~RandomNum(3,1)~ + @83 /* ~Let's go and find those culprits! No one can stop us! No one!~ */ + talkto_pcenergetic_01
++ ~RandomNum(3,2)~ + @83 /* ~Let's go and find those culprits! No one can stop us! No one!~ */ + talkto_pcenergetic_02
++ ~RandomNum(3,3)~ + @83 /* ~Let's go and find those culprits! No one can stop us! No one!~ */ + talkto_pcenergetic_03
 END
 
 

@@ -141,3 +141,17 @@ THEN
 RESPONSE #100
 StartDialogueNoSet(Player1)
 END
+
+/* remove journal entry about Brage's Gauntlets if Brage quest is finished */
+
+IF
+CombatCounter(0)
+!See([ENEMY])
+Global("C#Grey_Brage_Journal","LOCALS",0)
+GlobalGT("C#Grey_Brage","GLOBAL",0)
+GlobalGT("MetBrage","GLOBAL",0)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@100001)
+		SetGlobal("C#Grey_Brage_Journal","LOCALS",1)
+END
