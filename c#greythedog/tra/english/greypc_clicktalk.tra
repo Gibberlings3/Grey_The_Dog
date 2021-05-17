@@ -76,8 +76,20 @@
 @75  = ~(Grey snaps playful at your hand.) Woof!~
 @76  = ~(Grey looks at you, somehow perplexed.)~
 @77  = ~(Grey turns and *jumps* at you. You pay for the teasing with a slobbery face.)~
+
+/* new for 6 */
+@78  = ~It's all so complicated, Grey...~
+@79  = ~Why me, Grey? Why me...~
+@80  = ~It could be worse, Grey, eh, you hairy brute?~
+@81  = ~I think we are doing quite well, what do you say?~
+@82  = ~We'll show them, Grey. We'll show them all!~
+@83  = ~Let's go and find those culprits! No one can stop us! No one!~
 /*
-@78  =
-@79  =
-@80  =
+@84  =
+@85  =
+@86  =
+@87  =
+@88  =
+@89  =
+@90  =
 */

@@ -44,6 +44,7 @@ END
 IF
 	Global("C#Grey_Has1HPEffect","GLOBAL",1)
 	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
 	See([ENEMY])
 THEN
 	RESPONSE #100
@@ -193,6 +194,24 @@ THEN
 	RESPONSE #100
 		Dialogue(Player1)
 END
+
+/* ##
+/* start banter script if not in party */
+
+IF
+	Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	InMyArea(Player1)  
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+	RealGlobalTimerExpired("C#GreyNPCBanterTimer","GLOBAL")
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#GreyNPCBanterTimer","GLOBAL",3000)
+		Interact(Player1)
+END
+*/
 
 
 

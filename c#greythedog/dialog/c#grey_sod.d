@@ -95,8 +95,21 @@ EXTEND_BOTTOM BDTELERI 2
 + ~Global("C#Grey_SoD_statues","GLOBAL",2)~ + ~I'm here indeed. My dog already helped me identify that these statues are the missing refugies. Why are we meeting here after I just asked you about them?~ + 10
 END
 
+/* chicken in the well easter egg */
+I_C_T BDDOGW01 0 C#Grey_BDDOGW01_0
+== c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN ~Woof! Woof!~
+== BDDOGW01 IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)
+OR(2) IsValidForPartyDialogue("KHALID")
+IsValidForPartyDialogue("JAHEIRA")~ THEN ~Woof!~
+END
 
-
+/* portal is open, talk to Torsin de Lancie through the closed door */
+I_C_T BDDELANC 75 C#Grey_BDDELANC_75
+== c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
+InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN ~Whine!~ [C#Grey07]
+END
 
 
 /* Thrix's game */

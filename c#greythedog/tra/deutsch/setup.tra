@@ -6,3 +6,6 @@
 @90005   = ~Ihr braucht entweder TOB oder die Enhanced Editions um diese Mod zu spielen.~
 @90006   = ~Diese Mod ist mit Eurem Spiel nicht kompatibel.~
 @90007   = ~Transitions Mod erkannt.~
+
+/* new for v6 */
+@90008   = ~Die Mod muss vor EET_End installiert werden.~

@@ -1,17 +1,13 @@
-/* If Grey is dead, resurrection, full healing, taking of items, and moving to AR0602 (BGT) or BD0103 (SoD)  */
+/* If Grey is dead, resurrection, full healing, taking of items, and moving to AR0602 (BGT)  */
 
-/* for BGT, this goes to ARAM00.bcs. For EET, this goes to BD0103.bcs , both EXTEND_TOP 
-
-for BGT: transition to BGII
-For EET & BGEE: transition to SoD (after Korlasz crypt) */
+/* for BGT, this goes to ARAM00.bcs. */
 
 
 /* Grey is in party, but dead */
 IF
 	InPartyAllowDead("C#Grey")
 	Dead("C#Grey")
-	GlobalLT("C#Grey_Exists","GLOBAL",%BG1_transition_value%)
-	GlobalLT("BD_PLOT","GLOBAL",51)  //for BG:EE, but it doesn't hurt in BGT
+	GlobalLT("C#Grey_Exists","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -19,9 +15,7 @@ THEN
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ActionOverride("C#Grey",LeaveParty())
 		SetGlobal("C#GreyJoined","GLOBAL",0)
-		ActionOverride("C#Grey",SetDialog("%BG1_transition_dlg%")
-		ActionOverride("C#Grey",MoveGlobal(%BG1_TRANSITION%))
-		SetGlobal("C#Grey_Exists","GLOBAL",%BG1_transition_value%)
+		SetGlobal("C#Grey_Exists","GLOBAL",5)
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -33,7 +27,7 @@ END
 IF
 	InParty("C#Grey")
 	!Dead("C#Grey")
-	GlobalLT("C#Grey_Exists","GLOBAL",%BG1_transition_value%)
+	GlobalLT("C#Grey_Exists","GLOBAL",5)
 	GlobalLT("BD_PLOT","GLOBAL",51)
 THEN
 	RESPONSE #100
@@ -42,9 +36,9 @@ THEN
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ActionOverride("C#Grey",LeaveParty())
 		SetGlobal("C#GreyJoined","GLOBAL",0)
-		ActionOverride("C#Grey",SetDialog("%BG1_transition_dlg%")
-		ActionOverride("C#Grey",MoveGlobal(%BG1_TRANSITION%))
-		SetGlobal("C#Grey_Exists","GLOBAL",%BG1_transition_value%)
+		ActionOverride("C#Grey",GivePartyAllEquipment())
+		SetGlobal("C#Grey_Exists","GLOBAL",5)
+		SetGlobal("C#Grey_Exists","GLOBAL",5)
 		SetInterrupt(TRUE)
 		Continue()
 END
@@ -54,7 +48,7 @@ IF
 	InMyArea("C#Grey")
 	!Dead("C#Grey")
 	Global("C#GreyJoined","GLOBAL",2)
-	GlobalLT("C#Grey_Exists","GLOBAL",%BG1_transition_value%)
+	GlobalLT("C#Grey_Exists","GLOBAL",5)
 	GlobalLT("BD_PLOT","GLOBAL",51)
 THEN
 	RESPONSE #100
@@ -65,9 +59,9 @@ THEN
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ChangeEnemyAlly("C#Grey",NEUTRAL)
 		SetGlobal("C#GreyJoined","GLOBAL",0)
-		ActionOverride("C#Grey",SetDialog("%BG1_transition_dlg%")
-		ActionOverride("C#Grey",MoveGlobal(%BG1_TRANSITION%))
-		SetGlobal("C#Grey_Exists","GLOBAL",%BG1_transition_value%)
+		ActionOverride("C#Grey",GivePartyAllEquipment())
+		SetGlobal("C#Grey_Exists","GLOBAL",5)
+		SetGlobal("C#Grey_Exists","GLOBAL",5)
 		SetInterrupt(TRUE)
 		Continue()
 END

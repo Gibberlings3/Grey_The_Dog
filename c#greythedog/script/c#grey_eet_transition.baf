@@ -1,3 +1,4 @@
+/* Grey is in party, dead or alive */
 IF
 	InPartyAllowDead("C#Grey")
 	Global("C#Grey_EETBGIITransition","MYAREA",0)
@@ -27,7 +28,7 @@ THEN
 		Continue()
 END
 
-
+/* Grey follows as 7th party member or as neutral NPC in SoD end cutscenes */
 IF
 	!Dead("C#Grey")
 	OR(2)

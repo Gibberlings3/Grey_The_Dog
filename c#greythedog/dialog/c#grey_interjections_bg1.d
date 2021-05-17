@@ -157,35 +157,416 @@ ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 9 END BEGIN END ~IncrementGlobal("C#Gr
 
 /* Beregost: Thunderhammer Smithy. Armor for Grey! */
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+/* check: is the poison fang in the inventory. PartyHasItem check doesn't work on 7th party members so we consider all of them if they are in party */
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+ PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
 + ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 4
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+ PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
 + ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 12
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+ PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+ PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
 + ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 14
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) PartyHasItem("C#GrTo#1") PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+ PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
 + ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("%tutu_var%MISC12") PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
 END
 
 APPEND ~%tutu_var%TAEROM~
@@ -202,7 +583,29 @@ END
 IF WEIGHT #-1
 ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID) 
 Global("C#Grey_TaeromTeeth","GLOBAL",1)
-PartyHasItem("C#GrTo#1")
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
 !Global("MakeArmor","GLOBAL",1)~ THEN weapon_offer_01
 SAY @44
 + ~PartyGoldGT(2999)~ + @45 + weapon_offer_02
@@ -229,12 +632,45 @@ END
 
 IF ~~ THEN weapon_offer_02
 SAY @49
-  IF ~~ THEN DO ~TakePartyGold(3000)
-TakePartyItem("C#GrTo#1")
-DestroyItem("C#GrTo#1")
+IF ~PartyHasItem("C#GrTo#1")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
+ActionOverride("TAEROM",TakePartyItemNum("C#GrTo#1",1))
+ActionOverride("TAEROM",DestroyItem("C#GrTo#1"))
 SetGlobal("C#Grey_TaeromTeeth","GLOBAL",3)
 EraseJournalEntry(@100003)
 SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",FIVE_DAYS)~ UNSOLVED_JOURNAL @100004 EXIT
+IF ~HasItem("C#GrTo#1","C#Brandock")
+OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",0)
+InMyArea("C#Brandock")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
+ActionOverride("C#Brandock",GiveItem("C#GrTo#1","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("C#GrTo#1"))
+SetGlobal("C#Grey_TaeromTeeth","GLOBAL",3)
+EraseJournalEntry(@100003)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",FIVE_DAYS)~ UNSOLVED_JOURNAL @100004 EXIT
+IF ~HasItem("C#GrTo#1","C#Husam1")
+OR(2) InParty("C#Husam1") Global("C#HusamJoined","GLOBAL",0)
+InMyArea("C#Husam1")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
+ActionOverride("C#Husam1",GiveItem("C#GrTo#1","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("C#GrTo#1"))
+SetGlobal("C#Grey_TaeromTeeth","GLOBAL",3)
+EraseJournalEntry(@100003)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",FIVE_DAYS)~ UNSOLVED_JOURNAL @100004 EXIT
+IF ~HasItem("C#GrTo#1","C#Solaufein")
+OR(2) InParty("C#Solaufein") Global("C#SolauJoined","GLOBAL",0)
+InMyArea("C#Solaufein")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
+ActionOverride("C#Solaufein",GiveItem("C#GrTo#1","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("C#GrTo#1"))
+SetGlobal("C#Grey_TaeromTeeth","GLOBAL",3)
+EraseJournalEntry(@100003)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",FIVE_DAYS)~ UNSOLVED_JOURNAL @100004 EXIT
+IF ~HasItem("C#GrTo#1","C#Grey")
+OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",0)
+InMyArea("C#Grey")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
+ActionOverride("C#Grey",GiveItem("C#GrTo#1","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("C#GrTo#1"))
+SetGlobal("C#Grey_TaeromTeeth","GLOBAL",3)
+EraseJournalEntry(@100003)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",FIVE_DAYS)~ UNSOLVED_JOURNAL @100004 EXIT
+
 END
 
 IF WEIGHT #-1
@@ -261,8 +697,56 @@ END
 
 IF ~~ THEN wardog_armor
 SAY @53 
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("MISC12") PartyGoldGT(3999)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) PartyHasItem("MISC12") PartyGoldGT(3999)~ + @42 + wardog_armor_03
++ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999)~ + @42 + wardog_armor_01
++ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
+
+	OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
+PartyGoldGT(3999)~ + @42 + wardog_armor_03
 ++ @54 + wardog_armor_02
 END
 
@@ -270,9 +754,37 @@ END
 
 IF ~~ THEN wardog_armor_01
 SAY @55
-IF ~~ THEN DO ~TakePartyGold(4000)
-TakePartyItem("MISC12")
-DestroyItem("MISC12")
+IF ~PartyHasItem("%tutu_var%MISC12")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
+ActionOverride("TAEROM",TakePartyItemNum("%tutu_var%MISC12",1))
+ActionOverride("TAEROM",DestroyItem("%tutu_var%MISC12"))
+SetGlobal("C#Grey_TaeromArmor","GLOBAL",2)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",TEN_DAYS)~ UNSOLVED_JOURNAL @100006 EXIT
+IF ~HasItem("%tutu_var%MISC12","C#Brandock")
+OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",0)
+InMyArea("C#Brandock")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
+ActionOverride("C#Brandock",GiveItem("%tutu_var%MISC12","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("%tutu_var%MISC12"))
+SetGlobal("C#Grey_TaeromArmor","GLOBAL",2)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",TEN_DAYS)~ UNSOLVED_JOURNAL @100006 EXIT
+IF ~HasItem("%tutu_var%MISC12","C#Husam1")
+OR(2) InParty("C#Husam1") Global("C#HusamJoined","GLOBAL",0)
+InMyArea("C#Husam1")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
+ActionOverride("C#Husam1",GiveItem("%tutu_var%MISC12","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("%tutu_var%MISC12"))
+SetGlobal("C#Grey_TaeromArmor","GLOBAL",2)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",TEN_DAYS)~ UNSOLVED_JOURNAL @100006 EXIT
+IF ~HasItem("%tutu_var%MISC12","C#Solaufein")
+OR(2) InParty("C#Solaufein") Global("C#SolauJoined","GLOBAL",0)
+InMyArea("C#Solaufein")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
+ActionOverride("C#Solaufein",GiveItem("%tutu_var%MISC12","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("%tutu_var%MISC12"))
+SetGlobal("C#Grey_TaeromArmor","GLOBAL",2)
+SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",TEN_DAYS)~ UNSOLVED_JOURNAL @100006 EXIT
+IF ~HasItem("%tutu_var%MISC12","C#Grey")
+OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",0)
+InMyArea("C#Grey")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
+ActionOverride("C#Grey",GiveItem("%tutu_var%MISC12","TAEROM"))
+ActionOverride("TAEROM",DestroyItem("%tutu_var%MISC12"))
 SetGlobal("C#Grey_TaeromArmor","GLOBAL",2)
 SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",TEN_DAYS)~ UNSOLVED_JOURNAL @100006 EXIT
 END
@@ -392,9 +904,7 @@ StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN EXIT
 END
 
 IF ~!Global("OublekBounty1","GLOBAL",1)
-OR(2)
-Global("C#Grey_Brage","GLOBAL",3)
-Global("C#Grey_Brage","GLOBAL",4)~ THEN amnis_01
+GlobalGT("C#Grey_Brage","GLOBAL",2)~ THEN amnis_01
 SAY @70
 IF ~~ THEN EXIT
 END
@@ -402,7 +912,29 @@ END
 CHAIN
 IF ~Global("OublekBounty1","GLOBAL",1) GlobalLT("C#Grey_Brage","GLOBAL",5)~ THEN C#GrAmni amnis_02
 @71 DO ~SetGlobal("C#Grey_Brage","GLOBAL",5)~
-== C#GrAmni IF ~Dead("BRAGE") PartyHasItem("c#grbrbr")~ THEN @72
+== C#GrAmni IF ~Dead("BRAGE") 
+OR(5)
+		PartyHasItem("c#grbrbr") 
+		HasItem("c#grbrbr","C#Grey")
+		HasItem("c#grbrbr","C#Solaufein")
+		HasItem("c#grbrbr","C#Husam1")
+		HasItem("c#grbrbr","C#Brandock")
+	OR(3)
+		!HasItem("c#grbrbr","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("c#grbrbr","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("c#grbrbr","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("c#grbrbr","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")~ THEN @72
 == C#GrAmni IF ~!Dead("BRAGE")~ THEN @73
 ==  C#GrAmni IF ~OR(2)
 Global("C#q13Brage_NalinVouch","GLOBAL",0) 
@@ -418,7 +950,28 @@ GlobalGT("C#q13Brage_NalinVouch","GLOBAL",1) !Global("C#q13Brage_NalinVouch","GL
 @75
 END
 ++ @76 + amnis_05_a
-+ ~PartyHasItem("SW2H03") 
++ ~OR(5)
+		PartyHasItem("SW2H03") 
+		HasItem("SW2H03","C#Grey")
+		HasItem("SW2H03","C#Solaufein")
+		HasItem("SW2H03","C#Husam1")
+		HasItem("SW2H03","C#Brandock")
+	OR(3)
+		!HasItem("SW2H03","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("SW2H03","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("SW2H03","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("SW2H03","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")
 OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
 See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)
 !GlobalGT("C#Q13_BragesSwordQuest","GLOBAL",3)~ + @77 + amnis_05
@@ -454,7 +1007,7 @@ GlobalGT("C#Q13_BragesSwordQuest","GLOBAL",3)~ THEN @85
 END 
 IF ~OR(2)
 GlobalGT("Chapter","GLOBAL",%tutu_chapter_3%)
-GlobalGT("C#Q13_BragesSwordQuest","GLOBAL",3)~ THEN DO ~SetGlobal("C#Grey_Brage","GLOBAL",6) EscapeArea()~ EXIT
+GlobalGT("C#Q13_BragesSwordQuest","GLOBAL",3)~ THEN DO ~SetGlobal("C#Grey_Brage","GLOBAL",6) ActionOverride("C#GrAmni",EscapeArea())~ EXIT
 + ~GlobalLT("Chapter","GLOBAL",%tutu_chapter_4%)
  !GlobalGT("C#Q13_BragesSwordQuest","GLOBAL",3)~ + @78 + amnis_06
 + ~GlobalLT("Chapter","GLOBAL",%tutu_chapter_4%)
@@ -477,12 +1030,33 @@ GlobalGT("Chapter","GLOBAL",%tutu_chapter_3%)
 GlobalGT("C#Q13_BragesSwordQuest","GLOBAL",3)~ THEN @84
 == C#GrAmni @85
 END
-IF ~~ THEN DO ~SetGlobal("C#Grey_Brage","GLOBAL",6) EscapeArea()~ EXIT
+IF ~~ THEN DO ~SetGlobal("C#Grey_Brage","GLOBAL",6) ActionOverride("C#GrAmni",EscapeArea())~ EXIT
 
 
 
 I_C_T ~%tutu_var%BRAGE~ 9 C#Grey_BrageGauntlets
-== ~%tutu_var%BRAGE~ IF ~PartyHasItem("c#grbrbr")~ THEN @92 
+== ~%tutu_var%BRAGE~ IF ~OR(5)
+		PartyHasItem("c#grbrbr") 
+		HasItem("c#grbrbr","C#Grey")
+		HasItem("c#grbrbr","C#Solaufein")
+		HasItem("c#grbrbr","C#Husam1")
+		HasItem("c#grbrbr","C#Brandock")
+	OR(3)
+		!HasItem("c#grbrbr","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("c#grbrbr","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("c#grbrbr","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("c#grbrbr","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")~ THEN @92 
 END
 
 
@@ -492,7 +1066,24 @@ END
 EXTEND_BOTTOM ~%tutu_var%FARMBR~ 7
 + ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
 See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID) 
-Global("C#Grey_BrunsSon","GLOBAL",0) !PartyHasItem("%tutu_var%MISC67")~ + @93 + nathans_trail
+Global("C#Grey_BrunsSon","GLOBAL",0) 
+!PartyHasItem("%tutu_var%MISC67") 
+	OR(3)
+		!HasItem("%tutu_var%MISC67","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",0)
+		!InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC67","C#Grey")
+		Global("C#GreyJoined","GLOBAL",0)
+		!InParty("C#Grey")
+	OR(3)
+		!HasItem("%tutu_var%MISC67","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",0)
+		!InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC67","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",0)
+		!InParty("C#Brandock")~ + @93 + nathans_trail
 END
 
 APPEND ~%tutu_var%FARMBR~
