@@ -22,7 +22,7 @@ Some ideas take time. For Grey this was from 2005 when Rabain first brainstormed
 
 GAMEPLAY
 
-Grey cannot be send to wait somewhere. If he is in party, he is in party. He can be sent back to Jondalar but that will be final. If you need the party slot for someone else, Grey can be kicked out of the party and told to "stay close", then he will follow as a "familiar" or, as I call it "7th party member". If in 7th party member mode he needs to join the group from time to time to level up. See below for more info on 7th party member mode.
+Grey cannot be send to wait somewhere. If he is in party, he is in party. He can be sent back to Jondalar but that will be final. If you need the party slot for someone else, Grey can be kicked out of the party and told to "stay close", then he will follow as a "familiar" or, as I call it "7th party member". If in 7th party member mode he needs to join the group from time to time to level up. See below for more info on 7th party member mode. (No, seriously - please read up on playing in 7th party member mode to get the most out of it. The engine was not created for additional party members that carry important items.)
 To rejoin the group, talk to him and tell him you need "access to (his) inventory", and he will rejoin as a full party member. If you time this accordingly, the moment he is in group before any other kicked out NPC reaches the PC for his post-kickout dialogue is sufficient to let Grey level up and rearrange his items, without having to finally kick out any other party NPC to achieve this. (Unless those just leave without a follow-up dialogue, of course.)
 
 Grey's claws will update to more powerful versions when he levels up (not every level). To improve his teeth force, items need to be used that can be found and bought throughout the game. Without a tooth enforcer, the engine will treat his attacks with the first hand like fist attacks ("bar handed".)
@@ -35,6 +35,19 @@ He needs to join from time to time so he can level up.
 He cannot die while following as a 7th party member, but will remain at 1 HP. If Grey's HP fall to 1 HP during a fight, he will pass out. Healing him then will not change this. His alignment will change to "neutral" so enemies stop attacking him. Once the fight is over, he will regain consciousness, be healed fully, and rejoin the party as an ally/familiar. The full healing might be seen as a cheat, but it's one way to fix the engine behavior (not to call it bug) with Grey dying upon rejoining if his HP are too low.
 
 The 1 HP drop out can be prevented if Grey is healed in time during a fight. If told to he will give a warning before his HP drop too low, but this seems to be buggy in BGT.
+
+
+QUIRKS OF THE 7TH PARTY MEMBER MODE INGAME
+
+Unfortunately, the "7th party member mode" in the game requires special handling to accommodate all restrictions: (The hints are a mix of the existing engine restrictions and the workarounds I used).
+-The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. (If you click on the whole group and let them gather at one place, the NPC will also try to do so, if they are not stuck somewhere. In that case only the teleportation cheat "Ctrl+j" helps to gather the group again. This has not happened to me yet, but it is theoretically possible if the NPC is chasing an enemy, for example).
+-Items in the NPC's inventory are *not* recognized as items owned by the group. This is an engine problem. It follows that quest items that are needed in the game should not be in the NPC's inventory if they are to be recognized by the quest giver. Examples: Elvenhair's book, Ankheg shell for Taerom, etc.
+-Quest items tagged as "critical" will be moved to the PC's inventory when moving to the 7th PMM. This may cause items from the PC's inventory to end up on the floor. This is an engine problem. As a result, you should always check after switching the NPC to the 7th PMM to see if items have landed on the floor!
+-When new items are given to one of my NPCs in 7th PMM in a quest specifically for this NPC, they always appear in the inventory of the group or PC, even if the NPC is supposed to receive them. This is an engine problem. Even if I scripted it so that the items would end up in the NPC's inventory after the encounter, they would still be handled via the PC's inventory. And thus, items from the inventory may have ended up on the floor.
+-For my NPCs, I have tried to have their own quest items (even if they are original in-game items, as long as they are necessary for my NPC's quest) recognized in the NPC's inventory as well. This works with the following restrictions:
+-- All items in question are handled through the PC's inventory before they are either given to or received from a quest giver. This means that other items may have ended up on the floor.
+-- If the item was in a bottomless bag (this includes all kind of bags, gem bags, bags for bottles etcpp.), then the item will not be removed in a dialogue with the quest giver. It is still in the bottomless bag afterwards and can cause problems if the scripting of the quest does not consider this (and assumes that the item should be gone).
+-- 2. Problem with items in bottomless bags: If the item was in a bottomless bag, then the game crashes for unknown reasons if the NPC is to be taken afterwards into the group as a full member. This "crash bug" can be worked around by saving the game and reloading it.
 
 
 WHERE TO MEET In GAME
@@ -100,6 +113,7 @@ CREDITS
 
 Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha testing
 Brokenkatana: Proof reading (English)
+scheele: Russian translation
 
 
 TOOLS USED
@@ -139,6 +153,15 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version 7:
+-Russian version added, by scheele.
+-Changed Brandock's level-up system: He will only level up to the PC's level if: he joins the first time for BG1/SoD/BGII OR he joins after being a 7th party member. No more automatic level-up although he is in party.
+-Optimized item handling at the beginning of BGII (Grey should not have paw in inventory).
+-Corrected bug in tax collector's dialogue (PC should hand over tax note always).
+-Unified Power Levels for effects in c#greyba.spl ("Bark").
+-Added paragraph "Quirks of the 7th party member mode ingame" to readme.
+-Added globally unique LABELs to uspport Project Infinity.
 
 Version 6:
 -traified and translated all lines for PID

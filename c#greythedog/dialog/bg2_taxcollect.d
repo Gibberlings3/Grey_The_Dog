@@ -26,10 +26,11 @@ IF ~~ THEN + tax_04
 END
 
 IF ~~ THEN tax_04
-SAY ~War dogs are a weapon, my <PRO_LADYLORD>, but one with an own mind. City rules are very strict if it comes to war dogs. I need to inform you that your war dog needs to have a collar, and a right one it needs to be - one where the dog could be put on a leash, if necessary. Your war dog doesn't have a collar. Therefore... (He fumbles inside a bag for a paper note.)~
-= ~Therefore you are bound to pay a fee of 50 gold coins, due in three days to be payed in the Councellor Building in the Government District. *And* you need to get your dog a collar as of today, or the fee will be doubled.~
+SAY ~War dogs are a weapon, my <PRO_LADYLORD>, but one with an own mind. City rules are very strict if it comes to war dogs. I need to inform you that your war dog needs to have a collar, and a right one it needs to be - one where the dog could be put on a leash, if necessary. Your war dog doesn't have a collar. Therefore... One moment..~
+= ~Therefore you are bound to pay a fee of 50 gold coins, due in three days to be payed in the Councellor Building in the Government District. *And* you need to get your dog a collar as of today, or the fee will be doubled. Here is your fine.~
 ++ ~I will do so as soon as I have the gold and find a vendor who sells dog collars.~ + tax_07
 ++ ~Good man! I barely made it out alive from a foe that tortured me the last weeks. Where was the city when this happened under its area?!~ + tax_05
+++ ~Oh, haha - did you say war dog? See, Grey here wouldn't hurt a *fly* now, would you, Grey?~ + tax_08
 ++ ~I really have other problems currently.~ + tax_08
 ++ ~Get lost, before my collarless dog decides to play fetch with you.~ + tax_09
 END
@@ -313,7 +314,7 @@ EraseJournalEntry(%Grey's Collar
 
 Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
 IF ~HasItem("c#grtax0","C#Solaufein")
-OR(2) InParty("C#Solaufein") Global("C#SolauJoined","GLOBAL",0)
+OR(2) InParty("C#Solaufein") Global("C#SolauJoined","GLOBAL",2)
 InMyArea("C#Solaufein")~ THEN DO ~ActionOverride("C#Solaufein",GiveItem("c#grtax0","C#GRTAX1")) 
 ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
 SetGlobal("C#Grey_FeeSum","LOCALS",1000)
@@ -321,7 +322,7 @@ EraseJournalEntry(%Grey's Collar
 
 Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
 IF ~HasItem("c#grtax0","C#Husam1")
-OR(2) InParty("C#Husam1") Global("C#HusamJoined","GLOBAL",0)
+OR(2) InParty("C#Husam1") Global("C#HusamJoined","GLOBAL",2)
 InMyArea("C#Husam1")~ THEN DO ~ActionOverride("C#Husam1",GiveItem("c#grtax0","C#GRTAX1"))
 ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
 SetGlobal("C#Grey_FeeSum","LOCALS",1000)
@@ -329,7 +330,7 @@ EraseJournalEntry(%Grey's Collar
 
 Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
 IF ~HasItem("c#grtax0","C#Brandock")
-OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",0)
+OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
 InMyArea("C#Brandock")~ THEN DO ~ActionOverride("C#Brandock",GiveItem("c#grtax0","C#GRTAX1"))
 ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
 SetGlobal("C#Grey_FeeSum","LOCALS",1000)
@@ -337,7 +338,7 @@ EraseJournalEntry(%Grey's Collar
 
 Grey needs a collar inside Athkatla... and I need to pay a fee inside the Councellor Building during the next three days because he didn't have one, yet.%)~ EXIT
 IF ~HasItem("c#grtax0","C#Grey")
-OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",0)
+OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
 InMyArea("C#Grey")~ THEN DO ~ActionOverride("C#Grey",GiveItem("c#grtax0","C#GRTAX1"))
 ActionOverride("C#GRTAX1",DestroyItem("c#grtax0"))
 SetGlobal("C#Grey_FeeSum","LOCALS",1000)

@@ -12,6 +12,7 @@ THEN
 		ActionOverride("C#Grey",MakeGlobalOverride()) 
 		ActionOverride("C#Grey",JoinParty())
 		SetGlobal("C#GreyJoined","GLOBAL",1)
+		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0))
 		SetInterrupt(TRUE)
 END
 
@@ -34,5 +35,6 @@ THEN
 		ActionOverride("C#Grey",ChangeAIScript("",RACE))
 		ActionOverride("C#Grey",ChangeAIScript("",GENERAL))
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
+		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0))
 		SetInterrupt(TRUE)	
 END

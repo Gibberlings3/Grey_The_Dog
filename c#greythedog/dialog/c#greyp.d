@@ -42,8 +42,6 @@ END
 IF ~~ follow_charname
 SAY @0 /* ~Woof!~ */
 IF ~~ THEN DO ~SetInterrupt(FALSE)
-//##RealSetGlobalTimer("C#GreyNPCBanterTimer","GLOBAL",400)
-SetGlobal("C#GreyJoined","GLOBAL",2)
 %Grey_MakeGlobalOverride%
 ChangeEnemyAlly(Myself, FAMILIAR)
 AddFamiliar()
@@ -53,6 +51,9 @@ ChangeAIScript("DEFAULT",CLASS)
 ChangeAIScript("",RACE)
 ChangeAIScript("",GENERAL)
 ChangeAIScript("",DEFAULT)
+//##RealSetGlobalTimer("C#GreyNPCBanterTimer","GLOBAL",400)
+SetGlobal("C#GreyJoined","GLOBAL",2)
+SetGlobal("C#LevelUp","LOCALS",0)
 SetInterrupt(TRUE)~ EXIT
 END
 

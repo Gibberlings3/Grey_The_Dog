@@ -1,6 +1,6 @@
-/* Grey levels up to the PC's level if taken into the group 
+/* NPC levels up to the PC's XP level if taken into the group 
 
-BGT version - because I did the EE versionn first and it doesn't work on the old engine [hooray] */
+BGT version - because I did the EE version first and it doesn't work on the old engine [hooray] */
 
 
 
@@ -50,8 +50,9 @@ ToB up to 8.000.000
 /* Player1 XP 11000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",36)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",36)
 	XPGT(Player1,10999999)
 	XPLT(Myself,11000000)
 	XPGT(Myself,10499999)
@@ -59,7 +60,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",36)	
+		SetGlobal("C#LevelUpCount","LOCALS",36)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -67,8 +68,9 @@ END
 /* Player1 XP 10500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",35)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",35)
 	XPGT(Player1,10499999)
 	XPLT(Myself,10500000)
 	XPGT(Myself,9999999)
@@ -76,7 +78,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",35)	
+		SetGlobal("C#LevelUpCount","LOCALS",35)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -84,8 +86,9 @@ END
 /* Player1 XP 10000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",34)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",34)
 	XPGT(Player1,9999999)
 	XPLT(Myself,10000000)
 	XPGT(Myself,9499999)
@@ -93,7 +96,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",34)	
+		SetGlobal("C#LevelUpCount","LOCALS",34)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -101,8 +104,9 @@ END
 /* Player1 XP 9500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",33)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",33)
 	XPGT(Player1,9499999)
 	XPLT(Myself,9500000)
 	XPGT(Myself,8999999)
@@ -110,7 +114,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",33)	
+		SetGlobal("C#LevelUpCount","LOCALS",33)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -118,8 +122,9 @@ END
 /* Player1 XP 9000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",32)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",32)
 	XPGT(Player1,8999999)
 	XPLT(Myself,9000000)
 	XPGT(Myself,8499999)
@@ -127,7 +132,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",32)	
+		SetGlobal("C#LevelUpCount","LOCALS",32)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -135,8 +140,9 @@ END
 /* Player1 XP 8500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",31)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",31)
 	XPGT(Player1,8499999)
 	XPLT(Myself,8500000)
 	XPGT(Myself,7999999)
@@ -144,7 +150,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",31)	
+		SetGlobal("C#LevelUpCount","LOCALS",31)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -152,8 +158,9 @@ END
 /* Player1 XP 8000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",30)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",30)
 	XPGT(Player1,7999999)
 	XPLT(Myself,8000000)
 	XPGT(Myself,7499999)
@@ -161,7 +168,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",30)	
+		SetGlobal("C#LevelUpCount","LOCALS",30)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -169,8 +176,9 @@ END
 /* Player1 XP 7500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",29)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",29)
 	XPGT(Player1,7499999)
 	XPLT(Myself,7500000)
 	XPGT(Myself,6999999)
@@ -178,7 +186,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",29)	
+		SetGlobal("C#LevelUpCount","LOCALS",29)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -186,8 +194,9 @@ END
 /* Player1 XP 7000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",28)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",28)
 	XPGT(Player1,6999999)
 	XPLT(Myself,7000000)
 	XPGT(Myself,6499999)
@@ -195,7 +204,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",28)	
+		SetGlobal("C#LevelUpCount","LOCALS",28)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -203,8 +212,9 @@ END
 /* Player1 XP 6500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",27)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",27)
 	XPGT(Player1,6499999)
 	XPLT(Myself,6500000)
 	XPGT(Myself,5999999)
@@ -212,7 +222,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",27)	
+		SetGlobal("C#LevelUpCount","LOCALS",27)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -220,8 +230,9 @@ END
 /* Player1 XP 6000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",26)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",26)
 	XPGT(Player1,5999999)
 	XPLT(Myself,6000000)
 	XPGT(Myself,5499999)
@@ -229,7 +240,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",26)	
+		SetGlobal("C#LevelUpCount","LOCALS",26)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -237,8 +248,9 @@ END
 /* Player1 XP 5500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",25)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",25)
 	XPGT(Player1,5499999)
 	XPLT(Myself,5500000)
 	XPGT(Myself,4999999)
@@ -246,7 +258,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",25)	
+		SetGlobal("C#LevelUpCount","LOCALS",25)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -254,8 +266,9 @@ END
 /* Player1 XP 5000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",24)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",24)
 	XPGT(Player1,4999999)
 	XPLT(Myself,5000000)
 	XPGT(Myself,4499999)
@@ -263,7 +276,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",24)	
+		SetGlobal("C#LevelUpCount","LOCALS",24)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -271,8 +284,9 @@ END
 /* Player1 XP 4500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",23)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",23)
 	XPGT(Player1,4499999)
 	XPLT(Myself,4500000)
 	XPGT(Myself,3999999)
@@ -280,7 +294,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",23)	
+		SetGlobal("C#LevelUpCount","LOCALS",23)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -288,8 +302,9 @@ END
 /* Player1 XP 4000000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",22)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",22)
 	XPGT(Player1,3999999)
 	XPLT(Myself,4000000)
 	XPGT(Myself,3499999)
@@ -297,7 +312,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",22)	
+		SetGlobal("C#LevelUpCount","LOCALS",22)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -305,8 +320,9 @@ END
 /* Player1 XP 3500000 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",21)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",21)
 	XPGT(Player1,3499999)
 	XPLT(Myself,3500000)
 	XPGT(Myself,2999999)
@@ -314,7 +330,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",21)	
+		SetGlobal("C#LevelUpCount","LOCALS",21)	
 		AddXPObject(Myself,500000)
 		SetInterrupt(TRUE)
 END
@@ -323,8 +339,9 @@ END
 /* Level 20 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",20)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",20)
 	XPGT(Player1,2999999)
 	XPLT(Myself,3000000)
 	XPGT(Myself,2749999)
@@ -332,7 +349,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",20)	
+		SetGlobal("C#LevelUpCount","LOCALS",20)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -340,8 +357,9 @@ END
 /* Level 19 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",19)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",19)
 	XPGT(Player1,2749999)
 	XPLT(Myself,2750000)
 	XPGT(Myself,2499999)
@@ -349,7 +367,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",19)	
+		SetGlobal("C#LevelUpCount","LOCALS",19)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -357,8 +375,9 @@ END
 /* Level 18 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",18)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",18)
 	XPGT(Player1,2499999)
 	XPLT(Myself,2500000)
 	XPGT(Myself,2249999)
@@ -366,7 +385,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",18)	
+		SetGlobal("C#LevelUpCount","LOCALS",18)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -375,8 +394,9 @@ END
 /* Level 17 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",17)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",17)
 	XPGT(Player1,2249999)
 	XPLT(Myself,2250000)
 	XPGT(Myself,1999999)
@@ -384,7 +404,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",17)	
+		SetGlobal("C#LevelUpCount","LOCALS",17)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -393,8 +413,9 @@ END
 /* Level 16 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",16)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",16)
 	XPGT(Player1,1999999)
 	XPLT(Myself,2000000)
 	XPGT(Myself,1749999)
@@ -402,7 +423,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",16)	
+		SetGlobal("C#LevelUpCount","LOCALS",16)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -410,8 +431,9 @@ END
 /* Level 15 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",15)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",15)
 	XPGT(Player1,1749999)
 	XPLT(Myself,1750000)
 	XPGT(Myself,1499999)
@@ -419,7 +441,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",15)	
+		SetGlobal("C#LevelUpCount","LOCALS",15)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -428,8 +450,9 @@ END
 /* Level 14 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",14)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",14)
 	XPGT(Player1,1499999)
 	XPLT(Myself,1500000)
 	XPGT(Myself,1249999)
@@ -437,7 +460,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",14)	
+		SetGlobal("C#LevelUpCount","LOCALS",14)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -445,8 +468,9 @@ END
 /* Level 13 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",13)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",13)
 	XPGT(Player1,1249999)
 	XPLT(Myself,1250000)
 	XPGT(Myself,999999)
@@ -454,7 +478,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",13)	
+		SetGlobal("C#LevelUpCount","LOCALS",13)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -462,8 +486,9 @@ END
 /* Level 12 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",12)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",12)
 	XPGT(Player1,999999)
 	XPLT(Myself,1000000)
 	XPGT(Myself,749999)
@@ -471,7 +496,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",12)	
+		SetGlobal("C#LevelUpCount","LOCALS",12)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -479,8 +504,9 @@ END
 /* Level 11 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",11)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",11)
 	XPGT(Player1,749999)
 	XPLT(Myself,750000)
 	XPGT(Myself,499999)
@@ -488,7 +514,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",11)	
+		SetGlobal("C#LevelUpCount","LOCALS",11)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -496,8 +522,9 @@ END
 /* Level 10 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",10)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",10)
 	XPGT(Player1,499999)
 	XPLT(Myself,500000)
 	XPGT(Myself,249999)
@@ -505,7 +532,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",10)	
+		SetGlobal("C#LevelUpCount","LOCALS",10)	
 		AddXPObject(Myself,250000)
 		SetInterrupt(TRUE)
 END
@@ -515,8 +542,9 @@ END
 /* Level 9 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",9)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",9)
 	XPGT(Player1,249999)
 	XPLT(Myself,250000)
 	XPGT(Myself,124999)
@@ -524,7 +552,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",9)	
+		SetGlobal("C#LevelUpCount","LOCALS",9)	
 		AddXPObject(Myself,125000)
 		SetInterrupt(TRUE)
 END
@@ -532,8 +560,9 @@ END
 /* Level 8 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",8)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",8)
 	XPGT(Player1,124999)
 	XPLT(Myself,125000)
 	XPGT(Myself,63999)
@@ -541,7 +570,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",8)	
+		SetGlobal("C#LevelUpCount","LOCALS",8)	
 		AddXPObject(Myself,61000)
 		SetInterrupt(TRUE)
 END
@@ -549,8 +578,9 @@ END
 /* Level 7 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",7)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",7)
 	XPGT(Player1,63999)
 	XPLT(Myself,64000)
 	XPGT(Myself,31999)
@@ -558,7 +588,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",7)	
+		SetGlobal("C#LevelUpCount","LOCALS",7)	
 		AddXPObject(Myself,32000)
 		SetInterrupt(TRUE)
 END
@@ -566,8 +596,9 @@ END
 /* Level 6 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",6)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",6)
 	XPGT(Player1,31999)
 	XPLT(Myself,32000)
 	XPGT(Myself,15999)
@@ -575,7 +606,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",6)	
+		SetGlobal("C#LevelUpCount","LOCALS",6)	
 		AddXPObject(Myself,16000)
 		SetInterrupt(TRUE)
 END
@@ -583,8 +614,9 @@ END
 /* Level 5 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",5)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",5)
 	XPGT(Player1,15999)
 	XPLT(Myself,16000)
 	XPGT(Myself,7999)
@@ -592,7 +624,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",5)	
+		SetGlobal("C#LevelUpCount","LOCALS",5)	
 		AddXPObject(Myself,8000)
 		SetInterrupt(TRUE)
 END
@@ -601,8 +633,9 @@ END
 /* Level 4 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",4)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",4)
 	XPGT(Player1,7999)
 	XPLT(Myself,8000)
 	XPGT(Myself,3999)
@@ -610,7 +643,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",4)	
+		SetGlobal("C#LevelUpCount","LOCALS",4)	
 		AddXPObject(Myself,4000)
 		SetInterrupt(TRUE)
 END
@@ -619,8 +652,9 @@ END
 /* Level 3 */
 
 IF
-	InParty("C#Grey")
-	GlobalLT("C#GreyLevelUp","LOCALS",3)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	GlobalLT("C#LevelUpCount","LOCALS",3)
 	XPGT(Player1,3999)
 	XPLT(Myself,4000)
 	XPGT(Myself,1999)
@@ -628,7 +662,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",3)	
+		SetGlobal("C#LevelUpCount","LOCALS",3)	
 		AddXPObject(Myself,2000)
 		SetInterrupt(TRUE)
 END
@@ -636,16 +670,41 @@ END
 /* Level 2 */
 
 IF
-	InParty("C#Grey")
-	Global("C#GreyLevelUp","LOCALS",0)
+	InParty(Myself)
+	GlobalLT("C#LevelUp","LOCALS",2)
+	Global("C#LevelUpCount","LOCALS",0)
 	XPGT(Player1,1999)
 	XPLT(Myself,2000)
 	CheckStat(Player1, 0, LEVELDRAIN)
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		SetGlobal("C#GreyLevelUp","LOCALS",2)	
+		SetGlobal("C#LevelUpCount","LOCALS",2)	
 		AddXPObject(Myself,2000)
 		SetInterrupt(TRUE)
 END
+
+IF
+	InParty(Myself)
+	Global("C#LevelUp","LOCALS",0)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#LevelUp","LOCALS",1)
+		SetGlobalTimer("C#LevelUpTimer","LOCALS",30)	
+		SetInterrupt(TRUE)
+END
+
+IF
+	InParty(Myself)
+	Global("C#LevelUp","LOCALS",1)
+	GlobalTimerExpired("C#LevelUpTimer","LOCALS")
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#LevelUp","LOCALS",2)
+		SetInterrupt(TRUE)
+END
+
+
 

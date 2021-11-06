@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~6~ 
+VERSION ~7~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -236,8 +236,17 @@ LANGUAGE ~Deutsch~
          ~c#greythedog/tra/deutsch/baf.tra~
 	 ~c#greythedog/tra/deutsch/journal.tra~
 
+LANGUAGE ~Russian~
+         ~russian~   
+         ~c#greythedog/tra/english/setup.tra~
+         ~c#greythedog/tra/russian/game.tra~
+         ~c#greythedog/tra/russian/baf.tra~
+	 ~c#greythedog/tra/russian/journal.tra~
+
 
 BEGIN  @90004 /* ~Grey The Dog NPC~ */
+DESIGNATED 0
+LABEL c#greythedog-main
 REQUIRE_PREDICATE (ENGINE_IS ~tob bgee bg2ee~) @90005 /* ~You either need TOB installed or the Enhanced Editions to play this mod.~ */
 REQUIRE_PREDICATE (GAME_IS ~tob bgee bg2ee bgt eet~) @90006 /* ~This mod is not compatible with your game.~ */
 FORBID_COMPONENT ~EET_end.tp2~ ~0~ @90008
@@ -1886,13 +1895,14 @@ END
 /* additions to script for BGII-engine */
 
 ACTION_IF (GAME_IS ~bgt tob~ OR (GAME_IS ~bgee~ AND NOT FILE_EXISTS_IN_GAME ~bd0103.are~)) THEN BEGIN
-  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_lvl.baf~
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#_lvl.baf~
 END
 
 /* additions to script for EE-engine */
 
 ACTION_IF (GAME_IS ~bg2ee~ OR (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~)) THEN BEGIN
-  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_lvl_ee.baf~
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#_lvl_ee.baf~
+  EXTEND_BOTTOM ~c#grey.bcs~   ~c#greythedog/script/c#grey_ee.baf~
 END
 
 
