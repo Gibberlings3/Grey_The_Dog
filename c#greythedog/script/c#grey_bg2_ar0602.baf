@@ -33,6 +33,7 @@ THEN
 //		MoveGlobal("AR0602","C#Grey",[3939.2929])  // ##for testing
 		ReallyForceSpellRES("SPWM168","C#Grey")  // Heal
 		SetGlobal("C#GreyJoined","GLOBAL",0)
+		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0)) 
 	        ActionOverride("C#Grey",DestroyAllEquipment())
 		SetInterrupt(TRUE)
 //		Continue()		
@@ -51,10 +52,11 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_Exists","GLOBAL",10)
 		CreateCreature("C#Grey02",[4245.1985],8)  // Grey
-	        ActionOverride("C#Grey",DestroyAllEquipment())
+		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0)) 
 		ActionOverride("C#Grey",SetDialogue("C#Grey2"))
 		ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
 		SetGlobal("C#GreyJoined","GLOBAL",0)
+	        ActionOverride("C#Grey",DestroyAllEquipment())
 		%Grey_MakeGlobalOverride%
 		SetInterrupt(TRUE)	
 //		Continue()		
@@ -64,17 +66,40 @@ END
 /* item management: Grey only has his paw */
 
 IF 
-      Global("C#Grey_Exists","GLOBAL",10)	
+      Global("C#Grey_Exists","GLOBAL",10)
+      !HasItem("c#grpaw1","C#Grey")
+      !HasItem("c#grpaw3","C#Grey")
+      !HasItem("c#grpaw6","C#Grey")
+      !HasItem("c#grpaw9","C#Grey")
+      !HasItem("c#grpaw12","C#Grey")
+      !HasItem("c#grpaw15","C#Grey")
+      !HasItem("c#grpaw25","C#Grey")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
         	SetGlobal("C#Grey_Exists","GLOBAL",11)
-		ActionOverride("C#Grey",SetGlobal("C#GreyLevelUpPaw","LOCALS",6))
-		ActionOverride("C#Grey",GiveItemCreate("c#grpaw6","C#Grey",0,0,0))
+		ActionOverride("C#Grey",GiveItemCreate("c#grpaw1","C#Grey",0,0,0))
 		SmallWait(10)
+		ActionOverride("C#Grey",SetGlobal("C#GreyLevelUpPaw","LOCALS",0))
 		ActionOverride("C#Grey",FillSlot(SLOT_SHIELD))
 		SetInterrupt(TRUE)	
-//		Continue()		
+END
+
+IF 
+      Global("C#Grey_Exists","GLOBAL",10)
+      OR(6)
+		HasItem("c#grpaw1","C#Grey")
+		HasItem("c#grpaw3","C#Grey")
+		HasItem("c#grpaw6","C#Grey")
+		HasItem("c#grpaw9","C#Grey")
+ 		HasItem("c#grpaw12","C#Grey")
+		HasItem("c#grpaw15","C#Grey")
+		HasItem("c#grpaw25","C#Grey")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+        	SetGlobal("C#Grey_Exists","GLOBAL",11)
+		SetInterrupt(TRUE)	
 END
 
 /* place some war dog armor */

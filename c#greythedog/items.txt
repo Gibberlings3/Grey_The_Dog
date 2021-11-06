@@ -144,7 +144,7 @@ Merchants for wardog armor and weaponry:
 
 
 From Albert if Rufie is brought to him:
--c#grtoy3.ITM chew toy (+9 HP bonus tow times a day) (*special: cannot be bought*)
+-c#grtoy3.ITM chew toy (+9 HP bonus two times a day) (*special: cannot be bought*)
 
 
 Chapter 3:
