@@ -156,7 +156,7 @@ HISTORY
 
 Version 7:
 -Russian version added, by scheele.
--Changed Brandock's level-up system: He will only level up to the PC's level if: he joins the first time for BG1/SoD/BGII OR he joins after being a 7th party member. No more automatic level-up although he is in party.
+-Changed Grey's level-up system: He will only level up to the PC's level if: he joins the first time for BG1/SoD/BGII OR he joins after being a 7th party member. No more automatic level-up although he is in party.
 -Optimized item handling at the beginning of BGII (Grey should not have paw in inventory).
 -Corrected bug in tax collector's dialogue (PC should hand over tax note always).
 -Unified Power Levels for effects in c#greyba.spl ("Bark").
