@@ -154,6 +154,9 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 7.1:
+-Russian version now has correct text format.
+
 Version 7:
 -Russian version added, by scheele.
 -Changed Grey's level-up system: He will only level up to the PC's level if: he joins the first time for BG1/SoD/BGII OR he joins after being a 7th party member. No more automatic level-up although he is in party.
