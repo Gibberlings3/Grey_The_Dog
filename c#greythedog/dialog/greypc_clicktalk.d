@@ -3,7 +3,7 @@ APPEND c#greyJ
 /* NOTE: BG2(EE) only reply options should be marked with ~%IT_IS_BG2%~ */
 
 IF ~IsGabber(Player1)~ THEN BEGIN grey_clicktalk
-SAY ~(Grey turns his head to you.) Woof!~
+SAY @84 /* ~(Grey turns his head to you.) Woof!~ */
 
 /* Find Brage - start in Nashkel Garrison */
 
