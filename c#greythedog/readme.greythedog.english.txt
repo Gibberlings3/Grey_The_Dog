@@ -40,7 +40,7 @@ The 1 HP drop out can be prevented if Grey is healed in time during a fight. If 
 QUIRKS OF THE 7TH PARTY MEMBER MODE INGAME
 
 Unfortunately, the "7th party member mode" in the game requires special handling to accommodate all restrictions: (The hints are a mix of the existing engine restrictions and the workarounds I used).
--The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. (If you click on the whole group and let them gather at one place, the NPC will also try to do so, if they are not stuck somewhere. In that case only the teleportation cheat "Ctrl+j" helps to gather the group again. This has not happened to me yet, but it is theoretically possible if the NPC is chasing an enemy, for example).
+-The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. Unfortunately, this can lead to Brandock no longer be included in the "gather all party" button although he is still green circled and will return properly with the group as soon as he is seen by a full party member again. This is especially annoying if he loses sight of full party members because the AI wanted him to walk to whatever destination on a different path, and he needs to be searched for by walking the map until he can be seen again. This seems to be especially a problem if several "7th party members" follow, and with the old game engine.
 -Items in the NPC's inventory are *not* recognized as items owned by the group. This is an engine problem. It follows that quest items that are needed in the game should not be in the NPC's inventory if they are to be recognized by the quest giver. Examples: Elvenhair's book, Ankheg shell for Taerom, etc.
 -Quest items tagged as "critical" will be moved to the PC's inventory when moving to the 7th PMM. This may cause items from the PC's inventory to end up on the floor. This is an engine problem. As a result, you should always check after switching the NPC to the 7th PMM to see if items have landed on the floor!
 -When new items are given to one of my NPCs in 7th PMM in a quest specifically for this NPC, they always appear in the inventory of the group or PC, even if the NPC is supposed to receive them. This is an engine problem. Even if I scripted it so that the items would end up in the NPC's inventory after the encounter, they would still be handled via the PC's inventory. And thus, items from the inventory may have ended up on the floor.
@@ -62,6 +62,8 @@ COMPATIBILITY
 -Remove Tutors in Candlekeep tweak (SCS?): compatible. Although the first scene in Candlekeep is a nice touch to get a feeling about how the PC and Grey are connected (or rather, how Grey connected to them), this scene does not have to play for Grey to turn up later. If Jondalar is not present (i.e. removed by a tweak mod), Grey will just be in Candlekeep during the prologue saying "woof" if talked to.
 
 Jarl's Adventure Pack: Grey needs to be installed after JAP.
+
+Install Grey as late as possible after other NPC mods so he gets a chance to sniff at people before other NPCs interject.
 
 
 INSTALL ORDER 
@@ -88,11 +90,11 @@ Without ToBEx, Grey will be able to use some maces and boots in BGT. Install ToB
 
 Especially for BGT but also for the EE games, Grey will be able to use (or at least equip) some items/weapons. Just ignore those (or use them if it doesn't disturb you).
 
-In some game cutscenes, Grey might be visible at places where he shouldn't be as 7th party member. I'm not sure how to solve this.
+In some game cutscenes, Grey might be visible at places where he shouldn't be as 7th party member. I'll try to address this in a later version.
 
 Paper doll: currently, the wolf paper doll is added to the MDOG animation (renamed to MDOGINV.BAM). In case this leads to any compatibility problems, let me know. Nevertheless, in BGT no paperdoll is being shown. I couldn't solve this.
 
-Grey has no clear fog of war effect, so when following as 7th party member, he might "vanish" behind the line of sight. Rearranging the whole group's position should bring him back at the PC's side. (The reason is that the engines cannot handle more than 8 creatures with CFoW - and that includes the 6 party members and cutscene spies.) 
+Grey has no clear fog of war effect. (The reason is that the engines cannot handle more than 8 creatures with CFoW - and that includes the 6 party members and cutscene spies.) So when following as 7th party member, he might "vanish" behind the line of sight and stop walking. He will then no longer come to a meeting point but needs to be back in visual range of a party member to be activated again. 
 
 
 INSTALLATION
@@ -112,7 +114,9 @@ If you have installation problems or encounter any bugs, please post your bug re
 CREDITS
 
 Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha testing
-Brokenkatana: Proof reading (English)
+Brokenkatana: Proofreading (English)
+jastey: Main mod author
+Rabain: Original mod idea, first portrait, first kit
 scheele: Russian translation
 
 
@@ -153,6 +157,11 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version 8:
+-All BG1 lines in PID traify-ed.
+-Compatibility with the 5E casting mod and the TnB multiclass sorcerers and the FnP multiclass shamans: Increase of PC's FATIGUE for detection of scripted resting will happen after 15s timer and only if it wasn't increased by another mod already.
+-Updated readme.
 
 Version 7.1:
 -Russian version now has correct text format.

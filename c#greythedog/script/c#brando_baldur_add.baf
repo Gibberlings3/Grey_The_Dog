@@ -1,9 +1,0 @@
-IF
-    GlobalGT("C#7thPartyMemberRestCounter","GLOBAL",0)
-    CheckStat(Player1,0,FATIGUE)
-THEN
-    RESPONSE #100
-        ApplySpellRES("C#FATIG1",Player1)
-        RealSetGlobalTimer("C#7thPartyMemberRestAfterTimer","GLOBAL",15)
-	Continue()	
-END

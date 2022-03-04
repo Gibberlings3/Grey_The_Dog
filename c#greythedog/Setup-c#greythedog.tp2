@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~7.1~ 
+VERSION ~8~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -1666,7 +1666,7 @@ Grey is not in the group */
 ACTION_IF GAME_IS ~bgee bgt tob bg2ee eet~ THEN BEGIN
   ACTION_IF !(FILE_CONTAINS_EVALUATED (~baldur.BCS~ ~"C#FATIG1"~))
     THEN BEGIN
-        EXTEND_TOP ~baldur.bcs~   ~c#greythedog/script/c#brando_baldur_add.baf~
+        EXTEND_TOP ~baldur.bcs~   ~c#greythedog/script/c#_7thpm_baldur_add.baf~
         COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
   END
 END
@@ -1674,7 +1674,7 @@ END
 /* SoD, eet */
 ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN   ACTION_IF !(FILE_CONTAINS_EVALUATED (~bdbaldur.BCS~ ~"C#FATIG1"~))
     THEN BEGIN
-        EXTEND_TOP ~bdbaldur.bcs~   ~c#greythedog/script/c#brando_baldur_add.baf~
+        EXTEND_TOP ~bdbaldur.bcs~   ~c#greythedog/script/c#_7thpm_baldur_add.baf~
         COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
   END
 END
@@ -1683,12 +1683,10 @@ END
 ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
   ACTION_IF !(FILE_CONTAINS_EVALUATED (~baldur25.BCS~ ~"C#FATIG1"~))
     THEN BEGIN
-        EXTEND_TOP ~baldur25.bcs~   ~c#greythedog/script/c#brando_baldur_add.baf~
+        EXTEND_TOP ~baldur25.bcs~   ~c#greythedog/script/c#_7thpm_baldur_add.baf~
         COPY ~c#greythedog/spells/C#FATIG1.SPL~ ~override~
   END
 END
-
-
 
 /* scripts for all games */
 

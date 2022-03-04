@@ -1,0 +1,31 @@
+/* "Party Rested" check for silent resting */
+IF
+    GlobalGT("C#7thPartyMemberRestCounter","GLOBAL",0)
+    CheckStat(Player1,0,FATIGUE)
+    Global("C#7thPartyMemberRestTimerSet","GLOBAL",0)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("C#7thPartyMemberRestAfterTimer","GLOBAL",15)
+	SetGlobal("C#7thPartyMemberRestTimerSet","GLOBAL",1)
+	Continue()	
+END
+
+IF
+    CheckStatGT(Player1,0,FATIGUE)
+    GlobalGT("C#7thPartyMemberRestTimerSet","GLOBAL",0)
+THEN
+    RESPONSE #100
+	SetGlobal("C#7thPartyMemberRestTimerSet","GLOBAL",0)
+	Continue()	
+END
+
+IF
+    RealGlobalTimerExpired("C#7thPartyMemberRestAfterTimer","GLOBAL")
+    Global("C#7thPartyMemberRestTimerSet","GLOBAL",1)
+    CheckStat(Player1,0,FATIGUE)
+THEN
+    RESPONSE #100
+        ApplySpellRES("C#FATIG1",Player1)
+	SetGlobal("C#7thPartyMemberRestTimerSet","GLOBAL",2)
+	Continue()	
+END

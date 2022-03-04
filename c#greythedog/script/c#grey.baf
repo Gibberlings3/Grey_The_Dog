@@ -1,7 +1,6 @@
 /* c#grey Grey's main script */
 
 /* in case Grey follows as 7th party member and Player1 was rested via script and not via  RestParty() */
-
 /* spell and priciple taken from Zed Nocear's BG1 Trigger Simulations! */
 
 IF
