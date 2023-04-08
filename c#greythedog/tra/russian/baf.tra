@@ -9,3 +9,8 @@
 @50008  = ~Скулит! (Здоровье Грея, похоже, на низком уровне.)~
 @50009  = ~Гр-ррр! (Грей с яростной решимостью щелкает зубами, оглядываясь по сторонам.)~
 @50010  = ~Гр-ррр! Вуф!~
+
+/* new for v9 */
+@50011  = ~You see from Grey's reaction, that the soldier Lester still smells of the special officers' ham.~
+@50012  = ~(Grey can't pick up the scent. There is no trace of it at this spot.)~
+@50013   = ~(Grey is barking at the big fir in front of him. He seem to scent Tilda in there.)~

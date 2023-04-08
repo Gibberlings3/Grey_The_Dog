@@ -11,7 +11,7 @@ THEN
 END
 
 
-/* Brandock was never in Party - he won't be available for summoning
+/* Grey was never in Party - he won't be available for summoning
 conti game only */
 IF
   GlobalGT("C#Grey_Exists","GLOBAL",9) //only for conti game

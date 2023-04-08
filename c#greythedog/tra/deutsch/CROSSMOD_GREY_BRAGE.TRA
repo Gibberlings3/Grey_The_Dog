@@ -1,0 +1,32 @@
+@0    = ~Grey, meine Töchter hätten es *geliebt*, so einen Hund wie dich zu haben... Meine Ältere wäre aufgrund deiner Größe etwas schüchtern gewesen, aber die Kleine - sie hätte von deiner Höhe völlig unbeeindruckt sofort ihre Arme um deinen Hals geschlungen und dir gesagt, dass du ihr liebster Freund bist.~
+@1    = ~Wau! (Als Reaktion auf Brages Aufmerksamkeit drückt Grey ihm die Schnauze auf die Hand und leckt kurz daran.)~
+@2    = ~Ich... <CHARNAME>, geht Ihr schonmal vor. Ich habe wohl etwas im Auge. Ich komme sofort nach...~
+@3    = ~(Brage stößt einen schweren Seufzer aus, während er gedankenverloren Greys Kopf tätschelt.) Ja, ein Kampfhund wie du hätte ihr Schicksal anders ausgehen lassen...~
+@4    = ~Wie sehr wünschte ich, dass meine Mädchen einen Kampfhund gehabt hätten wie Euren Grey, <CHARNAME>. Loyal von Kopf bis Fuß. Loyal bis in den Tod... Ein solcher Kampfhund hätte mich aufhalten können, wäre er bei meiner Frau gewesen.~
+@5    = ~Oder er hätte Euch als sein Herrchen angesehen und Euch nicht angegriffen, Brage.~ 
+@6    = ~Ich verstehe den Gedanken, aber Überlegungen der Sorte "was wäre wenn" können nicht ändern, was geschehen ist.~ 
+@7    = ~Ein Kampfhund wie Grey ist in der Tat ein starker Beschützer. Er muss aber auch entsprechend trainiert werden.~
+@8    = ~Da mögt Ihr recht haben.~
+@9    = ~Das stimmt natürlich. Trotzdem kann ich nicht verhindern, dass meine Gedanken von Zeit zu Zeit wandern.~
+@10   = ~Ehrlich gesagt, hätte ich meiner Familie wohl eher nicht einen solchen Kampfhund angeschafft. Ich hätte den Hund selbst als Gefahr angesehen, wenn ich nicht da sein konnte, um ihn unter Kontrolle zu halten. Nein, unsere Mädchen hätten mit hoher Wahrscheinlichkeit eher so einen kleinen Schoßhund als Haustier erhalten...~
+
+
+/* new for v9 */
+@11   = ~[Brage]Ja, Grey. Warte, bis ich das Fleisch vom Knochen entfernt habe, dann kannst du ihn haben.~
+@12   = ~[Ajantis]Ja, die Art, wie Grey einen beobachtet, wenn man sich um seine Sachen kümmert, kann teilweise etwas... irritierend sein. Immerhin muss ich bei meinen Waffen nicht die Sorge haben, dass er sie mir aus der Hand schnappt, wie es bei dem Fleisch bei Euch der Fall sein könnte.~
+@13   = ~[Imoen]Oh, das würde er doch nie tun. Du wartest ganz geduldig, nicht wahr, Grey?~
+@14   = ~[Grey]Wuff!~
+@15   = ~[Imoen]Oder wir geben dir einfach jetzt schon was! Fang, Grey!~
+@16   = ~[Ajantis]Imoen! Das war vom besten Fleisch!~
+@17   = ~[Imoen]Ja, und? Er ist ein Gefährte dieser Gruppe, also steht ihm auch sein Anteil zu, oder?~
+@18   = ~[Ajantis]Ja, natürlich steht ihm ein Anteil der Beute zu, aber...~
+@19   = ~[Brage]Imoen, Grey wird gleich einen sehr großen Teil unseres Fangs bekommen. Kein Grund, ihm von dem Fleisch zu geben, das *uns* ernähren soll.~
+@20   = ~[Imoen]Großen Teil, ja - aber nur, weil wir uns nicht für die Knochen und den ganzen Rest interessieren! Ich bin mir sicher, *er* würde alles mit uns teilen, das würdest du doch machen, nicht wahr? Du kleiner, felliger Gulliwulliwuh!~
+@21   = ~[Brage]Nur noch einen kleinen Augenblick, dann gibt es genug für alle.~
+@22   = ~[Grey]Wuff!~ [C#Grey01]
+@23   = ~[PC Reply]Einen Moment - habt Ihr etwas, womit mein Hund ihre Fährte aufnehmen könnte? Und ungefähr von wo aus würden wir mit der Suche beginnen?~
+@24   = ~[PC Reply]Kommt sicher dorthin.~
+@25   = ~[Uncle]Oh, in der Tat, das habe ich. Hier, lasst ihn den Geruch von ihrem Schal aufnehmen - sie wollte ihn heute nicht tragen. Normalerweise schläft sie darin, also sollte er mehr nach ihr riechen als nach mir.~
+@26   = ~[Uncle]Habt Dank, freundlicher Fremder. Ich werde für Euren Erfolg beten.~
+@27   = ~[Grey](schnüff! schnüffel!) Wau!~
+@28   = ~[Uncle]Und wir wurden irgendwo weiter nördlich voneinander getrennt - so viel weiß ich. Es tut mir leid, dass ich keine genaueren Informationen geben kann. Oh, meine arme Tilda...~

@@ -23,7 +23,7 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("C#GreyRestCounter","GLOBAL",1)
 		Rest()
-		ReallyForceSpellRES("C#GRREST",Myself)	
+		ReallyForceSpellRES("c#7rest",Myself)	
 		SetInterrupt(TRUE)	
 END
 
@@ -64,7 +64,7 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ReallyForceSpellRES("C#GRREST","C#Grey")     	
+		ReallyForceSpellRES("c#7rest","C#Grey")     	
 		SetGlobal("C#Grey_IsUnconscious","GLOBAL",0)		
 		DisplayStringHead(Myself,@50004)
 		ChangeEnemyAlly(Myself, FAMILIAR)
@@ -92,7 +92,7 @@ END
 /* follows as familiar: Grey warns about HP too low: auto pause. This can be switsched on and off via PID */
 
 IF
-	Global("C#Grey_HPAlarm","GLOBAL",1)  //PC told Grey to warn
+	Global("C#HPAlarm","LOCALS",1)  //PC told Grey to warn
 	Global("C#Grey_HPAlarmDone","LOCALS",0)
 	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
 	!CombatCounter(0)
@@ -107,7 +107,7 @@ END
 /* follows as familiar: Grey warns about HP too low: no auto pause. This can be switsched on and off via PID */
 
 IF
-	Global("C#Grey_HPAlarm","GLOBAL",0)  //PC told Grey not to warn
+	Global("C#HPAlarm","LOCALS",0)  //PC told Grey not to warn
 	Global("C#Grey_HPAlarmDone","LOCALS",0)
 	Global("C#GreyJoined","GLOBAL",2)  //follows as 7th party member
 	!CombatCounter(0)
@@ -162,7 +162,7 @@ IF
 THEN
   RESPONSE #100
 		SetInterrupt(FALSE)
-		ReallyForceSpellRES("C#GRREST","C#Grey") //make sure there is no negative effect
+		ReallyForceSpellRES("c#7rest","C#Grey") //make sure there is no negative effect
 		ReallyForceSpellRES("C#MIN5HP","C#Grey") //give him min 5 HP and immunities
 		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",1)
 		IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",1) 
@@ -194,23 +194,34 @@ THEN
 		Dialogue(Player1)
 END
 
-/* ##
+
 /* start banter script if not in party */
 
 IF
+	%IT_IS_SOD%
 	Global("C#GreyJoined","GLOBAL",2)
-	!StateCheck(Myself,CD_STATE_NOTVALID)
-	InMyArea(Player1)  
-	!StateCheck(Player1,CD_STATE_NOTVALID)
+	RealGlobalTimerExpired("C#GreyNPCBanterTimer","GLOBAL")
 	CombatCounter(0)
 	!See([ENEMY])
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#GreyNPCBanterTimer","GLOBAL",1800)
+		Interact(Player1)
+END
+
+IF
+	Global("C#GreyJoined","GLOBAL",2)
 	RealGlobalTimerExpired("C#GreyNPCBanterTimer","GLOBAL")
+	CombatCounter(0)
+	!See([ENEMY])
+	ActionListEmpty()
 THEN
 	RESPONSE #100
 		RealSetGlobalTimer("C#GreyNPCBanterTimer","GLOBAL",3000)
 		Interact(Player1)
 END
-*/
+
 
 
 
@@ -230,6 +241,7 @@ THEN
 	SetInterrupt(FALSE)
 	TakeItemReplace("c#grpa25","c#grpa15",Myself)
 	SetGlobal("C#GreyLevelUpPaw","LOCALS",25)
+	EquipItem("c#grpa25")
 	SetInterrupt(TRUE)		
 END
 
@@ -246,6 +258,7 @@ THEN
 	SetInterrupt(FALSE)
 	TakeItemReplace("c#grpa15","c#grpa12",Myself)
 	SetGlobal("C#GreyLevelUpPaw","LOCALS",15)
+	EquipItem("c#grpa15")
 	SetInterrupt(TRUE)		
 END
 
@@ -262,6 +275,7 @@ THEN
 	SetInterrupt(FALSE)
 	TakeItemReplace("c#grpa12","c#grpaw9",Myself)
 	SetGlobal("C#GreyLevelUpPaw","LOCALS",12)
+	EquipItem("c#grpa12")
 	SetInterrupt(TRUE)		
 END
 
@@ -278,6 +292,7 @@ THEN
 	SetInterrupt(FALSE)
 	TakeItemReplace("c#grpaw9","c#grpaw6",Myself)
 	SetGlobal("C#GreyLevelUpPaw","LOCALS",9)
+	EquipItem("c#grpaw9")
 	SetInterrupt(TRUE)		
 END
 
@@ -294,6 +309,7 @@ THEN
 	SetInterrupt(FALSE)
 	TakeItemReplace("c#grpaw6","c#grpaw3",Myself)
 	SetGlobal("C#GreyLevelUpPaw","LOCALS",6)
+	EquipItem("c#grpaw6")
 	SetInterrupt(TRUE)		
 END
 
@@ -311,5 +327,6 @@ THEN
 	SetInterrupt(FALSE)
 	TakeItemReplace("c#grpaw3","c#grpaw1",Myself)
 	SetGlobal("C#GreyLevelUpPaw","LOCALS",3)
+	EquipItem("c#grpaw3")
 	SetInterrupt(TRUE)	
 END

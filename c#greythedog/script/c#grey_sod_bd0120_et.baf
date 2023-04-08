@@ -12,4 +12,5 @@ THEN
 		SetGlobal("C#Grey_bd_mdd000te_ot","bd0120",1)
 		DisplayStringHead("C#Grey",@50005)
 		Wait(5)
+		Continue()
 END

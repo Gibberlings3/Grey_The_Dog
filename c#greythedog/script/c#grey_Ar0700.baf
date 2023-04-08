@@ -6,7 +6,7 @@ THEN
 RESPONSE #100
 CreateCreature("c#gr1mt2",[2841.572],7)
 SetGlobal("C#Grey_MerchantSpawn","MYAREA",1)
-AddMapNote([2841.572],~Wardog Armory and Weaponry~)
+AddMapNote([2841.572],@10101)
 Continue()
 END
 

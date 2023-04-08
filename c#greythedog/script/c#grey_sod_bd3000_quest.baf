@@ -1,0 +1,43 @@
+/* spawn quest cres in camp */
+
+IF
+	InMyArea(Player1)
+	InMyArea("BDBELEGA")
+	!Dead("BDBELEGA")
+	!Dead("c#grsq01")
+	!Dead("c#grsq02")
+	!Dead("c#grsq03")
+	!Dead("c#grsq04")
+	!Dead("c#grsq05")
+	GlobalLT("C#Grey_SoDQuest","GLOBAL",19) //quest is not finished
+	GlobalLT("C#Gr_SoDQuestSpawn","GLOBAL",3)
+THEN
+	RESPONSE #100
+		CreateCreature("c#grsq03",[258.467],8) //NW
+		CreateCreature("c#grsq04",[2137.457],W)
+		CreateCreature("c#grsq05",[1317.691],S)
+		SetGlobal("C#Gr_SoDQuestSpawn","GLOBAL",3)
+		Continue()
+END
+
+IF
+	GlobalGT("bd_plot","global",394)
+	GlobalLT("C#Grey_SoDQuest","GLOBAL",19)	
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@100501) 
+		EraseJournalEntry(@100503)
+		EraseJournalEntry(@100504)
+		EraseJournalEntry(@100505)
+		EraseJournalEntry(@100506)
+		EraseJournalEntry(@100507)
+		EraseJournalEntry(@100508)
+		EraseJournalEntry(@100509)
+		EraseJournalEntry(@100510)
+		EraseJournalEntry(@100514)
+		EraseJournalEntry(@100515)
+		AddJournalEntry(@100513,QUEST_DONE)
+		SetGlobal("C#Grey_SoDQuest","GLOBAL",30)
+		Continue()
+END
+

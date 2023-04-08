@@ -1,0 +1,45 @@
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/7thpmm/scripts/~
+
+/* This line is crappy but I need one that works for Grey the dog, too */
+ADD_SECTYPE C#1HPEffect @200000 
+
+/* 5 HP effect spell and a lot of other protections against deaths + Regeneration */
+COPY ~%MOD_FOLDER%/7thpmm/spells/c#min5hp.spl~ ~override~
+WRITE_BYTE 0x27 C#1HPEffect
+WRITE_BYTE 0xa2 C#1HPEffect
+
+/* remove 5 HP effect and all other protections */
+COPY ~%MOD_FOLDER%/7thpmm/spells/c#min0hp.spl~ ~override~
+WRITE_BYTE 0xa2 C#1HPEffect
+
+/* Work-around: NPC gets restored after a fight */
+
+COPY ~%MOD_FOLDER%/7thpmm/spells/c#7rest.spl~ ~override~ //This is A7REST from Argent's Djinni Companion!
+SAY NAME1 @200000
+SAY NAME2 @200000
+
+/* bgee, bgt, eet, tob, bg2:ee */
+ACTION_IF GAME_IS ~bgee bgt tob bg2ee eet~ THEN BEGIN
+  ACTION_IF !(FILE_CONTAINS_EVALUATED (~baldur.BCS~ ~"C#FATIG1"~))
+    THEN BEGIN
+        EXTEND_TOP ~baldur.bcs~   ~%MOD_FOLDER%/7thpmm/script_patch/c#_7thpm_baldur_add.baf~
+        COPY ~%MOD_FOLDER%/7thpmm/spells/C#FATIG1.SPL~ ~override~
+  END
+END
+
+/* SoD, eet */
+ACTION_IF (GAME_IS ~bgee eet~ AND FILE_EXISTS_IN_GAME ~bd0103.are~) THEN BEGIN   ACTION_IF !(FILE_CONTAINS_EVALUATED (~bdbaldur.BCS~ ~"C#FATIG1"~))
+    THEN BEGIN
+        EXTEND_TOP ~bdbaldur.bcs~   ~%MOD_FOLDER%/7thpmm/script_patch/c#_7thpm_baldur_add.baf~
+        COPY ~%MOD_FOLDER%/7thpmm/spells/C#FATIG1.SPL~ ~override~
+  END
+END
+
+/* bgt, eet, tob, bg2:ee */
+ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN
+  ACTION_IF !(FILE_CONTAINS_EVALUATED (~baldur25.BCS~ ~"C#FATIG1"~))
+    THEN BEGIN
+        EXTEND_TOP ~baldur25.bcs~   ~%MOD_FOLDER%/7thpmm/script_patch/c#_7thpm_baldur_add.baf~
+        COPY ~%MOD_FOLDER%/7thpmm/spells/C#FATIG1.SPL~ ~override~
+  END
+END

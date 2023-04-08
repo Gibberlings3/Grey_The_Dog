@@ -20,7 +20,7 @@
   -Smells bad when wet.
   -Leaves hair everywhere.
   ~
-@10002  = ~(yawn)~
+//@10002  = 
 @10003  = ~Alpha Call~
 @10004  = ~Due to his large physical presence and commanding demeanor, local dogs may come to the wolfhound's aid when he calls.
 This spell does not work indoors.~ 
@@ -372,12 +372,64 @@ Weight:  2
 @10108  = ~Grey is a trained war dog from your times in Candlekeep. The times you spent with him there sufficed to make Grey follow you as your loyal dog companion. 
 When looking at him, GREY tilts his head to the side and stares at you. He picks up a stick nearby on the ground... Seems like you are going to have to play fetch... again.
 ~
+@10109  = ~[Grey]Woof!~ [C#Grey01]
 /*
-@10109  = 
 @10110  = 
 */
+
+/* SoD */
+@19000  = ~Grey's Piece of Ham~
+@19001  = ~This is the ham Grey received from the refugee boy. Although it seems a bit maltreated by being carried around in a child's pocket for a while, it still looks extraordinary fine. 
+
+Grey already had this in his mouth.
+
+STATISTICS:
+
+Special: Restores 9 Hit Points.
+
+Weight: 1~
+@19002  = ~Jucy Piece of Ham~
+@19003  = ~This is a slice of ham you received from Lester. 
+This is not an ordinary ham. Inspecting it you catch a faint but pleasing scent of herbs you can't quite put your finger on, and it looks extraordinary fine. 
+
+STATISTICS:
+
+Special: Restores 9 Hit Points.
+
+Weight: 1~
+@19004  = ~Ham Bag~
+@19005  = ~This is the bag where Lester stored the stolen ham slices in. It still has a faint scent of the herb mixture the ham was smoked with. - It's good that noone else searched for it with a tracker dog.
+
+Weight: 0~
+@19006  = ~Boy with blonde hair~
+@19007  = ~Lester~
+@19008  = ~Mrs. Buttercup~
+@19009  = ~Scald~
  
 
+
+/* c#7thpmm_thingies.tpa - adapted to Grey */
+@200000 = ~(yawn)~
+@200001 = ~I want you to stay in sight.~
+@200002 = ~Stop staying in sight.~
+@200003 = ~I want you to look out for traps.~ 
+@200004 = ~Stop looking for traps.~
+@200005 = ~If we encounter enemies...~
+@200006 = ~Leave everything as it is.~
+//@200007 = 
+//@200008 = 
+@200009 = ~I want you to run away from enemies so you don't have to fight.~
+@200010 = ~I want you to fight with melee weapons if you see enemies.~
+@200011 = ~I want you to fight with ranged weapons if you see enemies.~
+@200012 = ~I want you to only defend yourself if attacked.~
+@200013 = ~Do not fight at all, no matter what.~
+@200014 = ~I have no new instructions for fights.~
+//@200015 = 
+//@200016 = 
+//@200017   = 
+//@200018   = 
+//@200019   = 
+@200020   = ~I want to give you instructions how to follow me.~
 
 
 

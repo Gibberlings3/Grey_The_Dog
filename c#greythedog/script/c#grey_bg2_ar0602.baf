@@ -71,9 +71,9 @@ IF
       !HasItem("c#grpaw3","C#Grey")
       !HasItem("c#grpaw6","C#Grey")
       !HasItem("c#grpaw9","C#Grey")
-      !HasItem("c#grpaw12","C#Grey")
-      !HasItem("c#grpaw15","C#Grey")
-      !HasItem("c#grpaw25","C#Grey")
+      !HasItem("c#grpa12","C#Grey")
+      !HasItem("c#grpa15","C#Grey")
+      !HasItem("c#grpa25","C#Grey")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -92,9 +92,9 @@ IF
 		HasItem("c#grpaw3","C#Grey")
 		HasItem("c#grpaw6","C#Grey")
 		HasItem("c#grpaw9","C#Grey")
- 		HasItem("c#grpaw12","C#Grey")
-		HasItem("c#grpaw15","C#Grey")
-		HasItem("c#grpaw25","C#Grey")
+ 		HasItem("c#grpa12","C#Grey")
+		HasItem("c#grpa15","C#Grey")
+		HasItem("c#grpa25","C#Grey")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

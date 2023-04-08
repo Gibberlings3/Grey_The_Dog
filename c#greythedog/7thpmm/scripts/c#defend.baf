@@ -1,0 +1,19 @@
+IF
+	AttackedBy([ENEMY],DEFAULT)
+	Range(LastAttackerOf(Myself),4)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(LastAttackerOf(Myself),30)
+END
+
+IF
+	AttackedBy([ENEMY],DEFAULT)
+	!Range(LastAttackerOf(Myself),4)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(LastAttackerOf(Myself),30)
+END

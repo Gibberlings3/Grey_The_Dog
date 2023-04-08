@@ -1,0 +1,182 @@
+
+/* c#lgrcus2.baf: Grey sniffs around for the ham */
+
+/* near storage tent in area of theft - Grey will still sniff it */
+/* first time with dialogue */
+IF
+	Global("C#Gr_SoDQuestSniffTent","MYAREA",0)
+	See(Player1)
+	Global("C#Gr_SoDQuestThisArea","MYAREA",1)
+	Range("C#GRStoreTent",30)
+	
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C#Gr_SoDQuestSniffTent","MYAREA",1)
+		ActionOverride("C#Grey",Face(12))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50003))
+		Wait(1)
+		ActionOverride("C#Grey",Face(6))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50002))
+		Wait(1)
+		FaceObject("C#GRStoreTent")
+		ActionOverride("C#Grey",MoveToObject("C#GRStoreTent"))
+		MoveToObject("C#Grey")
+		Wait(1)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50005))
+		Wait(1)
+		EndcutSceneMode()
+		ActionOverride("C#Grey",StartDialogueNoSet(Player1))
+END
+
+
+/* Find refugee with ham - bd3000 */
+IF
+	See(Player1)
+	AreaCheck("bd3000")
+	InMyArea("c#grsq04")
+	!Dead("c#grsq04")
+	!StateCheck("BDBELEGA",CD_STATE_NOTVALID)
+	Range("c#grsq04",20)
+	Global("C#Gr_SoDQuestSniffRefu","MYAREA",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C#Gr_SoDQuestSniffRefu","MYAREA",1)
+		ActionOverride("C#Grey",Face(12))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50003))
+		Wait(1)
+		ActionOverride("C#Grey",Face(6))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50002))
+		Wait(1)
+		FaceObject("c#grsq04")
+		ActionOverride("C#Grey",MoveToObject("c#grsq04"))
+		MoveToObject("C#Grey")
+		Wait(2)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50005))
+		EndcutSceneMode()
+		ActionOverride("C#Grey",StartDialogueNoSet(Player1))
+END
+
+/* Find soldier with ham - bd3000 */
+/* first time - starts dialogue */
+IF
+	See(Player1)
+	AreaCheck("bd3000")
+	InMyArea("c#grsq03")
+	!Dead("c#grsq03")
+	!StateCheck("c#grsq03",CD_STATE_NOTVALID)
+	Range("c#grsq03",20)
+	Global("C#Gr_SoDQuestSniffFF","MYAREA",0)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SetGlobal("C#Gr_SoDQuestSniffFF","MYAREA",1)
+		ActionOverride("C#Grey",Face(12))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50003))
+		Wait(1)
+		ActionOverride("C#Grey",Face(6))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50002))
+		Wait(1)
+		FaceObject("c#grsq03")
+		ActionOverride("C#Grey",MoveToObject("c#grsq03"))
+		MoveToObject("C#Grey")
+		ActionOverride("c#grsq03",SetDialog("c#grsq03"))
+		Wait(2)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50005))
+		SmallWait(15)
+		ActionOverride("C#Grey",StartDialogueNoSet(Player1))
+		EndcutSceneMode()
+END
+
+/* later time */
+IF
+	See(Player1)
+	AreaCheck("bd3000")
+	InMyArea("c#grsq03")
+	!Dead("c#grsq03")
+	!StateCheck("c#grsq03",CD_STATE_NOTVALID)
+	Range("c#grsq03",20)
+	GlobalGT("C#Gr_SoDQuestSniffFF","MYAREA",1)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		IncrementGlobal("C#Gr_SoDQuestSniffFF","MYAREA",1)
+		ActionOverride("C#Grey",Face(12))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50003))
+		Wait(1)
+		ActionOverride("C#Grey",Face(6))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50002))
+		Wait(1)
+		FaceObject("c#grsq03")
+		ActionOverride("C#Grey",MoveToObject("c#grsq03"))
+		MoveToObject("C#Grey")
+		ActionOverride("c#grsq03",SetDialog("c#grsq03"))
+		Wait(2)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50005))
+		SmallWait(15)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50011))
+		EndcutSceneMode()
+END
+
+/* sniff in vain in first and second camps */
+IF
+	See(Player1)
+	Global("C#Gr_SoDQuestSniffInVain","GLOBAL",2)
+	!AreaCheck("bd3000")
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		IncrementGlobal("C#Gr_SoDQuestSniffInVain","GLOBAL",1)
+		ActionOverride("C#Grey",Face(12))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50003))
+		Wait(1)
+		ActionOverride("C#Grey",Face(6))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50002))
+		Wait(1)
+		FaceObject(Player1)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50006))
+		SmallWait(15)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50012))
+		AddJournalEntry(@100505,QUEST)
+		EndcutSceneMode()
+END
+
+/* no target near - sniff around in vain */
+IF
+	See(Player1)
+	OR(3)
+		!Range("C#GRStoreTent",30)
+		Global("C#Gr_SoDQuestSniffTent","MYAREA",2)
+		Global("C#Gr_SoDQuestThisArea","MYAREA",0)
+	!Range("c#grsq03",30)
+	OR(2)
+		!Range("c#grsq04",30)
+		Global("C#Gr_SoDQuestSniffRefu","MYAREA",2)
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		IncrementGlobal("C#Gr_SoDQuestSniffInVain","GLOBAL",1)
+		ActionOverride("C#Grey",Face(12))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50003))
+		Wait(1)
+		ActionOverride("C#Grey",Face(6))
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50002))
+		Wait(1)
+		FaceObject(Player1)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50006))
+		SmallWait(15)
+		ActionOverride("C#Grey",DisplayStringHead(Myself,@50012))
+		EndcutSceneMode()
+END
+
+/* safety exit */
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SmallWait(15)
+		EndcutSceneMode()
+END

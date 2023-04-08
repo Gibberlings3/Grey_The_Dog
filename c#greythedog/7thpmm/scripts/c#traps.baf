@@ -1,0 +1,10 @@
+IF
+	ActionListEmpty()
+	!ModalState(DETECTTRAPS)
+	OR(2)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,MONK)
+THEN
+	RESPONSE #100
+		FindTraps()
+END

@@ -136,30 +136,22 @@ END //APPEND
 
 
 
-
-
-
-
-
-
-
-
 /* I_C_T and other additions */
-
-
 /* BG1 */
 
-ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 1 END BEGIN END ~IncrementGlobal("C#Grey_TaeromArmorCheck","GLOBAL",1)~
+/* We need an individual tracking variable whether Brage was encountered - Global("MetBrage","GLOBAL",1) is also set once Nalin tells the group about missing Brage */
+ADD_TRANS_ACTION BRAGE BEGIN 0 END BEGIN END ~SetGlobal("C#Grey_MetBrage","GLOBAL",1)~
 
-ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 5 END BEGIN END ~IncrementGlobal("C#Grey_TaeromArmorCheck","GLOBAL",1)~
 
-ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 9 END BEGIN END ~IncrementGlobal("C#Grey_TaeromArmorCheck","GLOBAL",1)~
+
+/* Taerom should offer making the armor once before PC can ask about dog's armor. */
+ADD_TRANS_ACTION ~%tutu_var%TAEROM~ BEGIN 6 END BEGIN END ~SetGlobal("C#Grey_TaeromArmorCheck","GLOBAL",1)~
 
 /* Beregost: Thunderhammer Smithy. Armor for Grey! */
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
 /* check: is the poison fang in the inventory. PartyHasItem check doesn't work on 7th party members so we consider all of them if they are in party */
-	OR(5)
+OR(5)
 		PartyHasItem("C#GrTo#1") 
 		HasItem("C#GrTo#1","C#Grey")
 		HasItem("C#GrTo#1","C#Solaufein")
@@ -181,34 +173,9 @@ EXTEND_BOTTOM ~%tutu_var%TAEROM~ 0
 		!HasItem("C#GrTo#1","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-	OR(5)
-		PartyHasItem("C#GrTo#1") 
-		HasItem("C#GrTo#1","C#Grey")
-		HasItem("C#GrTo#1","C#Solaufein")
-		HasItem("C#GrTo#1","C#Husam1")
-		HasItem("C#GrTo#1","C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
- PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_d
-+ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-	OR(5)
+PartyGoldGT(2999)~ + @40 /* ~I want you to forge the poison weapon for my war dog now.~ */ + weapon_offer_02
++ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 /* ~Is there any chance you could make a suit of ankheg armor for a war dog, if I brought you another shell?~ */ DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~OR(5)
 		PartyHasItem("%tutu_var%MISC12") 
 		HasItem("%tutu_var%MISC12","C#Grey")
 		HasItem("%tutu_var%MISC12","C#Solaufein")
@@ -230,37 +197,12 @@ PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer
 		!HasItem("%tutu_var%MISC12","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-	OR(5)
-		PartyHasItem("%tutu_var%MISC12") 
-		HasItem("%tutu_var%MISC12","C#Grey")
-		HasItem("%tutu_var%MISC12","C#Solaufein")
-		HasItem("%tutu_var%MISC12","C#Husam1")
-		HasItem("%tutu_var%MISC12","C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03_c
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 /* ~I have all you need to forge a war dog's ankheg armor. Please start right away!~ */ + wardog_armor_01
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 4
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-
-	OR(5)
+OR(5)
 		PartyHasItem("C#GrTo#1") 
 		HasItem("C#GrTo#1","C#Grey")
 		HasItem("C#GrTo#1","C#Solaufein")
@@ -282,36 +224,9 @@ EXTEND_BOTTOM ~%tutu_var%TAEROM~ 4
 		!HasItem("C#GrTo#1","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-
-	OR(5)
-		PartyHasItem("C#GrTo#1") 
-		HasItem("C#GrTo#1","C#Grey")
-		HasItem("C#GrTo#1","C#Solaufein")
-		HasItem("C#GrTo#1","C#Husam1")
-		HasItem("C#GrTo#1","C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
- PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
-+ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
+PartyGoldGT(2999)~ + @40 /* ~I want you to forge the poison weapon for my war dog now.~ */ + weapon_offer_02
++ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 /* ~Is there any chance you could make a suit of ankheg armor for a war dog, if I brought you another shell?~ */ DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~OR(5)
 		PartyHasItem("%tutu_var%MISC12") 
 		HasItem("%tutu_var%MISC12","C#Grey")
 		HasItem("%tutu_var%MISC12","C#Solaufein")
@@ -333,38 +248,12 @@ PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer
 		!HasItem("%tutu_var%MISC12","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
-		PartyHasItem("%tutu_var%MISC12") 
-		HasItem("%tutu_var%MISC12","C#Grey")
-		HasItem("%tutu_var%MISC12","C#Solaufein")
-		HasItem("%tutu_var%MISC12","C#Husam1")
-		HasItem("%tutu_var%MISC12","C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 /* ~I have all you need to forge a war dog's ankheg armor. Please start right away!~ */ + wardog_armor_01
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 12
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-
-	OR(5)
+OR(5)
 		PartyHasItem("C#GrTo#1") 
 		HasItem("C#GrTo#1","C#Grey")
 		HasItem("C#GrTo#1","C#Solaufein")
@@ -386,36 +275,9 @@ EXTEND_BOTTOM ~%tutu_var%TAEROM~ 12
 		!HasItem("C#GrTo#1","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
- PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-
-	OR(5)
-		PartyHasItem("C#GrTo#1") 
-		HasItem("C#GrTo#1","C#Grey")
-		HasItem("C#GrTo#1","C#Solaufein")
-		HasItem("C#GrTo#1","C#Husam1")
-		HasItem("C#GrTo#1","C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
- PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
-+ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
+ PartyGoldGT(2999)~ + @40 /* ~I want you to forge the poison weapon for my war dog now.~ */ + weapon_offer_02
++ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",1) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 /* ~Is there any chance you could make a suit of ankheg armor for a war dog, if I brought you another shell?~ */ DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~OR(5)
 		PartyHasItem("%tutu_var%MISC12") 
 		HasItem("%tutu_var%MISC12","C#Grey")
 		HasItem("%tutu_var%MISC12","C#Solaufein")
@@ -437,38 +299,12 @@ EXTEND_BOTTOM ~%tutu_var%TAEROM~ 12
 		!HasItem("%tutu_var%MISC12","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
-		PartyHasItem("%tutu_var%MISC12") 
-		HasItem("%tutu_var%MISC12","C#Grey")
-		HasItem("%tutu_var%MISC12","C#Solaufein")
-		HasItem("%tutu_var%MISC12","C#Husam1")
-		HasItem("%tutu_var%MISC12","C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 /* ~I have all you need to forge a war dog's ankheg armor. Please start right away!~ */ + wardog_armor_01
 END
 
 EXTEND_BOTTOM ~%tutu_var%TAEROM~ 14
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-
-	OR(5)
+OR(5)
 		PartyHasItem("C#GrTo#1") 
 		HasItem("C#GrTo#1","C#Grey")
 		HasItem("C#GrTo#1","C#Solaufein")
@@ -490,36 +326,9 @@ EXTEND_BOTTOM ~%tutu_var%TAEROM~ 14
 		!HasItem("C#GrTo#1","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
- PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + weapon_offer_02
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",2) 
-
-	OR(5)
-		PartyHasItem("C#GrTo#1") 
-		HasItem("C#GrTo#1","C#Grey")
-		HasItem("C#GrTo#1","C#Solaufein")
-		HasItem("C#GrTo#1","C#Husam1")
-		HasItem("C#GrTo#1","C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("C#GrTo#1","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
-PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_03_b
-+ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
-+ ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
+ PartyGoldGT(2999)~ + @40 /* ~I want you to forge the poison weapon for my war dog now.~ */ + weapon_offer_02
++ ~GlobalGT("C#Grey_TaeromArmorCheck","GLOBAL",0) Global("C#Grey_TaeromArmor","GLOBAL",0)~ + @41 /* ~Is there any chance you could make a suit of ankheg armor for a war dog, if I brought you another shell?~ */ DO ~SetGlobal("C#Grey_TaeromArmor","GLOBAL",1)~ + wardog_armor
++ ~OR(5)
 		PartyHasItem("%tutu_var%MISC12") 
 		HasItem("%tutu_var%MISC12","C#Grey")
 		HasItem("%tutu_var%MISC12","C#Solaufein")
@@ -541,35 +350,18 @@ PartyGoldGT(2999) Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @40 + wardog_armor_
 		!HasItem("%tutu_var%MISC12","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_01
-+ ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
-		PartyHasItem("%tutu_var%MISC12") 
-		HasItem("%tutu_var%MISC12","C#Grey")
-		HasItem("%tutu_var%MISC12","C#Solaufein")
-		HasItem("%tutu_var%MISC12","C#Husam1")
-		HasItem("%tutu_var%MISC12","C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Solaufein")
-		Global("C#SolauJoined","GLOBAL",2)
-		InParty("C#Solaufein")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Husam1")
-		Global("C#HusamJoined","GLOBAL",2)
-		InParty("C#Husam")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Brandock")
-		Global("C#BrandockJoined","GLOBAL",2)
-		InParty("C#Brandock")
-	OR(3)
-		!HasItem("%tutu_var%MISC12","C#Grey")
-		Global("C#GreyJoined","GLOBAL",2)
-		InParty("C#Grey")
-PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 + wardog_armor_03
+PartyGoldGT(3999) Global("C#Grey_TaeromArmor","GLOBAL",1)~ + @42 /* ~I have all you need to forge a war dog's ankheg armor. Please start right away!~ */ + wardog_armor_01
 END
 
 APPEND ~%tutu_var%TAEROM~
+
+IF WEIGHT #-1
+~!GlobalTimerExpired("C#Grey_TaeromTimer","GLOBAL")
+OR(2) Global("C#Grey_TaeromTeeth","GLOBAL",3) Global("C#Grey_TaeromArmor","GLOBAL",2)
+~ THEN BEGIN taerom_working
+  SAY #187 /* ~It's not ready yet. Perhaps another day or two. Be patient; quality takes time.~ */
+  COPY_TRANS TAEROM 8
+END
 
 IF WEIGHT #-1
 ~NumTimesTalkedToGT(0)
@@ -583,8 +375,7 @@ END
 IF WEIGHT #-1
 ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID) 
 Global("C#Grey_TaeromTeeth","GLOBAL",1)
-
-	OR(5)
+OR(5)
 		PartyHasItem("C#GrTo#1") 
 		HasItem("C#GrTo#1","C#Grey")
 		HasItem("C#GrTo#1","C#Solaufein")
@@ -606,33 +397,39 @@ Global("C#Grey_TaeromTeeth","GLOBAL",1)
 		!HasItem("C#GrTo#1","C#Grey")
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
-!Global("MakeArmor","GLOBAL",1)~ THEN weapon_offer_01
-SAY @44
-+ ~PartyGoldGT(2999)~ + @45 + weapon_offer_02
-+ ~PartyGoldLT(3000)~ + @46 + weapon_offer_04
-++ @47 + weapon_offer_05
-++ @48 + weapon_offer_04
+!Global("MakeArmor","GLOBAL",1)
+!Global("C#Grey_TaeromArmor","GLOBAL",2)~ THEN weapon_offer_01
+SAY @44 /* ~What do I see? A spider's poison fang! Hm, with a little tweaking I could use this to finish the war dog's reinforced canines. It needs special treatment, so this could take a while - five days at least. I could make this for 3000 gold.~ */
++ ~PartyGoldGT(2999)~ + @45 /* ~Sounds excellent. Please do it.~ */ + weapon_offer_02
++ ~PartyGoldLT(3000)~ + @46 /* ~I don't have that much gold with me.~ */ + weapon_offer_04
+++ @47 /* ~3000 gold? That is ridiculous. Didn't you say you have the strap ready for equipping?~ */ + weapon_offer_05
+++ @48 /* ~I am not interested.~ */ + weapon_offer_04
 END
-
-IF ~~ THEN wardog_armor_02_b
-SAY @56
-COPY_TRANS ~%tutu_var%TAEROM~ 0
-END
-
-IF ~~ THEN wardog_armor_03_c
-SAY @57
-IF ~~ THEN + wardog_armor_02
-END
-
-IF ~~ THEN wardog_armor_03_d
-SAY @58
-IF ~~ THEN + wardog_armor_02
-END
-
 
 IF ~~ THEN weapon_offer_02
-SAY @49
-IF ~PartyHasItem("C#GrTo#1")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
+SAY @49 /* ~Good on you.  Now it will take me a while to finish, but your dog will soon have a fine poison weapon. Come back in five days and I'll have it ready for you.~ */
+IF ~OR(5)
+		PartyHasItem("C#GrTo#1") 
+		HasItem("C#GrTo#1","C#Grey")
+		HasItem("C#GrTo#1","C#Solaufein")
+		HasItem("C#GrTo#1","C#Husam1")
+		HasItem("C#GrTo#1","C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("C#GrTo#1","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(3000))
 ActionOverride("TAEROM",TakePartyItemNum("C#GrTo#1",1))
 ActionOverride("TAEROM",DestroyItem("C#GrTo#1"))
 SetGlobal("C#Grey_TaeromTeeth","GLOBAL",3)
@@ -674,32 +471,30 @@ SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",FIVE_DAYS)~ UNSOLVED_JOURNAL @10000
 END
 
 IF WEIGHT #-1
-~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID) 
-Global("C#Grey_TaeromTeeth","GLOBAL",3)
+~Global("C#Grey_TaeromTeeth","GLOBAL",3)
 GlobalTimerExpired("C#Grey_TaeromTimer","GLOBAL")~ THEN weapon_offer_03
-SAY @50
+SAY @50 /* ~Here you are, as I promised. It's a fine peace of war dog weaponry, and so powerful! I shielded the poison sting as necessary so your wolfhound cannot bite himself, but if used on enemies there is a 50% chance they will be poisoned.~ */
  IF ~~ THEN DO ~GiveItemCreate("C#GrToo1",LastTalkedToBy,0,0,0)
 SetGlobal("C#Grey_TaeromTeeth","GLOBAL",4)
 EraseJournalEntry(@100004)~ SOLVED_JOURNAL @100005 EXIT
 END
 
 IF ~~ THEN weapon_offer_04
-SAY @51
+SAY @51 /* ~Come back if you want me to forge it.~ */
 IF ~~ THEN DO ~SetGlobal("C#Grey_TaeromTeeth","GLOBAL",2)~ EXIT
 END
 
 IF ~~ THEN weapon_offer_05
-SAY @52
+SAY @52 /* ~Nah, you are underestimating the special treatment it takes, or do you want your dog to be its first victim? 3000 gold is not too much for a powerful weapon crafted well.~ */
 + ~PartyGoldGT(2999) !Global("C#Grey_TaeromArmor","GLOBAL",2)~ + @45 + weapon_offer_02
 + ~PartyGoldLT(3000)~ + @46 + weapon_offer_04
 ++ @48 + weapon_offer_04
 END
 
 IF ~~ THEN wardog_armor
-SAY @53 
+SAY @53 /* ~Your dog? Oh, yes that is indeed possible. Bring me a shell and 4000 gold, and I will forge it for him.~ */
 + ~!Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
+OR(5)
 		PartyHasItem("C#GrTo#1") 
 		HasItem("C#GrTo#1","C#Grey")
 		HasItem("C#GrTo#1","C#Solaufein")
@@ -723,8 +518,7 @@ SAY @53
 		InParty("C#Grey")
 PartyGoldGT(3999)~ + @42 + wardog_armor_01
 + ~Global("C#Grey_TaeromTeeth","GLOBAL",3) 
-
-	OR(5)
+OR(5)
 		PartyHasItem("%tutu_var%MISC12") 
 		HasItem("%tutu_var%MISC12","C#Grey")
 		HasItem("%tutu_var%MISC12","C#Solaufein")
@@ -747,14 +541,33 @@ PartyGoldGT(3999)~ + @42 + wardog_armor_01
 		Global("C#GreyJoined","GLOBAL",2)
 		InParty("C#Grey")
 PartyGoldGT(3999)~ + @42 + wardog_armor_03
-++ @54 + wardog_armor_02
+++ @54 /* ~I'll let you know.~ */ + wardog_armor_02
 END
 
-
-
 IF ~~ THEN wardog_armor_01
-SAY @55
-IF ~PartyHasItem("%tutu_var%MISC12")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
+SAY @55 /* ~A fine choice! Oh, I love the challenge. For a dog, the scales have to be bended a bit... Come back in a tenday to receive the finest war dog armor! */
+IF ~OR(5)
+		PartyHasItem("%tutu_var%MISC12") 
+		HasItem("%tutu_var%MISC12","C#Grey")
+		HasItem("%tutu_var%MISC12","C#Solaufein")
+		HasItem("%tutu_var%MISC12","C#Husam1")
+		HasItem("%tutu_var%MISC12","C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Solaufein")
+		Global("C#SolauJoined","GLOBAL",2)
+		InParty("C#Solaufein")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Husam1")
+		Global("C#HusamJoined","GLOBAL",2)
+		InParty("C#Husam")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Brandock")
+		Global("C#BrandockJoined","GLOBAL",2)
+		InParty("C#Brandock")
+	OR(3)
+		!HasItem("%tutu_var%MISC12","C#Grey")
+		Global("C#GreyJoined","GLOBAL",2)
+		InParty("C#Grey")~ THEN DO ~ActionOverride("TAEROM",TakePartyGold(4000))
 ActionOverride("TAEROM",TakePartyItemNum("%tutu_var%MISC12",1))
 ActionOverride("TAEROM",DestroyItem("%tutu_var%MISC12"))
 SetGlobal("C#Grey_TaeromArmor","GLOBAL",2)
@@ -790,26 +603,24 @@ SetGlobalTimer("C#Grey_TaeromTimer","GLOBAL",TEN_DAYS)~ UNSOLVED_JOURNAL @100006
 END
 
 IF ~~ THEN wardog_armor_02
-SAY @56
+SAY @56 /* ~Anything else I can do for ye?~ */
 COPY_TRANS ~%tutu_var%TAEROM~ 14
 END
 
 IF ~~ THEN wardog_armor_03
-SAY @57
+SAY @57 /* ~Ah, but I am still forging his weapon. No use in forging two things at once. You'll have to wait a bit longer, I am afraid.~ */
 IF ~~ THEN + wardog_armor_02
 END
 
 IF ~~ THEN wardog_armor_03_b
-SAY @58
+SAY @58 /* ~Ah, but I am still forging his armor. No use in forging two things at once. You'll have to wait a bit longer, I am afraid.~ */
 IF ~~ THEN + wardog_armor_02
 END
 
 IF WEIGHT #-1
-~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
-See("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID) 
-Global("C#Grey_TaeromArmor","GLOBAL",2)
+~Global("C#Grey_TaeromArmor","GLOBAL",2)
 GlobalTimerExpired("C#Grey_TaeromTimer","GLOBAL")~ THEN wardog_armor_04
-SAY @59
+SAY @59 /* ~Here you are, as I promised. It's a fine peace of armor for a war dog. And it was a nice change making it.~ */
  IF ~~ THEN DO ~GiveItemCreate("C#Grarm5",LastTalkedToBy,0,0,0)
 SetGlobal("C#Grey_TaeromArmor","GLOBAL",3)
 EraseJournalEntry(@100006)~ SOLVED_JOURNAL @100007 EXIT
@@ -1158,9 +969,9 @@ INTERJECT ~%tutu_var%DOPMER~ 0 C#Grey_DOPMER_0
 InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @103
 = @98
 END
-++ @104 DO ~SetGlobal("C#Grey_DOPMER_0","GLOBAL",0)~ EXTERN ~%tutu_var%DOPMER~ grey_int_1
+++ @104 EXTERN ~%tutu_var%DOPMER~ grey_int_1
 ++ @105 + 6
-++ @101 DO ~SetGlobal("C#Grey_DOPMER_0","GLOBAL",0)~ EXTERN ~%tutu_var%DOPMER~ grey_int_1  
+++ @101 EXTERN ~%tutu_var%DOPMER~ grey_int_1  
 
 
 APPEND ~%tutu_var%DOPMER~ 
@@ -1318,6 +1129,10 @@ END
 
 END //APPEND
 
+/* Greater Doppelgangers - Grey's smell is limited */
+ADD_TRANS_ACTION ELMINS4 BEGIN 4 5 END BEGIN END ~AddJournalEntry(@100026,INFO)~
+ADD_TRANS_ACTION SHISTA BEGIN 8 END BEGIN END ~AddJournalEntry(@100026,INFO)~
+
 
 INTERJECT ~%tutu_var%TETHTO3~ 0 C#Grey_TETHTO3_0
 == c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
@@ -1372,7 +1187,7 @@ END
 
 I_C_T ~%tutu_var%REEVOR3~ 0 C#Grey_REEVOR3_0
 == c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @98
-== ~%tutu_var%PARDA3~ IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @119
+== ~%tutu_var%REEVOR3~ IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN @119
 END
 
 I_C_T ~%tutu_var%WINTHR3~ 0 C#Grey_WINTHR3_0

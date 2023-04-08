@@ -9,3 +9,16 @@
 
 /* new for v6 */
 @90008   = ~Die Mod muss vor EET_End installiert werden.~
+
+/* new for v9 */
+@90009  = ~Die Szene auf der Boareskyrbruecke erkannt...~
+@90010  = ~Sir Ajantis fuer BGII erkannt...~
+@90011  = ~Jarl's Adventure Pack erkannt...~
+@90012  = ~Brage's Redemption mod erkannt...~
+@90013  = ~Brandock der Magier erkannt...~
+@90014  = ~bg1re: "Necromancer's Trouble" erkannt...~
+@90015  = ~Baldurans Seeturm erkannt...~ 
+@90016  = ~Imoen 4 Ever SoD Komponente "Imoen erhaelt Dialog-Inhalte in Kapitel 8-12" detektiert: installiere Crossmod...~
+@90017  = ~Husam NPC Mod erkannt: installiere Crossmod...~
+@90018  = ~Ajantis SoD erkannt: installiere Crossmod...~
+@90019  = ~Grey der Hund: Crossmodinhalte~

@@ -62,3 +62,7 @@
 @61   = ~Это отличная новость!~
 @62   = ~Я благодарю вас от всего сердца за то, что вы все прояснили. Вот, примите это в знак моей благодарности. Надеюсь, они будут вам полезны. Прощайте.~
 @63   = ~Спасибо, в любом случае. Сообщите мне, если вы это сделаете.~
+
+
+/* new for v9 */
+@64   = ~You surely are a useful lot. Thank you for getting the young man to leave - I had nothing against him, and he had my full sympathy, but his presence did stir some trouble, so I am glad this is sorted.~

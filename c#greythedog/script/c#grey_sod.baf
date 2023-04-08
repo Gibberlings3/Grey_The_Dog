@@ -33,3 +33,268 @@ THEN
 	SmallWait(10)
 	MoveToObject(Player1)
 END
+
+/* search for Mizhena - candle Safana quest */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdMizhen")
+	!Dead("bdMizhen")
+	Global("SDD303","GLOBAL",1)
+	Global("SDD303_CANDLE","GLOBAL",1)
+	Global("C#Grey_SearchMizhenSoD","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(12)
+		DisplayStringHead(Myself,@50002)
+		Wait(1)
+		Face(6)
+		DisplayStringHead(Myself,@50003)
+		SetGlobal("C#Grey_SearchMizhenSoD","MYAREA",2)
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case Mizhena is too far away */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdMizhen")
+	!Dead("bdMizhen")
+	!Range("bdMizhen",30)
+	Global("C#Grey_SearchMizhenSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player1)
+		DisplayStringHead(Myself,@50006)
+		SmallWait(15)
+		DisplayStringHead(Myself,@50012)
+		SetGlobal("C#Grey_SearchMizhenSoD","MYAREA",0)
+		SetInterrupt(TRUE)
+END
+
+/* Grey finds Mizhena */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdMizhen")
+	!Dead("bdMizhen")
+	Global("C#Grey_SearchMizhenSoD","MYAREA",2)
+	Range("bdMizhen",3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject("bdMizhen")
+		DisplayStringHead(Myself,@50003)
+		FaceObject(Player1)
+		DisplayStringHead(Myself,@50005)
+		SetGlobal("C#Grey_SearchMizhenSoD","MYAREA",3)
+		ActionOverride("bdMizhen",StartDialogueNoSet(Player1))
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case there is a distraction */
+IF
+	OR(8) 
+		Global("C#GreyJoined","GLOBAL",0)
+		!CombatCounter(0) 
+		See([ENEMY])
+		!InMyArea("bdMizhen")
+		Dead("bdMizhen")
+		!Global("SDD303","GLOBAL",1)
+		!Global("SDD303_CANDLE","GLOBAL",1)
+		!AreaCheck("bd3000")
+	Global("C#Grey_SearchMizhenSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SearchMizhenSoD","MYAREA",0)
+END
+
+/* keep moving towards Mizhena if near enough */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdMizhen")
+	!Dead("bdMizhen")
+	Range("bdMizhen",30)
+	Global("SDD303","GLOBAL",1)
+	Global("SDD303_CANDLE","GLOBAL",1)
+	Global("C#Grey_SearchMizhenSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		MoveToObject("bdMizhen")
+END
+
+/* search for Helvdar - bottle Safana quest */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdHelvda")
+	!Dead("bdHelvda")
+	Global("SDD303","GLOBAL",1)
+	OR(2)
+		Global("SDD303_BOTTLE","GLOBAL",1)
+		Global("SDD303_BOTTLE","GLOBAL",2)
+	Global("C#Grey_SearchHelvdarSoD","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(12)
+		DisplayStringHead(Myself,@50002)
+		Wait(1)
+		Face(6)
+		DisplayStringHead(Myself,@50003)
+		SetGlobal("C#Grey_SearchHelvdarSoD","MYAREA",2)
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case Helvdar is too far away */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdHelvda")
+	!Dead("bdHelvda")
+	!Range("bdHelvda",30)
+	Global("C#Grey_SearchHelvdarSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player1)
+		DisplayStringHead(Myself,@50006)
+		SmallWait(15)
+		DisplayStringHead(Myself,@50012)
+		SetGlobal("C#Grey_SearchHelvdarSoD","MYAREA",0)
+		SetInterrupt(TRUE)
+END
+
+/* Grey reaches Helvdar */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdHelvda")
+	!Dead("bdHelvda")
+	Global("C#Grey_SearchHelvdarSoD","MYAREA",2)
+	Range("bdHelvda",3)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,@50003)
+		FaceObject("bdHelvda")
+		DisplayStringHead(Myself,@50005)
+		SetGlobal("C#Grey_SearchHelvdarSoD","MYAREA",3)
+		SetGlobal("SDD303_BOTTLE","GLOBAL",2)
+		ActionOverride("bdHelvda",StartDialogueNoSet(Player1))
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case there is a distraction */
+IF
+	OR(9) 
+		Global("C#GreyJoined","GLOBAL",0)
+		!CombatCounter(0) 
+		See([ENEMY])
+		!InMyArea("bdHelvda")
+		Dead("bdHelvda")
+		!Global("SDD303","GLOBAL",1)
+		GlobalLT("SDD303_BOTTLE","GLOBAL",1)
+		GlobalGT("SDD303_BOTTLE","GLOBAL",2)
+		!AreaCheck("bd3000")
+	Global("C#Grey_SearchHelvdarSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SearchHelvdarSoD","MYAREA",0)
+END
+
+/* move towards him if near enough */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdHelvda")
+	!Dead("bdHelvda")
+	Range("bdHelvda",30)
+	Global("SDD303","GLOBAL",1)
+	OR(2)
+		Global("SDD303_BOTTLE","GLOBAL",1)
+		Global("SDD303_BOTTLE","GLOBAL",2)
+	Global("C#Grey_SearchHelvdarSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		MoveToObject("bdHelvda")
+END
+
+/* search for Skie in bd4000 */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdskie")
+	!Dead("bdskie")
+	Global("C#Grey_SearchSkieSoD","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(12)
+		DisplayStringHead(Myself,@50002)
+		Wait(1)
+		Face(6)
+		DisplayStringHead(Myself,@50003)
+		SetGlobal("C#Grey_SearchSkieSoD","MYAREA",2)
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case there is a fight */
+IF
+	OR(7) 
+		Global("C#GreyJoined","GLOBAL",0)
+		!CombatCounter(0) 
+		See([ENEMY])
+		!InMyArea("bdskie")
+		Dead("bdskie")
+		GlobalGT("bd_skie_plot","global",4)
+		!AreaCheck("bd4000")
+	Global("C#Grey_SearchSkieSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SearchSkieSoD","MYAREA",0)
+END
+
+/* Grey reaches Skie */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdskie")
+	!Dead("bdskie")
+	Global("C#Grey_SearchSkieSoD","MYAREA",2)
+	See("bdskie")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,@50003)
+		FaceObject("bdskie")
+		DisplayStringHead(Myself,@50005)
+		SetGlobal("C#Grey_SearchSkieSoD","MYAREA",3)
+		SetInterrupt(TRUE)
+END
+
+/* move towards her */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("bdskie")
+	!Dead("bdskie")
+	Global("C#Grey_SearchSkieSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		MoveToObject("bdskie")
+END

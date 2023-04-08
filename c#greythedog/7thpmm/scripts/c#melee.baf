@@ -1,0 +1,31 @@
+IF
+	Delay(30)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	OR(3)
+		Class(Myself,THIEF_ALL)
+		Class(Myself,RANGER_ALL)
+		Class(Myself,MONK)
+	!Range(NearestEnemyOf(Myself),30)
+THEN
+	RESPONSE #100
+		Hide()
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	!Range(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+		MoveToObject(NearestEnemyOf(Myself))
+END

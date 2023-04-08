@@ -4,7 +4,7 @@
 
 CHAIN
 IF WEIGHT #-1 
-~%BGT_VAR%
+~%BG1_BEFORE_TRANSITION%
 CombatCounter(0) !See([ENEMY]) 
 OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
 OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
@@ -19,7 +19,7 @@ EXIT
 
 CHAIN
 IF WEIGHT #-1 
-~%BGT_VAR%
+~%BG1_BEFORE_TRANSITION%
 CombatCounter(0) !See([ENEMY]) 
 OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
 OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
@@ -40,7 +40,7 @@ EXIT
 /* after book is found */
 CHAIN
 IF 
-~%BGT_VAR%
+~%BG1_BEFORE_TRANSITION%
 CombatCounter(0) !See([ENEMY]) 
 OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
 OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
@@ -109,4 +109,4 @@ InParty("skie") See("skie")
 = @27
 == C#BrandB @28
 END
-IF ~~ THEN DO ~SetGlobal("C#Brandock_GreyBG1","GLOBAL",5) RestParty()~
+IF ~~ THEN DO ~SetGlobal("C#Brandock_GreyBG1","GLOBAL",5) RestParty()~ EXIT

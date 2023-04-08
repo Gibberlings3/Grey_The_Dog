@@ -1,0 +1,399 @@
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	StateCheck(Myself,STATE_SILENCED)
+	HaveSpell(WIZARD_VOCALIZE)  // SPWI219.SPL (Vocalize)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_VOCALIZE)  // SPWI219.SPL (Vocalize)
+END
+
+IF
+	ActionListEmpty()
+	HaveSpell(WIZARD_MINOR_SPELL_DEFLECTION)  // SPWI318.SPL (Minor Spell Deflection)
+	OR(4)
+		See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+		See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+		See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+	!HasBounceEffects(Myself)
+	!HasImmunityEffects(Myself)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MINOR_SPELL_DEFLECTION)  // SPWI318.SPL (Minor Spell Deflection)
+END
+
+IF
+	ActionListEmpty()
+	OR(4)
+		See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+		See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+		See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+	HaveSpell(WIZARD_MINOR_SPELL_TURNING)  // SPWI522.SPL (Minor Spell Turning)
+	!HasBounceEffects(Myself)
+	!HasImmunityEffects(Myself)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MINOR_SPELL_TURNING)  // SPWI522.SPL (Minor Spell Turning)
+END
+
+IF
+	ActionListEmpty()
+	OR(4)
+		See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([0.0.0.CLERIC_ALL]))
+		See(NearestEnemyOfType([0.0.0.BARD_ALL]))
+		See(NearestEnemyOfType([0.0.0.DRUID_ALL]))
+	HaveSpell(WIZARD_SPELL_TURNING)  // SPWI701.SPL (Spell Turning)
+	!HasBounceEffects(Myself)
+	!HasImmunityEffects(Myself)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_SPELL_TURNING)  // SPWI701.SPL (Spell Turning)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SPIRIT_ARMOR)  // SPWI414.SPL (Spirit Armor)
+	CheckStatGT(Myself,1,ARMORCLASS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_SPIRIT_ARMOR)  // SPWI414.SPL (Spirit Armor)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_GHOST_ARMOR)  // SPWI317.SPL (Ghost Armor)
+	CheckStatGT(Myself,2,ARMORCLASS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_GHOST_ARMOR)  // SPWI317.SPL (Ghost Armor)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+	!StateCheck(Myself,STATE_MIRRORIMAGE)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_INVISIBILITY)  // SPWI206.SPL (Invisibility)
+	!StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_INVISIBILITY)  // SPWI206.SPL (Invisibility)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SHIELD)  // SPWI114.SPL (Shield)
+	CheckStatGT(Myself,4,ARMORCLASS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_SHIELD)  // SPWI114.SPL (Shield)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_ARMOR)  // SPWI102.SPL (Armor)
+	CheckStatGT(Myself,6,ARMORCLASS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_ARMOR)  // SPWI102.SPL (Armor)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	HaveSpell(WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
+	Global("pscript_SpellThrust","LOCALS",0)
+	OR(2)
+		HasBounceEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		HasImmunityEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_SPELL_THRUST)  // SPWI321.SPL (Spell Thrust)
+		Wait(2)
+		SetGlobal("pscript_SpellThrust","LOCALS",1)
+END
+
+IF
+	Global("pscript_SpellThrust","LOCALS",1)
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	OR(2)
+		HasBounceEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		HasImmunityEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+THEN
+	RESPONSE #100
+		SetGlobal("pscript_SpellThrust","LOCALS",2)
+END
+
+IF
+	Global("pscript_SpellThrust","LOCALS",1)
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	!HasBounceEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	!HasImmunityEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+THEN
+	RESPONSE #100
+		SetGlobal("pscript_SpellThrust","LOCALS",0)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	HaveSpell(WIZARD_WARDING_WHIP)  // SPWI705.SPL (Khelben's Warding Whip)
+	Global("pscript_WHIP","LOCALS",0)
+	OR(2)
+		HasBounceEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		HasImmunityEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_WARDING_WHIP)  // SPWI705.SPL (Khelben's Warding Whip)
+		Wait(2)
+		SetGlobal("pscript_WHIP","LOCALS",1)
+END
+
+IF
+	Global("pscript_WHIP","LOCALS",1)
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	OR(2)
+		HasBounceEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+		HasImmunityEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+THEN
+	RESPONSE #100
+		SetGlobal("pscript_WHIP","LOCALS",2)
+END
+
+IF
+	Global("pscript_WHIP","LOCALS",1)
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	!HasBounceEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	!HasImmunityEffects(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+THEN
+	RESPONSE #100
+		SetGlobal("pscript_WHIP","LOCALS",0)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPLT(NearestEnemyOf(Myself),50)
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_FINGER_OF_DEATH)  // SPWI713.SPL (Finger of Death)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_FINGER_OF_DEATH)  // SPWI713.SPL (Finger of Death)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+	HPGT(NearestEnemyOf(Myself),20)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_ABI_DALZIMS_HORRID_WILTING)  // SPWI812.SPL (Abi-Dalzim's Horrid Wilting)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	HaveSpell(WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_SUMMON_NISHRUU)  // SPWI624.SPL (Summon Nishruu)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),50)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MAZE)  // SPWI813.SPL (Maze)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MAZE)  // SPWI813.SPL (Maze)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),30)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	!General(NearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_MONSTER)  // SPWI507.SPL (Hold Monster)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_HOLD_MONSTER)  // SPWI507.SPL (Hold Monster)
+END
+
+IF
+	ActionListEmpty()
+	Delay(6)
+	HaveSpell(WIZARD_DEATH_SPELL)  // SPWI605.SPL (Death Spell)
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),10)
+	HPLT(NearestEnemyOf(Myself),50)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	NumCreatureVsPartyGT([ENEMY],4)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_DEATH_SPELL)  // SPWI605.SPL (Death Spell)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),50)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_DISINTEGRATE)  // SPWI616.SPL (Disintegrate)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_DISINTEGRATE)  // SPWI616.SPL (Disintegrate)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_BURNING_HANDS)  // SPWI103.SPL (Burning Hands)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_BURNING_HANDS)  // SPWI103.SPL (Burning Hands)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_COLOR_SPRAY)  // SPWI105.SPL (Color Spray)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_COLOR_SPRAY)  // SPWI105.SPL (Color Spray)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SLEEP)  // SPWI116.SPL (Sleep)
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_SLEEP)  // SPWI116.SPL (Sleep)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Chromatic Orb)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Chromatic Orb)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_LARLOCH_MINOR_DRAIN)  // SPWI119.SPL (Larloch's Minor Drain)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_LARLOCH_MINOR_DRAIN)  // SPWI119.SPL (Larloch's Minor Drain)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),20)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_BLINDNESS)  // SPWI106.SPL (Blindness)
+	!StateCheck(NearestEnemyOf(Myself),STATE_BLIND)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_BLINDNESS)  // SPWI106.SPL (Blindness)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	HPGT(NearestEnemyOf(Myself),30)
+	!HasBounceEffects(NearestEnemyOf(Myself))
+	General(NearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),6)
+THEN
+	RESPONSE #100
+		RunAwayFrom(NearestEnemyOf(Myself),90)
+END
+
+IF
+	!See(NearestEnemyOf(Myself))
+	ActuallyInCombat()
+	OR(2)
+		GlobalGT("pscript_SpellThrust","LOCALS",0)
+		GlobalGT("pscript_WHIP","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("pscript_SpellThrust","LOCALS",0)
+		SetGlobal("pscript_WHIP","LOCALS",0)
+END
+

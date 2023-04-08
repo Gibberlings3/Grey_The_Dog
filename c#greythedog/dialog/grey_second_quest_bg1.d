@@ -86,9 +86,17 @@ END //APPEND
 APPEND BART12 //Bartender in AR0807
 
 IF WEIGHT #-1
-~AreaCheck("%EBaldursGate_Inn_L1%") Global("C#Grey_SecondBG1QuestBart","MYAREA",0)~ THEN bartender
+~AreaCheck("%EBaldursGate_Inn_L1%") Global("C#Grey_SecondBG1QuestBart","MYAREA",0)
+GlobalLT("C#Grey_SecondBG1QuestM","MYAREA",4)~ THEN bartender
 SAY @19
 IF ~~ THEN DO ~SetGlobal("C#Grey_SecondBG1QuestBart","MYAREA",1)~ + 0
+END
+
+IF WEIGHT #-1
+~AreaCheck("%EBaldursGate_Inn_L1%") GlobalLT("C#Grey_SecondBG1QuestBart","MYAREA",2)
+Global("C#Grey_SecondBG1QuestM","MYAREA",4)~ THEN bartender
+SAY @64
+IF ~~ THEN DO ~SetGlobal("C#Grey_SecondBG1QuestBart","MYAREA",2)~ + 0
 END
 
 END //APPEND

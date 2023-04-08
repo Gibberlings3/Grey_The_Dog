@@ -5,7 +5,22 @@
 @90004   = ~Grey The Dog NPC~
 @90005   = ~You either need TOB installed or the Enhanced Editions to play this mod.~
 @90006   = ~This mod is not compatible with your game.~
-@90007   = ~Transitions Mod detected~
+@90007   = ~Transitions Mod detected: Installing crossmod...~
 
 /* new for v6 */
 @90008   = ~This mod needs to be installed before EET_End on your EET install.~
+
+/* new for v9 */
+@90009  = ~The Boareskyr Bridge Scene mod detected: Installing crossmod...~
+@90010  = ~Sir Ajantis for BGII detected: installing crossmod...~
+@90011  = ~Jarl's Adventure Pack detected: installing crossmod...~
+@90012  = ~Brage's Redemption mod detected: installing crossmod...~
+@90013  = ~Brandock the Mage mod detected: installing crossmod...~
+@90014  = ~bg1re: "Necromancer's Trouble" detected: installing crossmod...~
+@90015  = ~Balduran's Seatower detected: Installing crossmod...~ 
+@90016  = ~Imoen 4 Ever SoD component "Give Imoen dialogue content during chapters 8 to 12" detected: installing crossmod...~
+@90017  = ~Husam NPC mod detected: installing crossmod...~
+@90018  = ~Ajantis SoD detected: Installing crossmod...~
+@90019  = ~Grey the Dog: Crossmod Content~
+
+

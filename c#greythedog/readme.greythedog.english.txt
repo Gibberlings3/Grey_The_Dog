@@ -40,7 +40,7 @@ The 1 HP drop out can be prevented if Grey is healed in time during a fight. If 
 QUIRKS OF THE 7TH PARTY MEMBER MODE INGAME
 
 Unfortunately, the "7th party member mode" in the game requires special handling to accommodate all restrictions: (The hints are a mix of the existing engine restrictions and the workarounds I used).
--The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. Unfortunately, this can lead to Brandock no longer be included in the "gather all party" button although he is still green circled and will return properly with the group as soon as he is seen by a full party member again. This is especially annoying if he loses sight of full party members because the AI wanted him to walk to whatever destination on a different path, and he needs to be searched for by walking the map until he can be seen again. This seems to be especially a problem if several "7th party members" follow, and with the old game engine.
+-The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. Unfortunately, this can lead to Grey no longer be included in the "gather all party" button although he is still green circled and will return properly with the group as soon as he is seen by a full party member again. This is especially annoying if he loses sight of full party members because the AI wanted him to walk to whatever destination on a different path, and he needs to be searched for by walking the map until he can be seen again. This seems to be especially a problem if several "7th party members" follow, and with the old game engine.
 -Items in the NPC's inventory are *not* recognized as items owned by the group. This is an engine problem. It follows that quest items that are needed in the game should not be in the NPC's inventory if they are to be recognized by the quest giver. Examples: Elvenhair's book, Ankheg shell for Taerom, etc.
 -Quest items tagged as "critical" will be moved to the PC's inventory when moving to the 7th PMM. This may cause items from the PC's inventory to end up on the floor. This is an engine problem. As a result, you should always check after switching the NPC to the 7th PMM to see if items have landed on the floor!
 -When new items are given to one of my NPCs in 7th PMM in a quest specifically for this NPC, they always appear in the inventory of the group or PC, even if the NPC is supposed to receive them. This is an engine problem. Even if I scripted it so that the items would end up in the NPC's inventory after the encounter, they would still be handled via the PC's inventory. And thus, items from the inventory may have ended up on the floor.
@@ -116,6 +116,7 @@ CREDITS
 Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha testing
 Brokenkatana: Proofreading (English)
 jastey: Main mod author
+Lumorus: testing, bugfix
 Rabain: Original mod idea, first portrait, first kit
 scheele: Russian translation
 
@@ -157,6 +158,11 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version 9:
+-SoD content completed.
+-7th PMM mode improved.
+-Minor bugfixes.
 
 Version 8:
 -All BG1 lines in PID traify-ed.
