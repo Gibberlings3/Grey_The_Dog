@@ -7,12 +7,16 @@ Everything else: jastey
 
 GENERAL
 
-Please note: So far, the mod officially contains BG1 content only. Grey should already be fully functional in SoD (but only in English), but BGII content is not done yet. 
+Please note: So far, the mod contains no official BGII content.
 
 Grey is a full-fledged joinable NPC, but still a real dog. The only magic on him is his magically enchanted items.
 He has sensible interjections (Woof!), NPC banters (mostly NPC dialogues about him with the PC), a click dialogue (PID) if the PC feels like playing fetch or just needs someone to talk to. There are dialogue options that reflect the game story and I'll promise: Grey will always listen to your PC's woes. Grey initiates no dialogues so there is no friendship track and - I am really sorry, but no romance. Not even for Shapeshifters.
 In BG1 there are two small quests, both available in BG city. The quests are also available and solvable without Grey in party.
-Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees. This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
+Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees and others. This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
+
+The second, optional component offers crossmod content with various other mods (mainly NPC mods since Grey doesn't really comment on quests..). This component should be installed rather late, i.e. after all the mods.
+
+A third, optional component offers alternate portrait choices. The default portrait is from Acifer which is already included in the main component, the two alternatives are the original portrait from Rabain, either with a red bandana or a black bandana (edited by Acifer).
 
 
 ABOUT THIS MOD'S HISTORY
@@ -113,39 +117,33 @@ If you have installation problems or encounter any bugs, please post your bug re
 
 CREDITS
 
-Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha testing
+Acifer: Portrait Artist, alpha testing
 Brokenkatana: Proofreading (English)
 jastey: Main mod author
 Lumorus: testing, bugfix
-Rabain: Original mod idea, first portrait, first kit
+Rabain: Original mod idea, Portrait Artist, first kit
 scheele: Russian translation
 
 
 TOOLS USED
 
-IESDP					https://gibberlings3.github.io/iesdp/index.htm
+The Mod was created using the resources provided by the IESDP (https://gibberlings3.github.io/iesdp/index.htm) and with the following software:
+
+Infinity Explorer			http://infexp.sourceforge.net
 Near Infinity				https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1
 WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
  					(formerly: http://www.weidu.org)
-BAM Workshop				http://wwww.teambg.eu/?page=tools&cat=32
-
-grepWin					http://tools.stefankueng.com/grepWin.html
-WinMerge				http://winmerge.org/
-hex to decimal converter		http://www.binaryhexconverter.com/hex-to-decimal-converter
+BAM Workshop			http://wwww.teambg.eu/?page=tools&cat=32
 
 Modding communities, tutorials and technical assistance:
 
-The Gibberlings Three			https://www.gibberlings3.net/
-Pocket Plane Group			http://pocketplane.net
+Kerzenburgforum				https://baldurs-gate.de/index.php
+The Gibberlings Three		        https://www.gibberlings3.net/
+Pocket Plane Group			https://www.pocketplane.net/
 Spellhold Studios			http://www.shsforums.net/
-Kerzenburgforum (German)		https://www.baldurs-gate.de/index.php
-The Black Wyrm's Lair			http://blackwyrmlair.net
 
 Further Links:
 DLC Merger 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
-
-(deprecated but still functional tool for mod merging: 
-https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-based-dlc-into-something-weidu-nearinfinity-dltcep-can-use/p1)
 
 
 
@@ -161,6 +159,8 @@ HISTORY
 
 Version 9:
 -SoD content completed.
+-new default portrait added, by Acifer. 
+-2 new components: Crossmod, alternate portraits.
 -7th PMM mode improved.
 -Minor bugfixes.
 

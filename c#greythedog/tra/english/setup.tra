@@ -1,4 +1,4 @@
-@90000   = ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger or Modmerge.~
+@90000   = ~Your SoD game needs to be modmerged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger.~
 @90001   = ~Baldur's Gate Trilogy detected...~
 @90002   = ~BG:EE detected...~
 @90003   = ~EET detected...~
@@ -22,5 +22,10 @@
 @90017  = ~Husam NPC mod detected: installing crossmod...~
 @90018  = ~Ajantis SoD detected: Installing crossmod...~
 @90019  = ~Grey the Dog: Crossmod Content~
+@90020  = ~Grey the Dog main component needs to be installed.~
+@90021  = ~Grey the Dog: Alternate Portrait~
+@90022  = ~Alternative #1: Original with Red Bandana, by Rabain~
+@90023  = ~Alternative #2: Original with Black Bandana, by Rabain (edited by Acifer)~ 
+@90024  = ~Default Portrait: Newly Done with Collar, by Acifer (is included in the main component)~
 
 

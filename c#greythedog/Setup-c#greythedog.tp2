@@ -2141,10 +2141,15 @@ END // ~tob bgt bg2ee eet~
 
 COMPILE EVALUATE_BUFFER ~c#greythedog/dialog/GreyPC_clicktalk.D~
 
-COPY ~c#greythedog/Portrait~ ~override~
-ACTION_IF GAME_IS ~bgee bg2ee eet~ THEN BEGIN
-COPY ~c#greythedog/Portrait/c#greypl.bmp~ ~override/c#greypm.bmp~
-COPY ~c#greythedog/Portrait/c#greypl.bmp~ ~override/c#greyps.bmp~
+/* Default Portrait */
+COPY ~c#greythedog/Portraits/Alt2/c#greypL.bmp~ ~override~
+
+ACTION_IF GAME_IS ~tob bgt~ BEGIN
+  COPY ~c#greythedog/Portraits/Alt2/c#greypM.bmp~ ~override~
+  COPY ~c#greythedog/Portraits/Alt2/c#greypS.bmp~ ~override~
+END ELSE BEGIN
+  COPY ~c#greythedog/Portraits/Alt2/c#greypL.bmp~ ~override/c#greypM.bmp~
+  COPY ~c#greythedog/Portraits/Alt2/c#greypL.bmp~ ~override/c#greypS.bmp~
 END
 
 
@@ -2568,7 +2573,7 @@ COPY ~c#greythedog\sound~ ~override~
 BEGIN @90019 /* ~Grey the Dog: Crossmod Content~ */ 
 DESIGNATED 10 
 LABEL c#greythedog-Crossmod
-REQUIRE_COMPONENT ~c#greythedog.tp2~ ~0~ @55543
+REQUIRE_COMPONENT ~c#greythedog.tp2~ ~0~ @90020
 
 /* BG1 */
 
@@ -2749,5 +2754,58 @@ EVALUATE_BUFFER
 END //ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~
 
 END //BGII
+
+
+///////////////////////////////////////////////////////////
+// Install alternate portraits    //
+/////////////////////////////////////////////////////////
+
+
+BEGIN @90022 /* ~Alternative #1: Original with Red Bandana, by Rabain~ */ DESIGNATED 20 
+LABEL c#greythedog-Portrait_Red_Bandana
+	SUBCOMPONENT @90021 
+REQUIRE_COMPONENT ~c#greythedog.tp2~ ~0~ @90020
+
+COPY ~c#greythedog/Portraits/Orig/c#greypL.bmp~ ~override~
+
+ACTION_IF GAME_IS ~tob bgt~ BEGIN
+  COPY ~c#greythedog/Portraits/Orig/c#greypM.bmp~ ~override~
+  COPY ~c#greythedog/Portraits/Orig/c#greypS.bmp~ ~override~
+END ELSE BEGIN
+  COPY ~c#greythedog/Portraits/Orig/c#greypL.bmp~ ~override/c#greypM.bmp~
+  COPY ~c#greythedog/Portraits/Orig/c#greypL.bmp~ ~override/c#greypS.bmp~
+END
+
+
+BEGIN @90023 /* Alternative #2: Original with Black Bandana, by Rabain (edited by Acifer)~ */ DESIGNATED 21 
+LABEL c#greythedog-Portrait_Black_Bandana
+	SUBCOMPONENT @90021
+REQUIRE_COMPONENT ~c#greythedog.tp2~ ~0~ @90020
+
+COPY ~c#greythedog/Portraits/Alt1/c#greypL.bmp~ ~override~
+
+ACTION_IF GAME_IS ~tob bgt~ BEGIN
+  COPY ~c#greythedog/Portraits/Alt1/c#greypM.bmp~ ~override~
+  COPY ~c#greythedog/Portraits/Alt1/c#greypS.bmp~ ~override~
+END ELSE BEGIN
+  COPY ~c#greythedog/Portraits/Alt1/c#greypL.bmp~ ~override/c#greypM.bmp~
+  COPY ~c#greythedog/Portraits/Alt1/c#greypL.bmp~ ~override/c#greypS.bmp~
+END
+
+
+BEGIN @90024 /* ~Default Portrait: Newly Done with Collar, by Acifer (is included in the main component)~ */ DESIGNATED 22 
+	SUBCOMPONENT @90021 
+LABEL c#greythedog-Portrait_New_Collar
+REQUIRE_COMPONENT ~c#greythedog.tp2~ ~0~ @90020
+
+COPY ~c#greythedog/Portraits/Alt2/c#greypL.bmp~ ~override~
+
+ACTION_IF GAME_IS ~tob bgt~ BEGIN
+  COPY ~c#greythedog/Portraits/Alt2/c#greypM.bmp~ ~override~
+  COPY ~c#greythedog/Portraits/Alt2/c#greypS.bmp~ ~override~
+END ELSE BEGIN
+  COPY ~c#greythedog/Portraits/Alt2/c#greypL.bmp~ ~override/c#greypM.bmp~
+  COPY ~c#greythedog/Portraits/Alt2/c#greypL.bmp~ ~override/c#greypS.bmp~
+END
 
 
