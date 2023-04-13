@@ -1,0 +1,32 @@
+@0    = ~√рей, € знаю, что мои дочери полюбили бы теб€. ћо€ старша€ всегда немного побаивалась животных, но младша€ - она бы обн€ла теб€ сразу, как увидела, не взира€ на твой рост.~
+@1    = ~¬уф! (¬ ответ, √рей толкает руку Ѕрейга мордой, по пути лизнув ее пару раз.)~
+@2    = ~я ... € думаю, мне что-то попало в глаз. <CHARNAME>, почему бы тебе не пойти вперед. я последую за тобой...~
+@3    = ~(Ѕрейг т€жело вздыхает, рассе€нно поглажива€ голову √ре€) ƒа, будь в тот момент такой пес как ты, поблизости - это могло бы спасти их...~
+@4    = ~ ак бы мне хотелось, чтобы у моих девочек была така€ собака, как твой √рей, <CHARNAME>. ¬ерный до мозга костей. ¬ерный до самой смерти ... “акой пес мог бы мен€ остановить, будь он р€дом с моей женой.~
+@5    = ~»ли он был бы твоим и не напал бы на своего хоз€ина, Ѕрейг.~ 
+@6    = ~я понимаю твои чувства, но "что, если" не изменит прошлого.~ 
+@7    = ~Ѕоевой пес, такой как √рей, действительно был бы хорошим защитником. Ќо он также должен был быть обучен соответствующим образом.~
+@8    = ~¬еро€тно, ты прав.~ ~¬еро€тно, ты права.~
+@9    = ~Ёто, безусловно, правда. » все же € не могу запретить себе думать об этом.~
+@10   = ~ѕо правде говор€, шансы на то, что € подарил бы такого пса своей жене, были невелики. я бы увидел в собаке угрозу, не будь мен€ р€дом, чтобы держать ее под контролем. Ќет, девочки, скорее всего, завели бы одну из тех маленьких домашних собачек...~
+
+
+/* new for v9 */
+@11   = ~[Brage]Yes, Grey. Wait until I finished cutting off the bone, then you can have it.~
+@12   = ~[Ajantis]Yes, the way Grey is looking over one's shoulder if one tends to one's things can be a tad... unnerving at times. Even if I don't have to suspect he'll snatch my weapons out of my hands as he might the meat from yours.~
+@13   = ~[Imoen]Aw, he'll never do that. He's patiently waiting, aren't you, Grey?~
+@14   = ~[Grey]Woof!~
+@15   = ~[Imoen]Or we give you something now! Catch, Grey!~
+@16   = ~[Ajantis]Imoen! That was a piece of the best meat!~
+@17   = ~[Imoen]Yeah, so? He's a travel compagnion, so he deserves his share, no?~
+@18   = ~[Ajantis]Yes, of course he has a right to his share, but...~
+@19   = ~[Brage]Imoen, Grey will get a huge share of our kill already. No need to feed him from what should nourish *us*.~
+@20   = ~[Imoen]Great share, yes - but only because we are not interested in the bones and leftovers! I am sure *he* would willingly share his bones with us, now wouldn't you, you little furry gilly gilly goodywoo!~
+@21   = ~[Brage]Just another instant. There will be enough for everyone.~
+@22   = ~[Grey]Woof!~ [C#Grey01]
+@23   = ~[PC Reply]One moment. Do you have anything my dog could take up Tilda's scent with? And from where would we start searching?~
+@24   = ~[PC Reply]Save return.~
+@25   = ~[Uncle]Oh, indeed, I have. Here, take the scent from her scarf - she wouldn't wear it today. She usually sleeps in it so it should smell more of her than me.~
+@26   = ~[Uncle]Thank you, kind stranger. I'll pray for your success.~
+@27   = ~[Grey](sniff! sniff!) Woof!~
+@28   = ~[Uncle]And we were separated somewhere more up to the north - that much I know. I am sorry that I cannot provide more detailed information. Oh, my poor Tilda...~

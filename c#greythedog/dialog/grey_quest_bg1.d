@@ -39,12 +39,13 @@ BEGIN c#gr1tur
 
 /* Taking advantage that the reply options are being executed bottom to top. Reply option "0" will only show if Grey is not present: */ 
 
-IF ~Global("C#Grey_BG1Quest","GLOBAL",1) Global("C#Grey_DopplegangerChange","LOCALS",0)~ THEN tur_00
+IF ~Global("C#Grey_BG1Quest","GLOBAL",1)
+Global("C#Grey_DopplegangerChange","LOCALS",0)~ THEN tur_00
 SAY @5 
 IF ~~ THEN DO ~IncrementGlobal("C#Grey_DopplegangerChange","LOCALS",1)
 EraseJournalEntry(@100011)~ UNSOLVED_JOURNAL @100012 EXIT
-IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN EXTERN c#greyj see_you
-
+IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN DO ~IncrementGlobal("C#Grey_DopplegangerChange","LOCALS",1)
+EraseJournalEntry(@100011)~ UNSOLVED_JOURNAL @100012 EXTERN c#greyj see_you
 END
 
 CHAIN
@@ -70,6 +71,7 @@ END
 IF ~GlobalLT("C#Grey_DopplegangerChange","LOCALS",4)~ THEN tur_02
 SAY @11
 IF ~~ THEN DO ~IncrementGlobal("C#Grey_DopplegangerChange","LOCALS",1)~ EXIT
+IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN EXTERN c#greyj see_you
 END
 
 END //APPEND

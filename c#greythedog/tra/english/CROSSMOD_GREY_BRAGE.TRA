@@ -1,0 +1,31 @@
+@0    = ~Grey, I know my daughters would have *loved* you. My elder one was always a bit shy around animals, but the little one - she would have hugged you the moment she saw you, oblivious to your height.~
+@1    = ~Woof! (Reacting to Brage's attention, Grey nudges Brage's hand with his snout and gives it quick lick.)~
+@2    = ~I... I think I have something in my eye. <CHARNAME>, why don't you go ahead. I will follow shortly...~
+@3    = ~(Brage gives a heavy sigh while padding Grey's head absent mindedly.) Yes, having a war dog like you could have changed their fate...~
+@4    = ~How I would have liked my girls to have such a dog as your Grey, <CHARNAME>. Loyal to the core. Loyal to the death... Such a dog could have stopped me, were he with my wife.~
+@5    = ~Or he would have been yours and not attack his master, Brage.~ 
+@6    = ~I understand the sentiment, but "what-ifs" will not change the past.~ 
+@7    = ~A wardog like Grey would be a good protector indeed. But he also needs to be trained accordingly.~
+@8    = ~You are probably right.~
+@9    = ~That is definitely true. Still I can't prevent my thoughts to wander sometimes.~
+@10   = ~Truth be told - chances of me giving such a wardog to my wife would have been small. I would have seen the dog itself as a threat if I am not around to keep it under control. No, the girls would have gotten one of those small pet dogs, more likely...~
+
+/* new for v9 */
+@11   = ~[Brage]Yes, Grey. Wait until I finished cutting off the bone, then you can have it.~
+@12   = ~[Ajantis]Yes, the way Grey is looking over one's shoulder if one tends to one's things can be a tad... unnerving at times. Even if I don't have to suspect he'll snatch my weapons out of my hands as he might the meat from yours.~
+@13   = ~[Imoen]Aw, he'll never do that. He's patiently waiting, aren't you, Grey?~
+@14   = ~[Grey]Woof!~
+@15   = ~[Imoen]How about we give you something now! Catch, Grey!~
+@16   = ~[Ajantis]Imoen! That was a piece of the best meat!~
+@17   = ~[Imoen]Yeah, so? He's a travel compagnion, so he deserves his share, no?~
+@18   = ~[Ajantis]Yes, of course he has a right to his share, but...~
+@19   = ~[Brage]Imoen, Grey will get a huge share of our kill already. No need to feed him from what should nourish *us*.~
+@20   = ~[Imoen]Great share, yes - but only because we are not interested in the bones and leftovers! I am sure *he* would willingly share his bones with us, now wouldn't you, you little furry gilly gilly goodywoo!~
+@21   = ~[Brage]Just another instant. There will be enough for everyone.~
+@22   = ~[Grey]Woof!~ [C#Grey01]
+@23   = ~[PC Reply]One moment. Do you have anything my dog could take up Tilda's scent with? And from where would we start searching?~
+@24   = ~[PC Reply]Save return.~
+@25   = ~[Uncle]Oh, indeed, I have. Here, take the scent from her scarf - she wouldn't wear it today. She usually sleeps in it so it should smell more of her than me.~
+@26   = ~[Uncle]Thank you, kind stranger. I'll pray for your success.~
+@27   = ~[Grey](sniff! sniff!) Woof!~
+@28   = ~[Uncle]And we were separated somewhere more up to the north - that much I know. I am sorry that I cannot provide more detailed information. Oh, my poor Tilda...~

@@ -1,4 +1,3 @@
-/* bg1re: CHARNAME got beef from Berta */
 IF 
 %BGT_VAR%
 AreaCheck("%SWBaldursGate_MerchantLeague_L1%")

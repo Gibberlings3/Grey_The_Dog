@@ -11,5 +11,6 @@ THEN
 	RESPONSE #100
 		SetGlobal("C#Grey_SoDMurderAccusations","bd4100",1)
 		SetGlobalTimer("bd_mdd1352_ot_timer","bd4100",4)
-		DisplayStringHead("C#Grey",@50006)  
+		DisplayStringHead("C#Grey",@50006) 
+		Continue() 
 END

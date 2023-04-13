@@ -1,0 +1,46 @@
+/* It's getting suspicious - Lester changes dialogue */
+IF
+	OR(4)
+		GlobalGT("C#Grey_SoDQuest","GLOBAL",8)
+		Global("C#Gr_SoDFoundHamLester","MYAREA",1)
+		Global("C#Gr_SoDQuestSniffRefu","MYAREA",2)
+		Global("C#Grey_SoDKnowScald","GLOBAL",2)
+	GlobalLT("C#Grey_SoDQuest","GLOBAL",20)
+	Global("C#Gr_ResetDialog","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetDialog("c#grsq03")
+		SetGlobal("C#Gr_ResetDialog","LOCALS",1)
+END
+
+/* Party got ham (by stealing from Lester) - journal entry */
+IF
+	PartyHasItem("c#grsq02")
+	GlobalGT("C#Grey_SoDQuest","GLOBAL",3)
+	GlobalLT("C#Grey_SoDQuest","GLOBAL",19)
+	Global("C#Gr_SoDFoundHamLester","MYAREA",0)
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100510,QUEST)
+		SetGlobal("C#Gr_SoDFoundHamLester","MYAREA",1)
+END
+
+IF
+	GlobalGT("C#Grey_SoDQuest","GLOBAL",18)
+THEN
+	RESPONSE #100
+		EscapeAreaDestroy(5)
+END
+
+/* Lester has ham now */
+IF
+	GlobalGT("C#Grey_SoDQuest","GLOBAL",3)
+	GlobalLT("C#Grey_SoDQuest","GLOBAL",19)
+	Global("C#Gr_GiveHam","LOCALS",0)
+THEN
+	RESPONSE #100
+		GiveItemCreate("c#grsq02","c#grsq03",5,9,0)
+		SetGlobal("C#Gr_GiveHam","LOCALS",1)
+END
+
+

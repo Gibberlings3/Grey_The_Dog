@@ -1,6 +1,7 @@
 /* in the elevator in hell */
 
 IF
+	GlobalGT("bd_plot","global",554)
 	Global("C#Grey_hellevator","bd4601",0)
 	InMyArea("C#Grey")
 	OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)

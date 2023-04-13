@@ -1,0 +1,66 @@
+/*
+Global("C#HU_SoD_GreyQuestInquiries","GLOBAL",2)
+*/
+
+
+/* player asked about Ham: Grey's quest */
+/* Husam will tell about soldier one day after reaching the coalition camp */
+/* set timer in big coalition camp */
+IF
+	OR(2) InParty(Myself) Global("C#HusamJoined","GLOBAL",2)
+	CombatCounter(0)
+	!See([ENEMY])
+	AreaCheck("bd3000")
+	Global("C#HU_SoD_GreyQuestInquiries","GLOBAL",2)
+THEN 
+	RESPONSE #100
+		SetGlobalTimer("C#HU_SoD_GreyQuestTimer","GLOBAL",ONE_DAY)
+		SetGlobal("C#HU_SoD_GreyQuestInquiries","GLOBAL",3)
+END
+
+/* activate */
+IF
+	OR(2) InParty(Myself) Global("C#HusamJoined","GLOBAL",2)
+	GlobalTimerExpired("C#HU_SoD_GreyQuestInquiries","GLOBAL")
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	GlobalLT("C#Grey_SoDQuest","GLOBAL",19)
+	AreaCheck("bd3000")
+	Global("C#HU_SoD_GreyQuestInquiries","GLOBAL",3)	
+THEN
+	RESPONSE #100
+		SetGlobal("C#HU_SoD_GreyQuestInquiries","GLOBAL",4)
+END
+
+/* trigger */
+IF
+	OR(2) InParty(Myself) Global("C#HusamJoined","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C#HU_SoD_GreyQuestInquiries","GLOBAL",4)	
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#Husam_DialogTimer","GLOBAL",900)
+		StartDialogNoSet(Player1)
+END
+
+/* Journal entry */
+IF
+	OR(2) InParty(Myself) Global("C#HusamJoined","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	Global("C#HU_SoD_GreyQuestInquiries","GLOBAL",5)	
+THEN
+	RESPONSE #100
+		AddJournalEntry(@100515,QUEST)
+		SetGlobal("C#HU_SoD_GreyQuestInquiries","GLOBAL",6)
+END

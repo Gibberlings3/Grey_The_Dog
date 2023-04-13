@@ -21,14 +21,14 @@ GlobalGT("SummonDryads","AR1200",0)~ + ~No, he was protected by Dryads.~ + ajant
 END
 
 IF ~~ THEN ajantisgrey_sva1_01
-SAY ~Still, I would be cautious as to what happened to him there. It could well be he will show unexpected behavior in a future moment of high stress.~
+SAY ~This was fortunate indeed. Still, I would be cautious as to what happened to him there. It could well be he will show unexpected behavior in a future moment of high stress.~
 ++ ~I'll watch out for it.~ + ajantisgrey_sva1_05
 ++ ~Are you saying he is no longer reliable?~ + ajantisgrey_sva1_05
 ++ ~And what makes you the dog training expert, Ajantis?~ + ajantisgrey_sva1_03
 END
 
 IF ~~ THEN ajantisgrey_sva1_02
-SAY ~Dryads! The one the acorns are from? I understand. This was fortunate indeed.~
+SAY ~Dryads! The one the acorns are from? I understand.~
 IF ~~ THEN + ajantisgrey_sva1_01
 END
 

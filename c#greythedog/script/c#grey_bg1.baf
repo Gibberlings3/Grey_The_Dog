@@ -52,7 +52,106 @@ THEN
 END
 
 
+/* search for Rufie */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("Rufie")
+	!Dead("Rufie")
+	InMyArea("Albert")
+	!Dead("Albert")
+	Global("C#Grey_SearchRufieBG1","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(12)
+		DisplayStringHead(Myself,@50002)
+		Wait(1)
+		Face(6)
+		DisplayStringHead(Myself,@50003)
+		SetGlobal("C#Grey_SearchRufieBG1","GLOBAL",2)
+		SetInterrupt(TRUE)
+END
 
+/* stop searching in case Rufie is there */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	InMyArea("Rufie")
+	!Dead("Rufie")
+	InMyArea("Albert")
+	!Dead("Albert")
+	Global("C#Grey_SearchRufieBG1","GLOBAL",2)
+	Range("Rufie",15)
+	Global("Rufie","GLOBAL",2)
+THEN
+	RESPONSE #100
+		FaceObject(Player1)
+		DisplayStringHead(Myself,@50005)
+		FaceObject("Rufie")
+		SetGlobal("C#Grey_SearchRufieBG1","GLOBAL",3)
+END
+
+/* stop searching in case there is a fight */
+IF
+	OR(8) 
+		Global("C#GreyJoined","GLOBAL",0)
+		!CombatCounter(0) 
+		See([ENEMY])
+		!InMyArea("Rufie")
+		Dead("Rufie")
+		!InMyArea("Albert")
+		Dead("Albert")
+		!PartyHasItem("MISC63")
+	Global("C#Grey_SearchRufieBG1","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SearchRufieBG1","GLOBAL",0)
+END
+
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("Rufie")
+	!Dead("Rufie")
+	InMyArea("Albert")
+	!Dead("Albert")
+	Global("C#Grey_SearchRufieBG1","GLOBAL",2)
+THEN
+	RESPONSE #100
+		MoveToObject("Rufie")
+END
+
+/* Albert & Rufie gone */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	See("Albert")
+	!Dead("Albert")
+	GlobalLT("Rufie","GLOBAL",3)
+	Global("C#GR_SeenAlbertBG1","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#GR_SeenAlbertBG1","GLOBAL",1)
+END
+IF 
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	CombatCounter(0)
+	!See([ENEMY])
+	Global("Rufie","GLOBAL",3)
+	!InMyArea("Albert")
+	!Dead("Albert")
+	Global("C#GR_SeenAlbertBG1","GLOBAL",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead("C#Grey",@50006)
+		SetGlobal("C#GR_SeenAlbertBG1","GLOBAL",2)
+END
 
 
 
@@ -149,7 +248,7 @@ CombatCounter(0)
 !See([ENEMY])
 Global("C#Grey_Brage_Journal","LOCALS",0)
 GlobalGT("C#Grey_Brage","GLOBAL",0)
-GlobalGT("MetBrage","GLOBAL",0)
+GlobalGT("C#Grey_MetBrage","GLOBAL",0)
 THEN
 	RESPONSE #100
 		EraseJournalEntry(@100001)

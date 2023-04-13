@@ -1,0 +1,29 @@
+// c#lgrcus3.baf - group has last dialogue with Belegarm
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+        	FadeToColor([20.0],0)
+		Wait(2)
+		JumpToPoint([997.379])
+		Face(4)
+		ActionOverride("bdbelega",JumpToPoint([920.365]))
+		ActionOverride("Corwin",JumpToPoint([1036.299]))
+		ActionOverride(Player2,JumpToPoint([949.408]))
+		ActionOverride(Player3,JumpToPoint([1019.401]))
+		ActionOverride(Player4,JumpToPoint([1065.362]))
+		ActionOverride(Player5,JumpToPoint([1109.334]))
+		ActionOverride(Player6,JumpToPoint([1068.427]))
+		ActionOverride("Corwin",FaceObject("bdbelega"))
+		ActionOverride(Player2,FaceObject("bdbelega"))
+		ActionOverride(Player3,FaceObject("bdbelega"))
+		ActionOverride(Player4,FaceObject("bdbelega"))
+		ActionOverride(Player5,FaceObject("bdbelega"))
+		ActionOverride(Player6,FaceObject("bdbelega"))
+        	MoveViewPoint([920.365],INSTANT)
+		Wait(4)
+        	FadeFromColor([20.0],0)
+		EndcutSceneMode()
+        	ActionOverride("bdbelega",StartDialogNoSet(Player1))
+END

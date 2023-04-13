@@ -75,9 +75,7 @@ END
 
 
 /* Imoen Banter  */
-
-
-
+//#1
 IF WEIGHT #-1 
 ~CombatCounter(0) !See([ENEMY]) OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
 See("C#GREY") See(Player1)
@@ -112,8 +110,12 @@ IF ~~ THEN imoengrey1_04
 SAY @28
 IF ~~ THEN + imoengrey1_02
 END
+END //APPEND ~%IMOEN_BANTER%~
 
 
+/* Imoen Banter  */
+//#2
+APPEND ~%IMOEN_BANTER%~
 IF WEIGHT #-1 
 ~CombatCounter(0) !See([ENEMY]) OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2)
 See("C#GREY") See(Player1)
@@ -145,10 +147,6 @@ SAY @36
 = @38
 IF ~~ THEN DO ~SetGlobal("C#Grey_ImoenBanterBG1","GLOBAL",2)~ EXIT
 END
-
-
-
-
 END //APPEND ~%IMOEN_BANTER%~
 
 APPEND ~%MINSC_BANTER%~

@@ -20,7 +20,7 @@ Vorteile:
   -Riecht ziemlich übel wenn er nass ist.
   -Hinterlässt überall seine Haare.
   ~
-@10002  = ~(gähn)~
+//@10002  = 
 @10003  = ~Alpharuf~
 @10004  = ~Wegen seiner großen physischen Präsenz und seines Rufs des Alphatieres kommen andere Hunde die in der Nähe sind Grey zu Hilfe. 
 Dieser Zauber wirkt nicht in Gebäuden.~ 
@@ -370,7 +370,60 @@ Gewicht:  2
 @10106  = ~Severin~
 @10107  = ~Grey~
 @10108  = ~Grey ist ein dressierter Kriegshund aus Eurer Zeit in Kerzenburg. Die Zeit, die Ihr mit ihm dort verbrachtet, reichte aus, um Grey dazu zu bringen, Euch als Euer loyaler Hundebegleiter zu folgen. Wenn Ihr ihn anseht, neigt Grey seinen Kopf zur Seite und starrt Euch freudig an. Er holt einen Stock und legt ihn vor Euch ab ... wie es scheint, müsst Ihr wieder mit ihm Stöckchen holen spielen.~
+@10109  = ~[Grey]Wau!~ [C#Grey01]
 /*
-@10109  = 
 @10110  = 
 */
+
+/* SoD */
+@19000  = ~Greys Schinkenstück~
+@19001  = ~This is the ham Grey received from the refugee boy. Although it seems a bit maltreated by being carried around in a child's pocket for a while, it still looks extraordinary fine. 
+
+Grey already had this in his mouth.
+
+STATISTICS:
+
+Special: Restores 9 Hit Points.
+
+Weight: 1~
+@19002  = ~Jucy Piece of Ham~
+@19003  = ~This is a slice of ham you received from Lester. 
+This is not an ordinary ham. Inspecting it you catch a faint but pleasing scent of herbs you can't quite put your finger on, and it looks extraordinary fine. 
+
+STATISTICS:
+
+Special: Restores 9 Hit Points.
+
+Weight: 1~
+@19004  = ~Ham Bag~
+@19005  = ~This is the bag where Lester stored the stolen ham slices in. It still has a faint scent of the herb mixture the ham was smoked with. - It's good that noone else searched for it with a tracker dog.
+
+Weight: 0~
+@19006  = ~Boy with blonde hair~
+@19007  = ~Lester~
+@19008  = ~Mrs. Buttercup~
+@19009  = ~Scald~
+
+
+/* c#7thpmm_thingies.tpa */
+@200000 = ~(gähn)~
+@200001 = ~Bleib immer in meiner Sichtweite.~
+@200002 = ~Du musst nicht mehr in meiner Sichtweite bleiben.~
+@200003 = ~Such nach Fallen.~ 
+@200004 = ~Such nicht mehr nach Fallen.~
+@200005 = ~Für den Fall, dass wir auf Feinde treffen...~
+@200006 = ~Wir belassen es, wie es ist.~
+//@200007 = 
+//@200008 = 
+@200009 = ~Ich möchte, dass du dich immer so von Feinden entfernst, dass du sie nicht bekämpfen musst.~
+@200010 = ~Wenn wir auf Feinde stoßen, gehe hin und bekämpfe sie aus der Nähe.~
+@200011 = ~Wenn Feinde da sind, bekämpfe sie möglichst aus der Ferne.~
+@200012 = ~Verteidige dich wirklich nur, wenn du angegriffen wirst.~
+@200013 = ~Kämpfe in einem Kampf überhaupt nicht.~
+@200014 = ~Ich habe keine neuen Anweisungen für dein Verhalten in einem Kampf.~
+//@200015 = 
+//@200016 = 
+//@200017   = 
+//@200018   = 
+//@200019   = 
+@200020   = ~Ich möchte dir Anweisungen geben, wie du mir folgen sollst, Grey.~

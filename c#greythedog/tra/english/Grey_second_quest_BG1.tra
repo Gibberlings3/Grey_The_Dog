@@ -62,3 +62,6 @@
 @61   = ~This is great news!~
 @62   = ~I thank you from the bottom of my heart for clearing this up. Here, take these as a token of my gratitude. I hope they'll be of use to you. Farewell.~
 @63   = ~Thanks anyway. Let me know if you do.~
+
+/* new for v9 */
+@64   = ~You surely are a useful lot. Thank you for getting the young man to leave - I had nothing against him, and he had my full sympathy, but his presence did stir some trouble, so I am glad this is sorted.~

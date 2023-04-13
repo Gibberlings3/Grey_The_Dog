@@ -1,0 +1,91 @@
+
+/* search for Tilda - Brage's quest */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("c#besq0a")
+	!Dead("c#besq0a")
+	Global("C#Grey_SearchTildaSoD","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		Face(12)
+		DisplayStringHead(Myself,@50002)
+		Wait(1)
+		Face(6)
+		DisplayStringHead(Myself,@50003)
+		SetGlobal("C#Grey_SearchTildaSoD","MYAREA",2)
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case Tilda is too far away */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("c#besq0a")
+	!Dead("c#besq0a")
+	!Range("c#besq0a",35)
+	Global("C#Grey_SearchTildaSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject(Player1)
+		DisplayStringHead(Myself,@50006)
+		SmallWait(15)
+		DisplayStringHead(Myself,@50012)
+		SetGlobal("C#Grey_SearchTildaSoD","MYAREA",0)
+		SetInterrupt(TRUE)
+END
+
+/* Grey finds Tilda */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("c#besq0a")
+	!Dead("c#besq0a")
+	Global("C#Grey_SearchTildaSoD","MYAREA",2)
+	Range("c#besq0a",10)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		FaceObject("c#besq0a")
+		DisplayStringHead(Myself,@50003)
+		FaceObject(Player1)
+		DisplayStringHead(Myself,@50005)
+		SmallWait(15)
+		DisplayStringHead(Myself,@50013)
+		SetGlobal("C#Grey_SearchTildaSoD","MYAREA",3)
+		SetInterrupt(TRUE)
+END
+
+/* stop searching in case there is a fight or other distraction */
+IF
+	OR(6) 
+		Global("C#GreyJoined","GLOBAL",0)
+		!CombatCounter(0) 
+		See([ENEMY])
+		!InMyArea("c#besq0a")
+		Dead("c#besq0a")
+		!AreaCheck("bd7300")
+	Global("C#Grey_SearchTildaSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Grey_SearchTildaSoD","MYAREA",0)
+END
+
+/* keep moving towards Tilda if near enough */
+IF
+	OR(2) InParty(Myself) Global("C#GreyJoined","GLOBAL",2)
+	CombatCounter(0) !See([ENEMY])
+	See(Player1) 
+	InMyArea("c#besq0a")
+	!Dead("c#besq0a")
+	Range("c#besq0a",36)
+	Global("C#Grey_SearchTildaSoD","MYAREA",2)
+THEN
+	RESPONSE #100
+		MoveToObject("c#besq0a")
+END

@@ -1,0 +1,118 @@
+/* automatic scripts for 7th party member mode */
+
+/* reset scripts choice if no 7th PM */
+IF
+	OR(2) InParty(Myself) Global("C#%NPCname%Joined","GLOBAL",0)
+	OR(9)
+		GlobalGT("c#gotopc","LOCALS",0)
+		GlobalGT("c#traps","LOCALS",0)
+		GlobalGT("c#mage1","LOCALS",0)
+		GlobalGT("c#mage2","LOCALS",0)
+		GlobalGT("c#cautio","LOCALS",0)
+		GlobalGT("c#melee","LOCALS",0)
+		GlobalGT("c#ranged","LOCALS",0)
+		GlobalGT("c#defend","LOCALS",0)
+		GlobalGT("c#nothin","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("c#gotopc","LOCALS",0)
+		SetGlobal("c#traps","LOCALS",0)
+		SetGlobal("c#mage1","LOCALS",0)
+		SetGlobal("c#mage2","LOCALS",0)
+		SetGlobal("c#cautio","LOCALS",0)
+		SetGlobal("c#melee","LOCALS",0)
+		SetGlobal("c#ranged","LOCALS",0)
+		SetGlobal("c#defend","LOCALS",0)
+		SetGlobal("c#nothin","LOCALS",0)
+END
+
+
+/* stay in sight */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#gotopc","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#gotopc",DEFAULT)
+		SetGlobal("c#gotopc","LOCALS",2)
+END
+
+/* look out for traps */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#traps","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#traps",GENERAL)
+		SetGlobal("c#traps","LOCALS",2)
+END
+
+/* c#mage1 - fight enemies you see with magic */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#mage1","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#mage1",CLASS)
+		SetGlobal("c#mage1","LOCALS",2)
+END
+
+/* c#mage2 - prepare yourself and fight enemies with magic */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#mage2","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#mage2",CLASS)
+		SetGlobal("c#mage2","LOCALS",2)
+END
+
+/* c#cautio - run away from enemies */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#cautio","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#cautio",CLASS)
+		SetGlobal("c#cautio","LOCALS",2)
+END
+
+/* c#melee - fight with melee weapons */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#melee","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#melee",CLASS)
+		SetGlobal("c#melee","LOCALS",2)
+END
+
+/* c#ranged - fight with ranged weapons */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#ranged","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#ranged",CLASS)
+		SetGlobal("c#ranged","LOCALS",2)
+END
+
+/* c#defend - only defend yourself if attacked */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#defend","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("c#defend",CLASS)
+		SetGlobal("c#defend","LOCALS",2)
+END
+
+/* do absolutely nothing in a fight */
+IF
+	Global("C#%NPCname%Joined","GLOBAL",2)
+	Global("c#nothin","LOCALS",1)
+THEN
+	RESPONSE #100
+		ChangeAIScript("",CLASS)
+		SetGlobal("c#nothin","LOCALS",2)
+END

@@ -124,7 +124,7 @@ INTERJECT FINSOL01 27 C#GreyFINSOL01_27
 == c#greyj IF ~OR(2) InParty("C#Grey") Global("C#GreyJoined","GLOBAL",2) 
 InMyArea("C#Grey") !StateCheck("C#Grey",CD_STATE_NOTVALID)~ THEN ~Woof! Woof!~
 END
-++ ~Good boy! All excited, but no idea why, hm?~ EXTERN c#greyj FINSOL01_27
+++ ~Good boy! All excited, but no idea why, hmm?~ EXTERN c#greyj FINSOL01_27
 ++ ~Yes, I love you too, Grey.~ EXTERN c#greyj FINSOL01_27 
 ++ ~For the last time, shut up!~ EXTERN c#greyj FINSOL01_27 
 

@@ -86,11 +86,63 @@
 @83  = ~Давай найдем этих злодеев! Никто не сможет нас остановить! Никто!~
 
 @84  = ~(Грей поворачивает к вам голову.) Вуф! ~
-/*
-@85  =
-@86  =
-@87  =
-@88  =
-@89  =
-@90  =
-*/
+
+/* new for 9 */
+@85  = ~Grey, help me find this Rufie! Here is the chew toy to sniff on it. Find, Grey!~
+@86  = ~[PC Reply]Sarevok is finally dead, Grey... but will is really change anything? (sigh)~
+@87  = ~[PC Reply]We did it, Grey! The murderer of Gorion is defeated. We are victorious!~
+@88  = ~[PC Reply]Sarevok, the Iron Throne, the whole conspiracy! All fell by our hand, Grey! Nothing can stop us!~
+
+/* SoD */
+@186  = ~Grey, find the missing refugies! Find, Grey!~
+@187  = ~Grey, sniff the candle in Safana's bag and find the owner. Find, Grey!~
+@188  = ~Grey, sniff the bottle in Safana's bag and find the owner. Find, Grey!~
+@189  = ~Grey, sniff the paper with runes in Safana's bag and find the owner. Find, Grey!~
+@190  = ~(sniff! sniff!)~
+@191  = ~(Grey gives you an unhappy look. The scent from the paper is not distinct enough.)~ [C#Grey07]
+@192  = ~Find the ham that was stolen from Belegarm's storage tent, Grey. Find, Grey!~
+@193  = ~Find the girl Tilda, Grey. Find, Grey!~
+@194  = ~Find Skie, Grey. Find!~
+@195  = ~Here we are, Grey - still searching for followers of Sarevok. This takes way longer than I'd wish...~
+@196  = ~So, Grey - Sarevok's last follower, eh? We are nearly done!~
+@197  = ~Here we come, Grey - Sarevok's last minion. They better brace themselves - or not, they won't have a chance against us anyway!~
+@198  = ~All these people, Grey... Look at all the poor souls, having lost their homes, their loved ones...~
+@199  = ~So many refugees. We will help these poor people, Grey! We will!~
+@200  = ~Out of our way! There is too many people here, Grey, and that gives me bad temper. Very bad temper!~
+@201  = ~So, here we are, Grey, on our way against the crusade. Why me?... Why me.~
+@202  = ~We'll face the crusade, Grey, eh? We will bring peace to the lands - once more!~
+@203  = ~Those crusaders wished they'd never left their homes. We'll make them pay! We'll make them all pay!~
+@204  = ~The bridge is down... Everything gets more complicated. As always... (sigh)~
+@205  = ~They destroyed the bridge, but we will not let ourselves be stopped by this obstacle, will we? No! We will find another way!~
+@206  = ~They think they could stop me by taking down the bridge? What do they think we are - scared weaklings? There is no stopping me! They'll learn that soon enough!~
+@207  = ~This Caelar surely is deluded... How am I supposed to stop this madwoman, Grey?...~
+@208  = ~So, we met with Caelar herself. She's just a woman of flesh and blood, Grey, shining eyes or no. Just a woman of flesh and blood! We took down a lot of those before, no?~
+@209  = ~"Shining Lady", pah! This woman better watch out, because we are coming to crush her! Crush her I say!~
+@210  = ~Hephernaan has a *fiend* master.... this is getting more and more dangerous, Grey...~
+@211  = ~Well, at least it fits - Hephernaan and his fiend master. We will stop them anyway, eh, Grey?~
+@212  = ~This fiend master will not help Hephernaan, Grey. We will defeat them both!~
+@213  = ~*All* of this... Caelar did all of it for only one person. How low can one fall...~
+@214  = ~So, now we know who Caelar is doing this for. She wants to save her uncle!~
+@215  = ~The whole crusade! All the people killed and driven away, just to save one man! And the crusaders don't even know about it!~
+@216  = ~A portal to Avernus, Grey... If it gets opened it could lead to fiends pouring into this plane, just like the last two fiend wars. How am I supposed to prevent that...~
+@217  = ~I am sure we will prevent the portal somehow. No way will there be a third fiend war at Dragonspear Castle, Grey, what do you think?~
+@218  = ~So they think they can handle a portal to Avernus? We will teach them how it's done, Grey. We will teach them!~
+@219  = ~They want me blood, Grey... My teinted blood who opens a gateway to hell. Ah, why am I the cause for everything...~
+@220  = ~My blood has special powers, so it's up to us to make sure it's not misused, eh, Grey?~
+@221  = ~I am the powerful Bhaalspan! I have special powers and my blood opens portals to Avernus! But it is *my* power, Grey! I will decide how to use them, not some wannabe warlady!~
+@222  = ~We went right into the trap, Grey - right into it, and now we have to stop a fiend in Avernus! Why me...~
+@223  = ~Oh well, shit happens they say. So we were betrayed, the portal to Avernus is open - but we will make the best of it, Grey, like we always do!~
+@224  = ~He think he's smart? Betraying us? I say, this is not over yet. We will get them. Just wait and see who'll be the last one laughing here!~
+@225  = ~Is it over yet? It was exhausting enough. I wished I'd get some real rest, Grey... but is there even such a thing, for a child of Bhaal?~
+@226  = ~Caelar's crusade is stopped, the fiend is dead, the portal sealed. I think we did good, didn't we?~
+@227  = ~We crushed them all! We are unstoppable, Grey! We will continue to shape the world like we want it, and it will be good at it!~
+@228  = ~I knew it... murder suspect, *again*... There is just no timeout for a child of Bhaal...~
+@229  = ~Well, we handled murder accusations before, didn't we? We will be alright - somehow. Like we always are!~
+@230  = ~They want to convict us of murder? Let them try, Grey. Let them try! We are not completely defensless, are we?~
+@231  = ~The hooded man killed Skie, Grey, but it's *us* they are accusing of it... Why is it always me...~
+@232  = ~So, now we know who is the murderer. It was an unknown man, and although we don't know who he is, it is good to have a first hint!~
+@233  = ~This hooded man killed Skie to feign murder accusations against me? We're not going to let him get away with it, Grey. We will not!~
+@234  = ~We need to flee the city... Like a criminal...~
+@235  = ~We have to leave unnoticed and lay low for a while, but I am sure we will be able to set it right, won#t we, Grey?~
+@236  = ~They expell us! They drive us away! We *will* return, Grey, and they will regret they turned their backs on us!~
+

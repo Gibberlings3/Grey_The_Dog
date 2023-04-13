@@ -7,12 +7,16 @@ Everything else: jastey
 
 GENERAL
 
-Please note: So far, the mod officially contains BG1 content only. Grey should already be fully functional in SoD (but only in English), but BGII content is not done yet. 
+Please note: So far, the mod contains no official BGII content.
 
 Grey is a full-fledged joinable NPC, but still a real dog. The only magic on him is his magically enchanted items.
 He has sensible interjections (Woof!), NPC banters (mostly NPC dialogues about him with the PC), a click dialogue (PID) if the PC feels like playing fetch or just needs someone to talk to. There are dialogue options that reflect the game story and I'll promise: Grey will always listen to your PC's woes. Grey initiates no dialogues so there is no friendship track and - I am really sorry, but no romance. Not even for Shapeshifters.
 In BG1 there are two small quests, both available in BG city. The quests are also available and solvable without Grey in party.
-Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees. This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
+Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees and others. This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
+
+The second, optional component offers crossmod content with various other mods (mainly NPC mods since Grey doesn't really comment on quests..). This component should be installed rather late, i.e. after all the mods.
+
+A third, optional component offers alternate portrait choices. The default portrait is from Acifer which is already included in the main component, the two alternatives are the original portrait from Rabain, either with a red bandana or a black bandana (edited by Acifer).
 
 
 ABOUT THIS MOD'S HISTORY
@@ -40,7 +44,7 @@ The 1 HP drop out can be prevented if Grey is healed in time during a fight. If 
 QUIRKS OF THE 7TH PARTY MEMBER MODE INGAME
 
 Unfortunately, the "7th party member mode" in the game requires special handling to accommodate all restrictions: (The hints are a mix of the existing engine restrictions and the workarounds I used).
--The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. Unfortunately, this can lead to Brandock no longer be included in the "gather all party" button although he is still green circled and will return properly with the group as soon as he is seen by a full party member again. This is especially annoying if he loses sight of full party members because the AI wanted him to walk to whatever destination on a different path, and he needs to be searched for by walking the map until he can be seen again. This seems to be especially a problem if several "7th party members" follow, and with the old game engine.
+-The NPC has no "Clear Fog of War" around him in the 7th GM. So he can "disappear" in the "black" area of the map. Unfortunately, this can lead to Grey no longer be included in the "gather all party" button although he is still green circled and will return properly with the group as soon as he is seen by a full party member again. This is especially annoying if he loses sight of full party members because the AI wanted him to walk to whatever destination on a different path, and he needs to be searched for by walking the map until he can be seen again. This seems to be especially a problem if several "7th party members" follow, and with the old game engine.
 -Items in the NPC's inventory are *not* recognized as items owned by the group. This is an engine problem. It follows that quest items that are needed in the game should not be in the NPC's inventory if they are to be recognized by the quest giver. Examples: Elvenhair's book, Ankheg shell for Taerom, etc.
 -Quest items tagged as "critical" will be moved to the PC's inventory when moving to the 7th PMM. This may cause items from the PC's inventory to end up on the floor. This is an engine problem. As a result, you should always check after switching the NPC to the 7th PMM to see if items have landed on the floor!
 -When new items are given to one of my NPCs in 7th PMM in a quest specifically for this NPC, they always appear in the inventory of the group or PC, even if the NPC is supposed to receive them. This is an engine problem. Even if I scripted it so that the items would end up in the NPC's inventory after the encounter, they would still be handled via the PC's inventory. And thus, items from the inventory may have ended up on the floor.
@@ -113,38 +117,33 @@ If you have installation problems or encounter any bugs, please post your bug re
 
 CREDITS
 
-Acifer: Portrait edit with dark bandana (original by Rabain was red), alpha testing
+Acifer: Portrait Artist, alpha testing
 Brokenkatana: Proofreading (English)
 jastey: Main mod author
-Rabain: Original mod idea, first portrait, first kit
+Lumorus: testing, bugfix
+Rabain: Original mod idea, Portrait Artist, first kit
 scheele: Russian translation
 
 
 TOOLS USED
 
-IESDP					https://gibberlings3.github.io/iesdp/index.htm
+The Mod was created using the resources provided by the IESDP (https://gibberlings3.github.io/iesdp/index.htm) and with the following software:
+
+Infinity Explorer			http://infexp.sourceforge.net
 Near Infinity				https://forums.beamdog.com/discussion/30593/new-versions-of-nearinfinity-available/p1
 WeiDU					https://github.com/WeiDUorg/weidu/releases/latest
  					(formerly: http://www.weidu.org)
-BAM Workshop				http://wwww.teambg.eu/?page=tools&cat=32
-
-grepWin					http://tools.stefankueng.com/grepWin.html
-WinMerge				http://winmerge.org/
-hex to decimal converter		http://www.binaryhexconverter.com/hex-to-decimal-converter
+BAM Workshop			http://wwww.teambg.eu/?page=tools&cat=32
 
 Modding communities, tutorials and technical assistance:
 
-The Gibberlings Three			https://www.gibberlings3.net/
-Pocket Plane Group			http://pocketplane.net
+Kerzenburgforum				https://baldurs-gate.de/index.php
+The Gibberlings Three		        https://www.gibberlings3.net/
+Pocket Plane Group			https://www.pocketplane.net/
 Spellhold Studios			http://www.shsforums.net/
-Kerzenburgforum (German)		https://www.baldurs-gate.de/index.php
-The Black Wyrm's Lair			http://blackwyrmlair.net
 
 Further Links:
 DLC Merger 				https://forums.beamdog.com/discussion/71305/mod-dlc-merger-merge-steam-gog-sod-dlc-or-custom-dlcs-with-the-main-game
-
-(deprecated but still functional tool for mod merging: 
-https://forums.beamdog.com/discussion/50441/modmerge-merge-your-steam-gog-zip-based-dlc-into-something-weidu-nearinfinity-dltcep-can-use/p1)
 
 
 
@@ -157,6 +156,13 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 
 HISTORY
+
+Version 9:
+-SoD content completed.
+-new default portrait added, by Acifer. 
+-2 new components: Crossmod, alternate portraits.
+-7th PMM mode improved.
+-Minor bugfixes.
 
 Version 8:
 -All BG1 lines in PID traify-ed.
