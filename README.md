@@ -9,12 +9,12 @@ Everything else: jastey
 
 ## GENERAL
 
-Please note: Beta_1 officially contains only BG1 content. Grey should already be fully functional in SoD (but only in English), but BGII content is not done yet. 
+Please note: so far, the mod only includes BG1 and SoD content officially. Grey shows up in BGII and has an ecnounter like quest atthe Promenade, but otherwise BGII content is not done yet. 
 
 Grey is a full-fledged joinable NPC, but still a real dog. The only magic on him is his enchanted collar that gives 1 AC bonus.
 He has sensible interjections (Woof!), NPC banters (mostly NPC dialogues about him with the PC), a click dialogue (PID) if the PC feels like playing fetch or just needs someone to talk to. There are dialogue options that reflect the game story and I'll promise: Grey will always listen to your PC's woes. Grey initiates no dialogues so there is no friendship track and - I am really sorry, but no romance. Not even for Shapeshifters.
-In BG1 there are two small quests, both available in BG city. The quests are also available and solvable without Grey in party.
-Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees. This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
+In BG1 there are two small quests, both available in BG city. The quests are also available and solvable without Grey in party. In SoD there is one quest that starts after talking to Belegarm and will be resolved in the big coalition camp.
+Where appropriate, Grey can be told to "search" for missing persons, in BG1 Brage and farmer Brun's son, in SoD the five missing refugees, Skie, Safana's quest, and also Brage's quest (via crossmod). This is realized so it doesn't spoil the quests too much, though, so do not expect too much help.
 
 
 ## ABOUT THIS MOD'S HISTORY
