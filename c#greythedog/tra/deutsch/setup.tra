@@ -27,3 +27,9 @@
 @90022  = ~Alternative #1: Original with Red Bandana, by Rabain~
 @90023  = ~Alternative #2: Original with Black Bandana, by Rabain (edited by Acifer)~ 
 @90024  = ~Default Portrait: Newly Done with Collar, by Acifer (is included in the main component)~
+
+/* new for v9.1 */
+
+@90025  = ~Installiere BG1-Crossmod.~
+@90026  = ~Installiere SoD-Crossmod.~
+@90027  = ~Installiere BGII-Crossmod.~
