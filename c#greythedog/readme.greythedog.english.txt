@@ -157,6 +157,10 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
+Version 9.1:
+-Crossmod banter with Brandock should not end abruptly.
+-Grey's movement rate upped by 2 at level 1 (now +4 instead of +2 compared to before).
+
 Version 9:
 -SoD content completed.
 -new default portrait added, by Acifer. 
