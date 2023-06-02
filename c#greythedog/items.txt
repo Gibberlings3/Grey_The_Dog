@@ -82,7 +82,9 @@ BGII (list not finished yet)
 
 Gauntlets:
 ---------
-c#grbrac.ITM ~War Dog's Gauntlets of Speed~
+c#grbrac.ITM ~War Dog's Gauntlets of Speed~ -> not placed yet
+c#grcol3.ITM ~War dog's Collar +1~ -> Ribald's normal store
+c#grarm6.ITM ~War Dog's Full Plate Mail +2~ -> Ribald's normal store
 
 
 

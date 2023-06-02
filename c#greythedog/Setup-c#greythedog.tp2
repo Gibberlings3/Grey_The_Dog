@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~9~ 
+VERSION ~9.1~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -70,11 +70,6 @@ OUTER_SPRINT newline ~%WNL%%LNL%%MNL%%TAB% ~
     ACTION_IF "%bottom%" STRING_COMPARE "" BEGIN
        EXTEND_BOTTOM "%script%.bcs" "%bottom%" EVALUATE_BUFFER
     END
-  END 
-
-  ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN
-    PRINT ~This mod is not compatible with Tutu.~
-
   END 
 
 INCLUDE ~c#greythedog/lib/create_effect.tpa~
@@ -458,6 +453,7 @@ COPY ~c#greythedog/spells/c#grirma.spl~ ~override/c#grirma.spl~ //(disable weapo
 
 COPY ~c#greythedog/spells/c#gre002.spl~ ~override/c#gre002.spl~ //damage + THAC0 bonus against bears, wolves, humans
 COPY ~c#greythedog/spells/c#gre003.spl~ ~override/c#gre003.spl~ //immunity to blindness
+COPY ~c#greythedog/spells/c#gre004.spl~ ~override/c#gre004.spl~ //upps movement rate by 4
 
 //Effects
 COPY ~c#greythedog/eff/.~ ~override~
@@ -2578,6 +2574,7 @@ REQUIRE_COMPONENT ~c#greythedog.tp2~ ~0~ @90020
 /* BG1 */
 
 ACTION_IF GAME_IS ~bgee bgt eet~ THEN BEGIN
+    PRINT @90025 /* ~Installing BG1 crossmod.~ */
 
 /* bst */
 ACTION_IF FILE_EXISTS_IN_GAME ~BSTRMAGE.dlg~ THEN BEGIN  
@@ -2657,6 +2654,7 @@ END
 
 /* SoD */
 ACTION_IF GAME_INCLUDES ~sod~ THEN BEGIN
+    PRINT @90026 /* ~Installing SoD crossmod.~ */
 
 /* Ajantis SoD */
 ACTION_IF FILE_EXISTS_IN_GAME ~C#AjSoDG.dlg~ THEN BEGIN
@@ -2736,17 +2734,19 @@ END //SoD
 /* BGII */
 
 ACTION_IF GAME_IS ~tob bg2ee bgt eet~ THEN BEGIN
+    PRINT @90027 /* ~Installing BGII crossmod.~ */
 
   /* Ajantis BGII */
 
   ACTION_IF FILE_EXISTS_IN_GAME ~C#AjanB.dlg~ THEN BEGIN
-    PRINT @90010 /* ~Sir Ajantis for BGII detected...~ */
+    PRINT @90010 /* ~Sir Ajantis for BGII detected: installing crossmod...~ */
     COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/ajantis_bg2.d~
   END /* Ajantis BGII */
 
 /* Brandock */
 
 ACTION_IF FILE_EXISTS_IN_GAME ~c#brandj.dlg~ THEN BEGIN 
+    PRINT @90013 /* ~Brandock the Mage mod detected: installing crossmod...~ */
 
 COMPILE EVALUATE_BUFFER ~c#greythedog/crossmod/brando_crossmod_grey_BGII.d~
 EVALUATE_BUFFER

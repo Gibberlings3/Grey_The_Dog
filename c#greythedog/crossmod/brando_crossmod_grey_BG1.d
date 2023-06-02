@@ -94,7 +94,7 @@ IF WEIGHT #-1
 = @20
 == %IMOEN_BANTER% IF ~InParty("%IMOEN_DV%") See("%IMOEN_DV%") 
 !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN @21
-== C#BrandB IF ~InParty("%IMOEN_DV%") See("%IMOEN_DV%") 
+== C#BrandJ IF ~InParty("%IMOEN_DV%") See("%IMOEN_DV%") 
 !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN @22
 == %IMOEN_BANTER% IF ~InParty("%IMOEN_DV%") See("%IMOEN_DV%") 
 !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)~ THEN @23
@@ -107,6 +107,6 @@ InParty("skie") See("skie")
 == %AJANTIS_BANTER% IF ~InParty("ajantis") See("ajantis") 
 !StateCheck("ajantis",CD_STATE_NOTVALID)~ THEN @26
 = @27
-== C#BrandB @28
+== C#BrandJ @28
 END
 IF ~~ THEN DO ~SetGlobal("C#Brandock_GreyBG1","GLOBAL",5) RestParty()~ EXIT
