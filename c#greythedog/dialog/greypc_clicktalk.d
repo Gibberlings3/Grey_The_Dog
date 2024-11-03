@@ -245,9 +245,9 @@ Global("Arrested","GLOBAL",1) Global("C#Grey_Capter6PID2","LOCALS",0)~ + @30 /* 
 + ~Global("C#Grey_KnowBhaal","GLOBAL",1) Global("C#Grey_BhaalheritagePID","LOCALS",0)~ + @33 /* A child of Bhaal! I have the power in me, Grey. I will rule the world, and you will help me conquer it! Are you ready? */ /* @33 /* A child of Bhaal! I have the power in me, Grey. I will rule the world, and you will help me conquer it! Are you ready? */ */ DO ~SetGlobal("C#Grey_BhaalheritagePID","LOCALS",1)~ + talkto_growl
 
 /* Sarevok is dead! */
-+ ~Global("C#Grey_SarevokDeadPID","LOCALS",0)~ + @86 /* [PC Reply]Sarevok is finally dead, Grey... but will is really change anything? (sigh) */ /* ~Sarevok is finally dead, Grey... but will is really change anything? (sigh)~ */ DO ~SetGlobal("C#Grey_SarevokDeadPID","LOCALS",1)~ + talkto_whine 
-+ ~Global("C#Grey_SarevokDeadPID","LOCALS",0)~ + @87 /* [PC Reply]We did it, Grey! The murderer of Gorion is defeated. We are victorious! */ /* ~We did it, Grey! The murderer of Gorion is defeated. We are victorious!~ */ DO ~SetGlobal("C#Grey_SarevokDeadPID","LOCALS",1)~ + talkto_bark 
-+ ~Global("C#Grey_SarevokDeadPID","LOCALS",0)~ + @88 /* [PC Reply]Sarevok, the Iron Throne, the whole conspiracy! All fell by our hand, Grey! Nothing can stop us! */ /* ~Sarevok, the Iron Throne, the whole conspiracy! All fell by our hand, Grey! Nothing can stop us!~ */ DO ~SetGlobal("C#Grey_SarevokDeadPID","LOCALS",1)~ + talkto_growl
++ ~%BGT_VAR% Global("C#Grey_SarevokDeadPID","LOCALS",0) Dead("sarevok")~ + @86 /* [PC Reply]Sarevok is finally dead, Grey... but will is really change anything? (sigh) */ /* ~Sarevok is finally dead, Grey... but will is really change anything? (sigh)~ */ DO ~SetGlobal("C#Grey_SarevokDeadPID","LOCALS",1)~ + talkto_whine 
++ ~%BGT_VAR% Global("C#Grey_SarevokDeadPID","LOCALS",0) Dead("sarevok")~ + @87 /* [PC Reply]We did it, Grey! The murderer of Gorion is defeated. We are victorious! */ /* ~We did it, Grey! The murderer of Gorion is defeated. We are victorious!~ */ DO ~SetGlobal("C#Grey_SarevokDeadPID","LOCALS",1)~ + talkto_bark 
++ ~%BGT_VAR% Global("C#Grey_SarevokDeadPID","LOCALS",0) Dead("sarevok")~ + @88 /* [PC Reply]Sarevok, the Iron Throne, the whole conspiracy! All fell by our hand, Grey! Nothing can stop us! */ /* ~Sarevok, the Iron Throne, the whole conspiracy! All fell by our hand, Grey! Nothing can stop us!~ */ DO ~SetGlobal("C#Grey_SarevokDeadPID","LOCALS",1)~ + talkto_growl
 
 /* SoD */
 

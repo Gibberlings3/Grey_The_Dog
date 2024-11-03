@@ -162,7 +162,7 @@ IF ~~ THEN ham_01
 SAY @53 /* [Belegarm]Oh, of course. If something goes wrong, everyone gets the memo right away, I suppose! A hock of the finest ham was stolen and we have not the slightest clue who did it. Why, what is it to you? Did your dog take it? */
 ++ @54 /* No, but a friendly scout informed me, saying it might be wise to clear up any possible misunderstandings. */ + ham_02_b
 ++ @55 /* No, he didn't, and neither did I. */ + ham_03
-++ @56 /* Don't be rediculous. */ + ham_02
+++ @56 /* Don't be ridiculous. */ + ham_02
 ++ @57 /* You have no idea who the thief would be, but are throwing accusations because you don't like me? */ + ham_02_a
 END
 
@@ -251,8 +251,8 @@ IF ~~ THEN + ham_05_d
 END
 
 IF ~~ THEN ham_07
-SAY @81 /* [Belegarm]Do you have any clues about who the thief could be? Or - do you want to offer your dog sniffing them out? What a rediculous thought, a dog inside a storage tent full of food. */
-++ @82 /* Is it that rediculous? Grey is well trained, he could take on a scent I am sure. */ + ham_08
+SAY @81 /* [Belegarm]Do you have any clues about who the thief could be? Or - do you want to offer your dog sniffing them out? What a ridiculous thought, a dog inside a storage tent full of food. */
+++ @82 /* Is it that ridiculous? Grey is well trained, he could take on a scent I am sure. */ + ham_08
 ++ @83 /* Well, I'll be on my way, then. */ + ham_14
 END
 
@@ -524,7 +524,7 @@ IF ~~ THEN + ham_bd3000_02
 END
 
 IF ~~ THEN ham_bd3000_05
-SAY @158 /* [Belegarm]This is getting rediculous. Someone going around, playing the gift fairy, saying it's from Baldur's Gate - with high chance from the stolen ham of all things? This sounds like a really bad jest to me - really bad, for whoever is doing this. If you hear anything, let me know! */
+SAY @158 /* [Belegarm]This is getting ridiculous. Someone going around, playing the gift fairy, saying it's from Baldur's Gate - with high chance from the stolen ham of all things? This sounds like a really bad jest to me - really bad, for whoever is doing this. If you hear anything, let me know! */
 IF ~~ THEN DO ~SetGlobal("C#Grey_SoDQuest","GLOBAL",11)~ UNSOLVED_JOURNAL @100507 EXIT
 END
 

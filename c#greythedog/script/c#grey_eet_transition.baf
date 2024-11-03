@@ -8,12 +8,7 @@ THEN
 		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_EETBGIITransition","MYAREA",1)
 		DisableAI("C#Grey",FALSE)
-		ApplySpellRES("bdresurr","C#Grey")
-		smallWait(10)
-		ApplySpellRES("K#UNREST","C#Grey")
-		smallWait(10)
-		ApplySpellRES("bdrejuve","C#Grey")
-		smallWait(10)
+		%Heal_Grey%
 		ActionOverride("C#Grey",DestroyItem("c#grpaw1"))
 		ActionOverride("C#Grey",DestroyItem("c#grpaw3"))
 		ActionOverride("C#Grey",DestroyItem("c#grpaw6"))
@@ -39,12 +34,7 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_EETBGIITransition","MYAREA",1)
-		ApplySpellRES("K#UNREST","C#Grey")
-		smallWait(10)
-		ApplySpellRES("bdrejuve","C#Grey")
-		smallWait(10)
-		ReallyForceSpellRES("C#MIN0HP","C#Grey")
-		smallWait(10)
+		%Heal_Grey%
 		SetGlobal("C#Grey_Has1HPEffect","GLOBAL",0)
 		ActionOverride("C#Grey",DestroyItem("c#grpaw1"))
 		ActionOverride("C#Grey",DestroyItem("c#grpaw3"))
