@@ -7,7 +7,7 @@ Everything else: jastey
 
 GENERAL
 
-Please note: So far, the mod contains no official BGII content.
+Please note: So far, the mod contains no official BGII content. Grey is already available in Irenicus' Dungeon and can join the group, though.
 
 Grey is a full-fledged joinable NPC, but still a real dog. The only magic on him is his magically enchanted items.
 He has sensible interjections (Woof!), NPC banters (mostly NPC dialogues about him with the PC), a click dialogue (PID) if the PC feels like playing fetch or just needs someone to talk to. There are dialogue options that reflect the game story and I'll promise: Grey will always listen to your PC's woes. Grey initiates no dialogues so there is no friendship track and - I am really sorry, but no romance. Not even for Shapeshifters.
@@ -157,9 +157,11 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 HISTORY
 
-Version 9.1:
+Version 10:
 -Crossmod banter with Brandock should not end abruptly.
 -Grey's movement rate upped by 2 at level 1 (now +4 instead of +2 compared to before).
+-PIDs after Sarevok's death should not show before.
+-Optimized scripting for Transition to BGII (BGT/EET).
 
 Version 9:
 -SoD content completed.
