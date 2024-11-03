@@ -3,41 +3,18 @@
 /* for BGT, this goes to ARAM00.bcs. */
 
 
-/* Grey is in party, but dead */
+/* Grey is in party */
 IF
 	InPartyAllowDead("C#Grey")
-	Dead("C#Grey")
 	GlobalLT("C#Grey_Exists","GLOBAL",5)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ReallyForceSpellRES("CLERIC_RESURRECTION","C#Grey") //SPRR712
+		%Heal_Grey%
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ActionOverride("C#Grey",LeaveParty())
-		SetGlobal("C#GreyJoined","GLOBAL",0)
-		SetGlobal("C#Grey_Exists","GLOBAL",5)
-		SetInterrupt(TRUE)
-		Continue()
-END
-
-
-/* Grey is in party alive - silent MoveGlobal */
-
-
-IF
-	InParty("C#Grey")
-	!Dead("C#Grey")
-	GlobalLT("C#Grey_Exists","GLOBAL",5)
-	GlobalLT("BD_PLOT","GLOBAL",51)
-THEN
-	RESPONSE #100
-		SetInterrupt(FALSE)
-		ReallyForceSpellRES("SPWM168","C#Grey") //Heal
-		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
-		ActionOverride("C#Grey",LeaveParty())
-		SetGlobal("C#GreyJoined","GLOBAL",0)
 		ActionOverride("C#Grey",GivePartyAllEquipment())
-		SetGlobal("C#Grey_Exists","GLOBAL",5)
+		SetGlobal("C#GreyJoined","GLOBAL",0)
 		SetGlobal("C#Grey_Exists","GLOBAL",5)
 		SetInterrupt(TRUE)
 		Continue()
@@ -49,18 +26,16 @@ IF
 	!Dead("C#Grey")
 	Global("C#GreyJoined","GLOBAL",2)
 	GlobalLT("C#Grey_Exists","GLOBAL",5)
-	GlobalLT("BD_PLOT","GLOBAL",51)
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ReallyForceSpellRES("SPWM168","C#Grey") //Heal
+		%Heal_Grey%
 		SetGlobal("C#GreyJoined","GLOBAL",0)
 		ActionOverride("C#Grey",RemoveFamiliar())
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ChangeEnemyAlly("C#Grey",NEUTRAL)
 		SetGlobal("C#GreyJoined","GLOBAL",0)
 		ActionOverride("C#Grey",GivePartyAllEquipment())
-		SetGlobal("C#Grey_Exists","GLOBAL",5)
 		SetGlobal("C#Grey_Exists","GLOBAL",5)
 		SetInterrupt(TRUE)
 		Continue()

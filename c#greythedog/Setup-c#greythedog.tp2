@@ -15,7 +15,7 @@ AUTHOR ~https://www.gibberlings3.net/forums/forum/211-grey-the-dog/~
 
 //MODDER
 
-VERSION ~9.1~ 
+VERSION ~10~ 
 
 README ~c#greythedog/readme.greythedog.%LANGUAGE%.txt~ ~c#greythedog/readme.greythedog.english.txt~
 
@@ -85,6 +85,8 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
     OUTER_SPRINT ~IT_IS_SOD~ ~False()~
     OUTER_SPRINT ~tutu_var~ ~~
 
+    OUTER_SPRINT ~Heal_Grey~ ~~
+
     /* BGT Chapters - this doesn't have any significance, it is only needed so the d-files compile */
     OUTER_SPRINT "tutu_prologue" "0"
     OUTER_SPRINT "tutu_prologue_reset" "0"
@@ -97,6 +99,8 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
     OUTER_SPRINT "tutu_chapter_7" "7"
 
     OUTER_SPRINT ~Grey_MakeGlobalOverride~ ~ActionOverride("C#Grey",MakeGlobal())~
+    OUTER_SPRINT ~Heal_Grey~ ~ActionOverride("C#Grey",ApplySpellRES("BGLIVE",Myself))
+	ActionOverride("C#Grey",ReallyForceSpellRES("SPWM168",Myself))~
   END
 
 
@@ -138,6 +142,8 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
     OUTER_SPRINT ~IT_IS_SOD~ ~False()~
     OUTER_SPRINT ~tutu_var~ ~~
 
+    OUTER_SPRINT ~Heal_Grey~ ~~
+
     /* BGT Chapters - this doesn't have any significance, it is only needed so the d-files compile */
     OUTER_SPRINT "tutu_prologue" "0"
     OUTER_SPRINT "tutu_prologue_reset" "0"
@@ -170,6 +176,12 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
       OUTER_SPRINT ~IT_IS_SOD~ ~Global("ENDOFBG1","GLOBAL",1)~
     END
 
+    OUTER_SPRINT ~Heal_Grey~ ~ApplySpellRES("bdresurr","C#Grey")
+		SmallWait(10)
+		ApplySpellRES("K#UNREST","C#Grey")
+		SmallWait(10)
+		ApplySpellRES("bdrejuve","C#Grey")
+		SmallWait(10)~
     OUTER_SET BG1AREA = IDS_OF_SYMBOL (~areatype~ ~BG1AREA~)
   END
 
@@ -188,7 +200,7 @@ INCLUDE ~c#greythedog/lib/create_effect.tpa~
   END
 
 
-
+OUTER_SET eet_200000 = GAME_IS ~eet~ ? 200000 : 0
 
 //////////////////////////////////////////////////////////////////////
 /* all following actions are only processed ONCE for the whole mod, independent of un- and reinstalling of single components */
@@ -214,6 +226,7 @@ END
 
     /* Copies tra files into the autotra-folder (to leave the originals untouched) */
     DEFINE_ACTION_FUNCTION autotra_workaround BEGIN
+      COPY ~c#greythedog/tra/english~  ~c#greythedog/tra/autotra/english~
       COPY ~c#greythedog/tra/english~  ~c#greythedog/tra/autotra/%LANGUAGE%~
       COPY ~c#greythedog/tra/%LANGUAGE%~  ~c#greythedog/tra/autotra/%LANGUAGE%~
     END
@@ -226,6 +239,7 @@ END
         INT_VAR
           infer_charsets = 1
         STR_VAR
+	  default_language = ~english~
           tra_path = EVAL ~c#greythedog/tra/autotra~
           noconvert_array = c#noconvert
           reload_array = c#reload

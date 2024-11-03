@@ -26,15 +26,15 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_Exists","GLOBAL",10)
+		SetGlobal("C#GreyJoined","GLOBAL",0)
+		MoveGlobal("AR0602","C#Grey",[4245.1985])  // Grey
+//		MoveGlobal("AR0602","C#Grey",[3939.2929])  // ##for testing
+		%Heal_Grey%
 		ActionOverride("C#Grey",SetDialogue("C#Grey2"))
 		ActionOverride("C#Grey",ChangeAIScript("",DEFAULT))
 		ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
-		MoveGlobal("AR0602","C#Grey",[4245.1985])  // Grey
-//		MoveGlobal("AR0602","C#Grey",[3939.2929])  // ##for testing
-		ReallyForceSpellRES("SPWM168","C#Grey")  // Heal
-		SetGlobal("C#GreyJoined","GLOBAL",0)
-		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0)) 
 	        ActionOverride("C#Grey",DestroyAllEquipment())
+		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0)) 
 		SetInterrupt(TRUE)
 //		Continue()		
 END
@@ -51,13 +51,13 @@ THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
 		SetGlobal("C#Grey_Exists","GLOBAL",10)
+		SetGlobal("C#GreyJoined","GLOBAL",0)
 		CreateCreature("C#Grey02",[4245.1985],8)  // Grey
+		%Grey_MakeGlobalOverride%
 		ActionOverride("C#Grey",SetGlobal("C#LevelUp","LOCALS",0)) 
 		ActionOverride("C#Grey",SetDialogue("C#Grey2"))
 		ActionOverride("C#Grey",ChangeAIScript("C#Grey",OVERRIDE))
-		SetGlobal("C#GreyJoined","GLOBAL",0)
 	        ActionOverride("C#Grey",DestroyAllEquipment())
-		%Grey_MakeGlobalOverride%
 		SetInterrupt(TRUE)	
 //		Continue()		
 END
@@ -106,12 +106,22 @@ END
 
 IF
       GlobalGT("C#Grey_Exists","GLOBAL",9)
-      Global("C#Grey_weapons","MYAREA",0)	
+      Global("C#Gr_weapons_JailkTable","MYAREA",0)	
 THEN
 	RESPONSE #100
-		ActionOverride("JailkeepTable",CreateItem("c#grtoo3",1,0,0))
-		ActionOverride("JailkeepTable",CreateItem("c#grarm3",1,0,0))
-      		SetGlobal("C#Grey_weapons","MYAREA",1)	
+		ActionOverride("JailkeepTable",CreateItem("c#grtoo0",1,0,0))
+      		SetGlobal("C#Gr_weapons_JailkTable","MYAREA",1)	
+//		Continue()	
+END
+
+IF
+      GlobalGT("C#Grey_Exists","GLOBAL",9)
+      Global("C#Gr_weapons_Chest7","MYAREA",0)	
+THEN
+	RESPONSE #100
+		ActionOverride("Chest7",CreateItem("c#grarm2",1,0,0))
+		ActionOverride("Chest7",CreateItem("c#grhel2",1,0,0))
+      		SetGlobal("C#Gr_weapons_Chest7","MYAREA",1)	
 //		Continue()	
 END
 	
