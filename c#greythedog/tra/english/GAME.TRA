@@ -1,0 +1,435 @@
+@10000  = ~Wolfhound~
+@10001  = ~Wolfhound: This breed of dog is one of the largest non-magical dogs seen in nature. Some specimens have measured over 3 ft at the shoulder and can stand some 7 ft in height on their hind legs. The wolfhound was originally bred as a coursing hound. Sleek yet large these dogs made excellent hunting animals no matter the prey. Being less common than the typical war dog, wolfhounds are rarely seen in Realms these days and are highly sought after as breeding stock by nobles and commoners alike.
+
+  Wolfhounds are more intelligent than the average street dog.  They make excellent companions and, once you earn their trust, steadfast defenders.
+
+
+  Advantages:
+  -Attack speed factor -1 every 10 levels from level 1.
+  -Movement modifier -1 at levels 1,5 and every 10 levels thereafter.
+  -Gains Tracking Ability at level 7 plus 1 extra use every 5 levels thereafter.
+  -At level 5 gains immunity to blindness: the wolfhound detects his enemies with his sense of smell.
+  -At level 6 gains Bark: will instill fear and panic in enemies and bolster his own resistance to fear. At later levels this resistance expands to include the party as well as all effects increasing in duration. Gains an extra use every 6 levels.
+  -At level 8 gains True Sight: the wolfhound's nose is not fooled by invisibility or simple illusions. Gains an extra use every 8 levels.
+  -At level 10 gains Alpha Call: can call on any dogs in the local area to come to his aid.  The dogs called improve as the wolfhound becomes more powerful. Gains an extra use every 10 levels. This ability does not work indoors.
+
+  -Due to their special training, wolfhounds have a +1 THAC0 and damage bonus against humans, wolves, and bears and gain an additional +1 bonus at level 5 and every 10th level thereafter.
+ 
+  Disadvantages:
+  -Cannot use conventional weapons or armor.
+  -Smells bad when wet.
+  -Leaves hair everywhere.
+  ~
+//@10002  = 
+@10003  = ~Alpha Call~
+@10004  = ~Due to his large physical presence and commanding demeanor, local dogs may come to the wolfhound's aid when he calls.
+This spell does not work indoors.~ 
+@10005  = ~Bark~
+@10006  = ~In battle the wolfhound's bark may bolster his morale and cause panic in his enemies.  
+At later levels this resistance expands to include the party as well as all effects increasing in duration.~
+@10007  = ~Great Bite~
+@10008  = ~The wolfhound's combat experience teaches him how to inflict grievous wounds upon enemies with a single attack.  This attack will inflict 15hp piercing damage and the wound will bleed out 20% of the targets HP's.~
+@10009  = ~Savage Bite~
+@10010  = ~Improving upon the already vicious Great Bite, Savage Bite will inflict 20hp of piercing damage and the wound will bleed out a total of 40% of the targets HP's.~
+@10011  = ~Hound~
+@10012  = ~The wolfhound learns to confuse and harry their enemies in combat, preventing their foes from being able to land a clean hit in battle.  While this ability is active the wolfhound's slashing, piercing, crushing and missile damage resistances are set to 40 and his Dexterity is increased by 2 for 1 Turn.~
+@10013  = ~Seize Enemy~
+@10014  = ~This command will cause the wolfhound to seize the target with his jaws and pin them.  The target will suffer 15hp bleeding damage while being held immobile.  The wolfhound will maintain his hold for 3 rounds, during which he can be given no other commands.~
+@10015  = ~Rend~ 
+@10016  = ~The wolfhound slashes at his target with his canines, opening up a long wound.  This attack will do 2d12 +5 slashing damage to the target with a possibility of infecting the wound unless the target saves vs Death/Poison.  If the save is unsuccessful the wound will be Diseased for 6 rounds causing slowness in all the victims actions.~
+@10017  = ~Grey's Collar~
+@10018  = ~This is Grey's collar, enchanted to give him extra armor class bonus.
+
+STATISTICS:
+
+Armor Class Bonus:  1
+~
+@10019  = ~War dog's Collar~
+@10020  = ~This is a war dog's collar, sturdy but without any special abilities.~
+@10021  = ~War dog's Collar +1~
+@10022  = ~This is a war dog's collar, enchanted to give extra armor class bonus.
+
+STATISTICS:
+
+Armor Class Bonus:  1
+~
+@10023  = ~War dog's Collar +2~
+@10024  = ~This is a war dog's collar, enchanted to give extra armor class bonus.
+
+STATISTICS:
+
+Armor Class Bonus:  2
+~
+@10025  = ~War Dog's Head Gear~
+@10026  = ~This is a war dog's head gear.~
+@10027  = ~This class of war dog's head gear, made of reinforced leather or metal, covers most of the dog's head. These helmets commonly provide protection for the ears.  
+
+STATISTICS:
+
+Armor Class Bonus:  None
+Special:  Protects Against Critical Hits
+Weight: 2
+~
+@10028  = ~War Dog's Studded Leather Armor +1~
+@10029  = ~This is a war dog's armor.~
+@10030  = ~This is a war dog's studded leather armor. Instead of a hardened shell, studded leather offers hundreds of metal rivets affixed to a supple backing. The numerous studs form a flexible coat of metal that helps to turn aside slashing and cutting attacks, while the leather is little more than a means of securing the rivets in place.   
+
+STATISTICS:
+
+Armor Class: 6
+Weight: 5
+Requires: 6 Strength
+~
+@10031  = ~War Dog's Splint Mail Armor~
+@10032  = ~This is a war dog's splint mail, a variant of banded mail in which the metal strips are applied vertically to the backing of chain, leather, or cloth rather than horizontally as in banded mail. 
+
+STATISTICS:
+
+Armor Class: 4
+Weight: 20
+Requires: 8 Strength
+~
+@10033  = ~War Dog's Plate Mail Armor +1~
+@10034  = ~This is a war dog's plate mail, a combination of chain armor with metal plates covering the vital areas such as the chest, abdomen and groin. In addition, this suit of plate mail is enchanted and gives additional bonuses to the dog's armor class.
+
+STATISTICS:
+
+Armor Class: 2
+Weight: 15
+Requires: 12 Strength
+~
+@10035  = ~War Dog's Full Plate Mail~
+@10036  = ~This is a war dog's full plate armor. The perfectly fitted interlocking plates are specially angled to deflect arrows and blows. With its magical enchantments, this covering of full plate is ideal for war dogs.
+
+STATISTICS:
+
+Armor Class: 0
+Weight: 17
+Requires: 15 Strength
+~
+@10037  = ~Grey's Ankheg Plate Mail~
+@10038  = ~This is Grey's ankheg plate mail. This one has been expertly crafted from the ankheg scales, providing a greater degree of protection than traditional plate mail without being succeptible to rust. It is also of far less weight than the normal war dog's plate mail.
+
+STATISTICS:
+
+Armor Class: 1
+Weight: 10
+Requires: 6 Strength
+~
+@10039  = ~War Dog's Rump Rune~
+@10040  = ~War Dog's Rump Shield Rune~
+@10041  = ~This is a rump rune for war dog's armor.~
+@10042  = ~This is a rump rune for war dog's armor, enchanted to give extra armor class bonus. It can be attached to the war dog's back either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Armor Class Bonus:  1
+Weight:  0
+~
+@10043  = ~War Dog's Rump Rune of Electric Resistance~
+@10044  = ~This is a rump rune of protection for a war dog's armor, enchanted to grant resistance against electricity. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Electricity Resistance:  +10% bonus
+Weight:  0
+~
+@10045  = ~War Dog's Rump Rune of Acid and Poison Resistance~
+@10046  = ~This is a rump rune of protection for a war dog's armor, enchanted to grant resistance against acid and poison. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Poison Resistance:  +5% bonus
+Acid Resistance:  +5% bonus
+Weight:  0
+~
+@10047  = ~War Dog's Nape Rune~
+@10048  = ~War Dog's Nape Rune of Protection~
+@10049  = ~This is a nape rune for a war dog's armor.~
+@10050  = ~This is a nape rune of protection for a war dog's armor. It is enchanted to increase the war dog's protection in battle. It does so by affecting both saving throws and armor class. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Armor Class:  +1 bonus
+Saving Throw:  +1 bonus
+Weight:  0
+~
+@10051  = ~War Dog's Nape Rune of Magic Resistance~
+@10052  = ~This is a nape rune of magic resistance for a war dog's armor. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness. It is enchanted to increase the protection against magic.
+
+STATISTICS:
+
+Magic Resistance: 5%
+Weight:  0
+~
+@10053  = ~War Dog's Nape Rune of Fire and Cold Resistance~
+@10054  = ~This is a nape rune of protection for a war dog's armor, enchanted to grant resistance against fire and cold. It can be attached to the war dog's nape either by using string or by attaching it to an existing harness.
+
+STATISTICS:
+
+Fire Resistance:  +5% bonus
+Cold Resistance:  +5% bonus
+Weight:  0
+~
+@10055  = ~War Dog's Bracelets~
+@10056  = ~War Dog's Bracelets of Strength~
+@10057  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.~
+@10058  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they give a strength bonus.
+
+STATISTICS:
+
+Strength Bonus: +1
+~
+@10059  = ~War Dog's Bracelets of Weapon Expertise~
+@10060  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they give a bonus of weapon expertise.  
+
+STATISTICS:
+
+THACO:  +1 bonus
+Damage:  +2 bonus
+~
+@10061  = ~War Dog's Bracelets of Free Action~
+@10062  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they grant Free Action.
+
+STATISTICS:
+
+Special:  The wearer is immune to everything, magical and otherwise, that affects mobility in any way. This includes haste and slow spells.
+~
+@10063  = ~War Dog's Bracelets of Fire Resistance~
+@10064  = ~This is a pair of bracelets for a war dog. War dog bracelets come usually in pairs, enchanted so they only work if worn together.
+This war dog's pair of bracelets are enchanted so they give a bonus to Fire Resistance.
+
+STATISTICS:
+
+Fire Resistance:  +40%
+~
+@10065  = ~Dog's Toy~
+@10066  = ~Dog's Toy of Luck~
+@10067  = ~This is a dog's toy.~
+@10068  = ~This is a dog's toy. Playing with it raises the dog's mood, and undertakings seem to succeed with a higher chance.
+
+STATISTICS: 
+
+Charge abilities: +1 Luck bonus three times per day
+  Duration: 1 hour
+
+Weight: 1
+~
+@10069  = ~Chew Toy~
+@10070  = ~Chew Toy of Health~
+@10071  = ~This is the dog's chew toy you received from Albert. It looks less like a ragged piece of animal but more like a dog's favorite bone. Chewing on it will restore some of Grey's health.
+
+STATISTICS: 
+
+Charge abilities: restores 9 hit points two times per day
+
+Weight: 1
+~
+@10072  = ~Grey's Paw~
+@10073  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D6
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+@10074  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D8
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+@10075  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D10
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+@10076  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D12 + 1
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+@10077  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D12 + 2
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+
+@10078  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D20+3
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+@10079  = ~This is Grey's paw.
+
+STATISTICS:
+
+Damage:  1D20+4
+Damage type:  crushing
+Weight: 0
+Speed Factor: 3
+Proficiency Type: Hammer~
+@10080  = ~Giant Spider's Fang~
+@10081  = ~This is an intact giant spider's fang, dripping with poison. If treated right, this could be used as part of an augment for a bite attack.~
+@10082  = ~Grey's Reinforced Poison Canines~
+@10083  = ~These are a set of reinforcing caps for Grey's canines made out of a pair of giant spider fangs. These reinforced canines have a minor enchantment that imbues Grey's bite with poison and protects Grey from poisoning himself.
+
+STATISTICS:
+
+Special Abilities: 50% chance of Poison Damage: 2 hit points of damage per second, Poison Duration: 10 seconds
+
+THAC0: +1
+Damage:  1D8 + 1 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+@10084  = ~War Dog's Reinforced Canines~
+@10085  = ~These are a set of reinforcing caps for the war dog's canines. They are often alchemically treated and have minor enchantments to strengthen the teeth of the war dog and prevent them from breaking in combat.
+
+STATISTICS:
+
+Damage: 1d8 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+@10086  = ~War Dog's Reinforced Canines +1~
+@10087  = ~These are a set of reinforcing caps for the war dog's canines. They are often alchemically treated and have minor enchantments to strengthen the teeth of the war dog and prevent them from breaking in combat. This set is magical, improving accuracy and damage.
+
+STATISTICS:
+
+THAC0: +1
+Damage: 1d8+1 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+@10088  = ~War Dog's Reinforced Canines +2~
+@10089  = ~These war dog reinforced canine caps have been crafted by hands both magical and highly skilled. Neither nick nor stain mar the flawless caps. When used in battle, the caps radiate magic and gift the bearer with increased skill.
+
+STATISTICS:
+
+THAC0: +2
+Damage: 1d8+2 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+@10090  = ~War Dog's Gauntlets~
+@10091  = ~War Dog's Gauntlets of Speed~
+@10092  = ~These are Gauntlets of Speed for a war dog's armor.~
+@10093  = ~War Dog's Gauntlets of Speed
+
+STATISTICS
+
+Equipped Ability : increases movement rate
+~
+@10094  = ~War Dog's Reinforced Fiery Canines~
+@10095  = ~These are a set of reinforcing caps for the war dog's canines. They are often alchemically treated and have minor enchantments to strengthen the teeth of the war dog and prevent them from breaking in combat. This set is magical, improving the accuracy and damage of the bearer's bite and inflict fire damage. The magic of the canine caps protects the bearer from burning themselves.
+
+STATISTICS:
+
+Special Abilities: + 1 hit points Fire Damage
+THAC0: +1
+Damage:  1D8 + 1 (piercing)
+Speed Factor: 2
+Proficiency Type: Dagger~
+@10096  = ~Wardog Armory and Weaponry~
+@10097  = ~Madelaine's Key~
+@10098  = ~This is the key Madelaine gave you. It will open the door to her employer's house in East Baldur's Gate, the "one with the grey roof".~
+@10099  = ~Brage's Gauntlets of Weapon Skill~
+@10100  = ~This is Brage's spare pair of gauntlets.
+
+STATISTICS:  
+
+THAC0:  +1 bonus
+Weight:  2
+~
+@10101  = ~Wardog Armory Merchant~
+@10102  = ~Madelaine~
+@10103  = ~Mr. Turquoise~
+@10104  = ~Bennet~
+@10105  = ~Mira~
+@10106  = ~Severin~
+@10107  = ~Grey~
+@10108  = ~Grey is a trained war dog from your times in Candlekeep. The times you spent with him there sufficed to make Grey follow you as your loyal dog companion. 
+When looking at him, GREY tilts his head to the side and stares at you. He picks up a stick nearby on the ground... Seems like you are going to have to play fetch... again.
+~
+@10109  = ~[Grey]Woof!~ [C#Grey01]
+/*
+@10110  = 
+*/
+
+/* SoD */
+@19000  = ~Grey's Piece of Ham~
+@19001  = ~This is the ham Grey received from the refugee boy. Although it seems a bit maltreated by being carried around in a child's pocket for a while, it still looks extraordinary fine. 
+
+Grey already had this in his mouth.
+
+STATISTICS:
+
+Special: Restores 9 Hit Points.
+
+Weight: 1~
+@19002  = ~Jucy Piece of Ham~
+@19003  = ~This is a slice of ham you received from Lester. 
+This is not an ordinary ham. Inspecting it you catch a faint but pleasing scent of herbs you can't quite put your finger on, and it looks extraordinary fine. 
+
+STATISTICS:
+
+Special: Restores 9 Hit Points.
+
+Weight: 1~
+@19004  = ~Ham Bag~
+@19005  = ~This is the bag where Lester stored the stolen ham slices in. It still has a faint scent of the herb mixture the ham was smoked with. - It's good that noone else searched for it with a tracker dog.
+
+Weight: 0~
+@19006  = ~Boy with blonde hair~
+@19007  = ~Lester~
+@19008  = ~Mrs. Buttercup~
+@19009  = ~Scald~
+ 
+
+
+/* c#7thpmm_thingies.tpa - adapted to Grey */
+@200000 = ~(yawn)~
+@200001 = ~I want you to stay in sight.~
+@200002 = ~Stop staying in sight.~
+@200003 = ~I want you to look out for traps.~ 
+@200004 = ~Stop looking for traps.~
+@200005 = ~If we encounter enemies...~
+@200006 = ~Leave everything as it is.~
+//@200007 = 
+//@200008 = 
+@200009 = ~I want you to run away from enemies so you don't have to fight.~
+@200010 = ~I want you to fight with melee weapons if you see enemies.~
+@200011 = ~I want you to fight with ranged weapons if you see enemies.~
+@200012 = ~I want you to only defend yourself if attacked.~
+@200013 = ~Do not fight at all, no matter what.~
+@200014 = ~I have no new instructions for fights.~
+//@200015 = 
+//@200016 = 
+//@200017   = 
+//@200018   = 
+//@200019   = 
+@200020   = ~I want to give you instructions how to follow me.~
+
+
+

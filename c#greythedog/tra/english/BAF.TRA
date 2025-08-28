@@ -1,0 +1,16 @@
+@50000  = ~The door is locked magically. You'll need a key to open it.~
+@50001  = ~To examine this doorway, move closer.~
+@50002  = ~Sniff!~
+@50003  = ~Sniff! Sniff!~
+@50004  = ~Woof!~
+@50005  = ~Woof!~ [C#Grey01]
+@50006  = ~(whines)~ [C#Grey07]
+@50007  = ~Woof, woof!~
+@50008  = ~(whines) (Grey's health seems to be low.)~
+@50009  = ~Grrrr! (Grey snaps his teeth at the surroundings with fierce determination.)~
+@50010  = ~Grrrrr! Woof!~
+
+/* new for v9 */
+@50011  = ~(You see from Grey's reaction, that the soldier Lester still smells of the special officers' ham.)~
+@50012  = ~(Grey can't pick up the scent. There is no trace of it at this spot.)~
+@50013   = ~(Grey is barking at the big fir in front of him. He seem to scent Tilda in there.)~
